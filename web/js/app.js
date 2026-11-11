@@ -111,10 +111,13 @@ function mediaPanel(run, { blind = false, label = 'entry' } = {}) {
   const stage = h('div', { class: 'frame big' });
   const note = h('p', { class: 'media-note' });
   let mode = 'poster';
+  let previewObserver = null;
   const btns = {};
 
   const alt = blind ? `Poster of ${label}` : `Poster of ${modelOf(run.modelId)?.label || run.modelId} for ${promptOf(run.promptId)?.title || run.promptId}`;
   function setMode(next, node, msg = '', warn = false) {
+    previewObserver?.disconnect();
+    previewObserver = null;
     mode = next;
     for (const [k, b] of Object.entries(btns)) b.setAttribute('aria-pressed', String(k === mode));
     stage.querySelectorAll('video').forEach((v) => v.pause());
@@ -148,6 +151,20 @@ function mediaPanel(run, { blind = false, label = 'entry' } = {}) {
       const frame = createPreviewFrame(file.text, `Live preview of ${label} (sandboxed)`);
       const unverified = run.sourceHash && !file.sha256 ? ' Hash could not be checked in this context.' : '';
       setMode('live', frame, 'Running in a sandbox: scripts only, opaque origin, no network, no storage.' + unverified);
+      // Preserve the capture viewport. Scaling the iframe changes its display size,
+      // not the viewport seen by the unchanged entry or its pointer coordinates.
+      frame.classList.add('live-preview');
+      frame.style.width = '1600px';
+      frame.style.height = '900px';
+      const fit = () => {
+        const scale = Math.min(stage.clientWidth / 1600, stage.clientHeight / 900);
+        frame.style.transform = `scale(${scale})`;
+        frame.style.left = `${(stage.clientWidth - 1600 * scale) / 2}px`;
+        frame.style.top = `${(stage.clientHeight - 900 * scale) / 2}px`;
+      };
+      previewObserver = new ResizeObserver(fit);
+      previewObserver.observe(stage);
+      fit();
     } catch (e) {
       setMode('poster', placeholder(run, 'Source unavailable'), `Could not load the source (${e.message}).`, true);
       stage.replaceChildren(placeholder(run, 'Source unavailable'));
@@ -171,7 +188,23 @@ function mediaPanel(run, { blind = false, label = 'entry' } = {}) {
 
   const first = posterFrame(run, alt);
   stage.append(...first.childNodes);
-  const root = h('div', { class: 'media' }, stage, h('div', { class: 'row', style: null }, seg), note);
+  const fullscreen = h('button', {
+    type: 'button', class: 'btn small',
+    onclick: async () => {
+      try {
+        if (document.fullscreenElement === root) await document.exitFullscreen();
+        else await root.requestFullscreen();
+      } catch {
+        note.textContent = 'Fullscreen is unavailable in this browser. The preview still uses its original 1600 × 900 viewport.';
+      }
+    }
+  }, 'Fullscreen');
+  fullscreen.disabled = !document.fullscreenEnabled;
+  const root = h('div', { class: 'media' }, stage, h('div', { class: 'row', style: null }, seg, fullscreen), note);
+  root.addEventListener('fullscreenchange', () => {
+    fullscreen.textContent = document.fullscreenElement === root ? 'Exit fullscreen' : 'Fullscreen';
+  });
+  root.dispose = () => previewObserver?.disconnect();
   root.querySelector('.row').style.marginTop = '8px';
   root.pauseAll = () => stage.querySelectorAll('video').forEach((v) => v.pause());
   root.showClip = () => run.clip && mode !== 'clip' && btns.clip.click();
@@ -622,6 +655,7 @@ function viewReview(promptFilter) {
     state.choose = choose;
     state.nextBtn = nextBtn;
 
+    root.querySelectorAll('.media').forEach((panel) => panel.dispose?.());
     root.replaceChildren(
       pageHead({
         eyebrow: 'Blind review',
@@ -834,6 +868,7 @@ function parseRoute() {
 
 function router() {
   if (cleanup) cleanup();
+  main.querySelectorAll('.media').forEach((panel) => panel.dispose?.());
   cleanup = null;
   disposers.forEach((d) => d());
   disposers = [];

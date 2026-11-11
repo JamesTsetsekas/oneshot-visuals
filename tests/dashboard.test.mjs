@@ -49,6 +49,17 @@ test('production dashboard loads under repository path and preview isolates host
    });
   });
   assert.deepEqual(isolated,{storage:false,parentAccess:false,network:false});
+  await page.setViewportSize({width:1440,height:1000});
+  await page.goto(base+'#/run/VIS-P5-sol');
+  await page.getByRole('button',{name:'Run live',exact:true}).click();
+  const live=page.frameLocator('.media iframe');
+  await live.locator('svg').first().waitFor();
+  assert.deepEqual(await live.locator('body').evaluate(()=>({width:innerWidth,height:innerHeight})),{width:1600,height:900},'Live preview keeps capture viewport rather than squeezing the entry');
+  await page.getByRole('button',{name:'Fullscreen',exact:true}).click();
+  await page.waitForFunction(()=>Boolean(document.fullscreenElement));
+  assert.deepEqual(await live.locator('body').evaluate(()=>({width:innerWidth,height:innerHeight})),{width:1600,height:900});
+  await page.getByRole('button',{name:'Exit fullscreen',exact:true}).click();
+  await page.waitForFunction(()=>!document.fullscreenElement);
   if(catalog.runs.filter(r=>r.promptId==='VIS-P3').every(r=>r.clip)){
    await page.goto(base+'#/prompt/VIS-P3');
    await page.getByRole('button',{name:'Play all clips together'}).click();
