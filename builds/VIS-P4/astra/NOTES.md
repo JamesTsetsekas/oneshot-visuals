@@ -1,0 +1,5 @@
+Assumptions: a stylized side elevation, with distant water visible above the foreground waterline. Bobbing attenuates to zero at berth so the flat ramp remains seated. The passenger emerges behind a doorway-edge clip with a brief initial fade; head rotation is a stylized profile turn. All procedural detail uses one fixed seed.
+
+Verified: SVG XML parsing, JavaScript syntax, file size below 300,000 bytes, forbidden-token scan, and headless Chrome file loading at 11 timeline samples. No console errors, warnings, or external requests occurred. No overflow at 1600?900 or 640?360. Screenshots at t=0 and t=12 matched byte-for-byte. Calculated stance drift was below 0.000001 units. One scene screenshot was visually inspected.
+
+Limitations: two 180-frame headless samples averaged 130 and 63 fps, with maximum frames of 55.6 and 97.3 ms; the strict frame-time ceiling was not met. Target-hardware steady-state performance and static-server root/sub-path equivalence were not verified. Lighting is illustrative, not physically simulated.

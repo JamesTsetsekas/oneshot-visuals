@@ -1,0 +1,41 @@
+{
+  "runId": "VIS-P3-fable",
+  "capturedAt": "2026-11-11T22:24:33.270Z",
+  "playwrightVersion": "1.65.0",
+  "browserVersion": "158.0.8127.18",
+  "viewport": {
+    "width": 1600,
+    "height": 900
+  },
+  "deviceScaleFactor": 1,
+  "status": "captured",
+  "sourceHash": "e37cde133aaed7d4ed0d11415b49cfb21d0b5b8f071c465af87839f4a2b53873",
+  "bytes": 21197,
+  "consoleErrors": [],
+  "pageErrors": [],
+  "networkAttempts": [],
+  "svgPresent": true,
+  "poster": "captures/VIS-P3-fable/2026-11-11T22-24-33-269Z-45220/poster.png",
+  "clip": "captures/VIS-P3-fable/2026-11-11T22-24-33-269Z-45220/clip.webm",
+  "frames": [
+    {
+      "time": 0,
+      "path": "captures/VIS-P3-fable/2026-11-11T22-24-33-269Z-45220/frame-0.png"
+    },
+    {
+      "time": 1.5,
+      "path": "captures/VIS-P3-fable/2026-11-11T22-24-33-269Z-45220/frame-1.5.png"
+    },
+    {
+      "time": 3,
+      "path": "captures/VIS-P3-fable/2026-11-11T22-24-33-269Z-45220/frame-3.png"
+    },
+    {
+      "time": 4.5,
+      "path": "captures/VIS-P3-fable/2026-11-11T22-24-33-269Z-45220/frame-4.5.png"
+    }
+  ],
+  "errors": [],
+  "captureElapsedSeconds": 9.38,
+  "clipMode": "sampled-frames-then-realtime-loop"
+}

@@ -1,0 +1,23 @@
+{
+  "runId": "VIS-P6-opus",
+  "capturedAt": "2026-11-11T22:13:11.817Z",
+  "playwrightVersion": "1.65.0",
+  "browserVersion": "158.0.8127.18",
+  "viewport": {
+    "width": 1600,
+    "height": 900
+  },
+  "deviceScaleFactor": 1,
+  "status": "captured",
+  "sourceHash": "6071fc91890467e82b216fe9a8a193525514ef5b60ea8001f6b14289d25a6ba6",
+  "bytes": 25307,
+  "consoleErrors": [],
+  "pageErrors": [],
+  "networkAttempts": [],
+  "svgPresent": true,
+  "poster": "captures/VIS-P6-opus/2026-11-11T22-13-11-816Z-43848/poster.png",
+  "clip": null,
+  "frames": [],
+  "errors": [],
+  "captureElapsedSeconds": 0.907
+}

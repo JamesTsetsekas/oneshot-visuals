@@ -1,0 +1,23 @@
+{
+  "runId": "VIS-P2-sonnet",
+  "capturedAt": "2026-11-11T22:37:36.351Z",
+  "playwrightVersion": "1.65.0",
+  "browserVersion": "158.0.8127.18",
+  "viewport": {
+    "width": 1600,
+    "height": 900
+  },
+  "deviceScaleFactor": 1,
+  "status": "captured",
+  "sourceHash": "1033301f8991b3f2ba12a935a016b434029284685316f8b9976400c6c7b2733c",
+  "bytes": 39946,
+  "consoleErrors": [],
+  "pageErrors": [],
+  "networkAttempts": [],
+  "svgPresent": true,
+  "poster": "captures/VIS-P2-sonnet/2026-11-11T22-37-36-345Z-41604/poster.png",
+  "clip": null,
+  "frames": [],
+  "errors": [],
+  "captureElapsedSeconds": 0.583
+}

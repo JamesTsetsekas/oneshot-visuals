@@ -1,0 +1,9 @@
+node_modules/
+site/
+.local/
+test-results/
+captures/**/video/
+builds/**/*
+!builds/**/
+!builds/**/index.html
+!builds/**/NOTES.md

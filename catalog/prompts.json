@@ -1,0 +1,50 @@
+[
+  {
+    "id": "VIS-P1",
+    "title": "Glasshouse at Blue Hour",
+    "kind": "static",
+    "duration": null,
+    "path": "prompts/VIS-P1.md",
+    "sha256": "e60954c75ef9dd2ed31ead0c1d76751af6192d4a0fb09ae072a07d4f4d23e10e"
+  },
+  {
+    "id": "VIS-P2",
+    "title": "Kestrel Hand Pump",
+    "kind": "static",
+    "duration": null,
+    "path": "prompts/VIS-P2.md",
+    "sha256": "1c5393f5add4335b85ab44ccf87546538c7450df6d505de8dd33fe2c555be7d5"
+  },
+  {
+    "id": "VIS-P3",
+    "title": "Straight-Line Linkage",
+    "kind": "animation",
+    "duration": 6,
+    "path": "prompts/VIS-P3.md",
+    "sha256": "3e24503ab8f4f3e1f8f5bb384f17758f8638045ed1fa704a106a3d473c6b155e"
+  },
+  {
+    "id": "VIS-P4",
+    "title": "The Last Ferry",
+    "kind": "animation",
+    "duration": 12,
+    "path": "prompts/VIS-P4.md",
+    "sha256": "aef9f69310f1b9b013178c328791bdd9928e7328f67b50674aac1e4a34639933"
+  },
+  {
+    "id": "VIS-P5",
+    "title": "Clear Skies Ledger",
+    "kind": "interactive",
+    "duration": null,
+    "path": "prompts/VIS-P5.md",
+    "sha256": "e5bc65c078154e7e68367d907edded325840b27ffce862759a2f438d4f446376"
+  },
+  {
+    "id": "VIS-P6",
+    "title": "Ripple Rail",
+    "kind": "interactive",
+    "duration": null,
+    "path": "prompts/VIS-P6.md",
+    "sha256": "a5e2dc21faef68a3a37d3d66883c3f45fd2eac441bff4b47aac8ab129a3089a7"
+  }
+]

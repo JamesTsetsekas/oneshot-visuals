@@ -1,0 +1,13 @@
+{
+  "name": "oneshot-visuals",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "capture": "node scripts/capture.mjs",
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check.mjs",
+    "test": "node --test tests/*.test.mjs && node scripts/check.mjs"
+  },
+  "devDependencies": { "playwright": "1.65.0" }
+}

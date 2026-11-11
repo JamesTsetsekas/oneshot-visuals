@@ -1,0 +1,23 @@
+{
+  "runId": "VIS-P2-sol",
+  "capturedAt": "2026-11-11T22:07:24.641Z",
+  "playwrightVersion": "1.65.0",
+  "browserVersion": "158.0.8127.18",
+  "viewport": {
+    "width": 1600,
+    "height": 900
+  },
+  "deviceScaleFactor": 1,
+  "status": "captured",
+  "sourceHash": "6fba88a27b82005f35859b146cce1c8ebfdab13d2e6281f26580d703a3a5e4ee",
+  "bytes": 31107,
+  "consoleErrors": [],
+  "pageErrors": [],
+  "networkAttempts": [],
+  "svgPresent": true,
+  "poster": "captures/VIS-P2-sol/2026-11-11T22-07-24-639Z-38880/poster.png",
+  "clip": null,
+  "frames": [],
+  "errors": [],
+  "captureElapsedSeconds": 0.604
+}

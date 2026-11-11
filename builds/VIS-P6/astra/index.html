@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ripple Rail</title>
+<style>
+:root{color-scheme:light;font-family:system-ui,"Segoe UI",Arial,sans-serif;color:#263747;background:#f2f0e8}*{box-sizing:border-box}body{margin:0;overflow:hidden}.board{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(100vw,177.777777vh);aspect-ratio:16/9;container-type:inline-size}#stage{display:block;width:100%;height:100%;touch-action:none;user-select:none}text{font-family:system-ui,"Segoe UI",Arial,sans-serif}.hud{position:absolute;left:5.5%;right:5.5%;top:86.666667%;height:11.111111%;border-top:1px solid #bcbfb7;display:flex;align-items:center;gap:2.3cqw;font-size:.88cqw}.group{display:flex;flex-direction:column;gap:.55cqw}.label{font-size:.65cqw;letter-spacing:.13em;text-transform:uppercase;font-weight:650;color:#53616a}.buttons{display:flex;gap:.35cqw}button{font:inherit;font-weight:550;border:1px solid #aab3b4;color:#263747;background:transparent;border-radius:.35cqw;height:2.5cqw;padding:0 .75cqw;cursor:pointer;white-space:nowrap}button:hover{background:#e3e7e1}button[aria-pressed="true"]{background:#263e4f;border-color:#263e4f;color:#fff}button:focus-visible{outline:3px solid #9b4c1c;outline-offset:3px}kbd{font:inherit;opacity:.8;margin-right:.4cqw}.energy{min-width:10.6cqw}.number{font-family:ui-monospace,Consolas,monospace;font-size:1.5cqw;font-variant-numeric:tabular-nums}.units{font-size:.65cqw;color:#53616a;margin-left:.3cqw}.actions{margin-left:auto}.status{min-width:10cqw;align-self:center;line-height:1.65;font-size:.78cqw;color:#53616a}.status strong{font-size:.7cqw;letter-spacing:.14em;color:#263747}.divider{height:3.1cqw;border-left:1px solid #c7cbc2}
+</style>
+</head>
+<body>
+<div class="board">
+<svg id="stage" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="art-title art-desc">
+<title id="art-title">Ripple Rail</title>
+<desc id="art-desc">Twenty-five long pendulums hang from a horizontal rail above a warm ivory field. A flowing line joins their blue and amber bobs, revealing waves that travel, reflect and fade. Drag a bob to disturb the rail; the controls below change damping, boundaries and playback.</desc>
+<defs>
+<pattern id="grid" width="56" height="80" patternUnits="userSpaceOnUse"><path d="M 0 0 H 56" fill="none" stroke="#d9ded5" stroke-width=".65"/></pattern>
+<linearGradient id="rod" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#758891" stop-opacity=".5"/><stop offset="1" stop-color="#425d6d" stop-opacity=".85"/></linearGradient>
+<linearGradient id="velocity"><stop stop-color="#3474c2"/><stop offset=".5" stop-color="#496276"/><stop offset="1" stop-color="#ba691f"/></linearGradient>
+<radialGradient id="shine" cx=".3" cy=".2" r=".8"><stop stop-color="#fff" stop-opacity=".3"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#102238" stop-opacity=".2"/></radialGradient>
+</defs>
+<rect width="1600" height="900" fill="#f2f0e8"/>
+<text x="88" y="51" fill="#263747" font-size="29" font-weight="600" letter-spacing="-1">Ripple Rail<tspan dx="17" font-size="11" font-weight="500" letter-spacing="2.6" fill="#687777">A COUPLED PENDULUM STUDY</tspan></text>
+<text x="1512" y="49" text-anchor="end" fill="#53616a" font-size="12" letter-spacing="1.4">25 BOBS · ONE CONTINUOUS WAVE</text>
+<rect x="88" y="140" width="1424" height="560" fill="url(#grid)"/>
+<path d="M88 620H1512" stroke="#bdc7bf" stroke-dasharray="2 6" fill="none"/>
+<path d="M88 100H1512" stroke="#263e4f" stroke-width="5" stroke-linecap="round"/>
+<path d="M88 91V109M1512 91V109" stroke="#263e4f" stroke-width="2"/>
+<g id="rods"></g>
+<path id="ribbon-halo" fill="none" stroke="#f2f0e8" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="ribbon" fill="none" stroke="#688f9b" stroke-opacity=".75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="bobs"></g><g id="pivots"></g>
+<g fill="#687777" font-size="10" letter-spacing="1.5"><text x="128" y="132" text-anchor="middle">01</text><text x="800" y="132" text-anchor="middle">13</text><text x="1472" y="132" text-anchor="middle">25</text></g>
+<g transform="translate(88 740)"><text fill="#53616a" font-size="11" letter-spacing="1.7">ANGULAR VELOCITY</text><rect x="167" y="-9" width="132" height="6" rx="3" fill="url(#velocity)"/><text x="157" y="-1" text-anchor="end" font-size="12" fill="#53616a">−</text><text x="308" y="-1" font-size="12" fill="#53616a">+</text><text x="337" y="-1" font-size="11" fill="#687777">blue ← still → amber</text></g>
+<text x="1512" y="739" text-anchor="end" fill="#53616a" font-size="11" letter-spacing="1.1">PULL. RELEASE. FOLLOW THE RIPPLE.</text>
+</svg>
+<div class="hud" aria-label="Simulation controls">
+<div class="group"><span class="label" id="damping-label">Damping · g = 0.25</span><div class="buttons"><button data-level="1" aria-pressed="false"><kbd>1</kbd> None</button><button data-level="2" aria-pressed="true"><kbd>2</kbd> Gentle</button><button data-level="3" aria-pressed="false"><kbd>3</kbd> Strong</button></div></div>
+<div class="divider"></div>
+<div class="group"><span class="label">Boundary condition</span><button id="ends" aria-pressed="false"><kbd>F</kbd> Ends: Fixed</button></div>
+<div class="divider"></div>
+<div class="group energy"><span class="label">System energy</span><div><span class="number" id="energy">E = 0.00</span><span class="units">rad²/s²</span></div></div>
+<div class="group actions"><span class="label">Transport</span><div class="buttons"><button id="pause" aria-pressed="false"><kbd>Space</kbd> Pause</button><button id="reset"><kbd>R</kbd> Reset</button></div></div>
+<div class="status"><strong id="state">RUNNING</strong><br><span id="hint">Drag a bob to begin</span></div>
+</div>
+</div>
+<script>
+'use strict';
+const N=25,DT=1/240,W2=4,K=60,L=520,LIMIT=80*Math.PI/180;
+const theta=new Float64Array(N),omega=new Float64Array(N),pivot=Array.from({length:N},(_,i)=>800+56*(i-12));
+const stage=document.getElementById('stage'),ns='http://www.w3.org/2000/svg';
+const rods=[],bobs=[],rings=[],shines=[],centres=Array.from({length:N},()=>({x:0,y:620}));
+let lastPointer=null;
+let level=2,damping=.25,fixed=true,paused=false,held=-1,hover=-1,dragAngle=0,pointerId=null,touched=false,accumulator=0,last=performance.now();
+function svg(tag,attributes,parent){const el=document.createElementNS(ns,tag);for(const [key,value]of Object.entries(attributes))el.setAttribute(key,value);parent.appendChild(el);return el;}
+for(let i=0;i<N;i++){
+ rods.push(svg('line',{x1:pivot[i],y1:100,x2:pivot[i],y2:620,stroke:'url(#rod)','stroke-width':1.6},document.getElementById('rods')));
+ const group=svg('g',{},document.getElementById('bobs'));
+ rings.push(svg('circle',{r:25,fill:'none',stroke:'#496b7b','stroke-width':1.7,opacity:0},group));
+ bobs.push(svg('circle',{r:18,fill:'#496276',stroke:'#f2f0e8','stroke-width':1.5},group));
+ shines.push(svg('circle',{r:17,fill:'url(#shine)','pointer-events':'none'},group));
+ svg('circle',{cx:pivot[i],cy:100,r:5,fill:'#f2f0e8',stroke:'#263e4f','stroke-width':2},document.getElementById('pivots'));
+}
+// Preallocated Runge–Kutta stages. The held coordinate is a prescribed boundary.
+const q=new Float64Array(N),v=new Float64Array(N);
+const aq=Array.from({length:4},()=>new Float64Array(N)),av=Array.from({length:4},()=>new Float64Array(N));
+function derivative(pos,vel,dq,dv){for(let i=0;i<N;i++){if(i===held){dq[i]=dv[i]=0;continue;}const left=i?pos[i-1]:(fixed?0:pos[0]);const right=i<N-1?pos[i+1]:(fixed?0:pos[N-1]);dq[i]=vel[i];dv[i]=-W2*Math.sin(pos[i])+K*(right-2*pos[i]+left)-damping*vel[i];}}
+function step(){
+ if(held>=0){theta[held]=dragAngle;omega[held]=0;}
+ derivative(theta,omega,aq[0],av[0]);
+ for(let s=1;s<4;s++){const h=s===3?DT:DT*.5;for(let i=0;i<N;i++){q[i]=theta[i]+h*aq[s-1][i];v[i]=omega[i]+h*av[s-1][i];}derivative(q,v,aq[s],av[s]);}
+ for(let i=0;i<N;i++){theta[i]+=DT/6*(aq[0][i]+2*aq[1][i]+2*aq[2][i]+aq[3][i]);omega[i]+=DT/6*(av[0][i]+2*av[1][i]+2*av[2][i]+av[3][i]);}
+ if(held>=0){theta[held]=dragAngle;omega[held]=0;}
+}
+function energy(){let e=0;for(let i=0;i<N;i++){e+=.5*omega[i]**2+W2*(1-Math.cos(theta[i]));if(i)e+=.5*K*(theta[i]-theta[i-1])**2;}if(fixed)e+=.5*K*(theta[0]**2+theta[N-1]**2);return e;}
+function motionColour(speed){const amount=Math.min(1,Math.abs(speed)/2.5),from=[73,98,118],to=speed<0?[52,116,194]:[186,105,31];return 'rgb('+from.map((n,i)=>Math.round(n+(to[i]-n)*amount)).join(',')+')';}
+function render(){
+ for(let i=0;i<N;i++){const x=pivot[i]+L*Math.sin(theta[i]),y=100+L*Math.cos(theta[i]);centres[i].x=x;centres[i].y=y;rods[i].setAttribute('x2',x);rods[i].setAttribute('y2',y);bobs[i].parentNode.setAttribute('transform',`translate(${x} ${y})`);bobs[i].setAttribute('fill',motionColour(omega[i]));rings[i].setAttribute('opacity',held===i||hover===i?1:0);rings[i].setAttribute('stroke-width',held===i?3:1.7);rings[i].setAttribute('stroke',held===i?'#9b4c1c':'#496b7b');}
+ if(held<0){hover=lastPointer?nearest(lastPointer):-1;for(let i=0;i<N;i++)rings[i].setAttribute('opacity',hover===i?1:0);}
+ // Interpolating Catmull–Rom curve: every bob centre lies on the wave.
+ let path=`M${centres[0].x},${centres[0].y}`;
+ for(let i=0;i<N-1;i++){const a=centres[Math.max(0,i-1)],b=centres[i],c=centres[i+1],d=centres[Math.min(N-1,i+2)];path+=` C${b.x+(c.x-a.x)/6},${b.y+(c.y-a.y)/6} ${c.x-(d.x-b.x)/6},${c.y-(d.y-b.y)/6} ${c.x},${c.y}`;}
+ document.getElementById('ribbon').setAttribute('d',path);document.getElementById('ribbon-halo').setAttribute('d',path);
+ document.getElementById('energy').textContent='E = '+energy().toFixed(2);stage.style.cursor=held>=0?'grabbing':hover>=0?'grab':'default';
+}
+function markTouched(){touched=true;document.getElementById('hint').textContent='Grab any bob';}
+function dampingLevel(n){level=n;damping=[0,0,.25,1.2][n];document.getElementById('damping-label').textContent=`Damping ${n} · g = ${damping.toFixed(n===2?2:1)}`;document.querySelectorAll('[data-level]').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.level===n)));markTouched();}
+function toggleEnds(){fixed=!fixed;const b=document.getElementById('ends');b.innerHTML='<kbd>F</kbd> Ends: '+(fixed?'Fixed':'Free');b.setAttribute('aria-pressed',String(!fixed));markTouched();render();}
+function togglePause(){paused=!paused;accumulator=0;last=performance.now();const b=document.getElementById('pause');b.innerHTML='<kbd>Space</kbd> '+(paused?'Resume':'Pause');b.setAttribute('aria-pressed',String(paused));document.getElementById('state').textContent=paused?'PAUSED':'RUNNING';markTouched();}
+function release(){if(held>=0)omega[held]=0;held=-1;const old=pointerId;pointerId=null;if(old!==null&&stage.hasPointerCapture(old))stage.releasePointerCapture(old);render();}
+function reset(){release();theta.fill(0);omega.fill(0);accumulator=0;hover=-1;markTouched();render();}
+function point(event){const r=stage.getBoundingClientRect();return {x:(event.clientX-r.left)*1600/r.width,y:(event.clientY-r.top)*900/r.height};}
+function nearest(p){let best=-1,distance=30**2;for(let i=0;i<N;i++){const d=(p.x-centres[i].x)**2+(p.y-centres[i].y)**2;if(d<=distance){best=i;distance=d;}}return best;}
+function pose(p){dragAngle=Math.max(-LIMIT,Math.min(LIMIT,Math.atan2(p.x-pivot[held],p.y-100)));theta[held]=dragAngle;omega[held]=0;render();}
+stage.addEventListener('pointerdown',e=>{if(held>=0||e.button!==0)return;const p=point(e),i=nearest(p);lastPointer=p;if(i<0)return;e.preventDefault();held=i;pointerId=e.pointerId;stage.setPointerCapture(pointerId);markTouched();pose(p);});
+stage.addEventListener('pointermove',e=>{lastPointer=point(e);if(held>=0){if(e.pointerId===pointerId)pose(point(e));}else{hover=nearest(point(e));render();}});
+stage.addEventListener('pointerleave',()=>{lastPointer=null;hover=-1;if(held<0)render();});
+stage.addEventListener('pointerup',e=>{if(e.pointerId===pointerId){pose(point(e));if(e.pointerType==='touch')lastPointer=null;release();}});
+stage.addEventListener('pointercancel',e=>{if(e.pointerId===pointerId)release();});
+stage.addEventListener('lostpointercapture',e=>{if(e.pointerId===pointerId)release();});
+document.querySelectorAll('[data-level]').forEach(b=>b.addEventListener('click',()=>dampingLevel(+b.dataset.level)));
+document.getElementById('ends').addEventListener('click',toggleEnds);document.getElementById('pause').addEventListener('click',togglePause);document.getElementById('reset').addEventListener('click',reset);
+document.addEventListener('keydown',e=>{if(e.ctrlKey||e.metaKey||e.altKey)return;const key=e.key.toLowerCase();if(['1','2','3','f','r',' '].includes(key)){e.preventDefault();if(e.repeat)return;if(key===' ')togglePause();else if(key==='f')toggleEnds();else if(key==='r')reset();else dampingLevel(+key);}});
+function frame(now){const elapsed=Math.min(.1,Math.max(0,(now-last)/1000));last=now;if(!paused){accumulator+=elapsed;while(accumulator+1e-12>=DT){step();accumulator-=DT;}}render();requestAnimationFrame(frame);}
+render();requestAnimationFrame(frame);
+</script>
+</body>
+</html>

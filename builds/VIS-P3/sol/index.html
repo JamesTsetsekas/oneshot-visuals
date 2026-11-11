@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Straight Line Inversor</title>
+<style>
+html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#172327}svg{display:block;width:100vw;height:100vh}text{font-family:ui-monospace,Consolas,monospace;font-weight:500} .bar{stroke-linecap:round}.fine{fill:none;stroke:#90a2a5;stroke-width:1}.engrave{fill:none;stroke:#a6b6b6;stroke-opacity:.13;stroke-width:1}
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="art-title art-desc">
+<title id="art-title">Straight Line Inversor</title>
+<desc id="art-desc">A precision metal Peaucellier linkage oscillates on a dark instrument bed. Two grounded pivots drive a silver rhombus, converting a swinging crank into the orange output point's exact vertical stroke. A graduated angle dial and a fading orange trace reveal the relationship.</desc>
+<defs>
+ <radialGradient id="ambient" cx="50%" cy="50%" r="50%"><stop stop-color="#34464a"/><stop offset=".65" stop-color="#1b2a2e"/><stop offset="1" stop-color="#172327"/></radialGradient>
+ <linearGradient id="bed" x1="0" y1="0" x2=".3" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#516267"/><stop offset=".45" stop-color="#35474b"/><stop offset="1" stop-color="#293a3e"/></linearGradient>
+ <linearGradient id="edge" x2="0" y2="1"><stop stop-color="#8b999a"/><stop offset=".13" stop-color="#3b4e52"/><stop offset="1" stop-color="#132126"/></linearGradient>
+ <linearGradient id="silver" x1="0" y1="0" x2="0.3" y2="1"><stop stop-color="#f0efdf"/><stop offset=".32" stop-color="#b4c2c2"/><stop offset=".57" stop-color="#80969c"/><stop offset=".76" stop-color="#d6dfd9"/><stop offset="1" stop-color="#697f85"/></linearGradient>
+ <linearGradient id="crank" x1="0" y1="0" x2="0.25" y2="1"><stop stop-color="#a7babd"/><stop offset=".3" stop-color="#536f78"/><stop offset="1" stop-color="#2b434c"/></linearGradient>
+ <linearGradient id="rail" x2="1" y2="0"><stop stop-color="#17272e"/><stop offset=".15" stop-color="#6c848b"/><stop offset=".3" stop-color="#334a52"/><stop offset=".8" stop-color="#293f47"/><stop offset="1" stop-color="#84999c"/></linearGradient>
+ <radialGradient id="pin" cx="35%" cy="25%"><stop stop-color="#f3f1e4"/><stop offset=".5" stop-color="#bbc9c7"/><stop offset=".75" stop-color="#60767b"/><stop offset="1" stop-color="#253c44"/></radialGradient>
+ <radialGradient id="bearing"><stop stop-color="#102128"/><stop offset=".58" stop-color="#1b3038"/><stop offset=".62" stop-color="#abbab7"/><stop offset=".76" stop-color="#6a8186"/><stop offset="1" stop-color="#273f47"/></radialGradient>
+ <linearGradient id="orange" x2="0" y2="1"><stop stop-color="#ffb978"/><stop offset=".5" stop-color="#ff8448"/><stop offset="1" stop-color="#d35029"/></linearGradient>
+ <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(40)"><path d="M0 0V8" stroke="#b2c2c1" stroke-opacity=".22" stroke-width="2"/></pattern>
+ <pattern id="grain" width="5" height="5" patternUnits="userSpaceOnUse"><path d="M0 .5H5" stroke="#d0dbd6" stroke-opacity=".025"/></pattern>
+ <filter id="base-shadow" x="-15%" y="-15%" width="140%" height="150%"><feGaussianBlur stdDeviation="15"/></filter>
+ <filter id="link-shadow" x="-15%" y="-15%" width="140%" height="150%"><feGaussianBlur stdDeviation="4"/></filter>
+ <g id="bolt"><circle r="12" fill="#172930" stroke="#73898e"/><circle r="8" fill="url(#pin)"/><path d="M-3-3 3 3M-3 3 3-3" stroke="#2b4148" stroke-width="1.6"/></g>
+ <g id="joint"><circle r="16" fill="#253d45" stroke="#c2ceca" stroke-width="1"/><circle r="11" fill="url(#pin)" stroke="#1c333c" stroke-width="1.5"/><circle r="3" fill="#29434c"/><path d="M-4-6 0-7" stroke="#fff9e7" stroke-opacity=".6" stroke-linecap="round"/></g>
+ <g id="output-pin"><circle r="19" fill="#26383b" stroke="#ff9b5e" stroke-width="3"/><circle r="12" fill="url(#orange)"/><circle r="5" fill="#fff0ce"/><circle r="2" fill="#bc4728"/></g>
+</defs>
+<!-- The complete bed is part of the fixed mechanism, 1,020 units wide. -->
+<path d="M0 0H1600V900H0Z" fill="#172327"/>
+<ellipse cx="760" cy="450" rx="650" ry="430" fill="url(#ambient)"/>
+<ellipse cx="766" cy="751" rx="591" ry="52" fill="#071318" opacity=".38" filter="url(#base-shadow)"/>
+<g transform="translate(0 14)">
+ <path d="M180 198Q180 158 220 158H1128Q1170 158 1170 200V702Q1170 744 1128 744H220Q180 744 180 702Z" fill="#0c1a20"/>
+</g>
+<rect x="180" y="158" width="990" height="586" rx="40" fill="url(#edge)" stroke="#0b1c22" stroke-width="2"/>
+<rect x="186" y="163" width="978" height="569" rx="35" fill="url(#bed)" stroke="#a5b3af" stroke-opacity=".25"/>
+<rect x="186" y="163" width="978" height="569" rx="35" fill="url(#grain)"/>
+<rect x="204" y="181" width="942" height="534" rx="22" fill="none" stroke="#152a30" stroke-width="2"/>
+<rect x="207" y="184" width="936" height="528" rx="20" fill="none" stroke="#8d9f9e" stroke-opacity=".16"/>
+<!-- A recessed open frame supports the vertical metrology rail. -->
+<path d="M701 224H1073Q1106 224 1106 257V639Q1106 672 1073 672H701Q682 672 682 653V243Q682 224 701 224Z" fill="#15282e" stroke="#829597" stroke-opacity=".5" stroke-width="2"/>
+<path d="M701 231H1071Q1099 231 1099 260V636Q1099 665 1071 665H701" fill="none" stroke="#0a1d24" stroke-width="7"/>
+<path d="M705 234H1064L705 654Z" fill="#1c3037"/>
+<path d="M727 252H1063M727 646H1063" class="engrave"/>
+<path d="M731 269H1049M731 629H1049" class="engrave"/>
+<path d="M1044 252V647" stroke="#657c82" stroke-opacity=".16"/>
+<!-- Ground carrier crosses the frame and gives both pivots a common footing. -->
+<path d="M247 399H1103V501H247Q224 501 224 478V422Q224 399 247 399Z" fill="#0d222a" opacity=".7" transform="translate(0 8)"/>
+<path d="M247 397H1103V495H247Q224 495 224 472V420Q224 397 247 397Z" fill="url(#rail)" stroke="#8ea1a2" stroke-opacity=".65"/>
+<path d="M247 405H1095M246 487H1095" stroke="#c1ceca" stroke-opacity=".2"/>
+<path d="M712 426H1028M712 466H1028" stroke="#122a32" stroke-width="5" stroke-linecap="round"/>
+<path d="M712 425H1028M712 465H1028" stroke="#8ca1a5" stroke-opacity=".25"/>
+<use href="#bolt" x="1068" y="446"/>
+<rect x="264" y="419" width="174" height="62" rx="8" fill="url(#hatch)" stroke="#819596" stroke-opacity=".5"/>
+<path d="M276 478H427" stroke="#172e35" stroke-width="3"/>
+<g fill="url(#bearing)" stroke="#162e37" stroke-width="2"><circle cx="300" cy="450" r="29"/><circle cx="400" cy="450" r="29"/></g>
+<g><use href="#bolt" x="218" y="198"/><use href="#bolt" x="1131" y="198"/><use href="#bolt" x="218" y="694"/><use href="#bolt" x="1131" y="694"/></g>
+<!-- The straightedge is at the required physical coordinate, with no scene scaling. -->
+<rect x="569" y="198" width="74" height="504" rx="9" fill="#152b33" stroke="#82999d" stroke-width="1.5"/>
+<rect x="576" y="205" width="59" height="490" rx="4" fill="url(#rail)"/>
+<path d="M588 210V690" stroke="#c2ceca" stroke-width="1.25"/>
+<g id="ruler-ticks" stroke="#c2ceca" stroke-width="1.1"></g>
+<circle cx="624" cy="214" r="3" fill="#132a32" stroke="#738d95"/><circle cx="624" cy="686" r="3" fill="#132a32" stroke="#738d95"/>
+<!-- Radius-150 scale and its live pointer. -->
+<path d="M475 579.903810568A150 150 0 0 0 475 320.096189432" fill="none" stroke="#afc0bf" stroke-opacity=".6" stroke-width="1.4"/>
+<path d="M484 595.4922678A168 168 0 0 0 484 304.5077322" fill="none" stroke="#9aafaf" stroke-opacity=".17"/>
+<g id="dial-ticks"></g>
+<g fill="#d4ded6" font-size="17" text-anchor="middle"><text x="491" y="294">+60</text><text x="550" y="480">0</text><text x="491" y="622">-60</text></g>
+<path id="pointer" fill="none" stroke="#d4ded6" stroke-width="2"/>
+<g id="trail" fill="none" stroke="#ff874b" stroke-width="5" stroke-linecap="round"></g>
+<!-- All link shadows share the same fixed light offset. -->
+<g id="shadow" stroke="#06171d" stroke-width="24" stroke-linecap="round" opacity=".55" transform="translate(7 10)" filter="url(#link-shadow)"></g>
+<g id="bars"></g>
+<g id="pins">
+ <use href="#joint" x="300" y="450"/><use href="#joint" x="400" y="450"/>
+ <use id="pinA" href="#joint"/><use id="pinB" href="#joint"/><use id="pinC" href="#joint"/>
+ <use id="pinP" href="#output-pin"/>
+</g>
+<g fill="#e0e6dc" font-size="21"><text x="269" y="495">O</text><text x="391" y="495">Q</text><text id="labelP" fill="#ffac72">P</text></g>
+</svg>
+<script>
+'use strict';
+const NS='http://www.w3.org/2000/svg';
+const O={x:300,y:450}, Q={x:400,y:450}, D=6;
+const el=id=>document.getElementById(id);
+function node(tag,attrs,parent){const n=document.createElementNS(NS,tag);for(const [k,v] of Object.entries(attrs))n.setAttribute(k,v);parent.appendChild(n);return n;}
+function geometry(t){
+ const psi=Math.PI/3*Math.sin(2*Math.PI*t/D);
+ const C={x:400+100*Math.cos(psi),y:450-100*Math.sin(psi)};
+ const dx=C.x-O.x,dy=C.y-O.y,d=Math.hypot(dx,dy);
+ const along=(260*260-100*100+d*d)/(2*d);
+ const h=Math.sqrt(Math.max(0,260*260-along*along));
+ const mx=O.x+along*dx/d,my=O.y+along*dy/d;
+ const A={x:mx+h*dy/d,y:my-h*dx/d};
+ const B={x:mx-h*dy/d,y:my+h*dx/d};
+ const P={x:A.x+B.x-C.x,y:A.y+B.y-C.y};
+ return {O,Q,A,B,C,P,psi};
+}
+for(let y=210,i=0;y<=690;y+=40,i++)node('path',{d:`M588 ${y}h${i%3===0?23:14}`},el('ruler-ticks'));
+for(let a=-60;a<=60;a+=15){const r=a*Math.PI/180,inner=a%30===0?138:143;node('path',{d:`M${400+inner*Math.cos(r)} ${450-inner*Math.sin(r)}L${400+150*Math.cos(r)} ${450-150*Math.sin(r)}`,stroke:'#c0ceca','stroke-width':a%30===0?2:1},el('dial-ticks'));}
+const pairs=[['O','B'],['O','A'],['Q','C'],['C','B'],['B','P'],['A','C'],['P','A']];
+const bars=pairs.map((pair,i)=>{
+ const g=node('g',{},el('bars'));
+ const rim=node('path',{class:'bar',fill:'none',stroke:'#122b35','stroke-width':i<2?26:i===2?24:22},g);
+ const body=node('path',{class:'bar',fill:'none',stroke:i===2?'url(#crank)':'url(#silver)','stroke-width':i<2?23:i===2?21:19},g);
+ const glint=node('path',{class:'bar',fill:'none',stroke:'#edf0e1','stroke-opacity':'.32','stroke-width':'1'},g);
+ const seam=node('path',{class:'bar',fill:'none',stroke:'#314d57','stroke-opacity':'.35','stroke-width':'2'},g);
+ const shade=node('path',{fill:'none'},el('shadow'));
+ return {pair,rim,body,glint,seam,shade};
+});
+const trail=Array.from({length:120},(_,i)=>node('path',{'stroke-opacity':Math.pow((i+1)/120,1.65)},el('trail')));
+function frame(time){
+ const t=((time%D)+D)%D,g=geometry(t);
+ for(const b of bars){const a=g[b.pair[0]],c=g[b.pair[1]],d=`M${a.x} ${a.y}L${c.x} ${c.y}`;b.rim.setAttribute('d',d);b.body.setAttribute('d',d);b.shade.setAttribute('d',d);
+ const len=Math.hypot(c.x-a.x,c.y-a.y),nx=-(c.y-a.y)/len,ny=(c.x-a.x)/len;
+ b.glint.setAttribute('d',`M${a.x+nx*5} ${a.y+ny*5}L${c.x+nx*5} ${c.y+ny*5}`);
+ b.seam.setAttribute('d',`M${a.x-nx*5} ${a.y-ny*5}L${c.x-nx*5} ${c.y-ny*5}`);}
+ for(const key of ['A','B','C','P']){el('pin'+key).setAttribute('x',g[key].x);el('pin'+key).setAttribute('y',g[key].y);}
+ el('labelP').setAttribute('x',g.P.x+28);el('labelP').setAttribute('y',g.P.y+7);
+ const a=g.psi;el('pointer').setAttribute('d',`M${400+113*Math.cos(a)} ${450-113*Math.sin(a)}L${400+153*Math.cos(a)} ${450-153*Math.sin(a)}`);
+ for(let i=0;i<120;i++){const p=geometry(((t-1.5+i/120*1.5)%D+D)%D).P,q=geometry(((t-1.5+(i+1)/120*1.5)%D+D)%D).P;trail[i].setAttribute('d',`M${p.x} ${p.y}L${q.x} ${q.y}`);}
+}
+const param=new URLSearchParams(location.search).get('t');
+const frozen=param!==null&&param.trim()!==''&&Number.isFinite(Number(param));
+if(frozen){frame(Number(param));}else{const tStart=performance.now();frame(0);function animate(now){frame((now-tStart)/1000);requestAnimationFrame(animate);}requestAnimationFrame(animate);}
+</script>
+</body>
+</html>

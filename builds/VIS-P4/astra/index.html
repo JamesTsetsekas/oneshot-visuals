@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>The Last Ferry</title><style>html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#101d30}svg{display:block;width:100%;height:100%}</style></head><body>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="title description">
+<title id="title">The Last Ferry</title><desc id="description">At a quiet blue hour harbour, a little ivory and indigo ferry approaches a stone quay. Its ramp lowers, a lantern awakens, and a lone traveller with a case walks into the evening, looking back as the boat departs. A distant lighthouse sweeps the starry sea.</desc>
+<defs>
+ <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#101d30"/><stop offset=".48" stop-color="#293c57"/><stop offset=".82" stop-color="#716577"/><stop offset="1" stop-color="#bd8b87"/></linearGradient>
+ <linearGradient id="sea" x2="0" y2="1"><stop stop-color="#687487"/><stop offset=".26" stop-color="#3b566c"/><stop offset=".65" stop-color="#203d55"/><stop offset="1" stop-color="#101d30"/></linearGradient>
+ <linearGradient id="haze"><stop stop-color="#d5a4a0" stop-opacity="0"/><stop offset=".52" stop-color="#d5a4a0" stop-opacity=".4"/><stop offset="1" stop-color="#d5a4a0" stop-opacity="0"/></linearGradient>
+ <linearGradient id="wall" x2="0" y2="1"><stop stop-color="#3b4654"/><stop offset=".75" stop-color="#1b2a3b"/><stop offset="1" stop-color="#101d30"/></linearGradient>
+ <linearGradient id="hull" x2="0" y2="1"><stop stop-color="#243e51"/><stop offset=".5" stop-color="#152d40"/><stop offset="1" stop-color="#0d2133"/></linearGradient>
+ <linearGradient id="ivory" x2="0" y2="1"><stop stop-color="#a3aca9"/><stop offset="1" stop-color="#637f87"/></linearGradient>
+ <linearGradient id="window" x2="0" y2="1"><stop stop-color="#ecd39d"/><stop offset="1" stop-color="#bb8a57"/></linearGradient>
+ <radialGradient id="lampHalo"><stop stop-color="#ffd38a" stop-opacity=".52"/><stop offset=".25" stop-color="#edb76c" stop-opacity=".20"/><stop offset="1" stop-color="#edb76c" stop-opacity="0"/></radialGradient>
+ <radialGradient id="groundGlow"><stop stop-color="#edbd74" stop-opacity=".38"/><stop offset="1" stop-color="#edbd74" stop-opacity="0"/></radialGradient>
+ <linearGradient id="beam"><stop stop-color="#dce5d8" stop-opacity=".35"/><stop offset="1" stop-color="#dee8df" stop-opacity="0"/></linearGradient>
+ <radialGradient id="flare"><stop stop-color="#ffffe2"/><stop offset=".08" stop-color="#f8e7bd" stop-opacity=".8"/><stop offset=".3" stop-color="#f2dcc1" stop-opacity=".25"/><stop offset="1" stop-color="#e3d7c0" stop-opacity="0"/></radialGradient>
+ <filter id="soft"><feGaussianBlur stdDeviation="5"/></filter>
+ <filter id="steamSoft"><feGaussianBlur stdDeviation="3"/></filter>
+ <clipPath id="waterClip"><path d="M0 420H1600V610H1000V900H0Z"/></clipPath>
+ <clipPath id="emerge"><rect x="667" y="400" width="1100" height="215"/></clipPath>
+ <pattern id="masonry" width="160" height="88" patternUnits="userSpaceOnUse"><path d="M0 0H160M0 44H160M80 0V44M25 44V88" stroke="#101e2c" stroke-width="3" opacity=".5"/><path d="M0 3H160M0 47H160" stroke="#71808a" opacity=".12"/></pattern>
+</defs>
+<rect width="1600" height="900" fill="#101d30"/>
+<rect width="1600" height="440" fill="url(#sky)"/>
+<g id="stars"/>
+<g fill="none" stroke="url(#haze)" stroke-linecap="round"><path d="M390 273Q800 253 1320 276" stroke-width="12" opacity=".35"/><path d="M610 365Q1020 341 1500 357" stroke-width="20"/><path d="M60 393Q600 380 970 394" stroke-width="8"/></g>
+<circle cx="1377" cy="169" r="24" fill="#eee0c2" opacity=".65"/><circle cx="1387" cy="161" r="24" fill="#293a53"/>
+<rect y="420" width="1600" height="480" fill="url(#sea)"/>
+<path d="M0 382L39 377 88 391 122 386 171 401 204 398 255 412 333 415 387 424H0Z" fill="#253849"/>
+<path d="M0 409Q105 394 189 416L315 429H0Z" fill="#1a3042"/>
+<path d="M1200 422L1240 413 1260 415 1320 406 1360 411 1410 392 1460 397 1500 385 1600 379V430Z" fill="#455166" opacity=".65"/>
+<path d="M0 420H1600" stroke="#d4a2a0" opacity=".18"/>
+<g id="lighthouse">
+ <path d="M248 399L253 342H267L273 405Z" fill="#879295"/><path d="M261 344H267L273 405H260Z" fill="#465d6b"/>
+ <path d="M248 342H273V338H248Z" fill="#1b2c3d"/><rect x="250" y="325" width="21" height="14" rx="2" fill="#c9cbb6"/><path d="M246 325L260 314 275 325Z" fill="#1c2d40"/>
+ <path d="M252 326V338M260 326V338M269 326V338" stroke="#314455" stroke-width="2"/><rect x="257" y="366" width="5" height="10" fill="#233b4d"/>
+</g>
+<g id="beamGroup" transform="translate(260 330)"><path d="M0 -4L700 -55V55L0 4Z" fill="url(#beam)" filter="url(#soft)"/></g>
+<circle id="lighthouseFlare" cx="260" cy="330" r="80" fill="url(#flare)"/>
+<g id="ripples" clip-path="url(#waterClip)"/>
+<g id="towerReflection" fill="#e9dac1"/>
+<!-- The empty quay is deliberately broad: a destination, not a backdrop. -->
+<path d="M1000 610H1600V900H1000Z" fill="url(#wall)"/>
+<path d="M1000 626H1600V900H1000Z" fill="url(#masonry)"/>
+<path d="M1000 610H1600V628H1000Z" fill="#6c7480"/><path d="M1001 610H1600" stroke="#a3a1a0" stroke-width="3"/>
+<path d="M1000 628V900" stroke="#0c2031" stroke-width="7"/>
+<path d="M1010 636V866" stroke="#63717a" stroke-width="2" opacity=".4"/>
+<g stroke="#424f60" stroke-width="3"><path d="M1115 612V626M1284 612V626M1454 612V626"/></g>
+<g fill="#1a2d3e"><path d="M1488 610V597Q1488 590 1495 590H1512Q1519 590 1519 597V610Z"/><rect x="1481" y="587" width="45" height="9" rx="4"/><path d="M1540 610Q1550 594 1560 610" fill="none" stroke="#263a49" stroke-width="5"/></g>
+<g id="quayLight"><ellipse cx="1180" cy="605" rx="240" ry="34" fill="url(#groundGlow)"/><path d="M1168 456L1000 610H1420L1192 456Z" fill="url(#groundGlow)" opacity=".28"/><ellipse cx="1140" cy="659" rx="190" ry="112" fill="url(#groundGlow)" opacity=".45"/></g>
+<g id="lampReflection" fill="#e6bc7e"/>
+<g id="wake" fill="none" stroke-linecap="round"/>
+<g id="boat">
+ <ellipse cx="0" cy="680" rx="251" ry="16" fill="#0b2334" opacity=".35"/>
+ <path d="M-260 611H260L237 652Q225 670 182 676H-185Q-226 669-241 648Z" fill="url(#hull)" stroke="#0d2334" stroke-width="2"/>
+ <path d="M-255 623H253" stroke="#8caaa9" stroke-width="5"/><path d="M-239 648Q0 662 237 649" fill="none" stroke="#355062" stroke-width="2"/>
+ <path d="M-245 608H246" stroke="#b1b6ae" stroke-width="8"/>
+ <path d="M-174 604V470H128L160 502V604Z" fill="url(#ivory)" stroke="#213c4e" stroke-width="3"/>
+ <path d="M-185 470H129L164 502H141L116 481H-185Z" fill="#d0c8af"/><path d="M-185 470H125" stroke="#293f4d" stroke-width="7"/>
+ <path d="M-129 610V477H-71V610" fill="#132c3c" stroke="#4b6470" stroke-width="5"/><rect x="-124" y="482" width="45" height="119" fill="#e8bb72" opacity=".16"/><path d="M-120 483V599" stroke="#cbb582" opacity=".65" stroke-width="3"/>
+ <g fill="url(#window)" stroke="#3c5661" stroke-width="5"><rect x="-48" y="493" width="48" height="59" rx="4"/><rect x="16" y="493" width="48" height="59" rx="4"/><path d="M81 493H116L140 516V552H81Z"/></g>
+ <g stroke="#8c795a" stroke-width="2" opacity=".65"><path d="M-24 495V550M40 495V550M108 498V551"/></g>
+ <path d="M-52 563H146" stroke="#495f68" stroke-width="3"/><path d="M-48 575H133" stroke="#b8b8a6" opacity=".35" stroke-width="2"/>
+ <path d="M-35 469V428H-5V469" fill="#243e4b"/><path d="M-36 434H-4" stroke="#b5a88b" stroke-width="7"/><path d="M-40 424H0V431H-40Z" fill="#172c3b"/>
+ <path d="M-19 426V416H-6L9 407V428L-6 420H-19" fill="#b39d70"/>
+ <path d="M91 469V416M83 432H99" stroke="#294453" stroke-width="3"/><circle cx="91" cy="415" r="3" fill="#c1bbb0"/>
+ <g fill="none" stroke="#90a5a6" stroke-width="3"><path d="M-252 607V557H-180M-225 559V607M-194 559V607M166 607V560H247V608M192 560V607M224 560V607"/></g>
+ <g fill="#102737" stroke="#415462" stroke-width="4"><ellipse cx="-212" cy="633" rx="10" ry="20"/><ellipse cx="173" cy="634" rx="10" ry="20"/></g>
+ <circle cx="149" cy="576" r="15" fill="#c8b99a"/><circle cx="149" cy="576" r="8" fill="#425b66"/><path d="M139 565L144 571M154 583L159 588M138 587L143 582M155 571L160 565" stroke="#a2785e" stroke-width="5"/>
+ <g id="ramp" transform="translate(260 610)"><path d="M0 -5H140V1H0Z" fill="#839292" stroke="#2b424e" stroke-width="2"/><path d="M8 -4H136" stroke="#c2b9a0" stroke-width="2"/><g stroke="#3c5560" stroke-width="2"><path d="M18 -5V0M36 -5V0M54 -5V0M72 -5V0M90 -5V0M108 -5V0M126 -5V0"/></g><path id="rampLight" d="M0 -5H140V0H0Z" fill="#f2c181"/></g>
+ <circle cx="260" cy="610" r="5" fill="#c1c2af"/>
+</g>
+<g id="steam" fill="#c7d1cc" filter="url(#steamSoft)"/>
+<g id="passengerClip" clip-path="url(#emerge)"><g id="passenger">
+ <ellipse cx="2" cy="612" rx="28" ry="3" fill="#0b2130" opacity=".35"/>
+ <g id="rearLeg" fill="none" stroke="#26313d" stroke-width="12" stroke-linecap="round"><path id="legB"/><path id="shoeB" stroke="#101d2a" stroke-width="9"/></g>
+ <path id="legA" fill="none" stroke="#3a4249" stroke-width="13" stroke-linejoin="round" stroke-linecap="round"/><path id="shoeA" fill="none" stroke="#152331" stroke-width="9" stroke-linecap="round"/>
+ <g id="torso"><path d="M-12 480Q0 473 15 483L23 531 14 545-19 543-16 513Z" fill="#b1a18c"/><path d="M-12 480Q-2 479 1 489L-2 537-19 543-16 511Z" fill="#6d7477"/><path d="M4 490L9 537" stroke="#c3b198" stroke-width="2"/><path d="M1 479L8 493 17 483" fill="#c7baa2"/><path d="M-5 473L-5 484 7 488 10 470Z" fill="#b4947a"/>
+ <g id="head"><path d="M-12 459Q-15 444-3 441 10 439 15 452L19 461 13 465 12 474Q4 480-7 471Z" fill="#c7a68a"/><path d="M-13 461Q-19 443-5 440 12 435 16 452L3 450-3 462Z" fill="#273544"/><path d="M-15 449Q-1 441 16 449" fill="none" stroke="#182c3c" stroke-width="4"/><path d="M11 456H13" stroke="#3a3840" stroke-width="2"/></g>
+ <path id="arm" fill="none" stroke="#9b9689" stroke-width="11" stroke-linecap="round"/><g id="case"><path d="M-8 0V-8Q0-13 8-8V0" fill="none" stroke="#493d37" stroke-width="3"/><rect x="-18" y="-1" width="36" height="28" rx="3" fill="#765d49" stroke="#342e2c" stroke-width="2"/><path d="M-10 0V25M10 0V25" stroke="#aa8b64" stroke-width="2"/><path d="M-15 4H15" stroke="#b29975" opacity=".5"/></g>
+ <path id="coatLight" d="M14 484L23 531 14 541" fill="none" stroke="#f7c481" stroke-width="3"/>
+ </g>
+</g></g>
+<g id="lantern"><path d="M1180 610V459" stroke="#142b3b" stroke-width="9"/><path d="M1182 606V464" stroke="#68767a" stroke-width="2"/><path d="M1168 610H1192L1187 599H1174Z" fill="#152c3c"/><path d="M1164 424H1196L1191 456H1169Z" fill="#344958" stroke="#142a3a" stroke-width="4"/><path id="lampGlass" d="M1169 428H1191L1187 451H1173Z" fill="#7a7a67"/><path d="M1160 424L1180 412 1200 424ZM1177 407H1183V415H1177Z" fill="#172b3b"/><path d="M1180 426V453M1168 455H1192" stroke="#243745" stroke-width="3"/><circle id="lampHaloCircle" cx="1180" cy="439" r="132" fill="url(#lampHalo)"/><path id="lampCore" d="M1177 432H1183L1185 448H1175Z" fill="#ffe4ac"/></g>
+</svg>
+<script>
+'use strict';
+const $=id=>document.getElementById(id), NS='http://www.w3.org/2000/svg';
+const clamp=x=>Math.max(0,Math.min(1,x)), smooth=x=>{x=clamp(x);return x*x*(3-2*x)}, tau=2*Math.PI;
+function node(tag,attrs,parent){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);parent.appendChild(e);return e}
+let seed=48713;function rnd(){seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296}
+const stars=Array.from({length:67},(_,i)=>{let x=35+rnd()*1530,y=32+rnd()*333,r=.7+rnd()*1.25;return {e:node('circle',{cx:x,cy:y,r,fill:'#e0e1d6'},$('stars')),p:[3,4,6][i%3],phase:rnd()*tau}});
+const ripples=Array.from({length:126},(_,i)=>{let y=432+rnd()*455,x=rnd()*1600,len=8+(y-420)*.22*rnd();return {e:node('path',{fill:'none',stroke:i%4===0?'#b6a6a0':'#809ca9','stroke-width':.6+(y-420)/230,'stroke-linecap':'round'},$('ripples')),x,y,len,phase:rnd()*tau}});
+const reflections=Array.from({length:24},(_,i)=>({e:node('rect',{rx:1.5},$('lampReflection')),i}));
+const towerRef=Array.from({length:22},(_,i)=>({e:node('rect',{rx:1},$('towerReflection')),i}));
+const foam=Array.from({length:23},()=>node('path',{'stroke-width':2,stroke:'#b7c8c6'},$('wake')));
+const puffs=Array.from({length:9},()=>node('ellipse',{},$('steam')));
+function attr(e,a){for(const k in a)e.setAttribute(k,a[k])}
+function foot(t,offset){const cycle=.56,p=((t-5)/cycle+offset)%1,q=(p+1)%1;const reach=240*cycle/4;if(q<.5)return {x:reach-240*cycle*q,y:608};const u=(q-.5)*2;return {x:-reach+2*reach*smooth(u),y:608-20*Math.sin(Math.PI*u)};}
+function leg(e,shoe,f,hipX){const hx=hipX,hy=537,dx=f.x-hx,dy=f.y-hy,dist=Math.hypot(dx,dy),bend=Math.sqrt(Math.max(0,42*42-dist*dist/4));const kx=(hx+f.x)/2+dy/dist*bend,ky=(hy+f.y)/2-dx/dist*bend;attr(e,{d:`M${hx} ${hy}Q${kx} ${ky} ${f.x} ${f.y-3}`});attr(shoe,{d:`M${f.x-3} ${f.y}L${f.x+9} ${f.y}`});}
+function frame(t){
+ const a=clamp((t-.5)/3.5),d=clamp((t-8.5)/3);let xf=t<4?-400+1140*(1-(1-a)**3):t<8.5?740:740-1140*d**3;
+ const visible=t>=.5&&t<11.5;let speed=t<4?3*1140/3.5*(1-a)**2:t>=8.5?1140*d*d:0;let motion=clamp(speed/550),bob=2*Math.sin(t*tau/4)*clamp(speed/100);
+ attr($('boat'),{transform:`translate(${xf} ${bob})`,visibility:visible?'visible':'hidden'});
+ let angle=t<4.2?65:t<5?65*(1-smooth((t-4.2)/.8)):t<7.4?0:65*smooth((t-7.4)/.8);
+ attr($('ramp'),{transform:`translate(260 610) rotate(${-angle})`});
+ let glow=t<5?0:t<5.6?smooth((t-5)/.6):t<9?1:1-smooth((t-9)/.6);
+ for(const id of ['quayLight','lampReflection','lampHaloCircle','lampCore'])attr($(id),{opacity:glow});attr($('lampGlass'),{fill:`rgb(${88+110*glow},${97+73*glow},${106+12*glow})`});attr($('rampLight'),{opacity:glow*.65});
+ const theta=t*tau/12,c=Math.cos(theta),front=Math.max(0,Math.sin(theta))**12;
+ attr($('beamGroup'),{transform:`translate(260 330) scale(${c} 1)`,opacity:.45+.3*Math.abs(c)});attr($('lighthouseFlare'),{opacity:.12+.88*front});
+ stars.forEach(o=>attr(o.e,{opacity:.26+.54*(.5+.5*Math.sin(t*tau/o.p+o.phase))}));
+ ripples.forEach(o=>{let w=Math.sin(t*tau/4+o.phase);attr(o.e,{d:`M${o.x+w*4} ${o.y}q${o.len/2} ${w*1.5} ${o.len} 0`,opacity:.07+.13*(.5+.5*w)})});
+ reflections.forEach(({e,i})=>{let w=Math.sin(t*tau/4+i*2.7),width=13+i*3.8+12*w;attr(e,{x:985-width-i*1.1+5*w,y:650+i*9.4,width,height:2+i*.1,opacity:(1-i/27)*.34})});
+ towerRef.forEach(({e,i})=>{let w=Math.sin(t*tau/4+i*1.8),width=5+i*2.9+4*w;attr(e,{x:260-width/2+w*4,y:430+i*6.3,width,height:1.3,opacity:(.05+front*.29)*(1-i/24)})});
+ foam.forEach((e,i)=>{let dir=t<4?1:-1,edge=xf+dir*245,y=646+bob+(i%5)*6,trail=xf-dir*(270+i*14),x=i<8?edge-dir*i*9:trail;let wave=Math.sin(t*tau/4+i)*2;attr(e,{d:`M${x} ${y}q${-dir*(8+i*1.4)} ${-3+wave} ${-dir*(16+i*2.3)} 0`,opacity:visible?motion*(.7-i*.018):0})});
+ const steamU=clamp((t-3.8)/1.2),steamOn=t>=3.8&&t<5;
+ puffs.forEach((e,i)=>{let u=clamp(steamU-i*.027),spread=8+u*38;attr(e,{cx:xf-20+u*57+Math.sin(i*2.1)*spread*.7,cy:420-u*(132+i*5)+bob,rx:5+u*(18+i*1.7),ry:7+u*(14+i),opacity:steamOn?Math.sin(Math.PI*u)*.22*(1-smooth((steamU-.6)/.4)):0})});
+ const px=640+240*(t-5),pvisible=t>=5&&t<9.4;
+ attr($('passenger'),{transform:`translate(${px} 0)`,visibility:pvisible?'visible':'hidden',opacity:smooth((t-5)/.12)});
+ const fa=foot(t,0),fb=foot(t,.5);leg($('legA'),$('shoeA'),fa,3);leg($('legB'),$('shoeB'),fb,-6);
+ let gait=Math.sin((t-5)*tau/.56),upperBob=-1.5*Math.cos((t-5)*tau/.28);attr($('torso'),{transform:`translate(0 ${upperBob})`});
+ let handX=7-9*gait;attr($('arm'),{d:`M-6 489Q${-5-4*gait} 513 ${handX} 540`});attr($('case'),{transform:`translate(${handX} 545) rotate(${-gait*4})`});
+ let back=t<7.3?0:t<7.7?smooth((t-7.3)/.4):1-smooth((t-7.7)/.4);attr($('head'),{transform:`translate(0 0) scale(${1-2*back} 1)`});
+ let lit=glow*Math.max(0,1-Math.abs(px-1180)/230);attr($('coatLight'),{d:px<1180?'M14 484L23 531 14 541':'M-12 484L-16 514-19 539',opacity:lit});
+}
+const raw=new URLSearchParams(location.search).get('t');const pinned=raw!==null&&Number.isFinite(Number(raw));
+if(pinned){frame(((Number(raw)%12)+12)%12)}else{const tStart=performance.now();frame(0);function tick(now){frame(((now-tStart)/1000)%12);requestAnimationFrame(tick)}requestAnimationFrame(tick)}
+</script></body></html>

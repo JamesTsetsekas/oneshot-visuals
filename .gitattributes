@@ -1,0 +1,4 @@
+* text=auto eol=lf
+builds/** -text
+prompts/** -text
+captures/** -text

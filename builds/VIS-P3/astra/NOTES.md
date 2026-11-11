@@ -1,0 +1,5 @@
+Assumptions: The width requirement applies to the complete mechanical assembly. A rigid output extension connects P to an auxiliary vertical carriage; all specified joint coordinates remain unscaled. Dial labels are offset beyond the links' swept area for legibility.
+
+Verified: 6,001 numerical geometry samples; maximum link-length and straight-line errors below 0.000000001 units. Headless Chromium checked 17 frozen times, including negative and wrapped times, and measured rendered link lengths. Frames at 0 and 6 seconds had identical SVG contents. Frozen rendering remained unchanged. No console errors, warnings, or resource requests occurred. Four viewport sizes, including 640×360, had no overflow. File, server-root, and nested-path screenshots were pixel-identical. A 180-frame local animation sample averaged 60 fps, with maximum interval 16.8 ms.
+
+Limitations: Target laptop GPU performance is not verified. The fading trail uses 120 chronological segments; retraced portions blend. No known kinematic defects.

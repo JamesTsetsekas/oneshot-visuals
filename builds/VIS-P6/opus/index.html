@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ripple Rail Pendulum Toy</title>
+<style>
+  html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #0a0f1c; }
+  body { position: relative; font-family: system-ui, "Segoe UI", Arial, sans-serif; color: #e8eefc; }
+  #stage { display: block; position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+    touch-action: none; user-select: none; -webkit-user-select: none; }
+  #stage.grab { cursor: grab; }
+  #stage.grabbing { cursor: grabbing; }
+  #hud { position: absolute; left: 0; top: 0; width: 1600px; height: 100px; transform-origin: 0 0;
+    box-sizing: border-box; padding: 6px 52px; pointer-events: none; }
+  #panel { pointer-events: auto; box-sizing: border-box; height: 88px; display: flex; align-items: center;
+    justify-content: space-between; gap: 28px; padding: 0 30px; border-radius: 16px;
+    background: rgba(17, 25, 45, 0.92); border: 1px solid rgba(150, 172, 215, 0.22);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35); }
+  .grp { display: flex; flex-direction: column; gap: 7px; }
+  .lab { font-size: 13px; letter-spacing: 0.09em; text-transform: uppercase; color: #a7b6d4; white-space: nowrap; }
+  .lab b { font-weight: 600; color: #e8eefc; letter-spacing: 0.03em; text-transform: none; margin-left: 6px; }
+  .row { display: flex; gap: 8px; }
+  button { font: inherit; font-size: 16px; color: #e8eefc; background: #1b2644; border: 1px solid #3a4a72;
+    border-radius: 9px; height: 38px; padding: 0 12px 0 7px; display: inline-flex; align-items: center; gap: 8px;
+    cursor: pointer; white-space: nowrap; }
+  button:hover { background: #24325a; border-color: #5a6f9f; }
+  button[aria-pressed="true"] { background: #2b4178; border-color: #9cc0ff; color: #ffffff; }
+  button:focus { outline: none; }
+  button:focus-visible { outline: 3px solid #ffd27a; outline-offset: 2px; }
+  kbd { font-family: ui-monospace, Consolas, monospace; font-size: 13px; min-width: 14px; text-align: center;
+    padding: 3px 6px; border-radius: 5px; background: #0d1426; border: 1px solid #4b5d8a; color: #ffd9a0;
+    box-shadow: inset 0 -2px 0 rgba(255, 255, 255, 0.06); }
+  .dmp { width: 104px; }
+  #bEnds { width: 138px; }
+  #bPause { width: 160px; }
+  #bReset { width: 112px; }
+  #eRead { font-family: ui-monospace, Consolas, monospace; font-size: 29px; font-weight: 600; color: #ffffff;
+    min-width: 230px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .status { width: 210px; align-items: flex-start; }
+  #paused { font-size: 14px; font-weight: 700; letter-spacing: 0.16em; color: #0a0f1c; background: #ffd27a;
+    padding: 4px 10px; border-radius: 6px; visibility: hidden; }
+  #paused.on { visibility: visible; }
+  #hint { font-size: 15px; color: #cfe0ff; white-space: nowrap; }
+  #hint.off { visibility: hidden; }
+</style>
+</head>
+<body>
+<svg id="stage" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet"
+  role="img" aria-labelledby="stTitle stDesc">
+  <title id="stTitle">Ripple Rail</title>
+  <desc id="stDesc">Twenty-five pendulums hang from a horizontal rail and are coupled to their neighbours, so a bob that is pulled aside and released sends a wave travelling along the row, reflecting from the ends and slowly dying away. Bobs glow blue when swinging left and amber when swinging right, a bright line threads through every bob centre, and a profile graph below traces each pendulum's angle.</desc>
+  <defs>
+    <radialGradient id="bg" cx="0.5" cy="0.46" r="0.5">
+      <stop offset="0" stop-color="#17234a"/>
+      <stop offset="0.55" stop-color="#0f1834"/>
+      <stop offset="1" stop-color="#0a0f1c"/>
+    </radialGradient>
+    <linearGradient id="railG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7d8db0"/>
+      <stop offset="0.35" stop-color="#dfe7f7"/>
+      <stop offset="0.7" stop-color="#6f7fa3"/>
+      <stop offset="1" stop-color="#36425e"/>
+    </linearGradient>
+    <radialGradient id="shine" cx="0.36" cy="0.32" r="0.72">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.85"/>
+      <stop offset="0.28" stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="0.7" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000814" stop-opacity="0.45"/>
+    </radialGradient>
+    <radialGradient id="pivG" cx="0.4" cy="0.35" r="0.7">
+      <stop offset="0" stop-color="#f3f6ff"/>
+      <stop offset="0.5" stop-color="#9aa8c6"/>
+      <stop offset="1" stop-color="#3a4560"/>
+    </radialGradient>
+    <linearGradient id="waveG" gradientUnits="userSpaceOnUse" x1="88" y1="0" x2="1512" y2="0">
+      <stop offset="0" stop-color="#8fd8ff"/>
+      <stop offset="0.5" stop-color="#e9f3ff"/>
+      <stop offset="1" stop-color="#c7b6ff"/>
+    </linearGradient>
+    <linearGradient id="profFill" gradientUnits="userSpaceOnUse" x1="0" y1="662" x2="0" y2="762">
+      <stop offset="0" stop-color="#ffb35a" stop-opacity="0.55"/>
+      <stop offset="0.5" stop-color="#9fb3d8" stop-opacity="0.04"/>
+      <stop offset="1" stop-color="#5aa4ff" stop-opacity="0.55"/>
+    </linearGradient>
+    <linearGradient id="legG" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#4696ff"/>
+      <stop offset="0.5" stop-color="#c8cfdc"/>
+      <stop offset="1" stop-color="#ffa640"/>
+    </linearGradient>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="6" height="6" fill="#2a3552"/>
+      <rect width="2.2" height="6" fill="#56658c"/>
+    </pattern>
+  </defs>
+
+  <rect width="1600" height="900" fill="#0a0f1c"/>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+
+  <!-- column guides -->
+  <g id="guides" stroke="#a9bce0" stroke-opacity="0.055" stroke-width="1"></g>
+
+  <!-- top captions -->
+  <g font-family="system-ui, 'Segoe UI', Arial, sans-serif">
+    <text x="150" y="44" fill="#eef3ff" font-size="22" font-weight="600" letter-spacing="5">RIPPLE RAIL</text>
+    <text x="150" y="68" fill="#93a4c6" font-size="13" letter-spacing="1">25 coupled pendulums · ω₀² = 4 · k = 60</text>
+    <text x="1120" y="34" fill="#a7b6d4" font-size="12" letter-spacing="1.5">BOB COLOUR = ANGULAR VELOCITY</text>
+    <rect x="1120" y="44" width="250" height="9" rx="4.5" fill="url(#legG)"/>
+    <text x="1120" y="72" fill="#93a4c6" font-size="12">← swinging left</text>
+    <text x="1245" y="72" fill="#93a4c6" font-size="12" text-anchor="middle">still</text>
+    <text x="1370" y="72" fill="#93a4c6" font-size="12" text-anchor="end">swinging right →</text>
+  </g>
+
+  <!-- hangers and rail -->
+  <g id="hangers" fill="#2d3856" stroke="#5d6d94" stroke-width="1">
+    <rect x="96" y="-2" width="6" height="96"/>
+    <rect x="1498" y="-2" width="6" height="96"/>
+  </g>
+  <rect x="88" y="95" width="1424" height="10" rx="5" fill="url(#railG)"/>
+  <g id="strain" stroke="#a6ecff" stroke-width="4" stroke-linecap="round"></g>
+  <g id="endFixed">
+    <rect x="66" y="78" width="26" height="44" rx="3" fill="url(#hatch)" stroke="#8796bb" stroke-width="1.2"/>
+    <rect x="1508" y="78" width="26" height="44" rx="3" fill="url(#hatch)" stroke="#8796bb" stroke-width="1.2"/>
+  </g>
+  <g id="endFree" display="none" fill="#0a0f1c" stroke="#b9c6e4" stroke-width="2">
+    <circle cx="88" cy="100" r="8"/>
+    <circle cx="1512" cy="100" r="8"/>
+  </g>
+  <g id="endLabels" font-family="system-ui, 'Segoe UI', Arial, sans-serif" font-size="11" fill="#93a4c6" letter-spacing="1" text-anchor="middle">
+    <text id="endL" x="79" y="140">FIXED</text>
+    <text id="endR" x="1521" y="140">FIXED</text>
+  </g>
+
+  <!-- rods -->
+  <g id="rods" stroke="#cdd7ec" stroke-opacity="0.78" stroke-width="2.4" stroke-linecap="round"></g>
+  <g id="pivots"></g>
+
+  <!-- profile band -->
+  <g id="profile">
+    <line x1="88" y1="712" x2="1512" y2="712" stroke="#a9bce0" stroke-opacity="0.22" stroke-dasharray="2 6"/>
+    <path id="profArea" fill="url(#profFill)"/>
+    <path id="profLine" fill="none" stroke="#e6efff" stroke-opacity="0.85" stroke-width="1.8" stroke-linejoin="round"/>
+    <g id="profDots" fill="#e6efff"></g>
+    <text x="88" y="672" font-family="system-ui, 'Segoe UI', Arial, sans-serif" font-size="11" fill="#93a4c6" letter-spacing="1.5">ANGLE PROFILE θ</text>
+  </g>
+
+  <!-- wave ribbon through bob centres -->
+  <path id="waveHalo" fill="none" stroke="url(#waveG)" stroke-opacity="0.13" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="waveLine" fill="none" stroke="url(#waveG)" stroke-opacity="0.9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <g id="bobs"></g>
+</svg>
+
+<div id="hud">
+  <div id="panel" role="group" aria-label="Ripple Rail controls">
+    <div class="grp">
+      <div class="lab">Damping<b id="dampRead">Level 2 · g = 0.25</b></div>
+      <div class="row">
+        <button class="dmp" data-d="1" aria-pressed="false" aria-label="Damping level 1, g 0.00, key 1"><kbd>1</kbd>g 0.00</button>
+        <button class="dmp" data-d="2" aria-pressed="true" aria-label="Damping level 2, g 0.25, key 2"><kbd>2</kbd>g 0.25</button>
+        <button class="dmp" data-d="3" aria-pressed="false" aria-label="Damping level 3, g 1.20, key 3"><kbd>3</kbd>g 1.20</button>
+      </div>
+    </div>
+    <div class="grp">
+      <div class="lab">Ends</div>
+      <div class="row"><button id="bEnds" aria-label="Toggle ends between Fixed and Free, key F"><kbd>F</kbd><span id="endsRead">Fixed</span></button></div>
+    </div>
+    <div class="grp">
+      <div class="lab">Dynamics</div>
+      <div class="row">
+        <button id="bPause" aria-pressed="false" aria-label="Pause or resume, key Space"><kbd>Space</kbd><span id="pauseTxt">Pause</span></button>
+        <button id="bReset" aria-label="Reset all pendulums to rest, key R"><kbd>R</kbd>Reset</button>
+      </div>
+    </div>
+    <div class="grp">
+      <div class="lab">Energy · rad²/s²</div>
+      <div id="eRead" aria-live="off">E = 0.00</div>
+    </div>
+    <div class="grp status">
+      <div id="paused">PAUSED</div>
+      <div id="hint">Drag a bob, then let go</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var SVGNS = "http://www.w3.org/2000/svg";
+  var N = 25, W2 = 4.0, K = 60.0, L = 520, PY = 100, R_BOB = 18;
+  var DT = 1 / 240, GRAB_R = 30, MAXA = 80 * Math.PI / 180;
+  var G_LEVELS = [0, 0.0, 0.25, 1.2];
+  var X = new Float64Array(N);
+  for (var i = 0; i < N; i++) X[i] = 800 + 56 * (i - 12);
+
+  // ---------------- state ----------------
+  var th = new Float64Array(N), om = new Float64Array(N);
+  var level = 2, gamma = 0.25, fixedEnds = true, paused = false;
+  var held = -1, heldTarget = 0, hover = -1, touched = false;
+  // RK4 scratch
+  var k1t = new Float64Array(N), k1o = new Float64Array(N), k2t = new Float64Array(N), k2o = new Float64Array(N),
+      k3t = new Float64Array(N), k3o = new Float64Array(N), k4t = new Float64Array(N), k4o = new Float64Array(N),
+      tt = new Float64Array(N), to = new Float64Array(N);
+
+  function accel(a, w, out) {
+    for (var j = 0; j < N; j++) {
+      var l = j > 0 ? a[j - 1] : (fixedEnds ? 0 : a[0]);
+      var r = j < N - 1 ? a[j + 1] : (fixedEnds ? 0 : a[N - 1]);
+      out[j] = (j === held) ? 0 : (-W2 * Math.sin(a[j]) + K * (r - 2 * a[j] + l) - gamma * w[j]);
+    }
+  }
+  function step() {
+    if (held >= 0) { th[held] = heldTarget; om[held] = 0; }
+    var j, h = DT;
+    for (j = 0; j < N; j++) k1t[j] = om[j];
+    accel(th, om, k1o);
+    for (j = 0; j < N; j++) { tt[j] = th[j] + 0.5 * h * k1t[j]; to[j] = om[j] + 0.5 * h * k1o[j]; }
+    for (j = 0; j < N; j++) k2t[j] = to[j];
+    accel(tt, to, k2o);
+    for (j = 0; j < N; j++) { tt[j] = th[j] + 0.5 * h * k2t[j]; to[j] = om[j] + 0.5 * h * k2o[j]; }
+    for (j = 0; j < N; j++) k3t[j] = to[j];
+    accel(tt, to, k3o);
+    for (j = 0; j < N; j++) { tt[j] = th[j] + h * k3t[j]; to[j] = om[j] + h * k3o[j]; }
+    for (j = 0; j < N; j++) k4t[j] = to[j];
+    accel(tt, to, k4o);
+    var bad = false;
+    for (j = 0; j < N; j++) {
+      th[j] += h / 6 * (k1t[j] + 2 * k2t[j] + 2 * k3t[j] + k4t[j]);
+      om[j] += h / 6 * (k1o[j] + 2 * k2o[j] + 2 * k3o[j] + k4o[j]);
+      if (!(isFinite(th[j]) && isFinite(om[j]))) bad = true;
+    }
+    if (held >= 0) { th[held] = heldTarget; om[held] = 0; }
+    if (bad) { th.fill(0); om.fill(0); }
+  }
+  function energy() {
+    var e = 0, j;
+    for (j = 0; j < N; j++) e += 0.5 * om[j] * om[j] + W2 * (1 - Math.cos(th[j]));
+    for (j = 0; j < N - 1; j++) { var d = th[j + 1] - th[j]; e += 0.5 * K * d * d; }
+    if (fixedEnds) e += 0.5 * K * (th[0] * th[0] + th[N - 1] * th[N - 1]);
+    return e;
+  }
+
+  // ---------------- scene build ----------------
+  var svg = document.getElementById("stage");
+  function el(name, attrs, parent) {
+    var e = document.createElementNS(SVGNS, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  var defs = svg.querySelector("defs");
+  var gGuides = document.getElementById("guides"), gRods = document.getElementById("rods"),
+      gPiv = document.getElementById("pivots"), gBobs = document.getElementById("bobs"),
+      gStrain = document.getElementById("strain"), gProfDots = document.getElementById("profDots");
+  var rods = [], bobG = [], bobBody = [], glowC = [], glowStop0 = [], glowStop1 = [], hoverRing = [], heldRing = [],
+      strainSeg = [], profDot = [];
+  for (i = 0; i < N; i++) {
+    el("line", { x1: X[i], y1: 112, x2: X[i], y2: 770 }, gGuides);
+    rods.push(el("line", { x1: X[i], y1: PY, x2: X[i], y2: PY + L }, gRods));
+    el("circle", { cx: X[i], cy: PY, r: 7.5, fill: "url(#pivG)", stroke: "#1a2238", "stroke-width": 1.2 }, gPiv);
+    el("circle", { cx: X[i], cy: PY, r: 2, fill: "#1a2238" }, gPiv);
+    var rg = el("radialGradient", { id: "glow" + i, cx: 0.5, cy: 0.5, r: 0.5 }, defs);
+    glowStop0.push(el("stop", { offset: 0.3, "stop-color": "#c8cfdc", "stop-opacity": 0.55 }, rg));
+    el("stop", { offset: 1, "stop-color": "#c8cfdc", "stop-opacity": 0.0 }, rg);
+    glowStop1.push(rg.lastChild);
+    var g = el("g", { transform: "translate(" + X[i] + "," + (PY + L) + ")" }, gBobs);
+    glowC.push(el("circle", { r: 52, fill: "url(#glow" + i + ")", opacity: 0.2 }, g));
+    hoverRing.push(el("circle", { r: 27, fill: "none", stroke: "#ffffff", "stroke-opacity": 0.75, "stroke-width": 2,
+      "stroke-dasharray": "5 4", display: "none" }, g));
+    heldRing.push(el("g", { display: "none" }, g));
+    el("circle", { r: 31, fill: "#ffffff", "fill-opacity": 0.08, stroke: "#ffe2a8", "stroke-width": 1.5,
+      "stroke-dasharray": "3 4" }, heldRing[i]);
+    el("circle", { r: 23, fill: "none", stroke: "#ffffff", "stroke-width": 3 }, heldRing[i]);
+    bobBody.push(el("circle", { r: R_BOB, fill: "#c8cfdc", stroke: "#0b1222", "stroke-opacity": 0.7, "stroke-width": 1.5 }, g));
+    el("circle", { r: R_BOB, fill: "url(#shine)" }, g);
+    bobG.push(g);
+    profDot.push(el("circle", { cx: X[i], cy: 712, r: 2.6 }, gProfDots));
+  }
+  for (i = 0; i <= N; i++) {
+    var xa = i === 0 ? 88 : X[i - 1], xb = i === N ? 1512 : X[i];
+    strainSeg.push(el("line", { x1: xa + (i === 0 ? 6 : 10), y1: PY, x2: xb - (i === N ? 6 : 10), y2: PY, "stroke-opacity": 0 }, gStrain));
+  }
+  var waveLine = document.getElementById("waveLine"), waveHalo = document.getElementById("waveHalo"),
+      profArea = document.getElementById("profArea"), profLine = document.getElementById("profLine");
+
+  // ---------------- colour scale (blue - neutral - amber, colour-blind safe) ----------------
+  var CN = [200, 207, 222], CP = [255, 166, 64], CM = [70, 150, 255];
+  function velColour(w) {
+    var s = Math.tanh(w / 1.6), c = s >= 0 ? CP : CM, a = Math.abs(s);
+    var r = Math.round(CN[0] + (c[0] - CN[0]) * a), g = Math.round(CN[1] + (c[1] - CN[1]) * a),
+        b = Math.round(CN[2] + (c[2] - CN[2]) * a);
+    return { col: "rgb(" + r + "," + g + "," + b + ")", a: a };
+  }
+
+  // ---------------- curve helpers ----------------
+  var bx = new Float64Array(N), by = new Float64Array(N), qy = new Float64Array(N);
+  function f1(v) { return (Math.round(v * 10) / 10).toString(); }
+  function catmull(xs, ys) {
+    var d = "M" + f1(xs[0]) + "," + f1(ys[0]);
+    for (var j = 0; j < N - 1; j++) {
+      var p0 = j > 0 ? j - 1 : j, p3 = j + 2 < N ? j + 2 : j + 1;
+      var c1x = xs[j] + (xs[j + 1] - xs[p0]) / 6, c1y = ys[j] + (ys[j + 1] - ys[p0]) / 6;
+      var c2x = xs[j + 1] - (xs[p3] - xs[j]) / 6, c2y = ys[j + 1] - (ys[p3] - ys[j]) / 6;
+      d += "C" + f1(c1x) + "," + f1(c1y) + " " + f1(c2x) + "," + f1(c2y) + " " + f1(xs[j + 1]) + "," + f1(ys[j + 1]);
+    }
+    return d;
+  }
+
+  // ---------------- render ----------------
+  var lastHover = -2, lastHeld = -2;
+  function render() {
+    var j;
+    for (j = 0; j < N; j++) {
+      var s = Math.sin(th[j]), c = Math.cos(th[j]);
+      bx[j] = X[j] + L * s; by[j] = PY + L * c;
+      rods[j].setAttribute("x2", f1(bx[j])); rods[j].setAttribute("y2", f1(by[j]));
+      bobG[j].setAttribute("transform", "translate(" + f1(bx[j]) + "," + f1(by[j]) + ")");
+      var vc = velColour(om[j]);
+      bobBody[j].setAttribute("fill", j === held ? "#fff4dc" : vc.col);
+      glowStop0[j].setAttribute("stop-color", vc.col);
+      glowStop1[j].setAttribute("stop-color", vc.col);
+      glowC[j].setAttribute("opacity", (0.12 + 0.88 * vc.a).toFixed(3));
+      qy[j] = 712 - 46 * Math.tanh(th[j] / 0.3);
+      profDot[j].setAttribute("cy", f1(qy[j]));
+    }
+    var dw = catmull(bx, by);
+    waveLine.setAttribute("d", dw); waveHalo.setAttribute("d", dw);
+    var dp = catmull(X, qy);
+    profLine.setAttribute("d", dp);
+    profArea.setAttribute("d", dp + "L" + X[N - 1] + ",712L" + X[0] + ",712Z");
+    for (j = 0; j <= N; j++) {
+      var d;
+      if (j === 0) d = fixedEnds ? th[0] : 0;
+      else if (j === N) d = fixedEnds ? th[N - 1] : 0;
+      else d = th[j] - th[j - 1];
+      strainSeg[j].setAttribute("stroke-opacity", Math.min(0.95, Math.abs(d) / 0.12).toFixed(3));
+    }
+    if (hover !== lastHover || held !== lastHeld) {
+      for (j = 0; j < N; j++) {
+        hoverRing[j].setAttribute("display", (j === hover && held < 0) ? "inline" : "none");
+        heldRing[j].setAttribute("display", j === held ? "inline" : "none");
+      }
+      svg.setAttribute("class", held >= 0 ? "grabbing" : (hover >= 0 ? "grab" : ""));
+      lastHover = hover; lastHeld = held;
+    }
+  }
+
+  // ---------------- HUD ----------------
+  var hud = document.getElementById("hud"), eRead = document.getElementById("eRead"),
+      dampRead = document.getElementById("dampRead"), endsRead = document.getElementById("endsRead"),
+      pausedEl = document.getElementById("paused"), hintEl = document.getElementById("hint"),
+      pauseTxt = document.getElementById("pauseTxt"), bPause = document.getElementById("bPause"),
+      dmpBtns = document.querySelectorAll(".dmp");
+  var endL = document.getElementById("endL"), endR = document.getElementById("endR"),
+      endFixed = document.getElementById("endFixed"), endFree = document.getElementById("endFree");
+  function updateHudState() {
+    dampRead.textContent = "Level " + level + " · g = " + gamma.toFixed(2);
+    for (var j = 0; j < dmpBtns.length; j++)
+      dmpBtns[j].setAttribute("aria-pressed", String(+dmpBtns[j].getAttribute("data-d") === level));
+    endsRead.textContent = fixedEnds ? "Fixed" : "Free";
+    endL.textContent = endR.textContent = fixedEnds ? "FIXED" : "FREE";
+    endFixed.setAttribute("display", fixedEnds ? "inline" : "none");
+    endFree.setAttribute("display", fixedEnds ? "none" : "inline");
+    pausedEl.className = paused ? "on" : "";
+    pauseTxt.textContent = paused ? "Resume" : "Pause";
+    bPause.setAttribute("aria-pressed", String(paused));
+    hintEl.className = touched ? "off" : "";
+  }
+  var lastEText = "";
+  function updateEnergy() {
+    var t = "E = " + energy().toFixed(2);
+    if (t !== lastEText) { eRead.textContent = t; lastEText = t; }
+  }
+
+  // ---------------- layout (stage mapping) ----------------
+  var sc = 1, ox = 0, oy = 0, rLeft = 0, rTop = 0;
+  function layout() {
+    var r = svg.getBoundingClientRect();
+    rLeft = r.left; rTop = r.top;
+    sc = Math.min(r.width / 1600, r.height / 900);
+    ox = (r.width - 1600 * sc) / 2; oy = (r.height - 900 * sc) / 2;
+    hud.style.transform = "translate(" + (rLeft + ox) + "px," + (rTop + oy + 780 * sc) + "px) scale(" + sc + ")";
+  }
+  window.addEventListener("resize", layout);
+  layout();
+
+  // ---------------- controls ----------------
+  function setLevel(n) { level = n; gamma = G_LEVELS[n]; updateHudState(); }
+  function toggleEnds() { fixedEnds = !fixedEnds; updateHudState(); updateEnergy(); }
+  function togglePause() { paused = !paused; acc = 0; updateHudState(); }
+  function reset() { th.fill(0); om.fill(0); if (held >= 0) heldTarget = th[held]; render(); updateEnergy(); }
+  for (i = 0; i < dmpBtns.length; i++) {
+    dmpBtns[i].addEventListener("click", function () { setLevel(+this.getAttribute("data-d")); });
+  }
+  document.getElementById("bEnds").addEventListener("click", toggleEnds);
+  bPause.addEventListener("click", togglePause);
+  document.getElementById("bReset").addEventListener("click", reset);
+
+  window.addEventListener("keydown", function (e) {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    var k = e.key;
+    if (k === "1" || k === "2" || k === "3") { setLevel(+k); e.preventDefault(); }
+    else if (k === "f" || k === "F") { if (!e.repeat) toggleEnds(); e.preventDefault(); }
+    else if (k === " " || e.code === "Space") { if (!e.repeat) togglePause(); e.preventDefault(); }
+    else if (k === "r" || k === "R") { reset(); e.preventDefault(); }
+  });
+  // stop a focused button from also "clicking" on Space keyup
+  window.addEventListener("keyup", function (e) {
+    if (e.key === " " || e.code === "Space") e.preventDefault();
+  });
+
+  // ---------------- pointer ----------------
+  var activePointer = null;
+  function toStage(e) {
+    return { x: (e.clientX - rLeft - ox) / sc, y: (e.clientY - rTop - oy) / sc };
+  }
+  function nearest(p) {
+    var best = -1, bd = GRAB_R * GRAB_R;
+    for (var j = 0; j < N; j++) {
+      var bxj = X[j] + L * Math.sin(th[j]), byj = PY + L * Math.cos(th[j]);
+      var dx = p.x - bxj, dy = p.y - byj, d2 = dx * dx + dy * dy;
+      if (d2 <= bd) { bd = d2; best = j; }
+    }
+    return best;
+  }
+  function dragAngle(p, j) {
+    var a = Math.atan2(p.x - X[j], p.y - PY);
+    return a > MAXA ? MAXA : (a < -MAXA ? -MAXA : a);
+  }
+  svg.addEventListener("pointerdown", function (e) {
+    if (held >= 0 || (e.pointerType === "mouse" && e.button !== 0)) return;
+    var p = toStage(e), j = nearest(p);
+    if (j < 0) return;
+    e.preventDefault();
+    held = j; activePointer = e.pointerId; touched = true; hover = j;
+    heldTarget = dragAngle(p, j); th[j] = heldTarget; om[j] = 0;
+    try { svg.setPointerCapture(e.pointerId); } catch (err) { /* ignore */ }
+    updateHudState(); render(); updateEnergy();
+  });
+  svg.addEventListener("pointermove", function (e) {
+    var p = toStage(e);
+    if (held >= 0) {
+      if (e.pointerId !== activePointer) return;
+      heldTarget = dragAngle(p, held); th[held] = heldTarget; om[held] = 0;
+      if (paused) { render(); updateEnergy(); }
+    } else if (e.pointerType !== "touch") {
+      hover = nearest(p);
+    }
+  });
+  function release(e) {
+    if (held < 0 || (e && e.pointerId !== activePointer)) return;
+    th[held] = heldTarget; om[held] = 0;
+    held = -1; activePointer = null;
+    if (e && e.pointerType === "touch") hover = -1;
+    else if (e && isFinite(e.clientX)) hover = nearest(toStage(e));
+  }
+  svg.addEventListener("pointerup", release);
+  svg.addEventListener("pointercancel", release);
+  svg.addEventListener("lostpointercapture", release);
+  svg.addEventListener("pointerleave", function (e) { if (held < 0) hover = -1; });
+
+  // ---------------- loop ----------------
+  var acc = 0, last = performance.now(), lastE = 0;
+  function frame(now) {
+    var real = (now - last) / 1000; last = now;
+    if (!(real > 0)) real = 0;
+    if (real > 0.1) real = 0.1;
+    if (!paused) {
+      acc += real;
+      while (acc >= DT) { step(); acc -= DT; }
+    } else if (held >= 0) { th[held] = heldTarget; om[held] = 0; }
+    render();
+    if (now - lastE >= 50) { updateEnergy(); lastE = now; }
+    requestAnimationFrame(frame);
+  }
+  updateHudState(); render(); updateEnergy();
+  requestAnimationFrame(function (t) { last = t; lastE = t; requestAnimationFrame(frame); });
+
+  // read-only inspection hook for reviewers
+  window.rippleRail = {
+    snapshot: function () {
+      return { theta: Array.prototype.slice.call(th), omega: Array.prototype.slice.call(om), E: energy(),
+        level: level, g: gamma, ends: fixedEnds ? "Fixed" : "Free", paused: paused, held: held };
+    }
+  };
+})();
+</script>
+</body>
+</html>

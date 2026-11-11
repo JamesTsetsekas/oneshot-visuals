@@ -1,0 +1,5 @@
+Assumptions: Starts at rest. Motion colour maps negative velocity to blue, positive to violet, and rest to pearl; held bobs are gold. The profile is a Catmull–Rom cubic curve through all bob centres. Controls are SVG, entirely inside the HUD band. Integration uses RK4 at 240 Hz with preallocated arrays.
+
+Verified in headless Chrome: 25 bobs and pivots, specified rest coordinates, fixed/free boundary forces, paused mouse dragging and release from rest, hover cursor, button activation, keyboard pause, reset preservation, and no scrolling at 1600×900, 1024×576, 1920×1080, and 1024×900. Undamped energy drift over 30 simulated seconds was 0.000413%; 60 and 144 Hz simulated frame schedules produced identical states. No console warnings/errors or external requests occurred. Inspected a rendered screenshot. File is below 300,000 bytes.
+
+Not verified: physical touch/pen hardware, screen-reader behaviour, static-server root/subpath hosting, or sustained GPU frame-rate targets. No known remaining defects.

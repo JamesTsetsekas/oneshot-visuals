@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clear Skies Ledger</title>
+<style>
+:root{--bg:#0c1222;--row:#111a31;--rowsel:#1d2a55;--line:#2b3658;--text:#eef2fb;--muted:#b0bbd4;--btn:#1a2442;--btnh:#26335d;--on:#2f4fb8;--pin:#ff5db1;--amber:#ffd166}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);overflow:hidden}
+body{font:14px/1.35 system-ui,"Segoe UI",Arial,sans-serif;color:var(--text);display:flex;flex-direction:column;font-variant-numeric:tabular-nums}
+#head{display:grid;grid-template-columns:1fr 410px;gap:24px;align-items:start;padding:12px 16px 4px;flex:none}
+h1{margin:0 0 2px;font-size:25px;line-height:1.15;font-weight:700;letter-spacing:.2px}
+h1 span{font-size:14px;font-weight:400;color:var(--muted);margin-left:10px}
+#takeaway{margin:4px 0 4px;font-size:15px;line-height:1.35}
+#def{margin:0;font-size:13px;color:var(--muted)}
+#def b{color:var(--text)}
+#credit{margin:3px 0 0;font-size:12px;color:var(--muted)}
+#pinpanel{background:#131b32;border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-size:13px;line-height:1.4;height:116px;overflow:hidden}
+#pinpanel h2{margin:0 0 3px;font-size:13px;letter-spacing:.4px;text-transform:uppercase;color:var(--muted)}
+#pinpanel .pl{display:flex;gap:8px;align-items:baseline}
+.badge{display:inline-block;min-width:18px;height:18px;border-radius:9px;background:var(--pin);color:#0c1222;font-weight:700;font-size:12px;text-align:center;line-height:18px;flex:none}
+#pinpanel .diff{margin-top:3px;font-size:14px;font-weight:700}
+#keys{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:4px 16px;flex:none}
+#keys .grp{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin:0 2px 0 6px}
+#keys .grp:first-child{margin-left:0}
+button.key{display:inline-flex;align-items:center;gap:7px;background:var(--btn);color:var(--text);border:1px solid #3a4772;border-radius:6px;padding:4px 10px 4px 5px;font:600 13px/1.2 system-ui,"Segoe UI",Arial,sans-serif;cursor:pointer;height:30px}
+button.key:hover{background:var(--btnh)}
+button.key[aria-pressed="true"]{background:var(--on);border-color:#8fa6ff}
+button.key kbd{font:700 12px/1 ui-monospace,Consolas,monospace;background:var(--bg);color:var(--text);border:1px solid #5a6896;border-radius:4px;padding:4px 6px;min-width:22px;text-align:center}
+button.key:focus-visible{outline:3px solid #fff;outline-offset:2px}
+#bar{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:2px 16px 0;flex:none;min-height:40px}
+#status{font-size:14px;line-height:1.35}
+#status b{color:var(--amber);font-weight:700}
+#status i{font-style:normal;color:var(--line);margin:0 6px}
+#legend{display:flex;align-items:center;gap:8px;flex:none}
+#legend .lt{font-size:12px;width:215px;line-height:1.25;color:var(--muted)}
+#legend .lt b{color:var(--text)}
+#legbarwrap{position:relative;width:230px;height:34px;margin:0 14px}
+#legbar{position:absolute;left:0;top:0;width:230px;height:12px;border-radius:3px;border:1px solid #5a6896}
+#legbarwrap span{position:absolute;top:15px;font-size:12px;transform:translateX(-50%);color:var(--text);white-space:nowrap}
+#legnote{font-size:12px;color:var(--muted);width:150px;line-height:1.25}
+#stage{flex:1;min-height:0;position:relative}
+#chart{position:absolute;left:0;top:0;width:100%;height:100%;display:block;font-family:system-ui,"Segoe UI",Arial,sans-serif;font-variant-numeric:tabular-nums}
+#chart text{fill:var(--text);pointer-events:none}
+#chart .muted{fill:var(--muted)}
+.nm{font-size:15px;font-weight:700}
+.meta{font-size:12px}
+.tot{font-size:17px;font-weight:700}
+.val{font-size:15px;font-weight:700}
+.flag{font-size:12px}
+.mn{font-size:14px;font-weight:700}
+.dy{font-size:12px}
+.hd{font-size:12px}
+.hdb{font-size:12px;font-weight:700}
+.rowbg{fill:var(--row)}
+.rowbg.sel{fill:var(--rowsel)}
+.sitelabel{fill:transparent;cursor:pointer}
+.monthlbl{fill:transparent;cursor:default}
+.cell{cursor:pointer}
+.row{transition:transform .35s cubic-bezier(.3,.1,.2,1),opacity .3s linear}
+.row.gone{pointer-events:none;visibility:hidden;transition:transform .35s cubic-bezier(.3,.1,.2,1),opacity .3s linear,visibility 0s linear .35s}
+.foot{transition:transform .35s cubic-bezier(.3,.1,.2,1)}
+.cv{transition:fill .35s linear}
+.val{transition:fill .35s linear}
+.rowbg{transition:fill .2s linear}
+#chart.noanim *{transition:none!important}
+#overlay.glide .gl{transition:transform .35s cubic-bezier(.3,.1,.2,1)}
+.mlbl.hot{fill:var(--amber)!important}
+#tip{position:fixed;left:0;top:0;z-index:5;display:none;pointer-events:none;background:#fff;color:#0c1222;border-radius:8px;padding:9px 12px 8px;font-size:13px;line-height:1.35;box-shadow:0 6px 22px rgba(0,0,0,.55);min-width:218px;max-width:270px;border:2px solid #0c1222}
+#tip .th{font-weight:700;font-size:14px}
+#tip .tv{font-size:22px;font-weight:700;line-height:1.2;margin:1px 0 2px}
+#tip .tv small{font-size:13px;font-weight:600}
+#tip .tf{font-size:12px;color:#3a4566;margin-top:4px}
+</style>
+</head>
+<body>
+<header id="head">
+  <div>
+    <h1>Clear Skies Ledger<span>Clear nights per month at eight observing sites</span></h1>
+    <p id="takeaway">Height does not buy clear skies: Ember Dunes (420 m) logs 298 clear nights a year, more than the 2,410 m Ninefold Mesa (252), which drops to 9 clear nights in July and 8 in August.</p>
+    <p id="def"><b>Clear night:</b> a night with under 20 percent cloud cover. <b>Bortle class:</b> 1 is the darkest sky, 9 the brightest.</p>
+    <p id="credit">Synthetic data prepared for this benchmark</p>
+  </div>
+  <aside id="pinpanel" aria-live="polite"></aside>
+</header>
+
+<nav id="keys" aria-label="Sort, mode and filter controls">
+  <span class="grp">Sort rows</span>
+  <button class="key" type="button" data-act="s0" aria-pressed="true"><kbd>0</kbd>Original order</button>
+  <button class="key" type="button" data-act="s1" aria-pressed="false"><kbd>1</kbd>Annual total ↓</button>
+  <button class="key" type="button" data-act="s2" aria-pressed="false"><kbd>2</kbd>Elevation ↓</button>
+  <button class="key" type="button" data-act="s3" aria-pressed="false"><kbd>3</kbd>Bortle dark→bright</button>
+  <span class="grp">View</span>
+  <button class="key" type="button" data-act="dev" aria-pressed="false"><kbd>D</kbd>Deviation mode</button>
+  <button class="key" type="button" data-act="flt" aria-pressed="false"><kbd>B</kbd><span id="fltlabel">Bortle filter: All</span></button>
+  <button class="key" type="button" data-act="esc"><kbd>Esc</kbd>Clear focus &amp; pins</button>
+</nav>
+
+<div id="bar">
+  <div id="status" role="status" aria-live="polite"></div>
+  <div id="legend" aria-label="Colour legend">
+    <div class="lt" id="legtitle"></div>
+    <div id="legbarwrap"><div id="legbar"></div></div>
+    <div id="legnote"></div>
+  </div>
+</div>
+
+<main id="stage">
+  <svg id="chart" viewBox="0 0 1600 700" preserveAspectRatio="xMidYMid meet" role="group" aria-label="Heat table of clear nights by site and month">
+    <title>Clear nights per month at eight observing sites</title>
+    <desc>A heat table with one row per observing site and one column per month, January to December. Each cell prints the number of clear nights and is coloured by that number. A deviation mode recolours every cell by its difference from the site's own monthly mean. Site rows show elevation, Bortle class and annual total, and a bottom row shows each month's total across the displayed sites.</desc>
+    <g id="head-layer"></g>
+    <g id="rows"></g>
+    <g id="foot" class="foot"></g>
+    <g id="overlay"></g>
+  </svg>
+</main>
+<div id="tip" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+"use strict";
+var MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+var FULL=["January","February","March","April","May","June","July","August","September","October","November","December"];
+var DAYS=[31,28,31,30,31,30,31,31,30,31,30,31];
+var RAW=[
+["Kestrel Ridge",1840,2,[12,11,14,17,20,24,25,24,23,21,15,11]],
+["Saltmarsh Point",6,6,[8,9,11,12,10,9,12,13,15,14,10,8]],
+["Quarry Hollow",230,5,[9,10,12,14,15,17,18,17,16,14,10,8]],
+["Ninefold Mesa",2410,1,[24,23,26,27,25,18,9,8,17,26,25,24]],
+["Larch Basin",1180,3,[5,6,11,16,21,25,27,27,24,18,9,5]],
+["Brightwater Pier",14,8,[7,8,9,10,11,12,13,12,12,11,8,7]],
+["Ember Dunes",420,2,[26,24,27,28,29,27,20,14,22,28,27,26]],
+["Foxglove Fell",690,4,[10,11,13,15,18,19,20,18,11,7,6,8]]
+];
+var SITES=RAW.map(function(r,i){
+  var t=0;for(var k=0;k<12;k++)t+=r[3][k];
+  return {i:i,name:r[0],elev:r[1],bortle:r[2],v:r[3],total:t,slot:i,y:0,cells:[]};
+});
+var FILTERS=[
+  {lab:"All",txt:"All sites (Bortle 1 to 9)",lo:1,hi:9},
+  {lab:"1-3",txt:"Bortle 1-3 only (darkest skies)",lo:1,hi:3},
+  {lab:"4-6",txt:"Bortle 4-6 only",lo:4,hi:6},
+  {lab:"7-9",txt:"Bortle 7-9 only (brightest skies)",lo:7,hi:9}
+];
+var SORTS={
+  orig:"original table order",
+  total:"annual total, high to low",
+  elev:"elevation, high to low",
+  bortle:"Bortle class, dark to bright"
+};
+
+/* ---------- helpers ---------- */
+function fmtInt(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,",");}
+function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+function pct(s,m){return Math.round(100*s.v[m]/DAYS[m]);}
+function devK(s,m){return 12*s.v[m]-s.total;} /* deviation in twelfths of a night, exact */
+function devStr(s,m){var k=devK(s,m);var t=Math.round(Math.abs(k)*10/12);var sg=k>0?"+":(k<0?"-":"");return sg+Math.floor(t/10)+"."+(t%10);}
+function hex(h){return [1,3,5].map(function(i){return parseInt(h.substr(i,2),16);});}
+function ramp(stops){
+  var S=stops.map(function(p){return [p[0],hex(p[1])];});
+  return function(t){
+    t=clamp(t,0,1);var i=1;
+    while(i<S.length-1&&t>S[i][0])i++;
+    var a=S[i-1],b=S[i],u=(t-a[0])/(b[0]-a[0]);
+    return a[1].map(function(c,k){return Math.round(c+(b[1][k]-c)*u);});
+  };
+}
+function lum(c){
+  var f=function(v){v/=255;return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4);};
+  return 0.2126*f(c[0])+0.7152*f(c[1])+0.0722*f(c[2]);
+}
+var DARK=[12,18,34],LIGHT=[255,255,255];
+function inkFor(c){
+  var L=lum(c);
+  var cw=1.05/(L+0.05),cd=(L+0.05)/(lum(DARK)+0.05);
+  return cw>=cd?LIGHT:DARK;
+}
+function rgb(c){return "rgb("+c[0]+","+c[1]+","+c[2]+")";}
+var SEQ=ramp([[0,"#00224e"],[.125,"#123570"],[.25,"#3b496c"],[.375,"#575d6d"],[.5,"#707173"],[.625,"#8a8678"],[.75,"#a69d75"],[.875,"#cdb96c"],[1,"#ffe945"]]);
+var DIV=ramp([[0,"#a34a00"],[.18,"#d97a1a"],[.36,"#f3b87c"],[.5,"#f2f0ec"],[.64,"#a6c8e6"],[.82,"#5b95c7"],[1,"#1f4e8c"]]);
+var SEQMAX=30,DIVMAX=14;
+
+/* ---------- state ---------- */
+var state={sort:"orig",filter:0,dev:false,sel:null,focus:null,hover:null,hoverMonth:null,pins:[]};
+
+function cmpTie(a,b){
+  if(b.total!==a.total)return b.total-a.total;
+  return a.name<b.name?-1:(a.name>b.name?1:0);
+}
+function visible(){
+  var f=FILTERS[state.filter];
+  var list=SITES.filter(function(s){return s.bortle>=f.lo&&s.bortle<=f.hi;});
+  list.sort(function(a,b){
+    if(state.sort==="orig")return a.i-b.i;
+    if(state.sort==="total")return cmpTie(a,b);
+    if(state.sort==="elev")return (b.elev-a.elev)||cmpTie(a,b);
+    return (a.bortle-b.bortle)||cmpTie(a,b);
+  });
+  return list;
+}
+
+/* ---------- DOM ---------- */
+var svg=document.getElementById("chart");
+var stage=document.getElementById("stage");
+var headLayer=document.getElementById("head-layer");
+var rowsLayer=document.getElementById("rows");
+var foot=document.getElementById("foot");
+var overlay=document.getElementById("overlay");
+var tip=document.getElementById("tip");
+var NSURI=svg.namespaceURI;
+function el(name,attrs,parent){
+  var n=document.createElementNS(NSURI,name);
+  if(attrs)for(var k in attrs)n.setAttribute(k,attrs[k]);
+  if(parent)parent.appendChild(n);
+  return n;
+}
+
+/* header layer */
+var axisTitle=el("text",{"class":"hd muted","text-anchor":"middle"},headLayer);
+var hdrSite1=el("text",{"class":"hdb"},headLayer);hdrSite1.textContent="Observing site";
+var hdrSite2=el("text",{"class":"hd muted"},headLayer);hdrSite2.textContent="elevation · Bortle class";
+var hdrTot1=el("text",{"class":"hdb","text-anchor":"end"},headLayer);hdrTot1.textContent="Year total";
+var hdrTot2=el("text",{"class":"hd muted","text-anchor":"end"},headLayer);hdrTot2.textContent="clear nights";
+var mHit=[],mTxt=[],mDay=[];
+for(var m=0;m<12;m++){
+  mHit.push(el("rect",{"class":"monthlbl","data-m":m},headLayer));
+  var t1=el("text",{"class":"mn mlbl","text-anchor":"middle"},headLayer);t1.textContent=MON[m];mTxt.push(t1);
+  var t2=el("text",{"class":"dy muted","text-anchor":"middle"},headLayer);t2.textContent=DAYS[m]+" nights";mDay.push(t2);
+}
+
+/* rows */
+SITES.forEach(function(s){
+  var g=el("g",{"class":"row"},rowsLayer);s.g=g;
+  s.bg=el("rect",{"class":"rowbg",rx:5},g);
+  s.hit=el("rect",{"class":"sitelabel","data-s":s.i,role:"button","aria-label":"Select "+s.name},g);
+  s.nameT=el("text",{"class":"nm"},g);s.nameT.textContent=s.name;
+  s.metaT=el("text",{"class":"meta muted"},g);s.metaT.textContent=fmtInt(s.elev)+" m · Bortle "+s.bortle;
+  s.totT=el("text",{"class":"tot","text-anchor":"end"},g);s.totT.textContent=s.total;
+  for(var m=0;m<12;m++){
+    var cg=el("g",{"class":"cell","data-s":s.i,"data-m":m,role:"img","aria-label":s.name+", "+FULL[m]+": "+s.v[m]+" clear nights"},g);
+    var c={g:cg,rect:el("rect",{"class":"cv",rx:3},cg),txt:el("text",{"class":"val","text-anchor":"middle",dy:".35em"},cg),flag:el("text",{"class":"flag"},cg)};
+    c.flag.textContent="▼";
+    s.cells.push(c);
+  }
+});
+
+/* footer */
+var fLine=el("line",{"class":"fl",stroke:"#2b3658","stroke-width":1.5},foot);
+var fName=el("text",{"class":"mn"},foot);fName.textContent="Month total";
+var fMeta=el("text",{"class":"meta muted"},foot);
+var fGrand=el("text",{"class":"tot","text-anchor":"end"},foot);
+var fTot=[],fTag=[];
+for(var m=0;m<12;m++){
+  var a=el("text",{"class":"tot","text-anchor":"middle"},foot);fTot.push(a);
+  var b=el("text",{"class":"meta","text-anchor":"middle"},foot);fTag.push(b);
+}
+
+/* overlay */
+var band=el("rect",{fill:"rgba(255,209,102,.10)",stroke:"#ffd166","stroke-width":2,rx:4,"pointer-events":"none",display:"none"},overlay);
+function ringGroup(strong){
+  var g=el("g",{"class":"gl","pointer-events":"none",display:"none"},overlay);
+  var o=el("rect",{fill:"none",stroke:strong?"#ffffff":"rgba(255,255,255,.8)","stroke-width":strong?4:2.5,rx:5},g);
+  var i=el("rect",{fill:"none",stroke:"#0c1222","stroke-width":strong?2:1.5,rx:3},g);
+  return {g:g,o:o,i:i};
+}
+var hoverRing=ringGroup(false);
+var pinMk=[1,2].map(function(n){
+  var g=el("g",{"class":"gl","pointer-events":"none",display:"none"},overlay);
+  var r=el("rect",{fill:"none",stroke:"#ff5db1","stroke-width":3.5,rx:3},g);
+  var c=el("circle",{fill:"#ff5db1",stroke:"#0c1222","stroke-width":1.5,r:10},g);
+  var t=el("text",{"text-anchor":"middle",dy:".35em",fill:"#0c1222","font-size":12,"font-weight":700,style:"fill:#0c1222"},g);
+  t.textContent=n;
+  return {g:g,r:r,c:c,t:t};
+});
+var focusRing=ringGroup(true);
+
+/* ---------- geometry ---------- */
+var G={};
+function geometry(){
+  var W=stage.clientWidth,H=stage.clientHeight;
+  var PAD=16,labelW=206,totW=74;
+  var left0=PAD+labelW+totW;
+  var colW=(W-PAD-left0)/12;
+  var headH=58,footH=58;
+  var rowH=Math.floor((H-headH-footH-6)/8);
+  rowH=clamp(rowH,34,88);
+  G={W:W,H:H,PAD:PAD,labelW:labelW,totW:totW,left0:left0,colW:colW,headH:headH,footH:footH,rowH:rowH,cw:colW-3,ch:rowH-3};
+}
+function cellBox(s,m){return {x:G.left0+m*G.colW+1.5,y:s.y+1,w:G.cw,h:G.ch};}
+
+function layoutStatic(){
+  svg.setAttribute("viewBox","0 0 "+G.W+" "+G.H);
+  axisTitle.setAttribute("x",G.left0+6*G.colW);axisTitle.setAttribute("y",15);
+  hdrSite1.setAttribute("x",G.PAD);hdrSite1.setAttribute("y",38);
+  hdrSite2.setAttribute("x",G.PAD);hdrSite2.setAttribute("y",54);
+  var tx=G.PAD+G.labelW+G.totW-12;
+  hdrTot1.setAttribute("x",tx);hdrTot1.setAttribute("y",38);
+  hdrTot2.setAttribute("x",tx);hdrTot2.setAttribute("y",54);
+  for(var m=0;m<12;m++){
+    var cx=G.left0+(m+.5)*G.colW;
+    mHit[m].setAttribute("x",G.left0+m*G.colW);mHit[m].setAttribute("y",22);
+    mHit[m].setAttribute("width",G.colW);mHit[m].setAttribute("height",36);
+    mTxt[m].setAttribute("x",cx);mTxt[m].setAttribute("y",38);
+    mDay[m].setAttribute("x",cx);mDay[m].setAttribute("y",54);
+  }
+  SITES.forEach(function(s){
+    s.bg.setAttribute("x",G.PAD-8);s.bg.setAttribute("y",0);
+    s.bg.setAttribute("width",G.W-2*(G.PAD-8));s.bg.setAttribute("height",G.rowH-2);
+    s.hit.setAttribute("x",G.PAD-8);s.hit.setAttribute("y",0);
+    s.hit.setAttribute("width",G.labelW+8);s.hit.setAttribute("height",G.rowH-2);
+    s.nameT.setAttribute("x",G.PAD);s.nameT.setAttribute("y",G.rowH/2-4);
+    s.metaT.setAttribute("x",G.PAD);s.metaT.setAttribute("y",G.rowH/2+12);
+    s.totT.setAttribute("x",tx);s.totT.setAttribute("y",G.rowH/2+1);s.totT.setAttribute("dy",".35em");
+    for(var m=0;m<12;m++){
+      var c=s.cells[m],b={x:G.left0+m*G.colW+1.5,y:1,w:G.cw,h:G.ch};
+      c.rect.setAttribute("x",b.x);c.rect.setAttribute("y",b.y);c.rect.setAttribute("width",b.w);c.rect.setAttribute("height",b.h);
+      c.txt.setAttribute("x",b.x+b.w/2);c.txt.setAttribute("y",b.y+b.h/2);
+      c.flag.setAttribute("x",b.x+5);c.flag.setAttribute("y",b.y+13);
+    }
+  });
+  fLine.setAttribute("x1",G.PAD);fLine.setAttribute("x2",G.W-G.PAD);fLine.setAttribute("y1",0);fLine.setAttribute("y2",0);
+  fName.setAttribute("x",G.PAD);fName.setAttribute("y",24);
+  fMeta.setAttribute("x",G.PAD);fMeta.setAttribute("y",42);
+  fGrand.setAttribute("x",tx);fGrand.setAttribute("y",24);
+  for(var m=0;m<12;m++){
+    var cx=G.left0+(m+.5)*G.colW;
+    fTot[m].setAttribute("x",cx);fTot[m].setAttribute("y",24);
+    fTag[m].setAttribute("x",cx);fTag[m].setAttribute("y",43);
+  }
+  [hoverRing,focusRing].forEach(function(r){
+    r.o.setAttribute("x",-2);r.o.setAttribute("y",-2);r.o.setAttribute("width",G.cw+4);r.o.setAttribute("height",G.ch+4);
+    r.i.setAttribute("x",0);r.i.setAttribute("y",0);r.i.setAttribute("width",G.cw);r.i.setAttribute("height",G.ch);
+  });
+  pinMk.forEach(function(p){
+    p.r.setAttribute("x",1.5);p.r.setAttribute("y",1.5);p.r.setAttribute("width",G.cw-3);p.r.setAttribute("height",G.ch-3);
+    p.c.setAttribute("cx",G.cw-12);p.c.setAttribute("cy",12);
+    p.t.setAttribute("x",G.cw-12);p.t.setAttribute("y",12);
+  });
+}
+
+/* ---------- apply state ---------- */
+var glideTimer=0,refreshTimer=0,lastPtr=null;
+function apply(animate){
+  var f=FILTERS[state.filter];
+  var vis=visible();
+  var visIds={};vis.forEach(function(s,k){visIds[s.i]=true;s.slot=k;});
+  /* drop focus, pins, selection that point at hidden rows */
+  if(state.focus&&!visIds[state.focus.s])state.focus=null;
+  state.pins=state.pins.filter(function(p){return visIds[p.s];});
+  if(state.sel!==null&&!visIds[state.sel])state.sel=null;
+  if(state.hover&&!visIds[state.hover.s])state.hover=null;
+  if(!animate)svg.classList.add("noanim");
+  if(animate){
+    overlay.classList.add("glide");
+    clearTimeout(glideTimer);glideTimer=setTimeout(function(){overlay.classList.remove("glide");},450);
+  }
+  geometry();layoutStatic();
+
+  var dev=state.dev;
+  SITES.forEach(function(s){
+    var shown=!!visIds[s.i];
+    s.y=G.headH+s.slot*G.rowH;
+    s.g.style.transform="translate(0px,"+s.y+"px)";
+    s.g.classList.toggle("gone",!shown);
+    s.g.style.opacity=!shown?0:(state.sel!==null&&state.sel!==s.i?0.35:1);
+    s.bg.classList.toggle("sel",state.sel===s.i);
+    for(var m=0;m<12;m++){
+      var c=s.cells[m],col,label,flagged=false;
+      if(dev){
+        var k=devK(s,m);
+        col=DIV((k/12+DIVMAX)/(2*DIVMAX));
+        label=devStr(s,m);
+        flagged=k<=-120;
+      }else{
+        col=SEQ(s.v[m]/SEQMAX);
+        label=String(s.v[m]);
+      }
+      var ink=rgb(inkFor(col));
+      c.rect.style.fill=rgb(col);
+      c.txt.textContent=label;c.txt.style.fill=ink;
+      c.flag.style.fill=ink;c.flag.setAttribute("display",flagged?"inline":"none");
+      c.g.setAttribute("aria-label",s.name+", "+FULL[m]+": "+s.v[m]+" clear nights, "+pct(s,m)+" percent of the month, "+devStr(s,m)+" from site mean");
+    }
+  });
+
+  /* footer */
+  var n=vis.length,fy=G.headH+n*G.rowH+6,grand=0,mt=[];
+  for(var m=0;m<12;m++){var t=0;vis.forEach(function(s){t+=s.v[m];});mt.push(t);grand+=t;}
+  foot.style.transform="translate(0px,"+fy+"px)";
+  fMeta.textContent=n+" of 8 sites shown";
+  fGrand.textContent=grand;
+  var mx=Math.max.apply(null,mt),mn=Math.min.apply(null,mt);
+  for(var m=0;m<12;m++){
+    fTot[m].textContent=mt[m];
+    var tag="";
+    if(mx!==mn){if(mt[m]===mx)tag="▲ most";else if(mt[m]===mn)tag="▼ fewest";}
+    fTag[m].textContent=tag;
+    fTag[m].style.fill=tag?"#ffd166":"";
+  }
+  /* axis title */
+  axisTitle.textContent=dev
+    ?"MONTH →  cell = clear nights minus that site's own monthly mean (nights, signed)"
+    :"MONTH →  cell = clear nights in the month (count of nights, under 20% cloud)";
+  fName.textContent="Month total, clear nights";
+
+  /* controls */
+  ["s0","s1","s2","s3"].forEach(function(a,k){
+    var key=["orig","total","elev","bortle"][k];
+    document.querySelector('[data-act="'+a+'"]').setAttribute("aria-pressed",state.sort===key?"true":"false");
+  });
+  document.querySelector('[data-act="dev"]').setAttribute("aria-pressed",dev?"true":"false");
+  var fb=document.querySelector('[data-act="flt"]');
+  fb.setAttribute("aria-pressed",state.filter?"true":"false");
+  document.getElementById("fltlabel").textContent="Bortle filter: "+f.lab;
+
+  /* status */
+  document.getElementById("status").innerHTML=
+    "<b>Sort:</b> "+SORTS[state.sort]+"<i>|</i><b>Filter:</b> "+f.txt+", "+n+" of 8 sites shown<i>|</i><b>Mode:</b> "+
+    (dev?"Deviation from each site’s own monthly mean":"Absolute clear nights per month");
+  renderLegend();
+  renderPins();
+  updateOverlay();
+  if(!animate){svg.getBoundingClientRect();svg.classList.remove("noanim");}
+  /* hover may now point at a different cell */
+  if(animate){
+    state.hover=null;state.hoverMonth=null;updateOverlay();
+    clearTimeout(refreshTimer);
+    refreshTimer=setTimeout(refreshHover,420);
+  }
+}
+
+function renderLegend(){
+  var bar=document.getElementById("legbar"),stops=[],i,html="";
+  var title=document.getElementById("legtitle"),note=document.getElementById("legnote");
+  var wrap=document.getElementById("legbarwrap");
+  if(state.dev){
+    for(i=0;i<=14;i++)stops.push(rgb(DIV(i/14))+" "+(i/14*100).toFixed(1)+"%");
+    title.innerHTML="<b>Deviation mode:</b> nights above (blue) or below (orange) the site’s own mean";
+    [[-14,0],[-7,25],[0,50],[7,75],[14,100]].forEach(function(p){html+='<span style="left:'+p[1]+'%">'+(p[0]>0?"+":"")+p[0]+'</span>';});
+    
+    note.innerHTML="▼ = 10 or more nights below the site’s mean";
+  }else{
+    for(i=0;i<=14;i++)stops.push(rgb(SEQ(i/14))+" "+(i/14*100).toFixed(1)+"%");
+    title.innerHTML="<b>Absolute mode:</b> clear nights in the month (darker = fewer, yellow = more)";
+    [0,10,20,30].forEach(function(v){html+='<span style="left:'+(v/SEQMAX*100)+'%">'+v+'</span>';});
+    note.innerHTML="nights per month, fixed scale 0 to 30";
+  }
+  bar.style.background="linear-gradient(90deg,"+stops.join(",")+")";
+  wrap.innerHTML='<div id="legbar" style="background:linear-gradient(90deg,'+stops.join(",")+')"></div>'+html;
+}
+
+/* ---------- pins ---------- */
+function describe(p){
+  var s=SITES[p.s];
+  return s.name+" · "+MON[p.m]+": "+s.v[p.m]+" nights ("+pct(s,p.m)+"%, "+devStr(s,p.m)+" vs mean)";
+}
+function renderPins(){
+  var box=document.getElementById("pinpanel");
+  var P=state.pins.slice().sort(function(a,b){return a.label-b.label;});
+  var h;
+  if(P.length===0){
+    h="<h2>How to read this</h2>Hover a cell, or use the arrow keys, to see its exact figures. Click a cell or press Enter to pin it; pin two to compare. Click a site name to isolate that row.";
+  }else if(P.length===1){
+    h='<h2>Pinned values (1 of 2)</h2><div class="pl"><span class="badge">'+P[0].label+'</span><span>'+describe(P[0])+'</span></div><div style="margin-top:4px;color:#b0bbd4">Pin one more value to compare. Enter or click the same cell again unpins it.</div>';
+  }else{
+    var A=SITES[P[0].s].v[P[0].m],B=SITES[P[1].s].v[P[1].m],d=A-B;
+    h='<h2>Comparison</h2><div class="pl"><span class="badge">'+P[0].label+'</span><span>'+describe(P[0])+'</span></div>'+
+      '<div class="pl"><span class="badge">'+P[1].label+'</span><span>'+describe(P[1])+'</span></div>'+
+      '<div class="diff">Difference ('+P[0].label+' − '+P[1].label+'): '+(d>0?"+":"")+d+' clear night'+(Math.abs(d)===1?"":"s")+'</div>';
+  }
+  box.innerHTML=h;
+}
+function togglePin(s,m){
+  var idx=-1;
+  state.pins.forEach(function(p,k){if(p.s===s&&p.m===m)idx=k;});
+  if(idx>=0){state.pins.splice(idx,1);}
+  else if(state.pins.length>=2){
+    var old=state.pins.shift();
+    state.pins.push({s:s,m:m,label:old.label});
+  }else{
+    var used=state.pins.map(function(p){return p.label;});
+    state.pins.push({s:s,m:m,label:used.indexOf(1)<0?1:2});
+  }
+  renderPins();updateOverlay();
+}
+
+/* ---------- overlay + readout ---------- */
+function placeNode(node,c){
+  if(!c){node.setAttribute("display","none");return;}
+  var b=cellBox(SITES[c.s],c.m);
+  node.style.transform="translate("+b.x+"px,"+b.y+"px)";
+  node.setAttribute("display","inline");
+}
+function updateOverlay(){
+  var f=state.focus,h=state.hover;
+  placeNode(focusRing.g,f);
+  placeNode(hoverRing.g,(h&&!(f&&f.s===h.s&&f.m===h.m))?h:null);
+  pinMk.forEach(function(p,k){
+    var found=null;
+    state.pins.forEach(function(q){if(q.label===k+1)found=q;});
+    placeNode(p.g,found);
+  });
+  if(state.hoverMonth!==null){
+    var n=visible().length;
+    band.setAttribute("x",G.left0+state.hoverMonth*G.colW+0.5);band.setAttribute("y",21);
+    band.setAttribute("width",G.colW-1);band.setAttribute("height",G.headH+n*G.rowH+6+50-21);
+    band.setAttribute("display","inline");
+  }else band.setAttribute("display","none");
+  mTxt.forEach(function(t,m){t.classList.toggle("hot",state.hoverMonth===m);});
+  showReadout();
+}
+function showReadout(){
+  var c=state.hover||state.focus;
+  if(!c){tip.style.display="none";return;}
+  var s=SITES[c.s],m=c.m;
+  var pinned=state.pins.filter(function(p){return p.s===c.s&&p.m===c.m;})[0];
+  tip.innerHTML='<div class="th">'+s.name+' · '+FULL[m]+'</div>'+
+    '<div class="tv">'+s.v[m]+' <small>clear nights</small></div>'+
+    '<div>'+pct(s,m)+'% of '+FULL[m]+'’s '+DAYS[m]+' nights</div>'+
+    '<div>Deviation from site mean: <b>'+devStr(s,m)+'</b> nights</div>'+
+    '<div class="tf">Site mean = '+s.total+' ÷ 12 nights. '+(pinned?'Pinned as '+pinned.label+'. Enter or click unpins.':'Enter or click pins this value.')+'</div>';
+  tip.style.display="block";
+  var r=s.cells[m].rect.getBoundingClientRect();
+  var w=tip.offsetWidth,h=tip.offsetHeight,vw=document.documentElement.clientWidth,vh=document.documentElement.clientHeight,g=10,mg=8;
+  var cy=r.top+r.height/2-h/2,cx=r.left+r.width/2-w/2;
+  var cands=[[r.right+g,cy],[r.left-g-w,cy],[cx,r.bottom+g],[cx,r.top-g-h]];
+  var pos=null;
+  for(var i=0;i<cands.length&&!pos;i++){
+    var x=clamp(cands[i][0],mg,vw-w-mg),y=clamp(cands[i][1],mg,vh-h-mg);
+    var overlap=!(x+w<=r.left||x>=r.right||y+h<=r.top||y>=r.bottom);
+    if(!overlap)pos=[x,y];
+  }
+  if(!pos){pos=[clamp(cx,mg,vw-w-mg),(r.top>vh/2)?mg:vh-h-mg];}
+  tip.style.left=Math.round(pos[0])+"px";tip.style.top=Math.round(pos[1])+"px";
+}
+
+/* ---------- actions ---------- */
+function setSort(k){state.sort=k;apply(true);}
+function toggleDev(){state.dev=!state.dev;apply(true);}
+function cycleFilter(){state.filter=(state.filter+1)%FILTERS.length;apply(true);}
+function clearFocusPins(){state.focus=null;state.pins=[];renderPins();updateOverlay();}
+function arrow(dr,dm){
+  var vis=visible();if(!vis.length)return;
+  state.hover=null;
+  if(!state.focus){state.focus={s:vis[0].i,m:0};}
+  else{
+    var r=0;vis.forEach(function(s,k){if(s.i===state.focus.s)r=k;});
+    r=clamp(r+dr,0,vis.length-1);
+    state.focus={s:vis[r].i,m:clamp(state.focus.m+dm,0,11)};
+  }
+  updateOverlay();
+}
+function refreshHover(){
+  if(!lastPtr)return;
+  var t=document.elementFromPoint(lastPtr.x,lastPtr.y);
+  var cell=t&&t.closest?t.closest(".cell"):null;
+  state.hover=cell?{s:+cell.getAttribute("data-s"),m:+cell.getAttribute("data-m")}:null;
+  var ml=t&&t.closest?t.closest(".monthlbl"):null;
+  state.hoverMonth=ml?+ml.getAttribute("data-m"):null;
+  updateOverlay();
+}
+
+document.addEventListener("keydown",function(e){
+  if(e.ctrlKey||e.metaKey||e.altKey)return;
+  var k=e.key;
+  switch(k){
+    case "0":setSort("orig");break;
+    case "1":setSort("total");break;
+    case "2":setSort("elev");break;
+    case "3":setSort("bortle");break;
+    case "d":case "D":toggleDev();break;
+    case "b":case "B":cycleFilter();break;
+    case "ArrowLeft":e.preventDefault();arrow(0,-1);break;
+    case "ArrowRight":e.preventDefault();arrow(0,1);break;
+    case "ArrowUp":e.preventDefault();arrow(-1,0);break;
+    case "ArrowDown":e.preventDefault();arrow(1,0);break;
+    case "Enter":
+      if(e.target&&e.target.tagName==="BUTTON")return;
+      if(state.focus){e.preventDefault();togglePin(state.focus.s,state.focus.m);}
+      break;
+    case "Escape":clearFocusPins();break;
+    default:return;
+  }
+});
+
+document.getElementById("keys").addEventListener("click",function(e){
+  var b=e.target.closest("button");if(!b)return;
+  var a=b.getAttribute("data-act");
+  if(a==="s0")setSort("orig");else if(a==="s1")setSort("total");else if(a==="s2")setSort("elev");else if(a==="s3")setSort("bortle");
+  else if(a==="dev")toggleDev();else if(a==="flt")cycleFilter();else if(a==="esc")clearFocusPins();
+  if(e.detail>0)b.blur(); /* mouse click: keep Enter free for pinning */
+});
+
+svg.addEventListener("pointermove",function(e){
+  lastPtr={x:e.clientX,y:e.clientY};
+  var cell=e.target.closest(".cell");
+  var h=cell?{s:+cell.getAttribute("data-s"),m:+cell.getAttribute("data-m")}:null;
+  var ml=e.target.closest(".monthlbl");
+  var hm=ml?+ml.getAttribute("data-m"):null;
+  if((h&&(!state.hover||state.hover.s!==h.s||state.hover.m!==h.m))||(!h&&state.hover)||hm!==state.hoverMonth){
+    state.hover=h;state.hoverMonth=hm;updateOverlay();
+  }
+});
+svg.addEventListener("pointerleave",function(){lastPtr=null;state.hover=null;state.hoverMonth=null;updateOverlay();});
+
+document.addEventListener("click",function(e){
+  var t=e.target;if(!t.closest)return;
+  var cell=t.closest(".cell");
+  if(cell){togglePin(+cell.getAttribute("data-s"),+cell.getAttribute("data-m"));return;}
+  var lab=t.closest(".sitelabel");
+  if(lab){
+    var id=+lab.getAttribute("data-s");
+    state.sel=state.sel===id?null:id;apply(true);return;
+  }
+  if(t.closest("button"))return;
+  if(state.sel!==null){state.sel=null;apply(true);}
+});
+
+/* ---------- init ---------- */
+function relayout(){apply(false);}
+if(typeof ResizeObserver==="function"){new ResizeObserver(relayout).observe(stage);}
+window.addEventListener("resize",relayout);
+relayout();
+})();
+</script>
+</body>
+</html>

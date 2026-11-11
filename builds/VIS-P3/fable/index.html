@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peaucellier Straight Line Linkage</title>
+<style>
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#0a0c10}
+#art{position:fixed;left:0;top:0;width:100%;height:100%;display:block}
+text{font-family:"Segoe UI",system-ui,Arial,sans-serif;font-weight:700}
+.pt{font-size:24px;fill:#f1f4f8;stroke:#0b0e12;stroke-width:4.5px;stroke-linejoin:round;paint-order:stroke}
+.dl{font-size:15px;fill:#d9e1ea;font-weight:600}
+</style>
+</head>
+<body>
+<svg id="art" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="art-title art-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="art-title">Peaucellier straight-line linkage</title>
+<desc id="art-desc">A machined steel Peaucellier-Lipkin inversor linkage bolted to a dark anodised base plate on a perforated bench. A blued crank swings sixty degrees either side of horizontal about ground pivot Q. Two long links from ground pivot O and a rhombus of four short links force the output joint P, marked with an orange ring and dot, to travel perfectly straight up and down a vertical graduated rule, leaving a fading orange trail, while a pointer reads the crank angle on an engraved arc dial.</desc>
+<defs>
+  <radialGradient id="gBoard" gradientUnits="userSpaceOnUse" cx="500" cy="440" r="1100">
+    <stop offset="0" stop-color="#2a313a"/><stop offset=".42" stop-color="#1d2229"/><stop offset="1" stop-color="#111418"/>
+  </radialGradient>
+  <pattern id="holes" patternUnits="userSpaceOnUse" x="50" y="100" width="100" height="100">
+    <circle cx="50.8" cy="51.1" r="6.7" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width="1.2"/>
+    <circle cx="50" cy="50" r="6.2" fill="#06080a"/>
+    <circle cx="50" cy="50" r="3.8" fill="none" stroke="#ffffff" stroke-opacity=".05" stroke-width="1"/>
+  </pattern>
+  <linearGradient id="gPlate" gradientUnits="userSpaceOnUse" x1="160" y1="110" x2="840" y2="790">
+    <stop offset="0" stop-color="#3c4651"/><stop offset=".5" stop-color="#2c333c"/><stop offset="1" stop-color="#22282f"/>
+  </linearGradient>
+  <linearGradient id="gPlateEdge" gradientUnits="userSpaceOnUse" x1="160" y1="110" x2="840" y2="790">
+    <stop offset="0" stop-color="#8793a1"/><stop offset=".45" stop-color="#4a5460"/><stop offset="1" stop-color="#0c0f13"/>
+  </linearGradient>
+  <radialGradient id="gPool" gradientUnits="userSpaceOnUse" cx="440" cy="400" r="520">
+    <stop offset="0" stop-color="#ffffff" stop-opacity=".11"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+  </radialGradient>
+  <pattern id="brush" patternUnits="userSpaceOnUse" x="0" y="0" width="320" height="200"></pattern>
+
+  <linearGradient id="gL" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="70" y2="110" spreadMethod="reflect">
+    <stop offset="0" stop-color="#c2cbd5"/><stop offset=".28" stop-color="#8f9aa7"/><stop offset=".52" stop-color="#626d7a"/><stop offset=".76" stop-color="#8a95a2"/><stop offset="1" stop-color="#ced6de"/>
+  </linearGradient>
+  <linearGradient id="gLp" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="70" y2="110" spreadMethod="reflect">
+    <stop offset="0" stop-color="#98a3af"/><stop offset=".5" stop-color="#535d69"/><stop offset="1" stop-color="#a2adb8"/>
+  </linearGradient>
+  <linearGradient id="gR" gradientUnits="userSpaceOnUse" x1="20" y1="0" x2="90" y2="110" spreadMethod="reflect">
+    <stop offset="0" stop-color="#ffffff"/><stop offset=".3" stop-color="#d7dee5"/><stop offset=".56" stop-color="#a9b3be"/><stop offset=".8" stop-color="#d0d8e0"/><stop offset="1" stop-color="#fafbfc"/>
+  </linearGradient>
+  <linearGradient id="gRp" gradientUnits="userSpaceOnUse" x1="20" y1="0" x2="90" y2="110" spreadMethod="reflect">
+    <stop offset="0" stop-color="#d6dde4"/><stop offset=".5" stop-color="#909ba7"/><stop offset="1" stop-color="#dde3e9"/>
+  </linearGradient>
+  <linearGradient id="gC" gradientUnits="userSpaceOnUse" x1="10" y1="0" x2="80" y2="110" spreadMethod="reflect">
+    <stop offset="0" stop-color="#86a3cb"/><stop offset=".3" stop-color="#55709a"/><stop offset=".56" stop-color="#31456a"/><stop offset=".8" stop-color="#5a77a2"/><stop offset="1" stop-color="#93afd6"/>
+  </linearGradient>
+  <linearGradient id="gCp" gradientUnits="userSpaceOnUse" x1="10" y1="0" x2="80" y2="110" spreadMethod="reflect">
+    <stop offset="0" stop-color="#5f7ca6"/><stop offset=".5" stop-color="#273954"/><stop offset="1" stop-color="#6986b0"/>
+  </linearGradient>
+
+  <radialGradient id="gPin" cx=".38" cy=".32" r=".78">
+    <stop offset="0" stop-color="#ffffff"/><stop offset=".35" stop-color="#d6dde5"/><stop offset=".78" stop-color="#8b96a3"/><stop offset="1" stop-color="#596370"/>
+  </radialGradient>
+  <radialGradient id="gFlange" cx=".36" cy=".3" r=".9">
+    <stop offset="0" stop-color="#6d7885"/><stop offset=".55" stop-color="#48525e"/><stop offset="1" stop-color="#2b323b"/>
+  </radialGradient>
+  <radialGradient id="gBolt" cx=".36" cy=".3" r=".85">
+    <stop offset="0" stop-color="#e3e8ee"/><stop offset=".55" stop-color="#98a2ae"/><stop offset="1" stop-color="#57616d"/>
+  </radialGradient>
+  <radialGradient id="gGlow">
+    <stop offset="0" stop-color="#ff5a1f" stop-opacity=".55"/><stop offset=".5" stop-color="#ff5a1f" stop-opacity=".2"/><stop offset="1" stop-color="#ff5a1f" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="gRule" gradientUnits="userSpaceOnUse" x1="582" y1="0" x2="594" y2="0">
+    <stop offset="0" stop-color="#07090c"/><stop offset=".5" stop-color="#151a20"/><stop offset="1" stop-color="#232a32"/>
+  </linearGradient>
+  <linearGradient id="tg0" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1"></linearGradient>
+  <linearGradient id="tg1" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1"></linearGradient>
+
+  <filter id="soft" filterUnits="userSpaceOnUse" x="250" y="210" width="440" height="500" color-interpolation-filters="sRGB">
+    <feGaussianBlur stdDeviation="6"/>
+  </filter>
+
+  <g id="bolt">
+    <circle cx=".9" cy="1.3" r="5.6" fill="#000" fill-opacity=".4"/>
+    <circle r="5.2" fill="url(#gBolt)" stroke="#0d1014" stroke-width=".8"/>
+    <path d="M2.7 0 1.35 2.34 -1.35 2.34 -2.7 0 -1.35 -2.34 1.35 -2.34Z" fill="#10141a"/>
+  </g>
+  <g id="flange">
+    <circle cx="5" cy="8" r="37" fill="#000" fill-opacity=".14"/>
+    <circle cx="4" cy="6" r="34.5" fill="#000" fill-opacity=".3"/>
+    <circle r="34" fill="url(#gFlange)" stroke="#0f1318" stroke-width="1.2"/>
+    <circle r="32.4" fill="none" stroke="#ffffff" stroke-opacity=".14" stroke-width="1"/>
+    <circle r="12" fill="#1b2027"/>
+    <use href="#bolt" x="16.97" y="16.97"/><use href="#bolt" x="-16.97" y="16.97"/>
+    <use href="#bolt" x="16.97" y="-16.97"/><use href="#bolt" x="-16.97" y="-16.97"/>
+  </g>
+  <path id="gnd" d="M-24 0H24M-24 0l-6 9M-16 0l-6 9M-8 0l-6 9M0 0l-6 9M8 0l-6 9M16 0l-6 9M24 0l-6 9"/>
+</defs>
+
+<!-- bench (solid, matches page) -->
+<rect width="1600" height="900" fill="#0a0c10"/>
+
+<!-- perforated bench plate -->
+<g fill="none" stroke="#000" stroke-linejoin="round" transform="translate(6,10)">
+  <rect x="50" y="90" width="1500" height="720" rx="16" stroke-width="26" stroke-opacity=".12"/>
+  <rect x="50" y="90" width="1500" height="720" rx="16" stroke-width="12" stroke-opacity=".2"/>
+</g>
+<rect x="50" y="90" width="1500" height="720" rx="16" fill="url(#gBoard)"/>
+<rect x="50" y="100" width="1500" height="700" fill="url(#holes)"/>
+<rect x="50.75" y="90.75" width="1498.5" height="718.5" rx="15.5" fill="none" stroke="#ffffff" stroke-opacity=".07" stroke-width="1.5"/>
+
+<!-- base plate -->
+<g fill="none" stroke="#000" stroke-linejoin="round" transform="translate(9,14)">
+  <rect x="160" y="110" width="680" height="680" rx="20" stroke-width="34" stroke-opacity=".07"/>
+  <rect x="160" y="110" width="680" height="680" rx="20" stroke-width="22" stroke-opacity=".1"/>
+  <rect x="160" y="110" width="680" height="680" rx="20" stroke-width="10" stroke-opacity=".16"/>
+  <rect x="160" y="110" width="680" height="680" rx="20" fill="#000" fill-opacity=".5" stroke="none"/>
+</g>
+<g id="base">
+  <rect x="160" y="110" width="680" height="680" rx="20" fill="url(#gPlate)"/>
+  <rect x="160" y="110" width="680" height="680" rx="20" fill="url(#brush)"/>
+  <rect x="160" y="110" width="680" height="680" rx="20" fill="url(#gPool)"/>
+  <rect x="161" y="111" width="678" height="678" rx="19" fill="none" stroke="url(#gPlateEdge)" stroke-width="2"/>
+  <rect x="167.5" y="117.5" width="665" height="665" rx="14" fill="none" stroke="#000" stroke-opacity=".28" stroke-width="1"/>
+  <rect x="168.6" y="118.8" width="663" height="663" rx="13.5" fill="none" stroke="#fff" stroke-opacity=".06" stroke-width="1"/>
+  <use href="#bolt" transform="translate(200 150) scale(1.9)"/>
+  <use href="#bolt" transform="translate(800 150) scale(1.9)"/>
+  <use href="#bolt" transform="translate(200 750) scale(1.9)"/>
+  <use href="#bolt" transform="translate(800 750) scale(1.9)"/>
+</g>
+
+<!-- engraved angle dial around Q (beneath linkage) -->
+<g id="dial" fill="none" stroke="#d9e1ea" stroke-linecap="butt">
+  <path d="M475 579.904A150 150 0 0 0 475 320.096" stroke-width="2" stroke-opacity=".9"/>
+  <g stroke-width="2.4">
+    <line x1="551" y1="450" x2="535" y2="450" transform="rotate(-60 400 450)"/>
+    <line x1="551" y1="450" x2="535" y2="450"/>
+    <line x1="551" y1="450" x2="535" y2="450" transform="rotate(60 400 450)"/>
+  </g>
+  <g stroke-width="1.7" stroke-opacity=".85">
+    <line x1="550" y1="450" x2="540" y2="450" transform="rotate(-45 400 450)"/>
+    <line x1="550" y1="450" x2="540" y2="450" transform="rotate(-30 400 450)"/>
+    <line x1="550" y1="450" x2="540" y2="450" transform="rotate(-15 400 450)"/>
+    <line x1="550" y1="450" x2="540" y2="450" transform="rotate(15 400 450)"/>
+    <line x1="550" y1="450" x2="540" y2="450" transform="rotate(30 400 450)"/>
+    <line x1="550" y1="450" x2="540" y2="450" transform="rotate(45 400 450)"/>
+  </g>
+</g>
+<text class="dl" x="439" y="290.4" text-anchor="middle">+60</text>
+<text class="dl" x="540" y="441" text-anchor="middle">0</text>
+<text class="dl" x="439" y="620.4" text-anchor="middle">-60</text>
+
+<!-- straightedge on x = 588 (beneath linkage) -->
+<g id="rule">
+  <rect x="582.5" y="204" width="11" height="492" rx="5.5" fill="url(#gRule)"/>
+  <path d="M576 210H600M576 250H600M576 290H600M576 330H600M576 370H600M576 410H600M576 450H600M576 490H600M576 530H600M576 570H600M576 610H600M576 650H600M576 690H600" fill="none" stroke="#e3e9f0" stroke-width="2"/>
+  <line x1="588" y1="210" x2="588" y2="690" stroke="#eef2f6" stroke-width="2.4"/>
+</g>
+
+<!-- ground symbols -->
+<g fill="none" stroke="#d9e1ea" stroke-opacity=".6" stroke-width="1.6" stroke-linecap="round">
+  <use href="#gnd" x="300" y="497"/><use href="#gnd" x="400" y="497"/>
+</g>
+<use href="#flange" x="300" y="450"/>
+<use href="#flange" x="400" y="450"/>
+
+<!-- dial pointer (beneath linkage) -->
+<g id="pointer">
+  <path d="M400 447.4 518 447.8 522 441.2 548.5 450 522 458.8 518 452.2 400 452.6Z" fill="#000" fill-opacity=".4" transform="translate(1.6 2.6)"/>
+  <path d="M400 447.4 518 447.8 522 441.2 548.5 450 522 458.8 518 452.2 400 452.6Z" fill="#e4eefc" stroke="#141b26" stroke-width=".9" stroke-linejoin="round"/>
+</g>
+
+<g id="shadow" transform="translate(11,17)" filter="url(#soft)" fill="#000" opacity=".52"></g>
+<g id="links"></g>
+<g id="trail" fill="none">
+  <circle id="glow" r="30" fill="url(#gGlow)"/>
+</g>
+<g id="pins"></g>
+
+<text class="pt" x="246" y="458.6" text-anchor="middle">O</text>
+<text class="pt" x="365" y="458.6" text-anchor="middle">Q</text>
+<text class="pt" id="lblP" x="616" y="458.6">P</text>
+</svg>
+<script>
+(function () {
+  "use strict";
+  var NS = "http://www.w3.org/2000/svg";
+  var D = 6, TAU = Math.PI * 2, ACCENT = "#ff5a1f";
+  var OX = 300, OY = 450, QX = 400, QY = 450, LONG = 260, SHORT = 100, CRANK = 100;
+  var TRAIL_S = 1.5, K = 14;
+
+  function el(name, attrs, parent) {
+    var e = document.createElementNS(NS, name), k;
+    for (k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function $(id) { return document.getElementById(id); }
+
+  /* ---------- kinematics: pure function of loop time ---------- */
+  function solve(t) {
+    t = ((t % D) + D) % D;
+    var psi = (Math.PI / 3) * Math.sin(TAU * t / D);
+    var cx = QX + CRANK * Math.cos(psi), cy = QY - CRANK * Math.sin(psi);
+    var dx = cx - OX, dy = cy - OY, d = Math.sqrt(dx * dx + dy * dy);
+    var a = (LONG * LONG - SHORT * SHORT + d * d) / (2 * d);
+    var h = Math.sqrt(Math.max(0, LONG * LONG - a * a));
+    var mx = OX + a * dx / d, my = OY + a * dy / d;
+    var ox = -dy / d * h, oy = dx / d * h;
+    var x1 = mx + ox, y1 = my + oy, x2 = mx - ox, y2 = my - oy, s;
+    if (y1 > y2) { s = x1; x1 = x2; x2 = s; s = y1; y1 = y2; y2 = s; }
+    return {
+      psi: psi,
+      O: [OX, OY], Q: [QX, QY], C: [cx, cy],
+      A: [x1, y1], B: [x2, y2],
+      P: [x1 + x2 - cx, y1 + y2 - cy]
+    };
+  }
+
+  /* ---------- fixed-seed texture: brushed finish ---------- */
+  (function () {
+    var seed = 20260311;
+    function rnd() {
+      seed = (seed + 0x6D2B79F5) | 0;
+      var r = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+      r = (r + Math.imul(r ^ (r >>> 7), 61 | r)) ^ r;
+      return ((r ^ (r >>> 14)) >>> 0) / 4294967296;
+    }
+    var p = $("brush"), i, x, y, len, w, op, col;
+    for (i = 0; i < 120; i++) {
+      y = (rnd() * 200).toFixed(1); x = rnd() * 320; len = 50 + rnd() * 250;
+      w = (0.4 + rnd() * 0.8).toFixed(2); op = (0.025 + rnd() * 0.06).toFixed(3);
+      col = rnd() < 0.5 ? "#fff" : "#000";
+      el("line", { x1: x.toFixed(1), y1: y, x2: (x + len).toFixed(1), y2: y, stroke: col, "stroke-opacity": op, "stroke-width": w }, p);
+      el("line", { x1: (x - 320).toFixed(1), y1: y, x2: (x + len - 320).toFixed(1), y2: y, stroke: col, "stroke-opacity": op, "stroke-width": w }, p);
+    }
+  })();
+
+  /* ---------- build links (bottom to top) ---------- */
+  var DEFS = [
+    { a: "O", b: "A", R: 16, w: 9, g: "gL", hi: "#ffffff" },
+    { a: "O", b: "B", R: 16, w: 9, g: "gL", hi: "#ffffff" },
+    { a: "A", b: "C", R: 15, w: 8, g: "gR", hi: "#ffffff" },
+    { a: "B", b: "P", R: 15, w: 8, g: "gR", hi: "#ffffff" },
+    { a: "C", b: "B", R: 15, w: 8, g: "gR", hi: "#ffffff" },
+    { a: "P", b: "A", R: 15, w: 8, g: "gR", hi: "#ffffff" },
+    { a: "Q", b: "C", R: 16, w: 9.5, g: "gC", hi: "#cfe0f8" }
+  ];
+  var gShadow = $("shadow"), gLinks = $("links"), links = [];
+  DEFS.forEach(function (L) {
+    var o = { def: L, x0: Math.sqrt(L.R * L.R - L.w * L.w), paths: [], lines: [] };
+    var id = "link-" + L.a + L.b, pw = (2 * L.w - 9).toFixed(1);
+    o.paths.push(el("path", {}, gShadow));
+    var g = el("g", { id: id, "data-link": L.a + L.b }, gLinks);
+    o.paths.push(el("path", { fill: "#000", "fill-opacity": ".32", transform: "translate(3 4.5)" }, g));
+    o.paths.push(el("path", { fill: "#0b0e13", transform: "translate(1.1 1.5)" }, g));
+    o.paths.push(el("path", { fill: L.hi, transform: "translate(-1 -1.3)" }, g));
+    o.paths.push(el("path", { fill: "url(#" + L.g + ")" }, g));
+    o.lines.push(el("line", { stroke: "#fff", "stroke-opacity": ".65", "stroke-width": pw, "stroke-linecap": "round", transform: "translate(.9 1.2)" }, g));
+    o.lines.push(el("line", { stroke: "#000", "stroke-opacity": ".55", "stroke-width": pw, "stroke-linecap": "round", transform: "translate(-.9 -1.2)" }, g));
+    o.lines.push(el("line", { stroke: "url(#" + L.g + "p)", "stroke-width": pw, "stroke-linecap": "round" }, g));
+    links.push(o);
+  });
+
+  /* ---------- trail (two monotone pieces at most) ---------- */
+  var gTrail = $("trail"), glow = $("glow"), trail = [];
+  [0, 1].forEach(function (i) {
+    var grad = $("tg" + i), stops = [], k;
+    for (k = 0; k <= K; k++) stops.push(el("stop", { offset: (k / K).toFixed(4), "stop-color": ACCENT, "stop-opacity": "0" }, grad));
+    trail.push({
+      grad: grad, stops: stops,
+      wide: el("line", { stroke: "url(#tg" + i + ")", "stroke-width": "13", "stroke-opacity": ".22" }, gTrail),
+      core: el("line", { id: "trail-" + i, stroke: "url(#tg" + i + ")", "stroke-width": "5" }, gTrail)
+    });
+  });
+
+  /* ---------- pins (always on top) ---------- */
+  var gPins = $("pins"), pins = {};
+  ["O", "Q", "A", "B", "C", "P"].forEach(function (key) {
+    var g = el("g", { id: "pin-" + key, "data-joint": key }, gPins), c = [];
+    c.push([el("circle", { r: "11.6", fill: "#000", "fill-opacity": ".38" }, g), 1.6, 2.4]);
+    if (key === "P") {
+      c.push([el("circle", { r: "14.3", fill: "#14181d" }, g), 0, 0]);
+      c.push([el("circle", { id: "marker-ring", r: "12.5", fill: "none", stroke: ACCENT, "stroke-width": "2.9" }, g), 0, 0]);
+    } else {
+      c.push([el("circle", { r: "12.2", fill: "#171c22" }, g), 0, 0]);
+    }
+    c.push([el("circle", { "class": "pin-head", r: "10", fill: "url(#gPin)", stroke: "#0f1318", "stroke-width": "1" }, g), 0, 0]);
+    if (key === "P") {
+      c.push([el("circle", { r: "5.3", fill: "#14181d" }, g), 0, 0]);
+      c.push([el("circle", { id: "marker-dot", r: "3.7", fill: ACCENT }, g), 0, 0]);
+    } else {
+      c.push([el("circle", { r: "3.1", fill: "#1a2028" }, g), 0, 0]);
+      c.push([el("circle", { r: "3.1", fill: "none", stroke: "#fff", "stroke-opacity": ".35", "stroke-width": ".8" }, g), 0.5, 0.7]);
+    }
+    pins[key] = c;
+  });
+  function placePin(key, p) {
+    var c = pins[key], i;
+    for (i = 0; i < c.length; i++) {
+      c[i][0].setAttribute("cx", (p[0] + c[i][1]).toFixed(3));
+      c[i][0].setAttribute("cy", (p[1] + c[i][2]).toFixed(3));
+    }
+  }
+
+  var pointer = $("pointer"), lblP = $("lblP");
+
+  function f2(v) { return v.toFixed(2); }
+
+  function drawTrailPiece(T, t, sa, sb, px) {
+    var ys = [], k, s, span, off, last = 0, al;
+    for (k = 0; k <= K; k++) ys.push(solve(sa + (sb - sa) * k / K).P[1]);
+    span = ys[K] - ys[0];
+    if (Math.abs(span) < 0.05) { T.wide.setAttribute("display", "none"); T.core.setAttribute("display", "none"); return; }
+    T.grad.setAttribute("y1", ys[0].toFixed(3));
+    T.grad.setAttribute("y2", ys[K].toFixed(3));
+    for (k = 0; k <= K; k++) {
+      s = sa + (sb - sa) * k / K;
+      off = (ys[k] - ys[0]) / span;
+      if (off < last) off = last; if (off > 1) off = 1; last = off;
+      al = 1 - (t - s) / TRAIL_S;
+      T.stops[k].setAttribute("offset", off.toFixed(5));
+      T.stops[k].setAttribute("stop-opacity", (al < 0 ? 0 : al > 1 ? 1 : al).toFixed(4));
+    }
+    [T.wide, T.core].forEach(function (ln) {
+      ln.removeAttribute("display");
+      ln.setAttribute("x1", px); ln.setAttribute("x2", px);
+      ln.setAttribute("y1", ys[0].toFixed(3)); ln.setAttribute("y2", ys[K].toFixed(3));
+    });
+  }
+
+  /* ---------- one frame, pure function of t ---------- */
+  function render(t) {
+    var j = solve(t), i, k, o, L, p1, p2, dx, dy, len, ux, uy, nx, ny, d, a, b;
+    for (i = 0; i < links.length; i++) {
+      o = links[i]; L = o.def; p1 = j[L.a]; p2 = j[L.b];
+      dx = p2[0] - p1[0]; dy = p2[1] - p1[1]; len = Math.sqrt(dx * dx + dy * dy);
+      ux = dx / len; uy = dy / len; nx = -uy * L.w; ny = ux * L.w;
+      a = [p1[0] + ux * o.x0, p1[1] + uy * o.x0]; b = [p2[0] - ux * o.x0, p2[1] - uy * o.x0];
+      d = "M" + f2(a[0] + nx) + " " + f2(a[1] + ny) + "L" + f2(b[0] + nx) + " " + f2(b[1] + ny) +
+          "A" + L.R + " " + L.R + " 0 1 0 " + f2(b[0] - nx) + " " + f2(b[1] - ny) +
+          "L" + f2(a[0] - nx) + " " + f2(a[1] - ny) +
+          "A" + L.R + " " + L.R + " 0 1 0 " + f2(a[0] + nx) + " " + f2(a[1] + ny) + "Z";
+      for (k = 0; k < o.paths.length; k++) o.paths[k].setAttribute("d", d);
+      a = L.R + 6.5;
+      for (k = 0; k < o.lines.length; k++) {
+        o.lines[k].setAttribute("x1", f2(p1[0] + ux * a)); o.lines[k].setAttribute("y1", f2(p1[1] + uy * a));
+        o.lines[k].setAttribute("x2", f2(p2[0] - ux * a)); o.lines[k].setAttribute("y2", f2(p2[1] - uy * a));
+      }
+    }
+    placePin("A", j.A); placePin("B", j.B); placePin("C", j.C); placePin("P", j.P);
+    pointer.setAttribute("transform", "rotate(" + (-j.psi * 180 / Math.PI).toFixed(4) + " 400 450)");
+    lblP.setAttribute("y", (j.P[1] + 8.6).toFixed(2));
+    glow.setAttribute("cx", j.P[0].toFixed(3)); glow.setAttribute("cy", j.P[1].toFixed(3));
+
+    /* trail: P over [t-1.5, t], split where the stroke reverses (t = 1.5 + 3n) */
+    var t0 = t - TRAIL_S, px = j.P[0].toFixed(3);
+    var r = 1.5 + 3 * Math.ceil((t0 - 1.5) / 3);
+    if (r > t0 + 1e-6 && r < t - 1e-6) {
+      drawTrailPiece(trail[0], t, t0, r, px);
+      drawTrailPiece(trail[1], t, r, t, px);
+    } else {
+      trail[0].wide.setAttribute("display", "none"); trail[0].core.setAttribute("display", "none");
+      drawTrailPiece(trail[1], t, t0, t, px);
+    }
+  }
+
+  placePin("O", [OX, OY]); placePin("Q", [QX, QY]);
+
+  /* ---------- clock ---------- */
+  var m = /[?&]t=([^&#]*)/.exec(window.location.search);
+  if (m) {
+    var v = parseFloat(m[1]);
+    if (!isFinite(v)) v = 0;
+    render(((v % D) + D) % D);
+  } else {
+    var tStart = performance.now();
+    var tick = function () {
+      render(((performance.now() - tStart) / 1000) % D);
+      window.requestAnimationFrame(tick);
+    };
+    tick();
+  }
+})();
+</script>
+</body>
+</html>

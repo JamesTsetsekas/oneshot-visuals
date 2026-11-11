@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Straight-Line Linkage</title>
+<style>
+html,body{margin:0;padding:0;height:100%;background:#0b0f14;overflow:hidden}
+svg#art{display:block;width:100vw;height:100vh}
+text{font-family:"Segoe UI",system-ui,Arial,sans-serif}
+</style>
+</head>
+<body>
+<svg id="art" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="ttl dsc">
+<title id="ttl">Straight-Line Linkage</title>
+<desc id="dsc">A Peaucellier-Lipkin inversor linkage on a machined metal base plate. A crank pinned at Q swings sixty degrees either side of horizontal, driving a rhombus of four short links and two long links pinned at O, so the orange ring-and-dot marker at P slides along a perfectly vertical straightedge ruled with ticks, leaving a fading trail, while an arc dial reads the crank angle.</desc>
+<defs>
+  <linearGradient id="slabG" x1="0" y1="0" x2="1" y2="0.3">
+    <stop offset="0" stop-color="#2c3643"/><stop offset=".55" stop-color="#1c232c"/><stop offset="1" stop-color="#12171e"/>
+  </linearGradient>
+  <radialGradient id="lightG" gradientUnits="userSpaceOnUse" cx="600" cy="450" r="900">
+    <stop offset="0" stop-color="#9dbbdd" stop-opacity=".24"/><stop offset=".55" stop-color="#6f8db3" stop-opacity=".07"/><stop offset="1" stop-color="#6f8db3" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="fadeG" gradientUnits="userSpaceOnUse" x1="50" y1="0" x2="1550" y2="0">
+    <stop offset="0" stop-color="#fff"/><stop offset=".5" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity=".25"/>
+  </linearGradient>
+  <mask id="fadeM"><rect x="50" y="50" width="1500" height="800" fill="url(#fadeG)"/></mask>
+  <pattern id="holes" x="-25" y="-25" width="50" height="50" patternUnits="userSpaceOnUse">
+    <circle cx="25" cy="25" r="5.6" fill="#7f93ab" fill-opacity=".10"/>
+    <circle cx="25" cy="25" r="3.8" fill="#06090c"/>
+    <circle cx="25" cy="25" r="3.8" fill="none" stroke="#a9bdd4" stroke-opacity=".16" stroke-width=".8"/>
+  </pattern>
+  <pattern id="brush" width="8" height="3" patternUnits="userSpaceOnUse">
+    <rect width="8" height="1" fill="#fff" fill-opacity=".05"/><rect y="1.6" width="8" height=".7" fill="#000" fill-opacity=".08"/>
+  </pattern>
+  <linearGradient id="plateG" x1="0" y1="0" x2="0.25" y2="1">
+    <stop offset="0" stop-color="#4b5666"/><stop offset=".5" stop-color="#363f4b"/><stop offset="1" stop-color="#2a313b"/>
+  </linearGradient>
+  <linearGradient id="blockG" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#707c8c"/><stop offset=".45" stop-color="#47505d"/><stop offset="1" stop-color="#2d343e"/>
+  </linearGradient>
+  <radialGradient id="flangeG" cx=".38" cy=".32" r=".85">
+    <stop offset="0" stop-color="#5f6b7a"/><stop offset="1" stop-color="#262d36"/>
+  </radialGradient>
+  <linearGradient id="gLong" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#434d5a"/><stop offset=".14" stop-color="#8996a6"/><stop offset=".38" stop-color="#e2e8ef"/><stop offset=".5" stop-color="#ccd5df"/><stop offset=".72" stop-color="#8794a4"/><stop offset=".9" stop-color="#535e6d"/><stop offset="1" stop-color="#363f4a"/>
+  </linearGradient>
+  <linearGradient id="gMid" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#4c4f58"/><stop offset=".14" stop-color="#9b9ea8"/><stop offset=".38" stop-color="#f1f2f4"/><stop offset=".5" stop-color="#d8dadf"/><stop offset=".72" stop-color="#9598a2"/><stop offset=".9" stop-color="#5c5f69"/><stop offset="1" stop-color="#3c3f48"/>
+  </linearGradient>
+  <linearGradient id="gCrank" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#2f4757"/><stop offset=".14" stop-color="#6f98b0"/><stop offset=".38" stop-color="#cfe5f1"/><stop offset=".5" stop-color="#b0cddd"/><stop offset=".72" stop-color="#668ca3"/><stop offset=".9" stop-color="#3f5c73"/><stop offset="1" stop-color="#2a3f50"/>
+  </linearGradient>
+  <radialGradient id="pinG" cx=".35" cy=".3" r=".8">
+    <stop offset="0" stop-color="#f6f8fa"/><stop offset=".5" stop-color="#9ca8b6"/><stop offset="1" stop-color="#454e5b"/>
+  </radialGradient>
+  <radialGradient id="bossG" cx=".38" cy=".32" r=".9">
+    <stop offset="0" stop-color="#8793a2"/><stop offset=".6" stop-color="#4b5460"/><stop offset="1" stop-color="#252b33"/>
+  </radialGradient>
+  <linearGradient id="ruleG" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#5d6877"/><stop offset=".3" stop-color="#cdd6e0"/><stop offset=".5" stop-color="#f1f4f8"/><stop offset=".72" stop-color="#9aa6b4"/><stop offset="1" stop-color="#525d6b"/>
+  </linearGradient>
+  <radialGradient id="glowG">
+    <stop offset="0" stop-color="#ff5a1a" stop-opacity=".5"/><stop offset=".45" stop-color="#ff5a1a" stop-opacity=".16"/><stop offset="1" stop-color="#ff5a1a" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="bandG" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#000" stop-opacity=".30"/><stop offset="1" stop-color="#000" stop-opacity=".16"/>
+  </linearGradient>
+  <filter id="soft" filterUnits="userSpaceOnUse" x="150" y="100" width="760" height="700"><feGaussianBlur stdDeviation="4.5"/></filter>
+  <clipPath id="plateClip"><rect x="130" y="140" width="710" height="620" rx="20"/></clipPath>
+</defs>
+
+<rect width="1600" height="900" fill="#0b0f14"/>
+
+<!-- breadboard slab -->
+<g id="slab">
+  <rect x="50" y="50" width="1500" height="800" rx="28" fill="url(#slabG)"/>
+  <rect x="50" y="50" width="1500" height="800" rx="28" fill="url(#lightG)"/>
+  <rect x="50" y="50" width="1500" height="800" rx="28" fill="url(#brush)" opacity=".7"/>
+  <rect x="50" y="50" width="1500" height="800" rx="28" fill="url(#holes)" mask="url(#fadeM)"/>
+  <rect x="50.75" y="50.75" width="1498.5" height="798.5" rx="27.5" fill="none" stroke="#6f86a3" stroke-opacity=".35" stroke-width="1.5"/>
+</g>
+
+<!-- machined sub-plate -->
+<g id="plate"></g>
+
+<!-- construction guides -->
+<g clip-path="url(#plateClip)" fill="none" stroke="#b9cde6" stroke-opacity=".26" stroke-width="1.4" stroke-dasharray="2 7" stroke-linecap="round">
+  <circle cx="300" cy="450" r="260"/>
+  <circle cx="400" cy="450" r="100"/>
+</g>
+
+<!-- angle dial (beneath linkage) -->
+<g id="dial">
+  <path id="dialBand" fill="url(#bandG)" stroke="#c4d2e4" stroke-opacity=".18" stroke-width="1"/>
+  <path id="wedge" fill="#8fc0e0" fill-opacity=".16"/>
+  <path id="dialArc" fill="none" stroke="#b8c8dc" stroke-opacity=".9" stroke-width="2.2"/>
+  <g id="dialTicks" stroke="#d3deec" stroke-linecap="round"></g>
+  <g id="dialLabels" fill="#d6e0ec" font-size="16" font-weight="600" text-anchor="middle"></g>
+  <g id="ptr"><line x1="100" y1="0" x2="152" y2="0" stroke="#eef2f7" stroke-width="2.4" stroke-linecap="round"/><polygon points="151,0 168,-7.5 168,7.5" fill="#eef2f7" stroke="#0e1218" stroke-width="1" stroke-linejoin="round"/></g>
+</g>
+
+<!-- straightedge (beneath linkage) -->
+<g id="rule">
+  <rect x="574" y="190" width="28" height="20" rx="4" fill="url(#blockG)" stroke="#0f1318" stroke-width="1.2"/>
+  <rect x="574" y="690" width="28" height="20" rx="4" fill="url(#blockG)" stroke="#0f1318" stroke-width="1.2"/>
+  <circle cx="588" cy="200" r="4.2" fill="#161b21" stroke="#9aa7b6" stroke-opacity=".5"/>
+  <circle cx="588" cy="700" r="4.2" fill="#161b21" stroke="#9aa7b6" stroke-opacity=".5"/>
+  <rect id="ruleBody" x="583" y="210" width="10" height="480" fill="url(#ruleG)" stroke="#12171d" stroke-width="1"/>
+  <line x1="588" y1="210" x2="588" y2="690" stroke="#10151b" stroke-opacity=".55" stroke-width="1"/>
+  <g id="ticksMinor" stroke="#d8e0ea" stroke-width="1.5"></g>
+  <g id="ticksMajor" stroke="#eef2f7" stroke-width="2.3"></g>
+</g>
+
+<!-- cast shadow of linkage on the base, fixed offset -->
+<g clip-path="url(#plateClip)">
+  <g transform="translate(16 22)" opacity=".55">
+    <g filter="url(#soft)">
+      <path id="shL" d="" fill="none" stroke="#000" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="shP" d="" fill="none" stroke="#000" stroke-width="29" stroke-linecap="round"/>
+    </g>
+  </g>
+</g>
+
+<!-- links, bottom to top -->
+<g id="links"></g>
+
+<!-- trail of P: previous 1.5 s -->
+<g id="trail" fill="none" stroke="#ff5a1a" stroke-linecap="butt"></g>
+
+<!-- pins -->
+<g id="pins"></g>
+
+<!-- output marker -->
+<g id="pm">
+  <circle r="40" fill="url(#glowG)"/>
+  <circle r="19" fill="none" stroke="#ff5a1a" stroke-width="3.6"/>
+  <circle r="5.4" fill="#ff5a1a"/>
+</g>
+
+<!-- labels -->
+<g id="labels" fill="#eef2f7" font-size="26" font-weight="600" text-anchor="middle" stroke="#0b0f14" stroke-width="5" stroke-linejoin="round" paint-order="stroke">
+  <text id="lbO" x="230" y="450" dy=".35em">O</text>
+  <text id="lbQ" x="400" y="522" dy=".35em">Q</text>
+  <text id="lbP" x="642" y="450" dy=".35em" fill="#ffd9c8">P</text>
+</g>
+</svg>
+
+<script>
+(function () {
+  "use strict";
+  var OX = 300, OY = 450, QX = 400, QY = 450, R = 260, S = 100, D = 6;
+  var PSI = Math.PI / 3, TWO_PI = Math.PI * 2, TRAIL = 1.5, NSEG = 72;
+  var accent = "#ff5a1a";
+  function $(id) { return document.getElementById(id); }
+  function f(n) { return n.toFixed(3); }
+
+  /* ---- kinematics: pure function of t ---- */
+  function solve(t, o) {
+    var psi = PSI * Math.sin(TWO_PI * t / D);
+    var cx = QX + S * Math.cos(psi), cy = QY - S * Math.sin(psi);
+    var dx = cx - OX, dy = cy - OY, d = Math.sqrt(dx * dx + dy * dy);
+    var a = (R * R - S * S + d * d) / (2 * d);
+    var h = Math.sqrt(R * R - a * a);
+    var ux = dx / d, uy = dy / d, mx = OX + a * ux, my = OY + a * uy;
+    o[0] = cx; o[1] = cy;
+    o[2] = mx + h * uy; o[3] = my - h * ux;   /* A: smaller y */
+    o[4] = mx - h * uy; o[5] = my + h * ux;   /* B */
+    o[6] = o[2] + o[4] - cx; o[7] = o[3] + o[5] - cy; /* P = A + B - C */
+    o[8] = psi;
+    return o;
+  }
+
+  /* ---- static helpers ---- */
+  function polar(r, deg) {
+    var a = deg * Math.PI / 180;
+    return [QX + r * Math.cos(a), QY - r * Math.sin(a)];
+  }
+  function hex(cx, cy, r) {
+    var p = [], i;
+    for (i = 0; i < 6; i++) {
+      var a = Math.PI / 6 + i * Math.PI / 3;
+      p.push(f(cx + r * Math.cos(a)) + "," + f(cy + r * Math.sin(a)));
+    }
+    return p.join(" ");
+  }
+  function bolt(cx, cy, r) {
+    return '<polygon points="' + hex(cx, cy, r) + '" fill="url(#pinG)" stroke="#0d1116" stroke-width="1"/>' +
+      '<circle cx="' + cx + '" cy="' + cy + '" r="' + (r * 0.42) + '" fill="#1a2028"/>' +
+      '<line x1="' + (cx - r * 0.42) + '" y1="' + cy + '" x2="' + (cx + r * 0.42) + '" y2="' + cy + '" stroke="#5d6a7a" stroke-width=".8"/>';
+  }
+  function screw(cx, cy) {
+    return '<circle cx="' + cx + '" cy="' + cy + '" r="10" fill="#161b21"/>' +
+      '<circle cx="' + cx + '" cy="' + cy + '" r="8.4" fill="url(#bossG)" stroke="#0d1116" stroke-width="1"/>' +
+      '<polygon points="' + hex(cx, cy, 3.8) + '" fill="#10151a"/>';
+  }
+
+  /* ---- base plate, pedestal, ground symbols ---- */
+  (function () {
+    var s = "", i;
+    for (i = 8; i >= 1; i--) {
+      s += '<rect x="' + (138 - i * 1.6) + '" y="' + (152 - i * 1.6) + '" width="' + (710 + i * 3.2) + '" height="' + (620 + i * 3.2) +
+        '" rx="' + (20 + i * 1.6) + '" fill="#000" opacity=".07"/>';
+    }
+    s += '<rect x="130" y="140" width="710" height="620" rx="20" fill="url(#plateG)" stroke="#0c1014" stroke-width="2"/>';
+    s += '<rect x="130" y="140" width="710" height="620" rx="20" fill="url(#brush)"/>';
+    s += '<rect x="133.5" y="143.5" width="703" height="613" rx="17" fill="none" stroke="#fff" stroke-opacity=".14" stroke-width="1.2"/>';
+    s += screw(164, 174) + screw(806, 174) + screw(164, 726) + screw(806, 726);
+    /* pedestal block carrying the two ground pivots */
+    s += '<rect x="266" y="424" width="176" height="64" rx="10" fill="#000" opacity=".35" transform="translate(4 6)"/>';
+    s += '<rect x="262" y="418" width="176" height="64" rx="10" fill="url(#blockG)" stroke="#0c1014" stroke-width="1.5"/>';
+    s += '<rect x="264.5" y="420.5" width="171" height="59" rx="8" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="1"/>';
+    var pv = [[OX, OY], [QX, QY]], k, j;
+    for (k = 0; k < 2; k++) {
+      var px = pv[k][0], py = pv[k][1];
+      s += '<circle cx="' + px + '" cy="' + py + '" r="30" fill="url(#flangeG)" stroke="#0c1014" stroke-width="1.5"/>';
+      s += '<circle cx="' + px + '" cy="' + py + '" r="27" fill="none" stroke="#fff" stroke-opacity=".16" stroke-width="1"/>';
+      for (j = 0; j < 4; j++) {
+        var a = Math.PI / 4 + j * Math.PI / 2;
+        s += bolt(px + 23.5 * Math.cos(a), py + 23.5 * Math.sin(a), 5);
+      }
+    }
+    /* ground hatching under the pedestal */
+    s += '<line x1="262" y1="484.5" x2="438" y2="484.5" stroke="#c0ccda" stroke-width="2.6" stroke-linecap="round"/>';
+    for (i = 0; i < 16; i++) {
+      var hx = 270 + i * 11;
+      s += '<line x1="' + hx + '" y1="486" x2="' + (hx - 9) + '" y2="496" stroke="#aebbcb" stroke-opacity=".85" stroke-width="1.7" stroke-linecap="round"/>';
+    }
+    $("plate").innerHTML = s;
+  })();
+
+  /* ---- dial ---- */
+  (function () {
+    var a = polar(130, -68), b = polar(130, 68), c = polar(206, 68), d = polar(206, -68);
+    $("dialBand").setAttribute("d", "M" + f(a[0]) + " " + f(a[1]) + "A130 130 0 0 0 " + f(b[0]) + " " + f(b[1]) +
+      "L" + f(c[0]) + " " + f(c[1]) + "A206 206 0 0 1 " + f(d[0]) + " " + f(d[1]) + "Z");
+    var t0 = polar(150, 60), t1 = polar(150, -60);
+    $("dialArc").setAttribute("d", "M" + f(t0[0]) + " " + f(t0[1]) + "A150 150 0 0 1 " + f(t1[0]) + " " + f(t1[1]));
+    var s = "", i;
+    for (i = -60; i <= 60; i += 15) {
+      var major = (i === -60 || i === 0 || i === 60);
+      var p1 = polar(major ? 137 : 143, i), p2 = polar(major ? 163 : 157, i);
+      s += '<line x1="' + f(p1[0]) + '" y1="' + f(p1[1]) + '" x2="' + f(p2[0]) + '" y2="' + f(p2[1]) +
+        '" stroke-width="' + (major ? 3 : 1.8) + '"/>';
+    }
+    $("dialTicks").innerHTML = s;
+    var lab = [[-60, "-60", 188], [0, "0", 176], [60, "+60", 188]], l = "";
+    for (i = 0; i < lab.length; i++) {
+      var q = polar(lab[i][2], lab[i][0]);
+      l += '<text x="' + f(q[0]) + '" y="' + f(q[1]) + '" dy=".35em">' + lab[i][1] + '</text>';
+    }
+    $("dialLabels").innerHTML = l;
+  })();
+
+  /* ---- straightedge ticks: every 40 from y=210 ---- */
+  (function () {
+    var mi = "", ma = "", i;
+    for (i = 0; i <= 12; i++) {
+      var y = 210 + 40 * i, major = (i % 3 === 0), len = major ? 15 : 8;
+      var seg = '<line x1="593" y1="' + y + '" x2="' + (593 + len) + '" y2="' + y + '"/>';
+      if (major) ma += seg; else mi += seg;
+    }
+    $("ticksMinor").innerHTML = mi;
+    $("ticksMajor").innerHTML = ma;
+  })();
+
+  /* ---- links ---- */
+  function barMarkup(L, w, g) {
+    var h = w / 2;
+    return '<g class="sh"><rect x="' + (-h) + '" y="' + (-h) + '" width="' + (L + w) + '" height="' + w + '" rx="' + h + '" fill="#000" opacity=".3"/></g>' +
+      '<g class="bd"><rect x="' + (-h) + '" y="' + (-h) + '" width="' + (L + w) + '" height="' + w + '" rx="' + h + '" fill="url(#' + g + ')" stroke="#0e1319" stroke-width="1.3"/>' +
+      '<rect x="' + (-h + 1.6) + '" y="' + (-h + 1.6) + '" width="' + (L + w - 3.2) + '" height="' + (w - 3.2) + '" rx="' + (h - 1.6) + '" fill="none" stroke="#fff" stroke-opacity=".24" stroke-width="1"/>' +
+      '<rect x="' + (w * 0.85) + '" y="-2.4" width="' + (L - w * 1.7) + '" height="4.8" rx="2.4" fill="#0f141a" opacity=".7"/></g>';
+  }
+  /* order = stacking order: later on top.  [name, from, to, length, width, gradient] */
+  var DEFS = [
+    ["OA", "O", "A", 260, 20, "gLong"], ["OB", "O", "B", 260, 20, "gLong"],
+    ["PA", "P", "A", 100, 18, "gMid"],  ["CB", "C", "B", 100, 18, "gMid"],
+    ["AC", "A", "C", 100, 18, "gMid"],  ["BP", "B", "P", 100, 18, "gMid"],
+    ["QC", "Q", "C", 100, 18, "gCrank"]
+  ];
+  var linkEls = [], i;
+  (function () {
+    var s = "";
+    for (i = 0; i < DEFS.length; i++) {
+      s += '<g id="lk' + DEFS[i][0] + '">' + barMarkup(DEFS[i][3], DEFS[i][4], DEFS[i][5]) + '</g>';
+    }
+    $("links").innerHTML = s;
+    for (i = 0; i < DEFS.length; i++) {
+      var g = $("lk" + DEFS[i][0]);
+      linkEls.push({ sh: g.children[0], bd: g.children[1] });
+    }
+  })();
+
+  /* ---- pins ---- */
+  var PINNAMES = ["O", "Q", "A", "B", "C", "P"], pinEls = {};
+  (function () {
+    var s = "", n;
+    for (n = 0; n < PINNAMES.length; n++) {
+      var fixed = (PINNAMES[n] === "O" || PINNAMES[n] === "Q");
+      s += '<g id="pin' + PINNAMES[n] + '">' +
+        (fixed ? '<circle r="19" fill="#12161c"/><circle r="17.4" fill="url(#bossG)" stroke="#0a0d11" stroke-width="1"/>' +
+          '<circle r="17.4" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="1" transform="scale(.9)"/>'
+          : '<circle r="15" fill="#12161c"/>') +
+        '<circle r="11.6" fill="url(#pinG)" stroke="#0a0d11" stroke-width="1.1"/>' +
+        '<circle r="4.6" fill="#232b34"/><circle r="2.2" cx="-.8" cy="-.8" fill="#6b7888"/></g>';
+    }
+    $("pins").innerHTML = s;
+    for (n = 0; n < PINNAMES.length; n++) pinEls[PINNAMES[n]] = $("pin" + PINNAMES[n]);
+    pinEls.O.setAttribute("transform", "translate(" + OX + " " + OY + ")");
+    pinEls.Q.setAttribute("transform", "translate(" + QX + " " + QY + ")");
+  })();
+
+  /* ---- trail segments (fixed opacity per age slot) ---- */
+  var trailEls = [];
+  (function () {
+    var s = "", k;
+    for (k = 0; k < NSEG; k++) {
+      var u = (k + 0.5) / NSEG;
+      s += '<line stroke-opacity="' + (Math.pow(1 - u, 1.25)).toFixed(3) + '" stroke-width="' + (5.2 - 3 * u).toFixed(2) + '"/>';
+    }
+    $("trail").innerHTML = s;
+    trailEls = Array.prototype.slice.call($("trail").children);
+  })();
+
+  /* ---- per-frame render ---- */
+  var sol = [0, 0, 0, 0, 0, 0, 0, 0, 0], tmp = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  var shL = $("shL"), shP = $("shP"), ptr = $("ptr"), wedge = $("wedge"), pm = $("pm"), lbP = $("lbP");
+
+  function place(idx, x1, y1, x2, y2) {
+    var ang = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+    linkEls[idx].bd.setAttribute("transform", "translate(" + f(x1) + " " + f(y1) + ") rotate(" + f(ang) + ")");
+    linkEls[idx].sh.setAttribute("transform", "translate(" + f(x1 + 2.5) + " " + f(y1 + 3.5) + ") rotate(" + f(ang) + ")");
+  }
+  function tr(x, y) { return "translate(" + f(x) + " " + f(y) + ")"; }
+
+  function render(t) {
+    t = ((t % D) + D) % D;
+    var s = solve(t, sol);
+    var cx = s[0], cy = s[1], ax = s[2], ay = s[3], bx = s[4], by = s[5], px = s[6], py = s[7], psi = s[8];
+    place(0, OX, OY, ax, ay); place(1, OX, OY, bx, by);
+    place(2, px, py, ax, ay); place(3, cx, cy, bx, by);
+    place(4, ax, ay, cx, cy); place(5, bx, by, px, py);
+    place(6, QX, QY, cx, cy);
+    pinEls.A.setAttribute("transform", tr(ax, ay));
+    pinEls.B.setAttribute("transform", tr(bx, by));
+    pinEls.C.setAttribute("transform", tr(cx, cy));
+    pinEls.P.setAttribute("transform", tr(px, py));
+    pm.setAttribute("transform", tr(px, py));
+    lbP.setAttribute("transform", tr(0, py - 450));
+
+    /* cast shadow geometry */
+    var d = "M" + f(OX) + " " + f(OY) + "L" + f(ax) + " " + f(ay) + "M" + f(OX) + " " + f(OY) + "L" + f(bx) + " " + f(by) +
+      "M" + f(ax) + " " + f(ay) + "L" + f(cx) + " " + f(cy) + "L" + f(bx) + " " + f(by) + "L" + f(px) + " " + f(py) + "L" + f(ax) + " " + f(ay) +
+      "M" + f(QX) + " " + f(QY) + "L" + f(cx) + " " + f(cy);
+    shL.setAttribute("d", d);
+    shP.setAttribute("d", "M" + f(OX) + " " + f(OY) + "h.01M" + f(QX) + " " + f(QY) + "h.01M" + f(ax) + " " + f(ay) + "h.01M" +
+      f(bx) + " " + f(by) + "h.01M" + f(cx) + " " + f(cy) + "h.01M" + f(px) + " " + f(py) + "h.01");
+
+    /* dial pointer + swept wedge */
+    var deg = psi * 180 / Math.PI;
+    ptr.setAttribute("transform", "translate(" + QX + " " + QY + ") rotate(" + f(-deg) + ")");
+    var wx = QX + 150 * Math.cos(psi), wy = QY - 150 * Math.sin(psi);
+    wedge.setAttribute("d", "M" + QX + " " + QY + "L" + (QX + 150) + " " + QY + "A150 150 0 0 " + (psi > 0 ? 0 : 1) + " " + f(wx) + " " + f(wy) + "Z");
+
+    /* trail: analytic positions of P for t-1.5 .. t */
+    var k, prevX, prevY, T;
+    solve(t, tmp); prevX = tmp[6]; prevY = tmp[7];
+    for (k = 1; k <= NSEG; k++) {
+      T = ((t - TRAIL * k / NSEG) % D + D) % D;
+      solve(T, tmp);
+      var e = trailEls[k - 1];
+      e.setAttribute("x1", f(prevX)); e.setAttribute("y1", f(prevY));
+      e.setAttribute("x2", f(tmp[6])); e.setAttribute("y2", f(tmp[7]));
+      prevX = tmp[6]; prevY = tmp[7];
+    }
+  }
+
+  /* ---- time control ---- */
+  var m = /[?&]t=([^&#]*)/.exec(window.location.search);
+  if (m) {
+    var v = parseFloat(decodeURIComponent(m[1]));
+    render(isFinite(v) ? v : 0);
+  } else {
+    var tStart = performance.now();
+    render(0);
+    var loop = function () {
+      render(((performance.now() - tStart) / 1000) % D);
+      window.requestAnimationFrame(loop);
+    };
+    window.requestAnimationFrame(loop);
+  }
+})();
+</script>
+</body>
+</html>

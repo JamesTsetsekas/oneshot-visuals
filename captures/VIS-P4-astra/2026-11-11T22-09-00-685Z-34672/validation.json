@@ -1,0 +1,41 @@
+{
+  "runId": "VIS-P4-astra",
+  "capturedAt": "2026-11-11T22:09:00.686Z",
+  "playwrightVersion": "1.65.0",
+  "browserVersion": "158.0.8127.18",
+  "viewport": {
+    "width": 1600,
+    "height": 900
+  },
+  "deviceScaleFactor": 1,
+  "status": "captured",
+  "sourceHash": "f5cad27bb13bd8d3995bd14eb757b904d358470d0b841633b0a5e3af3e7df37d",
+  "bytes": 16277,
+  "consoleErrors": [],
+  "pageErrors": [],
+  "networkAttempts": [],
+  "svgPresent": true,
+  "poster": "captures/VIS-P4-astra/2026-11-11T22-09-00-685Z-34672/poster.png",
+  "clip": "captures/VIS-P4-astra/2026-11-11T22-09-00-685Z-34672/clip.webm",
+  "frames": [
+    {
+      "time": 0,
+      "path": "captures/VIS-P4-astra/2026-11-11T22-09-00-685Z-34672/frame-0.png"
+    },
+    {
+      "time": 3,
+      "path": "captures/VIS-P4-astra/2026-11-11T22-09-00-685Z-34672/frame-3.png"
+    },
+    {
+      "time": 6,
+      "path": "captures/VIS-P4-astra/2026-11-11T22-09-00-685Z-34672/frame-6.png"
+    },
+    {
+      "time": 9,
+      "path": "captures/VIS-P4-astra/2026-11-11T22-09-00-685Z-34672/frame-9.png"
+    }
+  ],
+  "errors": [],
+  "captureElapsedSeconds": 14.443,
+  "clipMode": "sampled-frames-then-realtime-loop"
+}

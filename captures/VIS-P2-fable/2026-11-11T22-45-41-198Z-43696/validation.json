@@ -1,0 +1,23 @@
+{
+  "runId": "VIS-P2-fable",
+  "capturedAt": "2026-11-11T22:45:41.199Z",
+  "playwrightVersion": "1.65.0",
+  "browserVersion": "158.0.8127.18",
+  "viewport": {
+    "width": 1600,
+    "height": 900
+  },
+  "deviceScaleFactor": 1,
+  "status": "captured",
+  "sourceHash": "34d5ab904919869632e8c37be63c6cfe8e36694d4a5dc221c912cd108b7f4206",
+  "bytes": 50048,
+  "consoleErrors": [],
+  "pageErrors": [],
+  "networkAttempts": [],
+  "svgPresent": true,
+  "poster": "captures/VIS-P2-fable/2026-11-11T22-45-41-198Z-43696/poster.png",
+  "clip": null,
+  "frames": [],
+  "errors": [],
+  "captureElapsedSeconds": 0.595
+}

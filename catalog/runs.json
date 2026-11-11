@@ -1,0 +1,896 @@
+[
+  {
+    "id": "VIS-P1-astra",
+    "promptId": "VIS-P1",
+    "modelId": "astra",
+    "directory": "builds/VIS-P1/astra",
+    "status": "complete",
+    "requestedModel": "gpt-6-astra",
+    "effort": "high",
+    "provider": "codex",
+    "promptHash": "e60954c75ef9dd2ed31ead0c1d76751af6192d4a0fb09ae072a07d4f4d23e10e",
+    "score": null,
+    "poster": "captures/VIS-P1-astra/2026-11-11T22-03-54-848Z-38288/poster.png",
+    "clip": null,
+    "source": "sources/VIS-P1-astra/index.html.txt",
+    "notes": "sources/VIS-P1-astra/NOTES.md.txt",
+    "sourceHash": "41e7ede29041aa99a114e6b8f8d991537563ab0b4a3608bca5665164ea5cd195",
+    "validation": "captures/VIS-P1-astra/validation.json",
+    "captureStatus": "captured",
+    "elapsedSeconds": null,
+    "completedEventReceivedAt": "2026-11-11T22:03:54.224Z",
+    "settings": [
+      {
+        "id": "reasoningEffort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P1 · astra · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3A98d32d21-2139-47ae-a9b1-7cd31cf45dcb%3Adelegate-task%3A8b0813e2-7688-41e1-a13a-913921c21db2)",
+    "launchedAt": "2026-11-11T21:56:47.857Z"
+  },
+  {
+    "id": "VIS-P1-sol",
+    "promptId": "VIS-P1",
+    "modelId": "sol",
+    "directory": "builds/VIS-P1/sol",
+    "status": "complete",
+    "requestedModel": "gpt-6.1-sol",
+    "effort": "high",
+    "provider": "codex",
+    "promptHash": "e60954c75ef9dd2ed31ead0c1d76751af6192d4a0fb09ae072a07d4f4d23e10e",
+    "score": null,
+    "poster": "captures/VIS-P1-sol/2026-11-11T22-04-10-056Z-51184/poster.png",
+    "clip": null,
+    "source": "sources/VIS-P1-sol/index.html.txt",
+    "notes": "sources/VIS-P1-sol/NOTES.md.txt",
+    "sourceHash": "a44f38d964ac53aa33fb66fda2ba40e8f9dfb0b288a363da748647cd02de469c",
+    "validation": "captures/VIS-P1-sol/validation.json",
+    "captureStatus": "captured",
+    "elapsedSeconds": null,
+    "completedEventReceivedAt": "2026-11-11T22:04:09.583Z",
+    "settings": [
+      {
+        "id": "reasoningEffort",
+        "value": "high"
+      },
+      {
+        "id": "serviceTier",
+        "value": "default"
+      }
+    ],
+    "sessionLink": "[VIS-P1 · sol · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3A98d32d21-2139-47ae-a9b1-7cd31cf45dcb%3Adelegate-task%3Afac4223a-bd5a-4c45-ac8e-8738d42d9fc3)",
+    "launchedAt": "2026-11-11T21:56:48.181Z"
+  },
+  {
+    "id": "VIS-P1-fable",
+    "promptId": "VIS-P1",
+    "modelId": "fable",
+    "directory": "builds/VIS-P1/fable",
+    "status": "complete",
+    "requestedModel": "claude-fable-5-2",
+    "effort": "high",
+    "provider": "claudeAgent",
+    "promptHash": "e60954c75ef9dd2ed31ead0c1d76751af6192d4a0fb09ae072a07d4f4d23e10e",
+    "score": null,
+    "poster": "captures/VIS-P1-fable/2026-11-11T22-35-24-577Z-45548/poster.png",
+    "clip": null,
+    "source": "sources/VIS-P1-fable/index.html.txt",
+    "notes": "sources/VIS-P1-fable/NOTES.md.txt",
+    "sourceHash": "f0334d39b26396a862fff8098efa7656ee1ad4e84aeef684cf1a997b7988a962",
+    "validation": "captures/VIS-P1-fable/validation.json",
+    "captureStatus": "captured",
+    "elapsedSeconds": null,
+    "completedEventReceivedAt": "2026-11-11T22:35:24.107Z",
+    "settings": [
+      {
+        "id": "effort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P1 · fable · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3A98d32d21-2139-47ae-a9b1-7cd31cf45dcb%3Adelegate-task%3A76f9e92e-a731-44aa-86b3-4e44b68eba87)",
+    "launchedAt": "2026-11-11T21:56:48.873Z"
+  },
+  {
+    "id": "VIS-P1-opus",
+    "promptId": "VIS-P1",
+    "modelId": "opus",
+    "directory": "builds/VIS-P1/opus",
+    "status": "complete",
+    "requestedModel": "claude-opus-5-5",
+    "effort": "high",
+    "provider": "claudeAgent",
+    "promptHash": "e60954c75ef9dd2ed31ead0c1d76751af6192d4a0fb09ae072a07d4f4d23e10e",
+    "score": null,
+    "poster": "captures/VIS-P1-opus/2026-11-11T22-17-07-677Z-51204/poster.png",
+    "clip": null,
+    "source": "sources/VIS-P1-opus/index.html.txt",
+    "notes": "sources/VIS-P1-opus/NOTES.md.txt",
+    "sourceHash": "1f760fbb5b7c3b33930e7fe457afe4d4c0e7618044a07ebc03cfc6a5f2026054",
+    "validation": "captures/VIS-P1-opus/validation.json",
+    "captureStatus": "captured",
+    "elapsedSeconds": null,
+    "completedEventReceivedAt": "2026-11-11T22:17:07.182Z",
+    "settings": [
+      {
+        "id": "effort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P1 · opus · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3A98d32d21-2139-47ae-a9b1-7cd31cf45dcb%3Adelegate-task%3A7fbef9fe-b7c2-4cd9-8c42-b53bce31bc85)",
+    "launchedAt": "2026-11-11T21:56:49.830Z"
+  },
+  {
+    "id": "VIS-P1-sonnet",
+    "promptId": "VIS-P1",
+    "modelId": "sonnet",
+    "directory": "builds/VIS-P1/sonnet",
+    "status": "complete",
+    "requestedModel": "claude-sonnet-5-5",
+    "effort": "high",
+    "provider": "claudeAgent",
+    "promptHash": "e60954c75ef9dd2ed31ead0c1d76751af6192d4a0fb09ae072a07d4f4d23e10e",
+    "score": null,
+    "poster": "captures/VIS-P1-sonnet/2026-11-11T22-13-48-043Z-37744/poster.png",
+    "clip": null,
+    "source": "sources/VIS-P1-sonnet/index.html.txt",
+    "notes": "sources/VIS-P1-sonnet/NOTES.md.txt",
+    "sourceHash": "1891bbd8c46332a854460d289e43708419c388bbc9fd0f414a10269e32d3dfc8",
+    "validation": "captures/VIS-P1-sonnet/validation.json",
+    "captureStatus": "captured",
+    "elapsedSeconds": null,
+    "completedEventReceivedAt": "2026-11-11T22:13:39.984Z",
+    "settings": [
+      {
+        "id": "effort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P1 · sonnet · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3A98d32d21-2139-47ae-a9b1-7cd31cf45dcb%3Adelegate-task%3Ac3b3e74d-d1d0-41c3-8621-91419b95e61a)",
+    "launchedAt": "2026-11-11T21:56:50.551Z"
+  },
+  {
+    "id": "VIS-P2-astra",
+    "promptId": "VIS-P2",
+    "modelId": "astra",
+    "directory": "builds/VIS-P2/astra",
+    "status": "complete",
+    "requestedModel": "gpt-6-astra",
+    "effort": "high",
+    "provider": "codex",
+    "promptHash": "1c5393f5add4335b85ab44ccf87546538c7450df6d505de8dd33fe2c555be7d5",
+    "score": null,
+    "poster": "captures/VIS-P2-astra/2026-11-11T22-09-00-080Z-34672/poster.png",
+    "clip": null,
+    "source": "sources/VIS-P2-astra/index.html.txt",
+    "notes": "sources/VIS-P2-astra/NOTES.md.txt",
+    "sourceHash": "ae4e18323aa1c00d31afe4f840d65823978aff5f7a1c7119f0f15d23d7041310",
+    "validation": "captures/VIS-P2-astra/validation.json",
+    "captureStatus": "captured",
+    "elapsedSeconds": null,
+    "completedEventReceivedAt": "2026-11-11T22:08:59.535Z",
+    "settings": [
+      {
+        "id": "reasoningEffort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P2 · astra · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3A98d32d21-2139-47ae-a9b1-7cd31cf45dcb%3Adelegate-task%3A28106965-fb4e-488c-a4d4-be36c3e14c56)",
+    "launchedAt": "2026-11-11T22:02:09.723Z"
+  },
+  {
+    "id": "VIS-P2-sol",
+    "promptId": "VIS-P2",
+    "modelId": "sol",
+    "directory": "builds/VIS-P2/sol",
+    "status": "complete",
+    "requestedModel": "gpt-6.1-sol",
+    "effort": "high",
+    "provider": "codex",
+    "promptHash": "1c5393f5add4335b85ab44ccf87546538c7450df6d505de8dd33fe2c555be7d5",
+    "score": null,
+    "poster": "captures/VIS-P2-sol/2026-11-11T22-07-24-639Z-38880/poster.png",
+    "clip": null,
+    "source": "sources/VIS-P2-sol/index.html.txt",
+    "notes": "sources/VIS-P2-sol/NOTES.md.txt",
+    "sourceHash": "6fba88a27b82005f35859b146cce1c8ebfdab13d2e6281f26580d703a3a5e4ee",
+    "validation": "captures/VIS-P2-sol/validation.json",
+    "captureStatus": "captured",
+    "elapsedSeconds": null,
+    "completedEventReceivedAt": "2026-11-11T22:07:23.819Z",
+    "settings": [
+      {
+        "id": "reasoningEffort",
+        "value": "high"
+      },
+      {
+        "id": "serviceTier",
+        "value": "default"
+      }
+    ],
+    "sessionLink": "[VIS-P2 · sol · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3A98d32d21-2139-47ae-a9b1-7cd31cf45dcb%3Adelegate-task%3Aa7228e61-3bea-4033-bc50-78e0d3035757)",
+    "launchedAt": "2026-11-11T22:02:10.072Z"
+  },
+  {
+    "id": "VIS-P2-fable",
+    "promptId": "VIS-P2",
+    "modelId": "fable",
+    "directory": "builds/VIS-P2/fable",
+    "status": "complete",
+    "requestedModel": "claude-fable-5-2",
+    "effort": "high",
+    "provider": "claudeAgent",
+    "promptHash": "1c5393f5add4335b85ab44ccf87546538c7450df6d505de8dd33fe2c555be7d5",
+    "score": null,
+    "poster": "captures/VIS-P2-fable/2026-11-11T22-45-41-198Z-43696/poster.png",
+    "clip": null,
+    "source": "sources/VIS-P2-fable/index.html.txt",
+    "notes": "sources/VIS-P2-fable/NOTES.md.txt",
+    "sourceHash": "34d5ab904919869632e8c37be63c6cfe8e36694d4a5dc221c912cd108b7f4206",
+    "validation": "captures/VIS-P2-fable/validation.json",
+    "captureStatus": "captured",
+    "elapsedSeconds": null,
+    "completedEventReceivedAt": "2026-11-11T22:45:40.653Z",
+    "settings": [
+      {
+        "id": "effort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P2 · fable · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3A98d32d21-2139-47ae-a9b1-7cd31cf45dcb%3Adelegate-task%3Aac2a8dee-99ef-4614-9a81-4e05bdc803ec)",
+    "launchedAt": "2026-11-11T22:02:10.488Z"
+  },
+  {
+    "id": "VIS-P2-opus",
+    "promptId": "VIS-P2",
+    "modelId": "opus",
+    "directory": "builds/VIS-P2/opus",
+    "status": "complete",
+    "requestedModel": "claude-opus-5-5",
+    "effort": "high",
+    "provider": "claudeAgent",
+    "promptHash": "1c5393f5add4335b85ab44ccf87546538c7450df6d505de8dd33fe2c555be7d5",
+    "score": null,
+    "poster": "captures/VIS-P2-opus/2026-11-11T22-35-55-368Z-12484/poster.png",
+    "clip": null,
+    "source": "sources/VIS-P2-opus/index.html.txt",
+    "notes": "sources/VIS-P2-opus/NOTES.md.txt",
+    "sourceHash": "1a9c8434f9c9d81a1321c7242f03c1aecbc368825825621d026ad308d90c1981",
+    "validation": "captures/VIS-P2-opus/validation.json",
+    "captureStatus": "captured",
+    "elapsedSeconds": null,
+    "completedEventReceivedAt": "2026-11-11T22:35:54.909Z",
+    "settings": [
+      {
+        "id": "effort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P2 · opus · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3A98d32d21-2139-47ae-a9b1-7cd31cf45dcb%3Adelegate-task%3Adcab01d8-ddf4-4b73-a535-e81b2e51de05)",
+    "launchedAt": "2026-11-11T22:02:11.030Z"
+  },
+  {
+    "id": "VIS-P2-sonnet",
+    "promptId": "VIS-P2",
+    "modelId": "sonnet",
+    "directory": "builds/VIS-P2/sonnet",
+    "status": "complete",
+    "requestedModel": "claude-sonnet-5-5",
+    "effort": "high",
+    "provider": "claudeAgent",
+    "promptHash": "1c5393f5add4335b85ab44ccf87546538c7450df6d505de8dd33fe2c555be7d5",
+    "score": null,
+    "poster": "captures/VIS-P2-sonnet/2026-11-11T22-37-36-345Z-41604/poster.png",
+    "clip": null,
+    "source": "sources/VIS-P2-sonnet/index.html.txt",
+    "notes": "sources/VIS-P2-sonnet/NOTES.md.txt",
+    "sourceHash": "1033301f8991b3f2ba12a935a016b434029284685316f8b9976400c6c7b2733c",
+    "validation": "captures/VIS-P2-sonnet/validation.json",
+    "captureStatus": "captured",
+    "elapsedSeconds": null,
+    "completedEventReceivedAt": "2026-11-11T22:37:35.832Z",
+    "settings": [
+      {
+        "id": "effort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P2 · sonnet · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3A98d32d21-2139-47ae-a9b1-7cd31cf45dcb%3Adelegate-task%3Ac0207968-db33-4a75-8581-4102a6ac9db5)",
+    "launchedAt": "2026-11-11T22:02:11.465Z"
+  },
+  {
+    "id": "VIS-P3-astra",
+    "promptId": "VIS-P3",
+    "modelId": "astra",
+    "directory": "builds/VIS-P3/astra",
+    "status": "complete",
+    "requestedModel": "gpt-6-astra",
+    "effort": "high",
+    "provider": "codex",
+    "promptHash": "3e24503ab8f4f3e1f8f5bb384f17758f8638045ed1fa704a106a3d473c6b155e",
+    "score": null,
+    "poster": "captures/VIS-P3-astra/2026-11-11T22-08-12-661Z-43812/poster.png",
+    "clip": "captures/VIS-P3-astra/2026-11-11T22-08-12-661Z-43812/clip.webm",
+    "source": "sources/VIS-P3-astra/index.html.txt",
+    "notes": "sources/VIS-P3-astra/NOTES.md.txt",
+    "sourceHash": "13508d9a5787747e3a1b4e54aebd5244b29443e979b778f26d2351d2d120c8c3",
+    "validation": "captures/VIS-P3-astra/validation.json",
+    "captureStatus": "captured",
+    "elapsedSeconds": null,
+    "completedEventReceivedAt": "2026-11-11T22:08:11.371Z",
+    "settings": [
+      {
+        "id": "reasoningEffort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P3 · astra · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3A98d32d21-2139-47ae-a9b1-7cd31cf45dcb%3Adelegate-task%3Aa6c77fbf-fcd7-4f64-8e0c-a55656248b7f)",
+    "launchedAt": "2026-11-11T22:02:11.968Z"
+  },
+  {
+    "id": "VIS-P3-sol",
+    "promptId": "VIS-P3",
+    "modelId": "sol",
+    "directory": "builds/VIS-P3/sol",
+    "status": "complete",
+    "requestedModel": "gpt-6.1-sol",
+    "effort": "high",
+    "provider": "codex",
+    "promptHash": "3e24503ab8f4f3e1f8f5bb384f17758f8638045ed1fa704a106a3d473c6b155e",
+    "score": null,
+    "poster": "captures/VIS-P3-sol/2026-11-11T22-06-50-325Z-39460/poster.png",
+    "clip": "captures/VIS-P3-sol/2026-11-11T22-06-50-325Z-39460/clip.webm",
+    "source": "sources/VIS-P3-sol/index.html.txt",
+    "notes": "sources/VIS-P3-sol/NOTES.md.txt",
+    "sourceHash": "4f4191542c7609c35dd99f413f75eaee6e863593dfa8438eee4322f0f18af83f",
+    "validation": "captures/VIS-P3-sol/validation.json",
+    "captureStatus": "captured",
+    "elapsedSeconds": null,
+    "completedEventReceivedAt": "2026-11-11T22:06:49.723Z",
+    "settings": [
+      {
+        "id": "reasoningEffort",
+        "value": "high"
+      },
+      {
+        "id": "serviceTier",
+        "value": "default"
+      }
+    ],
+    "sessionLink": "[VIS-P3 · sol · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3A98d32d21-2139-47ae-a9b1-7cd31cf45dcb%3Adelegate-task%3Ac2eb27f6-a42f-42e5-95e8-5bbed26bed5d)",
+    "launchedAt": "2026-11-11T22:02:12.452Z"
+  },
+  {
+    "id": "VIS-P3-fable",
+    "promptId": "VIS-P3",
+    "modelId": "fable",
+    "directory": "builds/VIS-P3/fable",
+    "status": "complete",
+    "requestedModel": "claude-fable-5-2",
+    "effort": "high",
+    "provider": "claudeAgent",
+    "promptHash": "3e24503ab8f4f3e1f8f5bb384f17758f8638045ed1fa704a106a3d473c6b155e",
+    "score": null,
+    "poster": "captures/VIS-P3-fable/2026-11-11T22-24-33-269Z-45220/poster.png",
+    "clip": "captures/VIS-P3-fable/2026-11-11T22-24-33-269Z-45220/clip.webm",
+    "source": "sources/VIS-P3-fable/index.html.txt",
+    "notes": "sources/VIS-P3-fable/NOTES.md.txt",
+    "sourceHash": "e37cde133aaed7d4ed0d11415b49cfb21d0b5b8f071c465af87839f4a2b53873",
+    "validation": "captures/VIS-P3-fable/validation.json",
+    "captureStatus": "captured",
+    "elapsedSeconds": null,
+    "completedEventReceivedAt": "2026-11-11T22:24:32.731Z",
+    "settings": [
+      {
+        "id": "effort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P3 · fable · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3A98d32d21-2139-47ae-a9b1-7cd31cf45dcb%3Adelegate-task%3Ad670caf7-4d68-43f4-9c54-f18be8021ddc)",
+    "launchedAt": "2026-11-11T22:02:13.189Z"
+  },
+  {
+    "id": "VIS-P3-opus",
+    "promptId": "VIS-P3",
+    "modelId": "opus",
+    "directory": "builds/VIS-P3/opus",
+    "status": "complete",
+    "requestedModel": "claude-opus-5-5",
+    "effort": "high",
+    "provider": "claudeAgent",
+    "promptHash": "3e24503ab8f4f3e1f8f5bb384f17758f8638045ed1fa704a106a3d473c6b155e",
+    "score": null,
+    "poster": "captures/VIS-P3-opus/2026-11-11T22-14-10-643Z-58804/poster.png",
+    "clip": "captures/VIS-P3-opus/2026-11-11T22-14-10-643Z-58804/clip.webm",
+    "source": "sources/VIS-P3-opus/index.html.txt",
+    "notes": "sources/VIS-P3-opus/NOTES.md.txt",
+    "sourceHash": "b0727a1ccd6bbdc202c6f12d79cfa9f3de84e07cd2e54957f1da0edd00eb30da",
+    "validation": "captures/VIS-P3-opus/validation.json",
+    "captureStatus": "captured",
+    "elapsedSeconds": null,
+    "completedEventReceivedAt": "2026-11-11T22:14:10.106Z",
+    "settings": [
+      {
+        "id": "effort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P3 · opus · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3A98d32d21-2139-47ae-a9b1-7cd31cf45dcb%3Adelegate-task%3A11b53edb-da4c-4811-9510-cd171dc1a29b)",
+    "launchedAt": "2026-11-11T22:02:13.668Z"
+  },
+  {
+    "id": "VIS-P3-sonnet",
+    "promptId": "VIS-P3",
+    "modelId": "sonnet",
+    "directory": "builds/VIS-P3/sonnet",
+    "status": "complete",
+    "requestedModel": "claude-sonnet-5-5",
+    "effort": "high",
+    "provider": "claudeAgent",
+    "promptHash": "3e24503ab8f4f3e1f8f5bb384f17758f8638045ed1fa704a106a3d473c6b155e",
+    "score": null,
+    "poster": "captures/VIS-P3-sonnet/2026-11-11T22-11-07-909Z-54760/poster.png",
+    "clip": "captures/VIS-P3-sonnet/2026-11-11T22-11-07-909Z-54760/clip.webm",
+    "source": "sources/VIS-P3-sonnet/index.html.txt",
+    "notes": "sources/VIS-P3-sonnet/NOTES.md.txt",
+    "sourceHash": "362548129711d3acaccf779af3f3f1c48be9610cef22fd1462783f1dcfaf3667",
+    "validation": "captures/VIS-P3-sonnet/validation.json",
+    "captureStatus": "captured",
+    "elapsedSeconds": null,
+    "completedEventReceivedAt": "2026-11-11T22:11:07.059Z",
+    "settings": [
+      {
+        "id": "effort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P3 · sonnet · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3A98d32d21-2139-47ae-a9b1-7cd31cf45dcb%3Adelegate-task%3A9548f0e9-09b5-42f5-9ecf-cebaaf9454cd)",
+    "launchedAt": "2026-11-11T22:02:14.253Z"
+  },
+  {
+    "id": "VIS-P4-astra",
+    "promptId": "VIS-P4",
+    "modelId": "astra",
+    "directory": "builds/VIS-P4/astra",
+    "status": "complete",
+    "requestedModel": "gpt-6-astra",
+    "effort": "high",
+    "provider": "codex",
+    "promptHash": "aef9f69310f1b9b013178c328791bdd9928e7328f67b50674aac1e4a34639933",
+    "score": null,
+    "poster": "captures/VIS-P4-astra/2026-11-11T22-09-00-685Z-34672/poster.png",
+    "clip": "captures/VIS-P4-astra/2026-11-11T22-09-00-685Z-34672/clip.webm",
+    "source": "sources/VIS-P4-astra/index.html.txt",
+    "notes": "sources/VIS-P4-astra/NOTES.md.txt",
+    "sourceHash": "f5cad27bb13bd8d3995bd14eb757b904d358470d0b841633b0a5e3af3e7df37d",
+    "validation": "captures/VIS-P4-astra/validation.json",
+    "captureStatus": "captured",
+    "elapsedSeconds": null,
+    "completedEventReceivedAt": "2026-11-11T22:08:45.463Z",
+    "settings": [
+      {
+        "id": "reasoningEffort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P4 · astra · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3A98d32d21-2139-47ae-a9b1-7cd31cf45dcb%3Adelegate-task%3A4f883792-26c9-4c65-8738-082ad7bdebf0)",
+    "launchedAt": "2026-11-11T22:02:14.805Z"
+  },
+  {
+    "id": "VIS-P4-sol",
+    "promptId": "VIS-P4",
+    "modelId": "sol",
+    "directory": "builds/VIS-P4/sol",
+    "status": "complete",
+    "requestedModel": "gpt-6.1-sol",
+    "effort": "high",
+    "provider": "codex",
+    "promptHash": "aef9f69310f1b9b013178c328791bdd9928e7328f67b50674aac1e4a34639933",
+    "score": null,
+    "poster": "captures/VIS-P4-sol/2026-11-11T22-08-27-460Z-10276/poster.png",
+    "clip": "captures/VIS-P4-sol/2026-11-11T22-08-27-460Z-10276/clip.webm",
+    "source": "sources/VIS-P4-sol/index.html.txt",
+    "notes": "sources/VIS-P4-sol/NOTES.md.txt",
+    "sourceHash": "204b386d1f47e06260a26e6e7c4ba6e9d52d34f2e5dede5f7c05370fcbef8cc5",
+    "validation": "captures/VIS-P4-sol/validation.json",
+    "captureStatus": "captured",
+    "elapsedSeconds": null,
+    "completedEventReceivedAt": "2026-11-11T22:08:26.387Z",
+    "settings": [
+      {
+        "id": "reasoningEffort",
+        "value": "high"
+      },
+      {
+        "id": "serviceTier",
+        "value": "default"
+      }
+    ],
+    "sessionLink": "[VIS-P4 · sol · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3A98d32d21-2139-47ae-a9b1-7cd31cf45dcb%3Adelegate-task%3Ad44c62c0-f23c-433a-a73b-f2633a18fb23)",
+    "launchedAt": "2026-11-11T22:02:15.368Z"
+  },
+  {
+    "id": "VIS-P4-fable",
+    "promptId": "VIS-P4",
+    "modelId": "fable",
+    "directory": "builds/VIS-P4/fable",
+    "status": "complete",
+    "requestedModel": "claude-fable-5-2",
+    "effort": "high",
+    "provider": "claudeAgent",
+    "promptHash": "aef9f69310f1b9b013178c328791bdd9928e7328f67b50674aac1e4a34639933",
+    "score": null,
+    "poster": "captures/VIS-P4-fable/2026-11-11T22-40-31-324Z-58188/poster.png",
+    "clip": "captures/VIS-P4-fable/2026-11-11T22-40-31-324Z-58188/clip.webm",
+    "source": "sources/VIS-P4-fable/index.html.txt",
+    "notes": "sources/VIS-P4-fable/NOTES.md.txt",
+    "sourceHash": "de2878af5798b371a47db19d2d91988ac1659076eb64885e9de72cc56edafbec",
+    "validation": "captures/VIS-P4-fable/validation.json",
+    "captureStatus": "captured",
+    "elapsedSeconds": null,
+    "completedEventReceivedAt": "2026-11-11T22:40:30.771Z",
+    "settings": [
+      {
+        "id": "effort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P4 · fable · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3A98d32d21-2139-47ae-a9b1-7cd31cf45dcb%3Adelegate-task%3Ae8e80069-3f20-467f-a148-f3c14efb17d6)",
+    "launchedAt": "2026-11-11T22:02:15.822Z"
+  },
+  {
+    "id": "VIS-P4-opus",
+    "promptId": "VIS-P4",
+    "modelId": "opus",
+    "directory": "builds/VIS-P4/opus",
+    "status": "complete",
+    "requestedModel": "claude-opus-5-5",
+    "effort": "high",
+    "provider": "claudeAgent",
+    "promptHash": "aef9f69310f1b9b013178c328791bdd9928e7328f67b50674aac1e4a34639933",
+    "score": null,
+    "poster": "captures/VIS-P4-opus/2026-11-11T22-31-55-837Z-42188/poster.png",
+    "clip": "captures/VIS-P4-opus/2026-11-11T22-31-55-837Z-42188/clip.webm",
+    "source": "sources/VIS-P4-opus/index.html.txt",
+    "notes": "sources/VIS-P4-opus/NOTES.md.txt",
+    "sourceHash": "0d186a773101462fceef53a432e51e4490421d021f6b5f756ff4b4e53e0d7790",
+    "validation": "captures/VIS-P4-opus/validation.json",
+    "captureStatus": "captured",
+    "elapsedSeconds": null,
+    "completedEventReceivedAt": "2026-11-11T22:31:55.007Z",
+    "settings": [
+      {
+        "id": "effort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P4 · opus · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3A98d32d21-2139-47ae-a9b1-7cd31cf45dcb%3Adelegate-task%3A55f43f91-8a4e-4fc3-b05f-618ba32241b5)",
+    "launchedAt": "2026-11-11T22:02:17.489Z"
+  },
+  {
+    "id": "VIS-P4-sonnet",
+    "promptId": "VIS-P4",
+    "modelId": "sonnet",
+    "directory": "builds/VIS-P4/sonnet",
+    "status": "complete",
+    "requestedModel": "claude-sonnet-5-5",
+    "effort": "high",
+    "provider": "claudeAgent",
+    "promptHash": "aef9f69310f1b9b013178c328791bdd9928e7328f67b50674aac1e4a34639933",
+    "score": null,
+    "poster": "captures/VIS-P4-sonnet/2026-11-11T22-27-49-968Z-57132/poster.png",
+    "clip": "captures/VIS-P4-sonnet/2026-11-11T22-27-49-968Z-57132/clip.webm",
+    "source": "sources/VIS-P4-sonnet/index.html.txt",
+    "notes": "sources/VIS-P4-sonnet/NOTES.md.txt",
+    "sourceHash": "86d16597a4f0aaa8a98c0eeec20e9ee4c96c9c124ebd10a3f336c39174ee3410",
+    "validation": "captures/VIS-P4-sonnet/validation.json",
+    "captureStatus": "captured",
+    "elapsedSeconds": null,
+    "completedEventReceivedAt": "2026-11-11T22:27:49.248Z",
+    "settings": [
+      {
+        "id": "effort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P4 · sonnet · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3A98d32d21-2139-47ae-a9b1-7cd31cf45dcb%3Adelegate-task%3Ab0c841c9-aca0-421c-aa6c-7cf4e06d2de8)",
+    "launchedAt": "2026-11-11T22:02:18.176Z"
+  },
+  {
+    "id": "VIS-P5-astra",
+    "promptId": "VIS-P5",
+    "modelId": "astra",
+    "directory": "builds/VIS-P5/astra",
+    "status": "complete",
+    "requestedModel": "gpt-6-astra",
+    "effort": "high",
+    "provider": "codex",
+    "promptHash": "e5bc65c078154e7e68367d907edded325840b27ffce862759a2f438d4f446376",
+    "score": null,
+    "poster": "captures/VIS-P5-astra/2026-11-11T22-09-45-340Z-40608/poster.png",
+    "clip": null,
+    "source": "sources/VIS-P5-astra/index.html.txt",
+    "notes": "sources/VIS-P5-astra/NOTES.md.txt",
+    "sourceHash": "f11a0d8fb9f6f296fe0d1639cc335bb3f8d3890406ef050bbc7b608aff85e619",
+    "validation": "captures/VIS-P5-astra/validation.json",
+    "captureStatus": "captured",
+    "elapsedSeconds": null,
+    "completedEventReceivedAt": "2026-11-11T22:09:43.932Z",
+    "settings": [
+      {
+        "id": "reasoningEffort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P5 · astra · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3A98d32d21-2139-47ae-a9b1-7cd31cf45dcb%3Adelegate-task%3Aedf6f272-4251-4588-bf61-4d5daece0a06)",
+    "launchedAt": "2026-11-11T22:02:19.580Z"
+  },
+  {
+    "id": "VIS-P5-sol",
+    "promptId": "VIS-P5",
+    "modelId": "sol",
+    "directory": "builds/VIS-P5/sol",
+    "status": "complete",
+    "requestedModel": "gpt-6.1-sol",
+    "effort": "high",
+    "provider": "codex",
+    "promptHash": "e5bc65c078154e7e68367d907edded325840b27ffce862759a2f438d4f446376",
+    "score": null,
+    "poster": "captures/VIS-P5-sol/2026-11-11T22-09-46-573Z-40608/poster.png",
+    "clip": null,
+    "source": "sources/VIS-P5-sol/index.html.txt",
+    "notes": "sources/VIS-P5-sol/NOTES.md.txt",
+    "sourceHash": "f7519c9aed473d6ce52d993a1432270f8d7550ce07f8172e5b81fe43cf5b87a0",
+    "validation": "captures/VIS-P5-sol/validation.json",
+    "captureStatus": "captured",
+    "elapsedSeconds": null,
+    "completedEventReceivedAt": "2026-11-11T22:09:43.930Z",
+    "settings": [
+      {
+        "id": "reasoningEffort",
+        "value": "high"
+      },
+      {
+        "id": "serviceTier",
+        "value": "default"
+      }
+    ],
+    "sessionLink": "[VIS-P5 · sol · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3A98d32d21-2139-47ae-a9b1-7cd31cf45dcb%3Adelegate-task%3A38deff9a-2434-414f-94b0-836234c4aea3)",
+    "launchedAt": "2026-11-11T22:02:22.147Z"
+  },
+  {
+    "id": "VIS-P5-fable",
+    "promptId": "VIS-P5",
+    "modelId": "fable",
+    "directory": "builds/VIS-P5/fable",
+    "status": "complete",
+    "requestedModel": "claude-fable-5-2",
+    "effort": "high",
+    "provider": "claudeAgent",
+    "promptHash": "e5bc65c078154e7e68367d907edded325840b27ffce862759a2f438d4f446376",
+    "score": null,
+    "poster": "captures/VIS-P5-fable/2026-11-11T22-22-05-214Z-57176/poster.png",
+    "clip": null,
+    "source": "sources/VIS-P5-fable/index.html.txt",
+    "notes": "sources/VIS-P5-fable/NOTES.md.txt",
+    "sourceHash": "b38eecac601b93e5f26347a8c60d2474c08a5b191c4d705c13c44fa57d0fb3e7",
+    "validation": "captures/VIS-P5-fable/validation.json",
+    "captureStatus": "captured",
+    "elapsedSeconds": null,
+    "completedEventReceivedAt": "2026-11-11T22:22:04.644Z",
+    "settings": [
+      {
+        "id": "effort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P5 · fable · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3A98d32d21-2139-47ae-a9b1-7cd31cf45dcb%3Adelegate-task%3Aeb23b172-2500-4360-a36b-c9bed168fff7)",
+    "launchedAt": "2026-11-11T22:02:24.304Z"
+  },
+  {
+    "id": "VIS-P5-opus",
+    "promptId": "VIS-P5",
+    "modelId": "opus",
+    "directory": "builds/VIS-P5/opus",
+    "status": "complete",
+    "requestedModel": "claude-opus-5-5",
+    "effort": "high",
+    "provider": "claudeAgent",
+    "promptHash": "e5bc65c078154e7e68367d907edded325840b27ffce862759a2f438d4f446376",
+    "score": null,
+    "poster": "captures/VIS-P5-opus/2026-11-11T22-16-31-565Z-3076/poster.png",
+    "clip": null,
+    "source": "sources/VIS-P5-opus/index.html.txt",
+    "notes": "sources/VIS-P5-opus/NOTES.md.txt",
+    "sourceHash": "17606b8c05ce4e8c70fae1764eb2ae5f9e33177ea0c8a71bbff7da06f54c7c69",
+    "validation": "captures/VIS-P5-opus/validation.json",
+    "captureStatus": "captured",
+    "elapsedSeconds": null,
+    "completedEventReceivedAt": "2026-11-11T22:16:30.829Z",
+    "settings": [
+      {
+        "id": "effort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P5 · opus · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3A98d32d21-2139-47ae-a9b1-7cd31cf45dcb%3Adelegate-task%3Aaa06cfb7-8fcf-4bf5-92a0-5ea927525b09)",
+    "launchedAt": "2026-11-11T22:02:25.930Z"
+  },
+  {
+    "id": "VIS-P5-sonnet",
+    "promptId": "VIS-P5",
+    "modelId": "sonnet",
+    "directory": "builds/VIS-P5/sonnet",
+    "status": "complete",
+    "requestedModel": "claude-sonnet-5-5",
+    "effort": "high",
+    "provider": "claudeAgent",
+    "promptHash": "e5bc65c078154e7e68367d907edded325840b27ffce862759a2f438d4f446376",
+    "score": null,
+    "poster": "captures/VIS-P5-sonnet/2026-11-11T22-12-18-104Z-54248/poster.png",
+    "clip": null,
+    "source": "sources/VIS-P5-sonnet/index.html.txt",
+    "notes": "sources/VIS-P5-sonnet/NOTES.md.txt",
+    "sourceHash": "9c639a177ac46bb473be1615472857a4b2795c278ef841c9fa0082d8079201ce",
+    "validation": "captures/VIS-P5-sonnet/validation.json",
+    "captureStatus": "captured",
+    "elapsedSeconds": null,
+    "completedEventReceivedAt": "2026-11-11T22:12:17.478Z",
+    "settings": [
+      {
+        "id": "effort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P5 · sonnet · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3A98d32d21-2139-47ae-a9b1-7cd31cf45dcb%3Adelegate-task%3A2d757241-965e-4e20-af9c-4e0f27ccb061)",
+    "launchedAt": "2026-11-11T22:02:27.326Z"
+  },
+  {
+    "id": "VIS-P6-astra",
+    "promptId": "VIS-P6",
+    "modelId": "astra",
+    "directory": "builds/VIS-P6/astra",
+    "status": "complete",
+    "requestedModel": "gpt-6-astra",
+    "effort": "high",
+    "provider": "codex",
+    "promptHash": "a5e2dc21faef68a3a37d3d66883c3f45fd2eac441bff4b47aac8ab129a3089a7",
+    "score": null,
+    "poster": "captures/VIS-P6-astra/2026-11-11T22-07-08-996Z-31912/poster.png",
+    "clip": null,
+    "source": "sources/VIS-P6-astra/index.html.txt",
+    "notes": "sources/VIS-P6-astra/NOTES.md.txt",
+    "sourceHash": "8aff0de95f3fa0bceac904a92000df56c57552240be7506ebe41a71718893a65",
+    "validation": "captures/VIS-P6-astra/validation.json",
+    "captureStatus": "captured",
+    "elapsedSeconds": null,
+    "completedEventReceivedAt": "2026-11-11T22:07:08.487Z",
+    "settings": [
+      {
+        "id": "reasoningEffort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P6 · astra · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3A98d32d21-2139-47ae-a9b1-7cd31cf45dcb%3Adelegate-task%3A00b383cd-7df3-4c72-b19c-42aaec4cfb91)",
+    "launchedAt": "2026-11-11T22:02:28.991Z"
+  },
+  {
+    "id": "VIS-P6-sol",
+    "promptId": "VIS-P6",
+    "modelId": "sol",
+    "directory": "builds/VIS-P6/sol",
+    "status": "complete",
+    "requestedModel": "gpt-6.1-sol",
+    "effort": "high",
+    "provider": "codex",
+    "promptHash": "a5e2dc21faef68a3a37d3d66883c3f45fd2eac441bff4b47aac8ab129a3089a7",
+    "score": null,
+    "poster": "captures/VIS-P6-sol/2026-11-11T22-08-22-640Z-43812/poster.png",
+    "clip": null,
+    "source": "sources/VIS-P6-sol/index.html.txt",
+    "notes": "sources/VIS-P6-sol/NOTES.md.txt",
+    "sourceHash": "19b4aa7ecea7e42e457cfe76698c22401f68e745de549ade51f89b202297007d",
+    "validation": "captures/VIS-P6-sol/validation.json",
+    "captureStatus": "captured",
+    "elapsedSeconds": null,
+    "completedEventReceivedAt": "2026-11-11T22:08:11.373Z",
+    "settings": [
+      {
+        "id": "reasoningEffort",
+        "value": "high"
+      },
+      {
+        "id": "serviceTier",
+        "value": "default"
+      }
+    ],
+    "sessionLink": "[VIS-P6 · sol · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3A98d32d21-2139-47ae-a9b1-7cd31cf45dcb%3Adelegate-task%3A878e86f4-ffd5-44c8-8818-794011f7bfa1)",
+    "launchedAt": "2026-11-11T22:02:32.705Z"
+  },
+  {
+    "id": "VIS-P6-fable",
+    "promptId": "VIS-P6",
+    "modelId": "fable",
+    "directory": "builds/VIS-P6/fable",
+    "status": "complete",
+    "requestedModel": "claude-fable-5-2",
+    "effort": "high",
+    "provider": "claudeAgent",
+    "promptHash": "a5e2dc21faef68a3a37d3d66883c3f45fd2eac441bff4b47aac8ab129a3089a7",
+    "score": null,
+    "poster": "captures/VIS-P6-fable/2026-11-11T22-17-55-978Z-58516/poster.png",
+    "clip": null,
+    "source": "sources/VIS-P6-fable/index.html.txt",
+    "notes": "sources/VIS-P6-fable/NOTES.md.txt",
+    "sourceHash": "942fbd84981540e8828d2d183b40296679bd5aa6d322f76fb14719e275c85b20",
+    "validation": "captures/VIS-P6-fable/validation.json",
+    "captureStatus": "captured",
+    "elapsedSeconds": null,
+    "completedEventReceivedAt": "2026-11-11T22:17:55.496Z",
+    "settings": [
+      {
+        "id": "effort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P6 · fable · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3A98d32d21-2139-47ae-a9b1-7cd31cf45dcb%3Adelegate-task%3Ac433bf31-30e5-4fdb-a494-7dfaedfb9606)",
+    "launchedAt": "2026-11-11T22:02:34.218Z"
+  },
+  {
+    "id": "VIS-P6-opus",
+    "promptId": "VIS-P6",
+    "modelId": "opus",
+    "directory": "builds/VIS-P6/opus",
+    "status": "complete",
+    "requestedModel": "claude-opus-5-5",
+    "effort": "high",
+    "provider": "claudeAgent",
+    "promptHash": "a5e2dc21faef68a3a37d3d66883c3f45fd2eac441bff4b47aac8ab129a3089a7",
+    "score": null,
+    "poster": "captures/VIS-P6-opus/2026-11-11T22-13-11-816Z-43848/poster.png",
+    "clip": null,
+    "source": "sources/VIS-P6-opus/index.html.txt",
+    "notes": "sources/VIS-P6-opus/NOTES.md.txt",
+    "sourceHash": "6071fc91890467e82b216fe9a8a193525514ef5b60ea8001f6b14289d25a6ba6",
+    "validation": "captures/VIS-P6-opus/validation.json",
+    "captureStatus": "captured",
+    "elapsedSeconds": null,
+    "completedEventReceivedAt": "2026-11-11T22:13:11.164Z",
+    "settings": [
+      {
+        "id": "effort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P6 · opus · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3A98d32d21-2139-47ae-a9b1-7cd31cf45dcb%3Adelegate-task%3Af00b8af4-d9db-455c-a2d3-3ce79b6661af)",
+    "launchedAt": "2026-11-11T22:02:35.717Z"
+  },
+  {
+    "id": "VIS-P6-sonnet",
+    "promptId": "VIS-P6",
+    "modelId": "sonnet",
+    "directory": "builds/VIS-P6/sonnet",
+    "status": "complete",
+    "requestedModel": "claude-sonnet-5-5",
+    "effort": "high",
+    "provider": "claudeAgent",
+    "promptHash": "a5e2dc21faef68a3a37d3d66883c3f45fd2eac441bff4b47aac8ab129a3089a7",
+    "score": null,
+    "poster": "captures/VIS-P6-sonnet/2026-11-11T22-10-10-755Z-48548/poster.png",
+    "clip": null,
+    "source": "sources/VIS-P6-sonnet/index.html.txt",
+    "notes": "sources/VIS-P6-sonnet/NOTES.md.txt",
+    "sourceHash": "43512bfa2e568403d3fb297e52900ff19fc37196c3dc7b5528adccca243cba1b",
+    "validation": "captures/VIS-P6-sonnet/validation.json",
+    "captureStatus": "captured",
+    "elapsedSeconds": null,
+    "completedEventReceivedAt": "2026-11-11T22:10:10.053Z",
+    "settings": [
+      {
+        "id": "effort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P6 · sonnet · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3A98d32d21-2139-47ae-a9b1-7cd31cf45dcb%3Adelegate-task%3Ad78006e2-eb5f-4ebd-ae16-bae49978b34d)",
+    "launchedAt": "2026-11-11T22:02:37.081Z"
+  }
+]

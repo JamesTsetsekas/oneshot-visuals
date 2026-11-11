@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>The Last Ferry</title><style>html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#101e32}svg{display:block;width:100%;height:100%}</style></head>
+<body><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="title description">
+<title id="title">The Last Ferry</title><desc id="description">A cream and rust ferry arrives in a quiet blue harbour beneath a sweeping lighthouse beam. Its ramp lowers, a quay lantern warms the stone, and a lone traveller carrying a case walks ashore, glances back, and continues into the evening as the ferry leaves.</desc>
+<defs>
+ <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#101e32"/><stop offset=".55" stop-color="#33465f"/><stop offset="1" stop-color="#bd8b8b"/></linearGradient>
+ <linearGradient id="sea" x2="0" y2="1"><stop stop-color="#6a778b"/><stop offset=".3" stop-color="#344e65"/><stop offset="1" stop-color="#101e32"/></linearGradient>
+ <linearGradient id="hull" x2="0" y2="1"><stop stop-color="#ac6350"/><stop offset=".52" stop-color="#713f3e"/><stop offset="1" stop-color="#263644"/></linearGradient>
+ <linearGradient id="cabin" x2="0" y2="1"><stop stop-color="#d0c3ae"/><stop offset="1" stop-color="#899e9f"/></linearGradient>
+ <linearGradient id="glass" x2="0" y2="1"><stop stop-color="#ecc789"/><stop offset="1" stop-color="#aa7f5b"/></linearGradient>
+ <linearGradient id="stone" x2="0" y2="1"><stop stop-color="#354454"/><stop offset="1" stop-color="#162235"/></linearGradient>
+ <linearGradient id="beamFade"><stop stop-color="#fff1bf" stop-opacity=".3"/><stop offset="1" stop-color="#f8e8c0" stop-opacity="0"/></linearGradient>
+ <radialGradient id="halo"><stop stop-color="#ffdb8b" stop-opacity=".7"/><stop offset=".18" stop-color="#fbcf80" stop-opacity=".25"/><stop offset="1" stop-color="#ffce7c" stop-opacity="0"/></radialGradient>
+ <radialGradient id="pool"><stop stop-color="#f9c67b" stop-opacity=".42"/><stop offset="1" stop-color="#f8c07b" stop-opacity="0"/></radialGradient>
+ <linearGradient id="figureLight"><stop stop-color="#142c3a"/><stop offset=".6" stop-color="#324b53"/><stop offset="1" stop-color="#e4ac6e"/></linearGradient>
+ <filter id="soft"><feGaussianBlur stdDeviation="5"/></filter>
+ <pattern id="masonry" width="160" height="80" patternUnits="userSpaceOnUse"><path d="M0 0H160M0 40H160M80 0V40M20 40V80M145 40V80" fill="none" stroke="#111d2c" stroke-width="3" opacity=".43"/><path d="M0 3H160M0 43H160" stroke="#71808a" opacity=".1"/></pattern>
+ <pattern id="rampRibs" width="14" height="8" patternUnits="userSpaceOnUse"><path d="M0 0V8" stroke="#d1b692" stroke-width="2" opacity=".6"/></pattern>
+ <clipPath id="waterClip"><rect x="0" y="640" width="1000" height="260"/></clipPath>
+ <clipPath id="emerge"><rect id="doorReveal" x="614" y="426" width="0" height="190"/><rect x="670" y="426" width="1000" height="200"/></clipPath>
+</defs>
+<!-- Sky, distant coast, and the long band of sheltered water. -->
+<rect width="1600" height="900" fill="#101e32"/><rect width="1600" height="470" fill="url(#sky)"/>
+<g id="stars" fill="#e4d7bd"/>
+<path d="M0 269C160 249 224 267 370 257S648 228 790 250 1080 288 1220 267 1470 250 1600 259" fill="none" stroke="#b1a3ac" stroke-width="2" opacity=".1"/>
+<path d="M0 304C148 295 282 309 394 297M913 318C1112 298 1280 320 1470 303" fill="none" stroke="#d6b0a7" stroke-width="3" opacity=".09"/>
+<rect y="420" width="1600" height="480" fill="url(#sea)"/>
+<path d="M0 413L39 402 70 405 110 382 141 385 180 365 218 369 245 357 291 367 321 381 361 385 392 404 454 414 501 420H0Z" fill="#24384b"/>
+<path d="M1080 420L1132 408 1194 410 1223 400 1277 401 1308 391 1370 398 1415 385 1458 395 1516 391 1600 413V430H1080Z" fill="#45566a" opacity=".5"/>
+<path d="M0 420H1600" stroke="#d0a8a3" stroke-width="1" opacity=".35"/>
+<!-- Lighthouse sits on the left headland. -->
+<g><path d="M244 368L250 340H270L276 368Z" fill="#bdafa3"/><path d="M263 341H270L276 368H265Z" fill="#74858b"/><path d="M246 341H274V337H246Z" fill="#172c3c"/><path d="M249 337V322H271V337" fill="#283f4e" stroke="#a5a49a" stroke-width="2"/><path d="M244 321L260 310 276 321Z" fill="#192d3c"/><path d="M260 311V305" stroke="#1b2d3b"/><rect x="254" y="324" width="12" height="10" fill="#eedbad"/><path d="M238 368H282" stroke="#1a2e3d" stroke-width="4"/></g>
+<g id="beam" transform="translate(260 330)" filter="url(#soft)"><path d="M0 -3L700 -61V61L0 3Z" fill="url(#beamFade)"/></g>
+<circle id="flare" cx="260" cy="330" r="65" fill="url(#halo)"/>
+<g id="distantRipples" stroke="#b0a5a3" fill="none" stroke-linecap="round" opacity=".17"/>
+<g clip-path="url(#waterClip)"><g id="waterLines" fill="none" stroke-linecap="round"/><g id="lightReflection" fill="#eec786"/></g>
+<!-- The quay has a broad, quiet walking surface and a sheer stone face. -->
+<path d="M1000 610L1200 559H1600V900H1000Z" fill="#414b58"/>
+<path d="M1000 624H1600V900H1000Z" fill="url(#stone)"/><rect x="1000" y="624" width="600" height="276" fill="url(#masonry)"/>
+<path d="M1000 611H1600V628H1000Z" fill="#6f7477"/><path d="M1000 610H1600" stroke="#a4a196" stroke-width="3"/>
+<path d="M1005 630V900" stroke="#869090" stroke-width="4" opacity=".3"/>
+<g stroke="#1f303f" opacity=".7"><path d="M1110 582L1180 610M1280 560L1390 610M1460 560L1570 610M1115 580H1600" fill="none"/></g>
+<g id="groundGlow"><ellipse cx="1180" cy="600" rx="250" ry="66" fill="url(#pool)"/><path d="M1001 627H1510V760H1001Z" fill="url(#pool)" opacity=".65"/></g>
+<g fill="#1e303e" stroke="#607079" stroke-width="2"><path d="M1389 604V587Q1390 580 1402 580Q1414 580 1415 587V604Z"/><path d="M1383 602H1422V610H1383Z"/><path d="M1552 603V588Q1552 581 1563 581Q1574 581 1574 588V603Z"/><path d="M1547 602H1580V610H1547Z"/></g>
+<!-- All ferry coordinates are local to its centre. -->
+<g id="wake" fill="none" stroke="#c4d4d3" stroke-linecap="round"/>
+<g id="ferry">
+ <g id="boatBob">
+ <path d="M-260 611H260L242 644Q218 665 172 668H-172Q-220 664-242 644Z" fill="url(#hull)" stroke="#202f3c" stroke-width="2"/>
+ <path d="M-244 643Q0 657 245 643" stroke="#c78b6b" stroke-width="3" fill="none" opacity=".6"/>
+ <path d="M-260 606H260V616H-260Z" fill="#d2bd99"/>
+ <path d="M-248 600H248V606H-248Z" fill="#31434d"/>
+ <path d="M-184 430H126L161 476V598H-184Z" fill="url(#cabin)" stroke="#324955" stroke-width="2"/>
+ <path d="M-192 428H129L170 477H155L121 441H-192Z" fill="#263e4d"/>
+ <path d="M-179 453H-142V494H-179Z" fill="url(#glass)" stroke="#314a56" stroke-width="5"/>
+ <path d="M-64 453H-17V494H-64ZM0 453H47V494H0ZM64 453H109V494H64ZM126 456L150 482V494H126Z" fill="url(#glass)" stroke="#314a56" stroke-width="5"/>
+ <g stroke="#eee0ba" opacity=".45"><path d="M-61 456L-24 490M3 456L40 490M67 456L103 490"/></g>
+ <path d="M-125 440H-70V610H-125Z" fill="#273e49" stroke="#718a8d" stroke-width="3"/>
+ <path d="M-120 445H-75V605H-120Z" fill="#152a37"/><path d="M-120 605H-75" stroke="#edc58a" stroke-width="3"/>
+ <path d="M-35 427V382H-6V427" fill="#a6614e" stroke="#2b414d" stroke-width="3"/><rect x="-39" y="378" width="38" height="10" fill="#213746"/>
+ <path d="M-6 393H7L18 386V402L7 397H-6Z" fill="#b8a47c"/>
+ <path d="M77 429V394M77 398L108 412H77" fill="#9c7461" stroke="#344b58" stroke-width="2"/>
+ <path d="M-249 603V560H-191M170 560H248V603" fill="none" stroke="#849b9c" stroke-width="3"/><path d="M-227 560V603M-203 560V603M193 560V603M220 560V603" stroke="#849b9c" stroke-width="2"/>
+ <g fill="#263b46" stroke="#9c9d8e" stroke-width="2"><ellipse cx="-226" cy="633" rx="8" ry="15"/><ellipse cx="-170" cy="642" rx="8" ry="15"/><ellipse cx="173" cy="642" rx="8" ry="15"/><ellipse cx="225" cy="633" rx="8" ry="15"/></g>
+ <g id="ramp" transform="translate(260 610)"><path d="M0 -6H140V1H0Z" fill="#9e9e90" stroke="#293f4d" stroke-width="2"/><rect y="-6" width="140" height="6" fill="url(#rampRibs)"/><path id="rampWarm" d="M0 -6H140V0H0Z" fill="#f6cd89" opacity="0"/><circle r="6" fill="#263d49"/></g>
+ </g>
+</g>
+<g id="steam" fill="#e3e1d1"/>
+<!-- A single articulated walker, revealed through the doorway. -->
+<g id="passengerClip" clip-path="url(#emerge)"><g id="passenger">
+ <ellipse id="personShadow" cx="0" cy="611" rx="35" ry="4" fill="#172b36" opacity=".35"/>
+ <path id="legBack" fill="none" stroke="#1a2b39" stroke-width="14" stroke-linecap="round"/>
+ <path id="footBack" fill="none" stroke="#101f2b" stroke-width="10" stroke-linecap="round"/>
+ <path id="armBack" fill="none" stroke="#273c48" stroke-width="11" stroke-linecap="round"/>
+ <path id="body" d="M-12 479Q0 473 12 482L18 541Q-4 549-22 539L-17 494Z" fill="url(#figureLight)" stroke="#203641" stroke-width="2"/>
+ <path id="coatSeam" d="M6 489L9 536M-11 518L0 520" stroke="#79918c" opacity=".4" fill="none"/>
+ <path id="legFront" fill="none" stroke="#334855" stroke-width="15" stroke-linecap="round"/>
+ <path id="footFront" fill="none" stroke="#142630" stroke-width="10" stroke-linecap="round"/>
+ <g id="head"><path d="M-7 478V466H7V482" fill="#b1937e"/><path d="M-11 447Q-3 437 9 446L11 454 17 460 10 464Q8 477-4 470L-10 463Z" fill="#cfac8b"/><path d="M-12 451Q-13 435 2 435Q13 435 13 447L5 449-8 448-8 461-13 458Z" fill="#233540"/><path d="M-16 444H18" stroke="#1c303c" stroke-width="5"/><path d="M-7 477L4 485 12 479" stroke="#c49b70" stroke-width="5" fill="none"/></g>
+ <g id="case"><path d="M-7 -17V-23Q0 -29 8 -23V-17" fill="none" stroke="#bb9b70" stroke-width="3"/><rect x="-17" y="-17" width="37" height="29" rx="4" fill="#8a5e43" stroke="#302f30" stroke-width="2"/><path d="M-9 -16V10M12 -16V10" stroke="#bf9862" stroke-width="2"/><path d="M-15 -11H17" stroke="#bc9162" opacity=".5"/></g>
+ <path id="armFront" fill="none" stroke="#3c545c" stroke-width="12" stroke-linecap="round"/><circle id="hand" r="5" fill="#d7b28b"/>
+</g></g>
+<!-- Lantern is in front of the travelling figure. -->
+<g><path d="M1180 610V455" stroke="#152b39" stroke-width="9"/><path d="M1183 603V458" stroke="#67716d" stroke-width="2"/><path d="M1166 609H1194L1190 602H1170Z" fill="#1b303c"/><path d="M1168 451L1163 420H1197L1192 451Z" fill="#293c46" stroke="#0e2634" stroke-width="3"/><path id="lampGlass" d="M1169 425H1191L1187 447H1173Z" fill="#5b6971"/><path d="M1159 419L1180 408 1201 419Z" fill="#1a303f"/><path d="M1180 411V404" stroke="#18303d" stroke-width="3"/></g>
+<g id="lanternGlow"><ellipse cx="1180" cy="440" rx="153" ry="170" fill="url(#halo)"/><path d="M1175 445H1185L1189 428H1171Z" fill="#ffe8ad"/><path d="M1180 425V447" stroke="#fff4c9" stroke-width="2"/></g>
+</svg>
+<script>
+'use strict';
+const $=id=>document.getElementById(id),NS='http://www.w3.org/2000/svg',TAU=Math.PI*2;
+const clamp=x=>Math.max(0,Math.min(1,x)),smooth=x=>{x=clamp(x);return x*x*(3-2*x)},mod=(x,n)=>(x%n+n)%n;
+function node(tag,attrs,parent){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);parent.appendChild(e);return e}
+function attr(id,k,v){$(id).setAttribute(k,v)}
+let seed=71329;function rand(){seed=(1664525*seed+1013904223)>>>0;return seed/4294967296}
+const stars=Array.from({length:64},()=>{let x=25+rand()*1550,y=28+rand()*315,r=.6+rand()*1.1;return{e:node('circle',{cx:x,cy:y,r},$('stars')),p:[3,4,6][Math.floor(rand()*3)],phase:rand()*TAU}});
+const distant=Array.from({length:45},(_,i)=>({e:node('path',{},$('distantRipples')),x:rand()*1600,y:435+rand()*176,w:14+rand()*85,phase:rand()*TAU}));
+const ripples=Array.from({length:95},()=>({e:node('path',{},$('waterLines')),x:rand()*1000,y:645+rand()*245,w:9+rand()*76,phase:rand()*TAU}));
+const reflections=Array.from({length:28},(_,i)=>({e:node('rect',{height:1.5+rand()*2,rx:2},$('lightReflection')),x:915+rand()*90,y:647+i*8,w:15+rand()*80,phase:rand()*TAU}));
+const foam=Array.from({length:18},(_,i)=>node('path',{'stroke-width':i<6?2.6:1.4},$('wake')));
+const steam=Array.from({length:9},(_,i)=>node('ellipse',{rx:12+i*3,ry:9+i*2},$('steam')));
+function ferryX(t){if(t<.5||t>=11.5)return -400;if(t<=4)return -400+1140*(1-Math.pow(1-(t-.5)/3.5,3));if(t<8.5)return 740;return 740-1140*Math.pow((t-8.5)/3,3)}
+function foot(t,offset){const p=mod(t/.8+offset,1);if(p<.5)return{x:48-192*p,y:606};const q=(p-.5)*2;return{x:-48+96*smooth(q),y:606-28*Math.sin(Math.PI*q)}}
+function leg(id,f,hip){const dx=f.x,dy=f.y-hip,d=Math.hypot(dx,dy),bend=Math.sqrt(Math.max(0,44*44-d*d/4));const kx=dx/2+dy/d*bend,ky=hip+dy/2-dx/d*bend;attr(id,'d',`M0 ${hip}Q${kx} ${ky} ${f.x} ${f.y}`)}
+function render(raw){const t=mod(raw,12),wave=TAU*t/4,x=ferryX(t),moving=t>=.5&&t<4||t>=8.5&&t<11.5;const v=t<4?977.142857*Math.pow(1-(t-.5)/3.5,2):t>=8.5?380*Math.pow((t-8.5)/3,2):0;const speed=moving?clamp(v/650):0;
+ const glow=t<5?0:t<5.6?smooth((t-5)/.6):t<9?1:1-smooth((t-9)/.6);
+ const bob=2.2*Math.sin(wave)*(t>=4.2&&t<=8.2?0:1-smooth((t-4)/.2));
+ // During contact the hinge is pinned to the quay; elsewhere the hull follows the swell.
+ const freeBob=t>8.2?2.2*Math.sin(wave)*smooth((t-8.2)/.3):bob;
+ attr('ferry','visibility',t>=.5&&t<11.5?'visible':'hidden');attr('ferry','transform',`translate(${x} 0)`);attr('boatBob','transform',`translate(0 ${freeBob})`);
+ let angle=65;if(t>=4.2&&t<5)angle=65*(1-smooth((t-4.2)/.8));else if(t>=5&&t<7.4)angle=0;else if(t>=7.4&&t<8.2)angle=65*smooth((t-7.4)/.8);
+ attr('ramp','transform',`translate(260 610) rotate(${-angle})`);attr('rampWarm','opacity',glow*.65);
+ for(const id of ['groundGlow','lanternGlow'])attr(id,'opacity',glow);attr('lampGlass','fill',glow>0?'#d6b775':'#5b6971');
+ const cos=Math.cos(TAU*t/12),flare=Math.pow(Math.max(0,Math.sin(TAU*t/12)),20);
+ attr('beam','transform',`translate(260 330) scale(${cos} 1)`);attr('beam','opacity',.35+.65*Math.abs(cos));attr('flare','opacity',.06+.94*flare);
+ stars.forEach(a=>a.e.setAttribute('opacity',.28+.62*(.5+.5*Math.sin(TAU*t/a.p+a.phase))));
+ distant.forEach(a=>{const dx=4*Math.sin(wave+a.phase);a.e.setAttribute('d',`M${a.x+dx} ${a.y}h${a.w}`);a.e.setAttribute('opacity',.2+.65*(.5+.5*Math.sin(wave+a.phase)))});
+ ripples.forEach(a=>{const dx=7*Math.sin(wave+a.phase),s=.5+.5*Math.sin(wave+a.phase);a.e.setAttribute('d',`M${a.x+dx} ${a.y}q${a.w*.4} ${-2*s} ${a.w} 0`);a.e.setAttribute('stroke',a.x<380&&flare>.1?'#c7bb99':'#75919d');a.e.setAttribute('opacity',.06+.16*s+flare*(a.x<380?.16:0))});
+ reflections.forEach(a=>{a.e.setAttribute('x',a.x+Math.sin(wave+a.phase)*10);a.e.setAttribute('y',a.y);a.e.setAttribute('width',a.w*(.65+.35*Math.sin(wave+a.phase)));a.e.setAttribute('opacity',glow*.4*(1-(a.y-640)/300))});
+ attr('wake','opacity',speed*.75);foam.forEach((e,i)=>{const side=t<8.5?1:-1,px=x+side*(i<6?240:-220-i*8),py=644+(i%6)*5;const jitter=Math.sin(wave+i)*4;e.setAttribute('d',`M${px} ${py}q${-side*(20+i*4)} ${-7-jitter} ${-side*(38+i*8)} ${i%3*3}`)});
+ steam.forEach((e,i)=>{const age=(t-3.8)-i*.035,p=clamp(age/.88),fade=age>=0&&age<.88?Math.sin(Math.PI*p)*.33:0;e.setAttribute('cx',x-20-65*p+Math.sin(i*2)*18*p);e.setAttribute('cy',388-154*p-i*2);e.setAttribute('transform',`translate(${(x-20)*(1-(1+p))} ${(388-154*p-i*2)*(1-(1+p*.7))}) scale(${1+p} ${1+p*.7})`);e.setAttribute('opacity',t<5?fade:0)});
+ const walk=t-5,px=640+240*walk;attr('passengerClip','visibility',t>=5&&t<9.5?'visible':'hidden');attr('passenger','transform',`translate(${px} 0)`);
+ attr('doorReveal','width',56*smooth(walk/.24));if(walk>.35)attr('doorReveal','width',56);
+ const a=foot(walk,0),b=foot(walk,.5),hip=535-2*Math.cos(TAU*walk/.4);leg('legBack',b,hip);leg('legFront',a,hip);
+ for(const [id,f] of [['footBack',b],['footFront',a]])attr(id,'d',`M${f.x-5} ${f.y}l14 0`);
+ const swing=Math.sin(TAU*walk/.8),handX=13-13*swing,handY=539+3*Math.cos(TAU*walk/.8);
+ attr('armBack','d',`M-11 487Q${-9+15*swing} 511 ${-9+24*swing} 533`);attr('armFront','d',`M10 489Q${17-8*swing} 516 ${handX} ${handY}`);attr('case','transform',`translate(${handX} ${handY+21}) rotate(${-swing*4})`);attr('hand','cx',handX);attr('hand','cy',handY);
+ const turn=t<7.3?0:t<7.7?smooth((t-7.3)/.4):t<8.1?1-smooth((t-7.7)/.4):0;attr('head','transform',`translate(0 ${hip-535}) scale(${1-2*turn} 1)`);
+ const intensity=glow*clamp(1-Math.abs(px-1180)/280),right=px<1180;const stops=$('figureLight').children;stops[0].setAttribute('stop-color',right?'#142c3a':`rgb(${Math.round(34+150*intensity)},${Math.round(56+90*intensity)},${Math.round(67+26*intensity)})`);stops[2].setAttribute('stop-color',right?`rgb(${Math.round(48+180*intensity)},${Math.round(72+100*intensity)},${Math.round(80+30*intensity)})`:'#182e3b');
+}
+const param=new URLSearchParams(location.search).get('t');if(param!==null&&Number.isFinite(Number(param))){render(Number(param))}else{const start=performance.now();function tick(now){render((now-start)/1000);requestAnimationFrame(tick)}render(0);requestAnimationFrame(tick)}
+</script></body></html>

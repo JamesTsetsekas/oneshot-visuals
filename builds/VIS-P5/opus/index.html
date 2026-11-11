@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clear Skies Ledger</title>
+<link rel="icon" href="data:,">
+<style>
+  :root {
+    --bg: #0b1220;
+    --panel: #121c30;
+    --line: #2b3b5a;
+    --ink: #eef2f8;
+    --muted: #b3c0d6;
+    --accent: #ffd166;
+    --pin: #ff7ad1;
+  }
+  html, body { margin: 0; height: 100%; overflow: hidden; background: var(--bg); }
+  body { font-family: system-ui, "Segoe UI", Arial, sans-serif; color: var(--ink); }
+  #stage { position: absolute; left: 0; top: 0; width: 1600px; height: 900px; transform-origin: 0 0; background: var(--bg); }
+  header { position: absolute; left: 32px; top: 18px; width: 1536px; }
+  h1 { margin: 0; font-size: 31px; line-height: 38px; font-weight: 700; letter-spacing: 0.2px; }
+  .takeaway { margin: 6px 0 0; font-size: 18px; line-height: 26px; color: var(--ink); }
+  .meta { margin: 6px 0 0; font-size: 15px; line-height: 20px; color: var(--muted); }
+  .meta b { color: var(--ink); font-weight: 600; }
+  #controls { position: absolute; left: 32px; top: 132px; width: 1536px; height: 44px; display: flex; align-items: center; gap: 22px; }
+  .group { display: flex; align-items: center; gap: 8px; }
+  .glabel { font-size: 15px; color: var(--muted); margin-right: 2px; }
+  button {
+    font: inherit; font-size: 15px; line-height: 20px; color: var(--ink); background: #18243c;
+    border: 1px solid #3a5079; border-radius: 7px; padding: 7px 12px 7px 8px; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;
+  }
+  button:hover { background: #213252; }
+  button[aria-pressed="true"] { background: #e9eef7; color: #0b1220; border-color: #e9eef7; }
+  button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  kbd {
+    font-family: ui-monospace, Consolas, monospace; font-size: 15px; line-height: 18px; min-width: 14px; text-align: center;
+    padding: 1px 5px; border-radius: 4px; border: 1px solid currentColor; opacity: 0.95;
+  }
+  #stateLabel { position: absolute; left: 32px; top: 184px; width: 1536px; font-size: 16px; line-height: 22px; color: var(--ink); }
+  #stateLabel .k { color: var(--muted); }
+  #stateLabel strong { color: var(--accent); font-weight: 600; }
+  #chart { position: absolute; left: 22px; top: 216px; width: 1210px; height: 670px; overflow: visible; }
+  #chart:focus { outline: none; }
+  #chart.kbd-focus:not(.has-cell) { outline: 3px solid var(--accent); outline-offset: 0; border-radius: 6px; }
+  #side { position: absolute; left: 1234px; top: 216px; width: 344px; height: 668px; display: flex; flex-direction: column; gap: 12px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
+  .card h2 { margin: 0 0 6px; font-size: 16px; line-height: 21px; font-weight: 700; }
+  .card p, .card li { font-size: 15px; line-height: 20px; color: var(--muted); margin: 0; }
+  .modeTag { display: inline-block; font-size: 15px; font-weight: 700; padding: 2px 8px; border-radius: 5px; background: var(--accent); color: #0b1220; margin-bottom: 6px; }
+  .card ul { margin: 0; padding-left: 18px; }
+  .card li { margin: 2px 0; }
+  .card li b { color: var(--ink); font-weight: 600; }
+  #compare .pinrow { display: flex; gap: 8px; align-items: baseline; font-size: 15px; line-height: 21px; color: var(--ink); margin: 3px 0; }
+  .badge { display: inline-block; min-width: 18px; text-align: center; font-size: 15px; font-weight: 700; background: var(--pin); color: #1a0d16; border-radius: 4px; padding: 0 3px; }
+  #compare .diff { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line); font-size: 16px; line-height: 22px; color: var(--ink); }
+  #compare .diff b { color: var(--accent); }
+  #readout {
+    position: absolute; left: 0; top: 0; width: 290px; box-sizing: border-box; padding: 10px 13px; border-radius: 9px;
+    background: #f5f7fb; color: #0d1526; border: 1px solid #ffffff; box-shadow: 0 6px 22px rgba(0,0,0,0.55);
+    pointer-events: none; display: none; z-index: 10;
+  }
+  #readout .ro-title { font-size: 17px; line-height: 22px; font-weight: 700; }
+  #readout .ro-row { display: flex; justify-content: space-between; gap: 10px; font-size: 15px; line-height: 21px; }
+  #readout .ro-row span:first-child { color: #3a4660; }
+  #readout .ro-row span:last-child { font-weight: 700; font-variant-numeric: tabular-nums; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  /* SVG */
+  svg text { font-family: system-ui, "Segoe UI", Arial, sans-serif; }
+  .t15 { font-size: 15px; } .t16 { font-size: 16px; } .t17 { font-size: 17px; }
+  .muted { fill: var(--muted); } .ink { fill: var(--ink); }
+  .num { font-variant-numeric: tabular-nums; }
+  .row .inner { transition: opacity 250ms ease; }
+  .ready .row { transition: transform 350ms cubic-bezier(.3,.7,.25,1), opacity 250ms ease, visibility 0s linear 250ms; }
+  .ready .row:not(.off) { transition: transform 350ms cubic-bezier(.3,.7,.25,1), opacity 250ms ease, visibility 0s linear 0s; }
+  .row.off { opacity: 0; visibility: hidden; }
+  .ready .cellbg, .ready .val { transition: fill 300ms ease; }
+  .cell { cursor: pointer; }
+  .val { pointer-events: none; font-weight: 600; }
+  .namehit { cursor: pointer; }
+  .monthhit { cursor: default; }
+  .ready .tbar, .ready .tnum, .ready .ttag { transition: transform 350ms cubic-bezier(.3,.7,.25,1); }
+  .tbar { transform-box: fill-box; transform-origin: 50% 100%; }
+  .ready #ring, .ready #hov { transition: transform 350ms cubic-bezier(.3,.7,.25,1); }
+  .ready #ring.quick, .ready #hov.quick { transition: transform 90ms linear; }
+  .ready #colhl { transition: height 300ms ease; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <header>
+    <h1>Clear Skies Ledger</h1>
+    <p class="takeaway">Ember Dunes has the most clear nights (298), not the highest site; all eight sites combined peak in June and bottom out in December.</p>
+    <p class="meta"><b>Clear night</b> = a night with under 20% cloud cover. &nbsp;·&nbsp; <b>Bortle class</b>: 1 = darkest sky, 9 = brightest. &nbsp;·&nbsp; Monthly counts for eight observing sites. &nbsp;·&nbsp; Synthetic data prepared for this benchmark</p>
+  </header>
+
+  <div id="controls">
+    <div class="group" role="group" aria-label="Sort rows">
+      <span class="glabel">Sort rows:</span>
+      <button type="button" data-key="0" aria-pressed="true"><kbd>0</kbd>Original order</button>
+      <button type="button" data-key="1" aria-pressed="false"><kbd>1</kbd>Annual total ↓</button>
+      <button type="button" data-key="2" aria-pressed="false"><kbd>2</kbd>Elevation ↓</button>
+      <button type="button" data-key="3" aria-pressed="false"><kbd>3</kbd>Bortle: dark → bright</button>
+    </div>
+    <div class="group">
+      <span class="glabel">Filter:</span>
+      <button type="button" data-key="b" id="btnB"><kbd>B</kbd><span id="btnBText">Bortle classes: All</span></button>
+    </div>
+    <div class="group">
+      <span class="glabel">Colour:</span>
+      <button type="button" data-key="d" id="btnD" aria-pressed="false"><kbd>D</kbd><span id="btnDText">Deviation mode: Off</span></button>
+    </div>
+  </div>
+
+  <div id="stateLabel" aria-live="polite"></div>
+
+  <svg id="chart" viewBox="0 0 1210 670" width="1210" height="670" tabindex="0" role="group"
+       aria-label="Heatmap of clear nights per month for each site. Use arrow keys to move between values, Enter to pin."></svg>
+
+  <aside id="side">
+    <div class="card" id="legendCard">
+      <div class="modeTag" id="modeTag">Absolute mode</div>
+      <h2 id="legendTitle">Colour key: clear nights in the month</h2>
+      <svg id="legend" viewBox="0 0 314 76" width="314" height="76" aria-hidden="true"></svg>
+      <p id="legendNote">Brighter cell = more clear nights. The number in each cell is the exact count.</p>
+    </div>
+    <div class="card" id="compare">
+      <h2>Compare two values</h2>
+      <div id="compareBody"></div>
+    </div>
+    <div class="card">
+      <h2>How to read and explore</h2>
+      <ul>
+        <li><b>Hover</b> a cell or press <b>arrow keys</b> for details</li>
+        <li><b>Click</b> a cell or press <b>Enter</b> to pin (max 2)</li>
+        <li><b>Click a site name</b> to highlight its row</li>
+        <li><b>Hover a month name</b> to highlight it</li>
+        <li><b>Esc</b> clears focus and pins</li>
+      </ul>
+    </div>
+  </aside>
+
+  <div id="readout" aria-hidden="true"></div>
+  <div id="live" class="sr" aria-live="polite"></div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var MONTHS_FULL = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var DAYS = [31,28,31,30,31,30,31,31,30,31,30,31];
+  var RAW = [
+    ['Kestrel Ridge',    1840, 2, [12,11,14,17,20,24,25,24,23,21,15,11]],
+    ['Saltmarsh Point',     6, 6, [8,9,11,12,10,9,12,13,15,14,10,8]],
+    ['Quarry Hollow',     230, 5, [9,10,12,14,15,17,18,17,16,14,10,8]],
+    ['Ninefold Mesa',    2410, 1, [24,23,26,27,25,18,9,8,17,26,25,24]],
+    ['Larch Basin',      1180, 3, [5,6,11,16,21,25,27,27,24,18,9,5]],
+    ['Brightwater Pier',   14, 8, [7,8,9,10,11,12,13,12,12,11,8,7]],
+    ['Ember Dunes',       420, 2, [26,24,27,28,29,27,20,14,22,28,27,26]],
+    ['Foxglove Fell',     690, 4, [10,11,13,15,18,19,20,18,11,7,6,8]]
+  ];
+  var SITES = RAW.map(function (r, i) {
+    var total = r[3].reduce(function (a, b) { return a + b; }, 0);
+    return { i: i, name: r[0], elev: r[1], bortle: r[2], v: r[3], total: total };
+  });
+
+  var FILTERS = [
+    { label: 'All', words: 'all Bortle classes', test: function () { return true; } },
+    { label: '1–3 (dark)', words: 'Bortle 1–3 only (dark skies)', test: function (s) { return s.bortle <= 3; } },
+    { label: '4–6', words: 'Bortle 4–6 only (intermediate skies)', test: function (s) { return s.bortle >= 4 && s.bortle <= 6; } },
+    { label: '7–9 (bright)', words: 'Bortle 7–9 only (bright skies)', test: function (s) { return s.bortle >= 7; } }
+  ];
+  var SORT_WORDS = ['original table order', 'annual total, high to low', 'elevation, high to low', 'Bortle class, dark to bright'];
+
+  // geometry (chart viewBox units == stage px)
+  var CHART_X = 22, CHART_Y = 216;
+  var X0 = 470, PITCH_X = 60, CW = 56, ROW_Y0 = 74, PITCH_Y = 50, CH = 46;
+  var BASE_Y = 628, BAR_MAX = 80;
+  var DEV_MAX = 14, ABS_MAX = 30;
+
+  var state = { sort: 0, filter: 0, dev: false, focus: null, pins: [], hover: null, selected: null, hoverMonth: null };
+
+  // ---------- helpers ----------
+  var chart = document.getElementById('chart');
+  var NS = chart.namespaceURI;
+  function el(tag, attrs, parent, text) {
+    var e = document.createElementNS(NS, tag);
+    if (attrs) for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (text != null) e.textContent = text;
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function pct(s, m) { return Math.round(s.v[m] * 100 / DAYS[m]); }
+  function devRaw(s, m) { return (12 * s.v[m] - s.total) / 12; }
+  function round1(x) { var a = Math.round(Math.abs(x) * 10) / 10; return x < 0 ? -a : a; }
+  function fmtSigned1(x) { var r = round1(x); if (r === 0) return '0.0'; return (r < 0 ? '−' : '+') + Math.abs(r).toFixed(1); }
+  function fmtSignedInt(x) { if (x === 0) return '0'; return (x < 0 ? '−' : '+') + Math.abs(x); }
+  function meanStr(s) { return (Math.round(s.total * 10 / 12) / 10).toFixed(1); }
+
+  function hexToRgb(h) { return [parseInt(h.substr(1, 2), 16), parseInt(h.substr(3, 2), 16), parseInt(h.substr(5, 2), 16)]; }
+  function rgbToHex(c) { return '#' + c.map(function (x) { var s = Math.round(x).toString(16); return s.length < 2 ? '0' + s : s; }).join(''); }
+  function ramp(stops, t) {
+    t = Math.max(0, Math.min(1, t));
+    var p = t * (stops.length - 1), i = Math.min(Math.floor(p), stops.length - 2), f = p - i;
+    var a = hexToRgb(stops[i]), b = hexToRgb(stops[i + 1]);
+    return rgbToHex([a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f, a[2] + (b[2] - a[2]) * f]);
+  }
+  // sequential (perceptually ordered dark -> bright)
+  var SEQ = ['#2a0f4f', '#3b2a80', '#35508f', '#2e6d93', '#258892', '#26a38a', '#4fbb76', '#8ccf5b', '#c8de3e', '#fbe94a'];
+  // diverging orange (below) / purple (above), CVD-safe
+  var DIV = ['#b35806', '#e08214', '#fdb863', '#fee0b6', '#f4f4f4', '#d8daeb', '#b2abd2', '#8073ac', '#542788'];
+  function absColor(v) { return ramp(SEQ, v / ABS_MAX); }
+  function devColor(d) { return ramp(DIV, (d + DEV_MAX) / (2 * DEV_MAX)); }
+  function lum(hex) {
+    var c = hexToRgb(hex).map(function (x) { x /= 255; return x <= 0.03928 ? x / 12.92 : Math.pow((x + 0.055) / 1.055, 2.4); });
+    return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+  }
+  function textOn(hex) { return lum(hex) > 0.179 ? '#0d1526' : '#ffffff'; }
+
+  // ---------- build chart ----------
+  var bg = el('rect', { x: 0, y: 0, width: 1210, height: 670, fill: '#0b1220', id: 'chartbg' }, chart);
+  void bg;
+
+  // column headers (left)
+  el('text', { x: 8, y: 40, 'class': 't15 muted' }, chart, 'Site');
+  el('text', { x: 8, y: 60, 'class': 't15 muted' }, chart, '(click to highlight)');
+  el('text', { x: 248, y: 40, 'class': 't15 muted', 'text-anchor': 'end' }, chart, 'Elevation');
+  el('text', { x: 248, y: 60, 'class': 't15 muted', 'text-anchor': 'end' }, chart, '(m)');
+  el('text', { x: 288, y: 40, 'class': 't15 muted', 'text-anchor': 'middle' }, chart, 'Bortle');
+  el('text', { x: 288, y: 60, 'class': 't15 muted', 'text-anchor': 'middle' }, chart, 'class');
+  el('text', { x: 322, y: 40, 'class': 't15 muted' }, chart, 'Annual total');
+  el('text', { x: 322, y: 60, 'class': 't15 muted' }, chart, '(clear nights)');
+  var axisTitle = el('text', { x: X0, y: 18, 'class': 't15 ink', 'font-weight': '600' }, chart, '');
+
+  var monthLabels = [], monthHits = [];
+  for (var m = 0; m < 12; m++) {
+    var cx = X0 + m * PITCH_X + CW / 2;
+    monthLabels.push(el('text', { x: cx, y: 58, 'class': 't16 ink', 'text-anchor': 'middle', 'font-weight': '600' }, chart, MONTHS[m]));
+    var hit = el('rect', { x: X0 + m * PITCH_X - 2, y: 32, width: PITCH_X, height: 36, fill: '#000', 'fill-opacity': 0, 'class': 'monthhit', 'data-m': m }, chart);
+    monthHits.push(hit);
+  }
+
+  var rowsLayer = el('g', { id: 'rows' }, chart);
+  var rowEls = [], cellEls = [];
+  SITES.forEach(function (s) {
+    var g = el('g', { 'class': 'row', 'data-s': s.i }, rowsLayer);
+    var inner = el('g', { 'class': 'inner' }, g);
+    var selBar = el('rect', { x: 0, y: 4, width: 4, height: CH - 8, rx: 2, fill: '#ffd166', opacity: 0 }, inner);
+    el('rect', { x: 0, y: 0, width: 456, height: CH, fill: '#ffffff', 'fill-opacity': s.i % 2 ? 0 : 0.035, rx: 4 }, inner);
+    el('text', { x: 10, y: 29, 'class': 't17 ink', 'font-weight': '600' }, inner, s.name);
+    el('text', { x: 248, y: 29, 'class': 't16 ink num', 'text-anchor': 'end' }, inner, s.elev + ' m');
+    el('rect', { x: 274, y: 10, width: 28, height: 26, rx: 5, fill: 'none', stroke: '#6b80a8', 'stroke-width': 1.2 }, inner);
+    el('text', { x: 288, y: 29, 'class': 't16 ink num', 'text-anchor': 'middle', 'font-weight': '600' }, inner, String(s.bortle));
+    el('text', { x: 356, y: 29, 'class': 't16 ink num', 'text-anchor': 'end', 'font-weight': '700' }, inner, String(s.total));
+    el('rect', { x: 362, y: 18, width: 300 / 300 * 92, height: 10, fill: '#24324d', rx: 2 }, inner);
+    el('rect', { x: 362, y: 18, width: s.total / 300 * 92, height: 10, fill: '#9fb4d8', rx: 2 }, inner);
+    var nameHit = el('rect', { x: 0, y: 0, width: 220, height: CH, fill: '#000', 'fill-opacity': 0, 'class': 'namehit', 'data-s': s.i }, inner);
+    var title = el('title', null, nameHit, 'Click to highlight ' + s.name);
+    void title;
+    var cells = [];
+    for (var m = 0; m < 12; m++) {
+      var cg = el('g', { 'class': 'cell', 'data-s': s.i, 'data-m': m, transform: 'translate(' + (X0 + m * PITCH_X) + ',0)' }, inner);
+      var r = el('rect', { 'class': 'cellbg', x: 0, y: 0, width: CW, height: CH, rx: 4 }, cg);
+      var dip = el('rect', { x: 2, y: 2, width: CW - 4, height: CH - 4, rx: 3, fill: 'none', stroke: '#ffffff', 'stroke-width': 2, 'stroke-dasharray': '5 3', display: 'none', 'pointer-events': 'none' }, cg);
+      var t = el('text', { 'class': 'val t16 num', x: CW / 2, y: 29, 'text-anchor': 'middle' }, cg, '');
+      var pin = el('g', { display: 'none', 'pointer-events': 'none' }, cg);
+      el('rect', { x: -2, y: -2, width: 17, height: 19, rx: 3, fill: '#ff7ad1', stroke: '#0b1220', 'stroke-width': 1.5 }, pin);
+      var pinT = el('text', { x: 6.5, y: 13, 'class': 't15', 'text-anchor': 'middle', 'font-weight': '700', fill: '#1a0d16' }, pin, '1');
+      cells.push({ g: cg, rect: r, text: t, dip: dip, pin: pin, pinT: pinT });
+    }
+    rowEls[s.i] = { g: g, inner: inner, selBar: selBar };
+    cellEls[s.i] = cells;
+  });
+
+  // overlay layer: month highlight, hover outline, focus ring
+  var overlay = el('g', { 'pointer-events': 'none' }, chart);
+  var colhl = el('rect', { id: 'colhl', x: 0, y: ROW_Y0 - 6, width: CW + 8, height: 10, rx: 6, fill: 'none', stroke: '#ffd166', 'stroke-width': 3, display: 'none' }, overlay);
+  var hov = el('g', { id: 'hov', display: 'none' }, overlay);
+  el('rect', { x: -2, y: -2, width: CW + 4, height: CH + 4, rx: 5, fill: 'none', stroke: '#ffffff', 'stroke-width': 2, 'stroke-opacity': 0.85 }, hov);
+  var ring = el('g', { id: 'ring', display: 'none' }, overlay);
+  el('rect', { x: -5, y: -5, width: CW + 10, height: CH + 10, rx: 7, fill: 'none', stroke: '#0b1220', 'stroke-width': 6 }, ring);
+  el('rect', { x: -5, y: -5, width: CW + 10, height: CH + 10, rx: 7, fill: 'none', stroke: '#ffd166', 'stroke-width': 3.5 }, ring);
+
+  // month totals
+  var totalsG = el('g', { id: 'totals' }, chart);
+  var sep = el('line', { x1: 0, x2: 1190, y1: 0, y2: 0, stroke: '#2b3b5a', 'stroke-width': 1 }, totalsG);
+  var totLabel1 = el('text', { x: 8, y: 0, 'class': 't17 ink', 'font-weight': '700' }, totalsG, 'Month total, sites shown');
+  var totLabel2 = el('text', { x: 8, y: 0, 'class': 't15 muted' }, totalsG, 'Clear nights summed over the displayed sites.');
+  var totLabel3 = el('text', { x: 8, y: 0, 'class': 't15 muted' }, totalsG, 'Bars start at 0, scaled to the largest month shown.');
+  el('line', { x1: X0 - 6, x2: X0 + 11 * PITCH_X + CW + 6, y1: BASE_Y, y2: BASE_Y, stroke: '#6b80a8', 'stroke-width': 1.2 }, totalsG);
+  var totEls = [];
+  for (var mm = 0; mm < 12; mm++) {
+    var x = X0 + mm * PITCH_X;
+    var bar = el('rect', { 'class': 'tbar', x: x + 8, y: BASE_Y - BAR_MAX, width: CW - 16, height: BAR_MAX, fill: '#9fb4d8', rx: 2 }, totalsG);
+    var num = el('text', { 'class': 'tnum t16 ink num', x: x + CW / 2, y: BASE_Y - BAR_MAX - 7, 'text-anchor': 'middle', 'font-weight': '700' }, totalsG, '');
+    var tag = el('text', { 'class': 'ttag t15', x: x + CW / 2, y: BASE_Y - BAR_MAX - 27, 'text-anchor': 'middle', 'font-weight': '700', fill: '#ffd166' }, totalsG, '');
+    el('text', { x: x + CW / 2, y: BASE_Y + 20, 'class': 't15 muted', 'text-anchor': 'middle' }, totalsG, MONTHS[mm]);
+    totEls.push({ bar: bar, num: num, tag: tag });
+  }
+
+  // ---------- legend ----------
+  var legend = document.getElementById('legend');
+  var defs = el('defs', null, legend);
+  function makeGrad(id, fn, lo, hi) {
+    var gr = el('linearGradient', { id: id, x1: 0, x2: 1, y1: 0, y2: 0 }, defs);
+    for (var i = 0; i <= 20; i++) {
+      var v = lo + (hi - lo) * i / 20;
+      el('stop', { offset: (i * 5) + '%', 'stop-color': fn(v) }, gr);
+    }
+  }
+  makeGrad('gAbs', absColor, 0, ABS_MAX);
+  makeGrad('gDev', devColor, -DEV_MAX, DEV_MAX);
+  var legAbs = el('g', null, legend);
+  el('rect', { x: 18, y: 6, width: 278, height: 20, rx: 3, fill: 'url(#gAbs)' }, legAbs);
+  [0, 5, 10, 15, 20, 25, 30].forEach(function (v) {
+    var x = 18 + v / ABS_MAX * 278;
+    el('line', { x1: x, x2: x, y1: 26, y2: 32, stroke: '#b3c0d6' }, legAbs);
+    el('text', { x: x, y: 48, 'class': 't15 ink num', 'text-anchor': 'middle' }, legAbs, String(v));
+  });
+  el('text', { x: 157, y: 70, 'class': 't15 muted', 'text-anchor': 'middle' }, legAbs, 'clear nights per month');
+  var legDev = el('g', { display: 'none' }, legend);
+  el('rect', { x: 18, y: 6, width: 278, height: 20, rx: 3, fill: 'url(#gDev)' }, legDev);
+  [-14, -7, 0, 7, 14].forEach(function (v) {
+    var x = 18 + (v + DEV_MAX) / (2 * DEV_MAX) * 278;
+    el('line', { x1: x, x2: x, y1: 26, y2: 32, stroke: '#b3c0d6' }, legDev);
+    el('text', { x: x, y: 48, 'class': 't15 ink num', 'text-anchor': 'middle' }, legDev, fmtSignedInt(v));
+  });
+  el('text', { x: 4, y: 70, 'class': 't15', fill: '#fdb863' }, legDev, '◀ below site mean');
+  el('text', { x: 310, y: 70, 'class': 't15', fill: '#c9c3ea', 'text-anchor': 'end' }, legDev, 'above site mean ▶');
+  var legendTitle = document.getElementById('legendTitle');
+  var legendNote = document.getElementById('legendNote');
+  var modeTag = document.getElementById('modeTag');
+
+  // ---------- rendering ----------
+  var visible = [];
+  function cmp(a, b) {
+    var k = 0;
+    if (state.sort === 1) k = b.total - a.total;
+    else if (state.sort === 2) k = b.elev - a.elev;
+    else if (state.sort === 3) k = a.bortle - b.bortle;
+    else return a.i - b.i;
+    if (k) return k;
+    if (b.total !== a.total) return b.total - a.total;
+    return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
+  }
+  function rowY(idx) { return ROW_Y0 + idx * PITCH_Y; }
+  function cellPos(si, m) {
+    var idx = visible.indexOf(SITES[si]);
+    return { x: X0 + m * PITCH_X, y: rowY(idx) };
+  }
+
+  function layout() {
+    var f = FILTERS[state.filter];
+    visible = SITES.filter(f.test).sort(cmp);
+    SITES.forEach(function (s) {
+      var idx = visible.indexOf(s), r = rowEls[s.i];
+      if (idx >= 0) {
+        r.g.classList.remove('off');
+        r.g.style.transform = 'translate(0px,' + rowY(idx) + 'px)';
+      } else {
+        r.g.classList.add('off');
+      }
+    });
+    // focus / selection maintenance
+    if (state.focus && visible.indexOf(SITES[state.focus.s]) < 0) {
+      state.focus = visible.length ? { s: visible[0].i, m: state.focus.m } : null;
+    }
+    if (state.hover && visible.indexOf(SITES[state.hover.s]) < 0) state.hover = null;
+    if (state.selected != null && visible.indexOf(SITES[state.selected]) < 0) state.selected = null;
+
+    // totals
+    var n = visible.length;
+    var areaTop = rowY(8) + 4;
+    sep.setAttribute('y1', areaTop - 8); sep.setAttribute('y2', areaTop - 8);
+    totLabel1.setAttribute('y', BASE_Y - 62);
+    totLabel2.setAttribute('y', BASE_Y - 38);
+    totLabel3.setAttribute('y', BASE_Y - 16);
+    var totals = MONTHS.map(function (_, m) { return visible.reduce(function (a, s) { return a + s.v[m]; }, 0); });
+    var mx = Math.max.apply(null, totals), mn = Math.min.apply(null, totals);
+    totals.forEach(function (t, m) {
+      var k = mx > 0 ? t / mx : 0;
+      var e = totEls[m];
+      e.bar.style.transform = 'scaleY(' + k + ')';
+      var dy = (1 - k) * BAR_MAX;
+      e.num.style.transform = 'translate(0px,' + dy + 'px)';
+      e.tag.style.transform = 'translate(0px,' + dy + 'px)';
+      e.num.textContent = String(t);
+      var tag = '';
+      if (n > 0 && mx !== mn) { if (t === mx) tag = 'most'; else if (t === mn) tag = 'fewest'; }
+      e.tag.textContent = tag;
+      e.tag.setAttribute('fill', tag === 'fewest' ? '#fdb863' : '#ffd166');
+      e.bar.setAttribute('fill', tag === 'most' ? '#ffd166' : tag === 'fewest' ? '#fdb863' : '#9fb4d8');
+    });
+    colhl.setAttribute('height', Math.max(10, n * PITCH_Y - PITCH_Y + CH + 12));
+  }
+
+  function paint() {
+    SITES.forEach(function (s) {
+      cellEls[s.i].forEach(function (c, m) {
+        var fill, label;
+        if (state.dev) { var d = devRaw(s, m); fill = devColor(d); label = fmtSigned1(d); }
+        else { fill = absColor(s.v[m]); label = String(s.v[m]); }
+        c.rect.setAttribute('fill', fill);
+        c.text.setAttribute('fill', textOn(fill));
+        c.text.textContent = label;
+        c.dip.setAttribute('display', state.dev && devRaw(s, m) <= -10 ? 'inline' : 'none');
+        c.dip.setAttribute('stroke', textOn(fill));
+      });
+    });
+    axisTitle.textContent = state.dev
+      ? 'Nights above (+) or below (−) each site’s own monthly mean, by month'
+      : 'Clear nights per month (nights with under 20% cloud cover), by site and month';
+    legAbs.setAttribute('display', state.dev ? 'none' : 'inline');
+    legDev.setAttribute('display', state.dev ? 'inline' : 'none');
+    modeTag.textContent = state.dev ? 'Deviation mode' : 'Absolute mode';
+    legendTitle.textContent = state.dev ? 'Colour key: difference from site mean (nights)' : 'Colour key: clear nights in the month';
+    legendNote.innerHTML = state.dev
+      ? 'Each cell = that month minus the site’s own 12-month mean. Dashed outline = 10 or more nights below the site mean.'
+      : 'Brighter cell = more clear nights. The number in each cell is the exact count.';
+  }
+
+  function paintPins() {
+    SITES.forEach(function (s) { cellEls[s.i].forEach(function (c) { c.pin.setAttribute('display', 'none'); }); });
+    state.pins.forEach(function (p, k) {
+      var c = cellEls[p.s][p.m];
+      c.pin.setAttribute('display', 'inline');
+      c.pinT.textContent = String(k + 1);
+    });
+    var body = document.getElementById('compareBody');
+    function line(p, k) {
+      var s = SITES[p.s];
+      return '<div class="pinrow"><span class="badge">' + (k + 1) + '</span><span>' + s.name + ', ' + MONTHS[p.m] +
+        ': <b>' + s.v[p.m] + '</b> nights (' + pct(s, p.m) + '%), ' + fmtSigned1(devRaw(s, p.m)) + ' vs mean</span></div>';
+    }
+    if (!state.pins.length) {
+      body.innerHTML = '<p>No values pinned. Click a cell, or focus one with the arrow keys and press Enter. Pin two to see their difference.</p>';
+    } else if (state.pins.length === 1) {
+      body.innerHTML = line(state.pins[0], 0) + '<p style="margin-top:6px">Pin one more value to compare.</p>';
+    } else {
+      var a = SITES[state.pins[0].s], am = state.pins[0].m, b = SITES[state.pins[1].s], bm = state.pins[1].m;
+      var dn = a.v[am] - b.v[bm], dp = pct(a, am) - pct(b, bm);
+      body.innerHTML = line(state.pins[0], 0) + line(state.pins[1], 1) +
+        '<div class="diff">Difference (1 − 2): <b>' + fmtSignedInt(dn) + ' clear nights</b><br>' +
+        'Share of month: <b>' + fmtSignedInt(dp) + ' percentage points</b></div>';
+    }
+  }
+
+  function paintSelection() {
+    SITES.forEach(function (s) {
+      var r = rowEls[s.i];
+      var on = state.selected == null || state.selected === s.i;
+      r.inner.style.opacity = on ? '1' : '0.35';
+      r.selBar.setAttribute('opacity', state.selected === s.i ? 1 : 0);
+    });
+  }
+
+  var stage = document.getElementById('stage');
+  var readout = document.getElementById('readout');
+  var live = document.getElementById('live');
+  function placeOverlay(g, key, quick) {
+    if (!key) { g.setAttribute('display', 'none'); return; }
+    var p = cellPos(key.s, key.m);
+    var wasHidden = g.getAttribute('display') === 'none';
+    g.classList.toggle('quick', !!quick);
+    if (wasHidden) g.style.transition = 'none';
+    g.style.transform = 'translate(' + p.x + 'px,' + p.y + 'px)';
+    g.setAttribute('display', 'inline');
+    if (wasHidden) { void g.getBoundingClientRect(); g.style.transition = ''; }
+  }
+  function updateReadout() {
+    var key = state.hover || state.focus;
+    if (!key) { readout.style.display = 'none'; return; }
+    var s = SITES[key.s], m = key.m, p = cellPos(key.s, key.m);
+    readout.innerHTML =
+      '<div class="ro-title">' + s.name + ' · ' + MONTHS_FULL[m] + '</div>' +
+      '<div class="ro-row"><span>Clear nights</span><span>' + s.v[m] + ' of ' + DAYS[m] + '</span></div>' +
+      '<div class="ro-row"><span>Share of the month’s nights</span><span>' + pct(s, m) + '%</span></div>' +
+      '<div class="ro-row"><span>vs site mean (' + meanStr(s) + '/month)</span><span>' + fmtSigned1(devRaw(s, m)) + '</span></div>';
+    readout.style.display = 'block';
+    var w = readout.offsetWidth, h = readout.offsetHeight;
+    var cx = CHART_X + p.x, cy = CHART_Y + p.y;
+    var left = cx + CW / 2 - w / 2;
+    left = Math.max(8, Math.min(1600 - w - 8, left));
+    var top = cy - h - 12;
+    if (top < 8) top = cy + CH + 12;
+    if (top + h > 892) top = 892 - h;
+    readout.style.left = left + 'px';
+    readout.style.top = top + 'px';
+    live.textContent = s.name + ', ' + MONTHS_FULL[m] + ': ' + s.v[m] + ' clear nights, ' + pct(s, m) + ' percent of the month, ' + fmtSigned1(devRaw(s, m)) + ' versus site mean.';
+  }
+
+  function paintMonthHL() {
+    var hm = state.hoverMonth;
+    monthLabels.forEach(function (t, m) { t.setAttribute('fill', hm === m ? '#ffd166' : '#eef2f8'); t.setAttribute('text-decoration', hm === m ? 'underline' : 'none'); });
+    totEls.forEach(function (e, m) { e.num.setAttribute('fill', hm === m ? '#ffd166' : '#eef2f8'); });
+    if (hm == null || !visible.length) { colhl.setAttribute('display', 'none'); return; }
+    colhl.setAttribute('x', X0 + hm * PITCH_X - 4);
+    colhl.setAttribute('display', 'inline');
+  }
+
+  var btns = Array.prototype.slice.call(document.querySelectorAll('#controls button'));
+  function paintState() {
+    var n = visible.length;
+    document.getElementById('stateLabel').innerHTML =
+      '<span class="k">Current view:</span> sorted by <strong>' + SORT_WORDS[state.sort] + '</strong>' +
+      ' <span class="k">·</span> filter: <strong>' + FILTERS[state.filter].words + '</strong> (' + n + ' of 8 sites shown)' +
+      ' <span class="k">·</span> mode: <strong>' + (state.dev ? 'deviation from each site’s monthly mean' : 'absolute clear nights') + '</strong>';
+    btns.forEach(function (b) {
+      var k = b.getAttribute('data-key');
+      if (k >= '0' && k <= '3') b.setAttribute('aria-pressed', String(Number(k) === state.sort));
+    });
+    document.getElementById('btnBText').textContent = 'Bortle classes: ' + FILTERS[state.filter].label;
+    document.getElementById('btnDText').textContent = 'Deviation mode: ' + (state.dev ? 'On' : 'Off');
+    document.getElementById('btnD').setAttribute('aria-pressed', String(state.dev));
+  }
+
+  function refresh(opts) {
+    opts = opts || {};
+    if (opts.layout) layout();
+    if (opts.paint) paint();
+    paintPins();
+    paintSelection();
+    paintMonthHL();
+    placeOverlay(ring, state.focus, opts.quick);
+    placeOverlay(hov, state.hover, true);
+    chart.classList.toggle('has-cell', !!state.focus);
+    updateReadout();
+    paintState();
+  }
+
+  // ---------- actions ----------
+  function doKey(k) {
+    if (k === '0' || k === '1' || k === '2' || k === '3') { state.sort = Number(k); refresh({ layout: true }); return true; }
+    if (k === 'd') { state.dev = !state.dev; refresh({ paint: true }); return true; }
+    if (k === 'b') { state.filter = (state.filter + 1) % FILTERS.length; refresh({ layout: true }); return true; }
+    return false;
+  }
+  function togglePin(key) {
+    var idx = -1;
+    state.pins.forEach(function (p, i) { if (p.s === key.s && p.m === key.m) idx = i; });
+    if (idx >= 0) state.pins.splice(idx, 1);
+    else { if (state.pins.length >= 2) state.pins.shift(); state.pins.push({ s: key.s, m: key.m }); }
+  }
+  function moveFocus(dir) {
+    if (!visible.length) return;
+    if (!state.focus) { state.focus = { s: visible[0].i, m: 0 }; return; }
+    var idx = visible.indexOf(SITES[state.focus.s]), m = state.focus.m;
+    if (dir === 'ArrowUp') idx = Math.max(0, idx - 1);
+    else if (dir === 'ArrowDown') idx = Math.min(visible.length - 1, idx + 1);
+    else if (dir === 'ArrowLeft') m = Math.max(0, m - 1);
+    else if (dir === 'ArrowRight') m = Math.min(11, m + 1);
+    state.focus = { s: visible[idx].i, m: m };
+  }
+
+  btns.forEach(function (b) {
+    b.addEventListener('click', function () { doKey(b.getAttribute('data-key')); });
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    var t = e.target, onButton = t && t.tagName === 'BUTTON';
+    var k = e.key;
+    if (k === 'ArrowUp' || k === 'ArrowDown' || k === 'ArrowLeft' || k === 'ArrowRight') {
+      e.preventDefault();
+      moveFocus(k);
+      if (document.activeElement !== chart) chart.focus({ preventScroll: true });
+      chart.classList.add('kbd-focus');
+      refresh({ quick: true });
+      return;
+    }
+    if (k === 'Enter' || k === ' ') {
+      if (onButton) return; // native button activation
+      if (k === 'Enter' && state.focus) { e.preventDefault(); togglePin(state.focus); refresh(); }
+      return;
+    }
+    if (k === 'Escape') {
+      state.focus = null; state.pins = [];
+      refresh();
+      return;
+    }
+    var lk = k.length === 1 ? k.toLowerCase() : k;
+    if (doKey(lk)) e.preventDefault();
+  });
+
+  chart.addEventListener('focus', function () { chart.classList.add('kbd-focus'); });
+  chart.addEventListener('blur', function () { chart.classList.remove('kbd-focus'); });
+
+  chart.addEventListener('mouseover', function (e) {
+    var c = e.target.closest ? e.target.closest('.cell') : null;
+    if (c) {
+      var key = { s: Number(c.getAttribute('data-s')), m: Number(c.getAttribute('data-m')) };
+      if (!state.hover || state.hover.s !== key.s || state.hover.m !== key.m) { state.hover = key; refresh(); }
+      return;
+    }
+    if (e.target.classList && e.target.classList.contains('monthhit')) {
+      var mh = Number(e.target.getAttribute('data-m'));
+      if (state.hoverMonth !== mh) { state.hoverMonth = mh; paintMonthHL(); }
+    }
+  });
+  chart.addEventListener('mouseout', function (e) {
+    var c = e.target.closest ? e.target.closest('.cell') : null;
+    var to = e.relatedTarget;
+    if (c && !(to && c.contains(to))) { state.hover = null; refresh(); }
+    if (e.target.classList && e.target.classList.contains('monthhit')) { state.hoverMonth = null; paintMonthHL(); }
+  });
+  chart.addEventListener('mousedown', function (e) { if (e.target !== chart) e.preventDefault(); chart.classList.remove('kbd-focus'); });
+
+  stage.addEventListener('click', function (e) {
+    var t = e.target;
+    var cell = t.closest ? t.closest('.cell') : null;
+    if (cell) {
+      togglePin({ s: Number(cell.getAttribute('data-s')), m: Number(cell.getAttribute('data-m')) });
+      refresh();
+      return;
+    }
+    if (t.classList && t.classList.contains('namehit')) {
+      var si = Number(t.getAttribute('data-s'));
+      state.selected = state.selected === si ? null : si;
+      refresh();
+      return;
+    }
+    if (t.closest && (t.closest('button') || t.closest('#side') || t.closest('.monthhit'))) return;
+    if (state.selected != null) { state.selected = null; refresh(); }
+  });
+
+  // ---------- fit to viewport ----------
+  function fit() {
+    var W = window.innerWidth, H = window.innerHeight;
+    var s = Math.min(W / 1600, H / 900);
+    stage.style.transform = 'translate(' + ((W - 1600 * s) / 2) + 'px,' + ((H - 900 * s) / 2) + 'px) scale(' + s + ')';
+  }
+  window.addEventListener('resize', fit);
+  fit();
+
+  refresh({ layout: true, paint: true });
+  requestAnimationFrame(function () { requestAnimationFrame(function () { stage.classList.add('ready'); }); });
+})();
+</script>
+</body>
+</html>

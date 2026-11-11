@@ -1,0 +1,23 @@
+{
+  "runId": "VIS-P2-sol",
+  "capturedAt": "2026-11-11T22:00:49.799Z",
+  "playwrightVersion": "1.65.0",
+  "browserVersion": null,
+  "viewport": {
+    "width": 1600,
+    "height": 900
+  },
+  "deviceScaleFactor": 1,
+  "status": "missing-source",
+  "sourceHash": null,
+  "bytes": 0,
+  "consoleErrors": [],
+  "pageErrors": [],
+  "networkAttempts": [],
+  "svgPresent": null,
+  "poster": null,
+  "clip": null,
+  "frames": [],
+  "errors": [],
+  "captureElapsedSeconds": 0.002
+}

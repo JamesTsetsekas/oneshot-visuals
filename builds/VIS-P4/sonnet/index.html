@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Last Ferry</title>
+<style>
+html,body{margin:0;padding:0;width:100%;height:100%;background:#0a1228;overflow:hidden}
+body{margin:0;overflow:hidden}
+#art{display:block;width:100vw;height:100vh}
+</style>
+</head>
+<body>
+<svg id="art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="ttl dsc">
+<title id="ttl">The Last Ferry</title>
+<desc id="dsc">A blue-hour harbour seen from the side. A small passenger ferry glides in from the left, blows a steam plume from its horn, lowers its bow ramp onto a stone quay and lets one traveller with a case walk off past a lantern that lights as the ramp lands. The ferry then backs away into the dusk while a lighthouse beam sweeps across twinkling stars and rippling water.</desc>
+<defs>
+  <linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#060c20"/><stop offset=".35" stop-color="#0e1a44"/><stop offset=".68" stop-color="#26407e"/><stop offset=".9" stop-color="#5a68a2"/><stop offset="1" stop-color="#b48aa8"/>
+  </linearGradient>
+  <linearGradient id="gSea" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#6a77ab"/><stop offset=".06" stop-color="#3b4d88"/><stop offset=".3" stop-color="#1f3068"/><stop offset=".62" stop-color="#121f47"/><stop offset="1" stop-color="#0a1230"/>
+  </linearGradient>
+  <linearGradient id="gHaze" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#e8a9a6" stop-opacity="0"/><stop offset=".5" stop-color="#e8a9a6" stop-opacity=".34"/><stop offset="1" stop-color="#e8a9a6" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="gWF" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#1a2c5c" stop-opacity=".5"/><stop offset=".18" stop-color="#0e1a3e" stop-opacity=".8"/><stop offset="1" stop-color="#08102a" stop-opacity=".97"/>
+  </linearGradient>
+  <linearGradient id="gHull" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2d4175"/><stop offset="1" stop-color="#16203f"/></linearGradient>
+  <linearGradient id="gCabin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c3cae0"/><stop offset="1" stop-color="#8e99bd"/></linearGradient>
+  <linearGradient id="gGlass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe0a2"/><stop offset="1" stop-color="#f0a557"/></linearGradient>
+  <linearGradient id="gDoor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffcf86"/><stop offset="1" stop-color="#b9743f"/></linearGradient>
+  <linearGradient id="gFun" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8f3530"/><stop offset=".5" stop-color="#cf5a49"/><stop offset="1" stop-color="#8a2f2b"/></linearGradient>
+  <radialGradient id="gPuff"><stop offset="0" stop-color="#eef2ff" stop-opacity=".9"/><stop offset=".55" stop-color="#d9e1f6" stop-opacity=".5"/><stop offset="1" stop-color="#cfd9f2" stop-opacity="0"/></radialGradient>
+  <radialGradient id="gHalo"><stop offset="0" stop-color="#ffe3a8" stop-opacity="1"/><stop offset=".22" stop-color="#ffc57a" stop-opacity=".6"/><stop offset="1" stop-color="#ff9f4a" stop-opacity="0"/></radialGradient>
+  <radialGradient id="gPool"><stop offset="0" stop-color="#ffbf72" stop-opacity=".95"/><stop offset=".4" stop-color="#ff9f55" stop-opacity=".38"/><stop offset="1" stop-color="#ff8a40" stop-opacity="0"/></radialGradient>
+  <linearGradient id="gBeam" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff3d2" stop-opacity=".6"/><stop offset=".45" stop-color="#fff3d2" stop-opacity=".2"/><stop offset="1" stop-color="#fff3d2" stop-opacity="0"/></linearGradient>
+  <radialGradient id="gFlare"><stop offset="0" stop-color="#fffbe8" stop-opacity="1"/><stop offset=".22" stop-color="#ffecc0" stop-opacity=".6"/><stop offset="1" stop-color="#ffdca0" stop-opacity="0"/></radialGradient>
+  <radialGradient id="gMoon"><stop offset="0" stop-color="#e9e3d0" stop-opacity=".35"/><stop offset="1" stop-color="#e9e3d0" stop-opacity="0"/></radialGradient>
+  <radialGradient id="gFoam"><stop offset="0" stop-color="#f2f7ff" stop-opacity="1"/><stop offset=".6" stop-color="#dbe7ff" stop-opacity=".6"/><stop offset="1" stop-color="#cfe0ff" stop-opacity="0"/></radialGradient>
+  <linearGradient id="gMound" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#dbe8ff" stop-opacity=".35"/><stop offset="1" stop-color="#ffffff" stop-opacity=".95"/></linearGradient>
+  <linearGradient id="gStoneShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a1228" stop-opacity="0"/><stop offset="1" stop-color="#0a1228" stop-opacity=".7"/></linearGradient>
+  <linearGradient id="gWet" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#16285a" stop-opacity=".55"/><stop offset="1" stop-color="#16285a" stop-opacity="0"/></linearGradient>
+  <linearGradient id="gLit" gradientUnits="userSpaceOnUse" x1="-34" y1="0" x2="34" y2="0">
+    <stop id="stopL" offset="0" stop-color="#fff" stop-opacity="0"/><stop id="stopR" offset="1" stop-color="#fff" stop-opacity="0"/>
+  </linearGradient>
+  <mask id="litMask" maskUnits="userSpaceOnUse" x="-140" y="-240" width="280" height="290"><rect x="-140" y="-240" width="280" height="290" fill="url(#gLit)"/></mask>
+  <mask id="moonMask" maskUnits="userSpaceOnUse" x="1240" y="80" width="100" height="100"><rect x="1240" y="80" width="100" height="100" fill="#fff"/><circle cx="1301" cy="125" r="23" fill="#000"/></mask>
+  <clipPath id="doorClip"><rect id="doorClipR" x="0" y="0" width="3200" height="900"/></clipPath>
+  <pattern id="stones" width="120" height="48" patternUnits="userSpaceOnUse">
+    <rect width="120" height="48" fill="#394259"/>
+    <rect x="0" y="0" width="58" height="23" fill="#3f4966"/><rect x="62" y="0" width="58" height="23" fill="#343d54"/>
+    <rect x="30" y="25" width="58" height="23" fill="#3d4762"/><rect x="-28" y="25" width="56" height="23" fill="#333c52"/><rect x="92" y="25" width="56" height="23" fill="#333c52"/>
+    <path d="M0 24H120M0 0H120M60 0V24M29 24V48M89 24V48" stroke="#1f2639" stroke-width="2" fill="none"/>
+  </pattern>
+  <linearGradient id="eL" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0a1228" stop-opacity="1"/><stop offset=".3" stop-color="#0a1228" stop-opacity=".5"/><stop offset="1" stop-color="#0a1228" stop-opacity="0"/></linearGradient>
+  <linearGradient id="eR" x1="1" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#0a1228" stop-opacity="1"/><stop offset=".3" stop-color="#0a1228" stop-opacity=".5"/><stop offset="1" stop-color="#0a1228" stop-opacity="0"/></linearGradient>
+  <linearGradient id="eT" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a1228" stop-opacity="1"/><stop offset=".3" stop-color="#0a1228" stop-opacity=".5"/><stop offset="1" stop-color="#0a1228" stop-opacity="0"/></linearGradient>
+  <linearGradient id="eB" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#0a1228" stop-opacity="1"/><stop offset=".3" stop-color="#0a1228" stop-opacity=".5"/><stop offset="1" stop-color="#0a1228" stop-opacity="0"/></linearGradient>
+  <radialGradient id="gVig" cx=".5" cy=".5" r=".75"><stop offset=".55" stop-color="#050a1a" stop-opacity="0"/><stop offset="1" stop-color="#050a1a" stop-opacity=".5"/></radialGradient>
+</defs>
+
+<!-- SKY -->
+<g id="skyL">
+  <rect x="0" y="0" width="1600" height="420" fill="url(#gSky)"/>
+  <rect x="0" y="360" width="1600" height="90" fill="url(#gHaze)"/>
+  <ellipse cx="420" cy="376" rx="360" ry="8" fill="#d79aa6" opacity=".2"/>
+  <ellipse cx="1130" cy="388" rx="420" ry="7" fill="#d79aa6" opacity=".18"/>
+  <ellipse cx="760" cy="344" rx="260" ry="6" fill="#8d8fc6" opacity=".22"/>
+  <ellipse cx="1420" cy="330" rx="240" ry="9" fill="#7f86c2" opacity=".2"/>
+  <ellipse cx="300" cy="250" rx="300" ry="7" fill="#6573b3" opacity=".16"/>
+  <circle cx="1290" cy="130" r="70" fill="url(#gMoon)"/>
+  <circle cx="1290" cy="130" r="26" fill="#f1ead6" mask="url(#moonMask)"/>
+  <g id="stars"></g>
+</g>
+
+<!-- LIGHTHOUSE BEAM (behind tower) -->
+<g id="beamG">
+  <polygon points="0,-2 700,-36 700,36 0,2" fill="url(#gBeam)" opacity=".55"/>
+  <polygon points="0,-1.6 700,-20 700,20 0,1.6" fill="url(#gBeam)" opacity=".7"/>
+  <polygon points="0,-1 700,-8 700,8 0,1" fill="url(#gBeam)" opacity=".9"/>
+</g>
+
+<!-- HEADLAND + LIGHTHOUSE -->
+<g id="headland">
+  <path d="M0 420 L0 404 C60 396 110 388 170 390 C210 391 240 397 280 396 C340 395 400 408 470 420 Z" fill="#0f1832"/>
+  <path d="M0 420 L0 410 C80 404 160 402 250 404 C330 405 410 412 470 420 Z" fill="#1b2750" opacity=".6"/>
+  <path d="M250 346 L270 346 L277 397 L243 397 Z" fill="#8892b8"/>
+  <path d="M247 366 L273 366 L274 374 L246 374 Z" fill="#3b4570"/>
+  <path d="M245 382 L275 382 L276 388 L244 388 Z" fill="#3b4570"/>
+  <rect x="246" y="342" width="28" height="5" fill="#252e52"/>
+  <rect x="251" y="320" width="18" height="22" fill="#0e1530"/>
+  <rect x="253" y="322" width="14" height="18" fill="#ffe9ae"/>
+  <path d="M248 320 L260 306 L272 320 Z" fill="#252e52"/>
+  <rect x="259" y="296" width="2" height="12" fill="#252e52"/>
+  <g fill="#0b1228"><path d="M330 398 l8 -9 l7 9z M380 404 l6 -7 l6 7z"/></g>
+</g>
+<g id="flareG">
+  <circle id="flareC" cx="0" cy="0" r="20" fill="url(#gFlare)"/>
+  <ellipse id="flareH" cx="0" cy="0" rx="100" ry="3" fill="url(#gFlare)"/>
+  <ellipse id="flareV" cx="0" cy="0" rx="3" ry="80" fill="url(#gFlare)"/>
+</g>
+
+<!-- SEA -->
+<rect x="0" y="420" width="1600" height="480" fill="url(#gSea)"/>
+<rect x="0" y="414" width="1600" height="16" fill="#f0b8b0" opacity=".22"/>
+<g id="farSh" stroke-linecap="round"></g>
+
+<!-- FERRY -->
+<g id="ferryG">
+  <!-- far-side railings -->
+  <g stroke="#9ba6c6" stroke-width="2" opacity=".75" fill="none">
+    <path d="M-256 -44H-196M-256 -22H-196M10 -44H232M10 -22H232"/>
+    <path d="M-256 0V-44M-226 0V-44M-196 0V-44M10 0V-44M46 0V-44M82 0V-44M118 0V-44M154 0V-44M190 0V-44M226 0V-44"/>
+  </g>
+  <circle cx="176" cy="-24" r="9" fill="none" stroke="#e7e1d3" stroke-width="5"/>
+  <circle cx="176" cy="-24" r="9" fill="none" stroke="#c9453d" stroke-width="5" stroke-dasharray="7 7"/>
+  <!-- davit for the ramp chain -->
+  <path d="M236 0V-100M236 -100H246" stroke="#7d88a8" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <!-- hull -->
+  <path d="M-262 0 L262 0 L254 20 L244 38 Q238 54 220 64 L-220 64 Q-238 54 -244 38 L-254 20 Z" fill="url(#gHull)"/>
+  <path d="M-262 0H262L260 8H-260Z" fill="#d9d2c2"/>
+  <path d="M-253.5 22H253.5L249 31H-249Z" fill="#9c3a3f"/>
+  <g fill="#ffd592" stroke="#20294a" stroke-width="1.5"><circle cx="-200" cy="15" r="3.6"/><circle cx="-160" cy="15" r="3.6"/><circle cx="-120" cy="15" r="3.6"/><circle cx="-80" cy="15" r="3.6"/><circle cx="-40" cy="15" r="3.6"/><circle cx="0" cy="15" r="3.6"/><circle cx="40" cy="15" r="3.6"/><circle cx="80" cy="15" r="3.6"/><circle cx="120" cy="15" r="3.6"/><circle cx="160" cy="15" r="3.6"/><circle cx="200" cy="15" r="3.6"/></g>
+  <!-- wheelhouse + mast -->
+  <rect x="-152" y="-262" width="102" height="58" fill="url(#gCabin)"/>
+  <rect x="-158" y="-272" width="114" height="11" rx="2" fill="#2f3b63"/>
+  <g fill="url(#gGlass)" stroke="#20294a" stroke-width="2"><rect x="-146" y="-250" width="26" height="28"/><rect x="-113" y="-250" width="26" height="28"/><rect x="-80" y="-250" width="26" height="28"/></g>
+  <path d="M-100 -272V-310" stroke="#7d88a8" stroke-width="2.5"/>
+  <circle cx="-100" cy="-312" r="3.4" fill="#fff6d6"/>
+  <!-- funnel + horn -->
+  <path d="M-37 -206L-34 -290L-6 -290L-3 -206Z" fill="url(#gFun)"/>
+  <path d="M-35.4 -262L-34.6 -250L-5.4 -250L-4.6 -262Z" fill="#e6ddc9"/>
+  <rect x="-36" y="-298" width="32" height="9" rx="2" fill="#1a2038"/>
+  <path d="M-27 -298L-25 -309L-15 -309L-13 -298Z" fill="#2a2f45"/>
+  <ellipse cx="-20" cy="-309" rx="7" ry="2.6" fill="#d9a441"/>
+  <!-- cabin -->
+  <rect x="-190" y="-196" width="188" height="196" fill="url(#gCabin)"/>
+  <rect x="-198" y="-208" width="204" height="14" rx="2" fill="#2f3b63"/>
+  <rect x="-190" y="-14" width="188" height="14" fill="#6f7a9e" opacity=".55"/>
+  <g stroke="#20294a" stroke-width="3" fill="url(#gGlass)"><rect x="-182" y="-150" width="34" height="58"/><rect x="-52" y="-150" width="40" height="58"/></g>
+  <path d="M-165 -150V-92M-32 -150V-92" stroke="#20294a" stroke-width="2"/>
+  <rect x="-142" y="-188" width="84" height="188" fill="#20294a"/>
+  <rect x="-138" y="-184" width="76" height="184" fill="url(#gDoor)"/>
+  <rect x="-138" y="-184" width="16" height="184" fill="#3a1f2a" opacity=".3"/>
+  <rect x="-132" y="-36" width="64" height="12" fill="#6e3f33" opacity=".7"/>
+  <circle cx="-100" cy="-198" r="4.5" fill="#fff0c4"/>
+  <!-- bow stop -->
+  <rect x="256" y="6" width="6" height="20" fill="#14182c"/>
+</g>
+<g id="plumeG"></g>
+
+<!-- WATER FRONT -->
+<path id="wfill" d="M0 640H1000V900H0Z" fill="url(#gWF)"/>
+<path id="wline" d="M0 640H1000" fill="none" stroke="#a9bfee" stroke-width="1.6" opacity=".5"/>
+<g id="nearSh" stroke-linecap="round"></g>
+<g id="reflG"></g>
+<g id="lanRefl" style="mix-blend-mode:screen">
+  <ellipse id="lanPool" cx="1000" cy="672" rx="260" ry="80" fill="url(#gPool)" opacity="0"/>
+  <g id="lanDash" stroke-linecap="round"></g>
+</g>
+<g id="foamG">
+  <path id="bowM" d="M0 0" fill="url(#gMound)" opacity="0"/>
+</g>
+
+<!-- QUAY -->
+<g id="quayL">
+  <g id="hut">
+    <rect x="1392" y="540" width="112" height="70" fill="#18223c"/>
+    <polygon points="1380,542 1448,500 1516,542" fill="#10182d"/>
+    <rect x="1412" y="562" width="30" height="26" fill="#f2b765"/>
+    <path d="M1427 562V588M1412 575H1442" stroke="#18223c" stroke-width="2"/>
+    <rect x="1466" y="570" width="22" height="40" fill="#0e1528"/>
+  </g>
+  <g>
+    <rect x="1296" y="586" width="40" height="24" fill="#3a2e30"/><rect x="1336" y="590" width="36" height="20" fill="#33292d"/><rect x="1304" y="562" width="30" height="24" fill="#40322f"/>
+    <path d="M1296 598H1336M1304 574H1334M1336 600H1372" stroke="#1a1620" stroke-width="2"/>
+    <path d="M1240 610 l3 -20 h14 l3 20z" fill="#1a2036"/><rect x="1238" y="587" width="26" height="5" rx="2" fill="#262d4a"/>
+  </g>
+  <rect x="1000" y="610" width="600" height="290" fill="url(#stones)"/>
+  <rect x="1000" y="640" width="600" height="90" fill="url(#gWet)"/>
+  <rect x="1000" y="610" width="600" height="290" fill="url(#gStoneShade)"/>
+  <rect x="1000" y="610" width="600" height="16" fill="#4f5a78"/>
+  <rect x="1000" y="610" width="600" height="2.5" fill="#8d9bc2"/>
+  <rect x="1000" y="610" width="3" height="290" fill="#6a7799"/>
+  <g stroke="#1b2238" stroke-width="3.5" fill="none"><path d="M1056 632V790M1088 632V790"/></g>
+  <g stroke="#2a3250" stroke-width="3" fill="none"><path d="M1056 650H1088M1056 676H1088M1056 702H1088M1056 728H1088M1056 754H1088M1056 780H1088"/></g>
+  <circle cx="1030" cy="662" r="7" fill="none" stroke="#161c30" stroke-width="3"/>
+  <!-- lantern post -->
+  <path d="M1170 610H1190L1186 600H1174Z" fill="#12182a"/>
+  <rect x="1177" y="452" width="6" height="150" fill="#12182a"/>
+  <path d="M1180 520Q1164 520 1160 534M1180 520Q1196 520 1200 534" stroke="#12182a" stroke-width="3" fill="none"/>
+  <rect x="1166" y="456" width="28" height="5" fill="#12182a"/>
+  <polygon points="1164,428 1180,414 1196,428" fill="#12182a"/>
+  <rect x="1168" y="428" width="24" height="28" fill="#12182a"/>
+  <rect id="lanGlass" x="1171.5" y="431" width="17" height="22" fill="#3b4260"/>
+  <path d="M1180 431V453" stroke="#12182a" stroke-width="1.5"/>
+  <circle cx="1180" cy="410" r="3" fill="#12182a"/>
+</g>
+
+<!-- RAMP -->
+<path id="chain" d="M0 0" fill="none" stroke="#b4bdd3" stroke-width="1.8" opacity=".8"/>
+<g id="rampG">
+  <path d="M20 0V-30M120 0V-30" stroke="#8d97b3" stroke-width="3" stroke-linecap="round"/>
+  <path d="M20 -28Q70 -8 120 -28" stroke="#c9873f" stroke-width="2.2" fill="none"/>
+  <rect x="0" y="0" width="140" height="6" rx="1.5" fill="#707a92"/>
+  <path d="M140 0L150 6H140Z" fill="#59627a"/>
+  <rect x="0" y="0" width="140" height="1.8" fill="#aab4cc"/>
+  <path id="ribs" d="M0 0" stroke="#434c66" stroke-width="1.4" fill="none"/>
+  <circle cx="2" cy="3" r="4.6" fill="#39425c"/>
+</g>
+
+<!-- LANTERN LIGHT -->
+<g id="lightL" style="mix-blend-mode:screen">
+  <rect id="poolR" x="560" y="420" width="1040" height="480" fill="none"/>
+  <circle id="poolC" cx="1180" cy="470" r="560" fill="url(#gPool)" opacity="0"/>
+  <ellipse id="poolG" cx="1180" cy="613" rx="270" ry="9" fill="url(#gPool)" opacity="0"/>
+  <polygon id="cone" points="1171,458 1189,458 1370,610 990,610" fill="url(#gPool)" opacity="0"/>
+  <circle id="halo" cx="1180" cy="442" r="130" fill="url(#gHalo)" opacity="0"/>
+  <circle id="core" cx="1180" cy="442" r="30" fill="url(#gHalo)" opacity="0"/>
+</g>
+
+<!-- PASSENGER -->
+<g clip-path="url(#doorClip)">
+  <g id="pg" display="none">
+    <ellipse cx="0" cy="1" rx="30" ry="3.6" fill="#050a1a" opacity=".4"/>
+    <g id="opG">
+      <g id="rigBase"></g>
+      <g id="litWrap" mask="url(#litMask)"><g id="rigLit"></g></g>
+      <g id="rigShade"></g>
+    </g>
+  </g>
+</g>
+
+<!-- EDGES -->
+<rect x="0" y="0" width="1600" height="900" fill="url(#gVig)"/>
+<rect x="0" y="0" width="64" height="900" fill="url(#eL)"/>
+<rect x="1536" y="0" width="64" height="900" fill="url(#eR)"/>
+<rect x="0" y="0" width="1600" height="48" fill="url(#eT)"/>
+<rect x="0" y="852" width="1600" height="48" fill="url(#eB)"/>
+</svg>
+<script>
+(function(){
+"use strict";
+var NS="http://www.w3.org/2000/svg",TAU=Math.PI*2,D=12;
+function $(id){return document.getElementById(id);}
+function el(tag,at,par){var e=document.createElementNS(NS,tag);for(var k in at)e.setAttribute(k,at[k]);if(par)par.appendChild(e);return e;}
+function sm(u){u=u<0?0:u>1?1:u;return u*u*(3-2*u);}
+function cl(v,a,b){return v<a?a:v>b?b:v;}
+function fr(x){return x-Math.floor(x);}
+function hash(k){var x=Math.sin(k*127.1+311.7)*43758.5453;return x-Math.floor(x);}
+function rng(seed){var a=seed>>>0;return function(){a=(a+0x6D2B79F5)>>>0;var t=a;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return((t^t>>>14)>>>0)/4294967296;};}
+function hex(c){return[parseInt(c.slice(1,3),16),parseInt(c.slice(3,5),16),parseInt(c.slice(5,7),16)];}
+function mixc(a,b,k){return"rgb("+a.map(function(v,i){return Math.round(v+(b[i]-v)*k);}).join(",")+")";}
+function f1(v){return v.toFixed(1);}
+
+/* ---------- timeline functions ---------- */
+function xf(t){
+  if(t<0.5)return -400;
+  if(t<4.0){var u=(t-0.5)/3.5;return -400+1140*(1-Math.pow(1-u,3));}
+  if(t<8.5)return 740;
+  if(t<11.5){var w=(t-8.5)/3;return 740-1140*w*w*w;}
+  return -400;
+}
+function vxf(t){
+  if(t>=0.5&&t<4.0){var u=(t-0.5)/3.5;return 1140*3*(1-u)*(1-u)/3.5;}
+  if(t>=8.5&&t<11.5){var w=(t-8.5)/3;return -1140*w*w;}
+  return 0;
+}
+function bobY(t){return 2.5*Math.sin(TAU*t/4+0.6);}
+function rampAng(t){
+  if(t<4.2)return 65;
+  if(t<5.0)return 65*(1-sm((t-4.2)/0.8));
+  if(t<7.4)return 0;
+  if(t<8.2)return 65*sm((t-7.4)/0.8);
+  return 65;
+}
+function glowAt(t){
+  if(t<5)return 0;
+  if(t<5.6)return sm((t-5)/0.6);
+  if(t<9)return 1;
+  if(t<9.6)return 1-sm((t-9)/0.6);
+  return 0;
+}
+function yawAt(t){
+  if(t<7.3||t>=8.1)return 0;
+  if(t<7.7)return 160*sm((t-7.3)/0.4);
+  return 160*(1-sm((t-7.7)/0.4));
+}
+
+/* ---------- static build ---------- */
+var stars=[];
+(function(){
+  var R=rng(7),g=$("stars"),cols=["#ffffff","#cfe0ff","#ffe3c0"];
+  for(var i=0;i<100;i++){
+    var x=10+R()*1580,y=8+Math.pow(R(),1.3)*352,r=0.6+R()*R()*1.6,P=[3,4,6][Math.floor(R()*3)];
+    var ph=R()*TAU,b=0.45+0.55*R(),c=cols[Math.floor(R()*3)];
+    var e=el("circle",{cx:f1(x),cy:f1(y),r:r.toFixed(2),fill:c,opacity:0},g);
+    stars.push({e:e,P:P,ph:ph,b:b});
+  }
+})();
+
+var farG=$("farSh"),nearG=$("nearSh"),shim=[];
+(function(){
+  var R=rng(21);
+  function add(n,y0,y1,x1){
+    for(var i=0;i<n;i++){
+      var y=y0+(y1-y0)*R(),dep=(y-420)/480,x=R()*x1,w=8+dep*90*(0.45+R()),sw=(0.9+dep*1.8).toFixed(2);
+      var col=R()<0.35?"#d3b8d6":R()<0.6?"#9fb2ea":"#b9c8f2";
+      var e=el("line",{"stroke":col,"stroke-width":sw,opacity:0},y<640?farG:nearG);
+      shim.push({e:e,x:x,y:y,w:w,ph:R()*TAU,ph2:R()*TAU,k:R()<0.5?1:2,a:0.18+0.32*R(),amp:2+dep*5+R()*3});
+    }
+  }
+  add(60,428,634,1600);
+  add(50,650,890,1000);
+})();
+var lhRef=[];
+(function(){
+  for(var i=0;i<20;i++){
+    var y=430+i*7.6+i*i*0.55;
+    if(y>636&&y<650)continue;
+    var e=el("line",{"stroke":"#ffeec0","stroke-linecap":"round","stroke-width":(1.6+i*0.12).toFixed(2),opacity:0},y<640?farG:nearG);
+    lhRef.push({e:e,y:y,w:10+i*3.4,ph:i*0.9});
+  }
+})();
+var lanD=[];
+(function(){
+  var g=$("lanDash");
+  for(var i=0;i<14;i++){
+    var e=el("line",{"stroke":"#ffd08a","stroke-linecap":"round","stroke-width":(2+i*0.22).toFixed(2),opacity:0},g);
+    lanD.push({e:e,y:652+i*13.5,w:16+i*5.2,ph:i*0.8});
+  }
+})();
+var reflL=[];
+(function(){
+  var g=$("reflG"),lanes=[[-165,30,0.5],[-32,34,0.5],[-100,64,0.55],[-99,64,0.25]];
+  for(var li=0;li<lanes.length;li++)for(var di=0;di<8;di++){
+    var e=el("rect",{fill:li===3?"#ffe6b0":"#ffc77a",opacity:0,height:li===3?5:6.5},g);
+    reflL.push({e:e,x:lanes[li][0],w:lanes[li][1]*(1-di*0.06),a:lanes[li][2],y:li===3?(14+di*17):(8+di*15),di:di,li:li});
+  }
+})();
+var foamP=[],FN=36,DT=0.03;
+(function(){var g=$("foamG");for(var i=0;i<FN;i++)foamP.push(el("ellipse",{fill:"url(#gFoam)",opacity:0,cx:0,cy:0,rx:1,ry:1},g));})();
+var drops=[];
+(function(){var g=$("foamG");for(var i=0;i<8;i++)drops.push(el("circle",{fill:"#f4f8ff",r:2.1,opacity:0},g));})();
+var puffs=[];
+(function(){
+  var g=$("plumeG");
+  for(var i=0;i<16;i++){var t0=3.8+i*0.045;puffs.push({e:el("circle",{fill:"url(#gPuff)",r:10,opacity:0,cx:0,cy:0},g),t0:t0,L:5.0-t0,ph:i*1.7});}
+})();
+(function(){var d="",x;for(x=9;x<136;x+=13)d+="M"+x+" -1.6V0";$("ribs").setAttribute("d",d);})();
+
+/* ---------- passenger rig ---------- */
+var PAL={
+  base:{coat:"#5f2c47",coatD:"#47213a",scarf:"#d6a23e",trou:"#1c2236",trouD:"#141a2c",shoe:"#0d101a",skin:"#c8987a",hair:"#161220",cas:"#7a4f28",band:"#4c2f17",belt:"#2d1426",eye:"#0a0a12"},
+  lit:{coat:"#ee8a5e",coatD:"#d97650",scarf:"#ffe28c",trou:"#86695a",trouD:"#725a4d",shoe:"#4e3b31",skin:"#ffd5a8",hair:"#85604a",cas:"#e8aa62",band:"#b0773c",belt:"#a65a3c",eye:"#2a1a10"},
+  shade:{coat:"#0a0e1c",coatD:"#0a0e1c",scarf:"#0a0e1c",trou:"#0a0e1c",trouD:"#0a0e1c",shoe:"#0a0e1c",skin:"#0a0e1c",hair:"#0a0e1c",cas:"#0a0e1c",band:"#0a0e1c",belt:"#0a0e1c",eye:"#0a0e1c"}
+};
+var SHOE="M-7 -4Q-7 -6 -4 -6L3 -6Q12 -5 16 2Q17 5 13 5L-6 5Q-8 5 -7 2Z";
+function buildRig(par,P){
+  var r={},root=el("g",{},par),ls={fill:"none","stroke-linecap":"round","stroke-linejoin":"round"};
+  r.ub=el("g",{},root);
+  r.armF=el("path",{fill:"none","stroke-linecap":"round","stroke-linejoin":"round","stroke":P.coatD,"stroke-width":8},r.ub);
+  r.handF=el("circle",{r:4,fill:P.skin},r.ub);
+  r.legF=el("path",{fill:"none","stroke-linecap":"round","stroke-linejoin":"round","stroke":P.trouD,"stroke-width":10},root);
+  r.shoeF=el("path",{d:SHOE,fill:P.shoe},root);
+  r.legN=el("path",{fill:"none","stroke-linecap":"round","stroke-linejoin":"round","stroke":P.trou,"stroke-width":10.5},root);
+  r.shoeN=el("path",{d:SHOE,fill:P.shoe},root);
+  r.uf=el("g",{},root);
+  el("path",{d:"M-15 -137Q0 -142 15 -137L25 -58Q2 -52 -23 -58Z",fill:P.coat},r.uf);
+  el("path",{d:"M-18 -97Q2 -91 21 -97",stroke:P.belt,"stroke-width":3,fill:"none"},r.uf);
+  r.tail=el("path",{fill:"none",stroke:P.scarf,"stroke-width":6,"stroke-linecap":"round"},r.uf);
+  el("path",{d:"M1.5 -138L3 -147",stroke:P.skin,"stroke-width":7,"stroke-linecap":"round"},r.uf);
+  el("ellipse",{cx:2,cy:-138,rx:11,ry:5,fill:P.scarf},r.uf);
+  r.head=el("g",{transform:"translate(3 -154)"},r.uf);
+  el("circle",{r:13,fill:P.hair},r.head);
+  r.face=el("ellipse",{ry:10,cx:5,cy:2,rx:6.5,fill:P.skin},r.head);
+  r.nose=el("path",{fill:P.skin},r.head);
+  r.eyeA=el("circle",{r:1.35,fill:P.eye},r.head);
+  r.eyeB=el("circle",{r:1.35,fill:P.eye},r.head);
+  r.armN=el("path",{fill:"none","stroke-linecap":"round","stroke-linejoin":"round","stroke":P.coat,"stroke-width":8.5},r.uf);
+  r.handN=el("circle",{r:4.2,fill:P.skin},r.uf);
+  r.cas=el("g",{},r.uf);
+  el("path",{d:"M-6 3Q0 -4 6 3",stroke:P.band,"stroke-width":2.2,fill:"none"},r.cas);
+  el("rect",{x:-15,y:3,width:30,height:22,rx:3,fill:P.cas},r.cas);
+  el("rect",{x:-15,y:11,width:30,height:3.2,fill:P.band},r.cas);
+  return r;
+}
+var rigs=[buildRig($("rigBase"),PAL.base),buildRig($("rigLit"),PAL.lit),buildRig($("rigShade"),PAL.shade)];
+
+var GT=0.6,GB=0.6,GV=240,GA=GV*GT*GB/2;
+function footRel(p){
+  if(p<GB)return GA-GV*GT*p;
+  var q=(p-GB)/(1-GB),e=0.35*q+0.65*sm(q);
+  return -GA+2*GA*e;
+}
+function footLift(p){if(p<GB)return 0;var q=(p-GB)/(1-GB);return 20*Math.sin(Math.PI*q);}
+function shoeAng(p){if(p<GB)return 0;var q=(p-GB)/(1-GB);return 20*Math.max(0,1-q*4)-14*Math.max(0,(q-0.65)/0.35);}
+function ik(hx,hy,fx,fy,L1,L2){
+  var dx=fx-hx,dy=fy-hy,d=Math.sqrt(dx*dx+dy*dy),dm=L1+L2-0.3;
+  if(d>dm){var k=dm/d;fx=hx+dx*k;fy=hy+dy*k;dx=fx-hx;dy=fy-hy;d=dm;}
+  var a=Math.atan2(dy,dx),g=Math.acos(cl((L1*L1+d*d-L2*L2)/(2*L1*d),-1,1)),ka=a-g;
+  return{kx:hx+L1*Math.cos(ka),ky:hy+L1*Math.sin(ka),fx:fx,fy:fy};
+}
+function applyRig(r,G){
+  r.ub.setAttribute("transform",G.upT);r.uf.setAttribute("transform",G.upT);
+  r.armF.setAttribute("d",G.armF);
+  r.handF.setAttribute("cx",G.hF[0]);r.handF.setAttribute("cy",G.hF[1]);
+  r.legF.setAttribute("d",G.legF);r.legN.setAttribute("d",G.legN);
+  r.shoeF.setAttribute("transform",G.shF);r.shoeN.setAttribute("transform",G.shN);
+  r.tail.setAttribute("d",G.tail);
+  r.face.setAttribute("cx",G.fcx);r.face.setAttribute("rx",G.frx);
+  r.nose.setAttribute("d",G.nose);
+  r.eyeA.setAttribute("cx",G.eA);r.eyeB.setAttribute("cx",G.eB);
+  r.eyeA.setAttribute("cy",-1.4);r.eyeB.setAttribute("cy",-1.4);
+  r.armN.setAttribute("d",G.armN);
+  r.handN.setAttribute("cx",G.hN[0]);r.handN.setAttribute("cy",G.hN[1]);
+  r.cas.setAttribute("transform",G.cas);
+}
+function P2(a){return a[0].toFixed(2)+" "+a[1].toFixed(2);}
+function limb(sx,sy,a1,a2,l1,l2){
+  var r1=a1*Math.PI/180,r2=a2*Math.PI/180,ex=sx+l1*Math.sin(r1),ey=sy+l1*Math.cos(r1),hx=ex+l2*Math.sin(r2),hy=ey+l2*Math.cos(r2);
+  return{d:"M"+P2([sx,sy])+"L"+P2([ex,ey])+"L"+P2([hx,hy]),h:[hx,hy]};
+}
+var stopL=$("stopL"),stopR=$("stopR");
+
+/* ---------- elements for per-frame ---------- */
+var ferryG=$("ferryG"),rampG=$("rampG"),chain=$("chain"),reflG=$("reflG"),wfill=$("wfill"),wline=$("wline");
+var bowM=$("bowM"),pg=$("pg"),opG=$("opG"),rigShade=$("rigShade"),clipR=$("doorClipR");
+var beamG=$("beamG"),flareG=$("flareG"),flareC=$("flareC"),flareH=$("flareH"),flareV=$("flareV");
+var lanGlass=$("lanGlass"),halo=$("halo"),core=$("core"),poolC=$("poolC"),poolG=$("poolG"),cone=$("cone"),lanPool=$("lanPool");
+var OFF=hex("#3b4260"),ON=hex("#ffdc9e");
+
+function waveY(x,t){return 640+1.7*Math.sin(TAU*(x/170-t/4))+0.9*Math.sin(TAU*(x/70-t/2)+1.3);}
+
+function render(t){
+  var i,o,e;
+  /* stars */
+  for(i=0;i<stars.length;i++){e=stars[i];e.e.setAttribute("opacity",(e.b*(0.28+0.72*(0.5+0.5*Math.sin(TAU*t/e.P+e.ph)))).toFixed(3));}
+
+  /* lighthouse beam + flare */
+  var th=30*t*Math.PI/180,c=Math.cos(th),sn=Math.sin(th),ac=Math.abs(c),cc=ac<0.003?(c<0?-0.003:0.003):c;
+  beamG.setAttribute("transform","translate(260 330) scale("+cc.toFixed(4)+" "+(1+0.6*Math.abs(sn)).toFixed(3)+")");
+  beamG.setAttribute("opacity",Math.pow(ac,0.75).toFixed(3));
+  var fl=Math.pow(0.5+0.5*sn,3);
+  flareG.setAttribute("transform","translate(260 330)");
+  flareC.setAttribute("r",(14+92*fl).toFixed(1));flareC.setAttribute("opacity",(0.3+0.7*fl).toFixed(3));
+  flareH.setAttribute("rx",(30+190*fl).toFixed(1));flareH.setAttribute("opacity",(fl*0.9).toFixed(3));
+  flareV.setAttribute("ry",(20+110*fl).toFixed(1));flareV.setAttribute("opacity",(fl*0.8).toFixed(3));
+
+  /* water shimmer */
+  for(i=0;i<shim.length;i++){
+    e=shim[i];var ph=TAU*e.k*t/4+e.ph,dx=e.amp*Math.sin(ph),al=e.a*(0.2+0.8*Math.max(0,Math.sin(TAU*e.k*t/4+e.ph2)));
+    e.e.setAttribute("x1",f1(e.x+dx-e.w/2));e.e.setAttribute("x2",f1(e.x+dx+e.w/2));e.e.setAttribute("y1",f1(e.y));e.e.setAttribute("y2",f1(e.y));e.e.setAttribute("opacity",al.toFixed(3));
+  }
+  for(i=0;i<lhRef.length;i++){
+    e=lhRef[i];var s1=Math.sin(TAU*t/4+e.ph),dx2=4*s1,a2=(0.08+0.8*fl)*(0.55+0.45*Math.sin(TAU*2*t/4+e.ph*1.3))*(1-i/26);
+    e.e.setAttribute("x1",f1(260+dx2-e.w/2));e.e.setAttribute("x2",f1(260+dx2+e.w/2));e.e.setAttribute("y1",f1(e.y));e.e.setAttribute("y2",f1(e.y));e.e.setAttribute("opacity",cl(a2,0,1).toFixed(3));
+  }
+
+  /* ferry state */
+  var X=xf(t),V=vxf(t),bob=bobY(t),Pd=-2.2*cl(V/900,-1,1),Pr=Pd*Math.PI/180;
+  var on=X>-399;
+  ferryG.setAttribute("display",on?"inline":"none");
+  reflG.setAttribute("display",on?"inline":"none");
+  ferryG.setAttribute("transform","translate("+X.toFixed(2)+" "+(610+bob).toFixed(2)+") rotate("+Pd.toFixed(3)+")");
+  reflG.setAttribute("transform","translate("+X.toFixed(2)+" 640)");
+  for(i=0;i<reflL.length;i++){
+    e=reflL[i];var sw=Math.sin(TAU*t/4+e.di*0.9+e.li),dxr=sw*(1.2+e.di*0.75);
+    e.e.setAttribute("x",f1(e.x-e.w/2+dxr));e.e.setAttribute("y",f1(e.y));e.e.setAttribute("width",f1(e.w));
+    e.e.setAttribute("opacity",(e.a*(0.55-e.di*0.055)*(0.6+0.4*Math.sin(TAU*2*t/4+e.di*1.3+e.li*2))).toFixed(3));
+  }
+
+  /* waterline */
+  var d="M0 "+waveY(0,t).toFixed(2),x;
+  for(x=20;x<=1000;x+=20)d+="L"+x+" "+waveY(x,t).toFixed(2);
+  wline.setAttribute("d",d);wfill.setAttribute("d",d+"L1000 900L0 900Z");
+
+  /* ramp + chain */
+  var ang=rampAng(t),hx=X+260*Math.cos(Pr),hy=610+bob+260*Math.sin(Pr);
+  var rest=1-sm(ang/10),tg=Math.asin(cl((hy-610)/140,-1,1))*180/Math.PI,th2=ang+rest*tg,phi=Pd-th2,pr=phi*Math.PI/180;
+  rampG.setAttribute("display",on?"inline":"none");chain.setAttribute("display",on?"inline":"none");
+  rampG.setAttribute("transform","translate("+hx.toFixed(2)+" "+hy.toFixed(2)+") rotate("+phi.toFixed(3)+")");
+  var cx0=X+236*Math.cos(Pr)+100*Math.sin(Pr),cy0=610+bob+236*Math.sin(Pr)-100*Math.cos(Pr);
+  var tx=hx+136*Math.cos(pr),ty=hy+136*Math.sin(pr),dd=Math.sqrt((tx-cx0)*(tx-cx0)+(ty-cy0)*(ty-cy0)),sag=dd<196?Math.sqrt(0.375*dd*(196-dd)):0;
+  chain.setAttribute("d","M"+f1(cx0)+" "+f1(cy0)+"Q"+f1((cx0+tx)/2)+" "+f1((cy0+ty)/2+2*sag)+" "+f1(tx)+" "+f1(ty));
+
+  /* wake */
+  var gate=sm(Math.abs(V)/250)*sm((X+400)/220),k0=Math.floor(t/DT),span=FN*DT;
+  for(i=0;i<FN;i++){
+    var k=k0-i,T=k*DT,age=t-T,ev=vxf(T),st=cl(Math.abs(ev)/900,0,1),fp=foamP[i];
+    if(gate<0.001||st<0.02||age>=span||age<0){fp.setAttribute("opacity",0);continue;}
+    var dr=ev>0?1:-1,hh=hash(k),xs=xf(T)-dr*(258+10+30*age)+(hh-0.5)*26,ys=641+(hash(k+999)-0.3)*6+4*age;
+    fp.setAttribute("cx",f1(xs));fp.setAttribute("cy",f1(ys));
+    fp.setAttribute("rx",f1((10+30*age)*(0.6+0.8*st)));fp.setAttribute("ry",f1(2.5+4*age*st+hh*2));
+    fp.setAttribute("opacity",(0.8*st*Math.pow(1-age/span,1.4)*gate).toFixed(3));
+  }
+  /* bow wave */
+  var sb=cl(Math.abs(V)/800,0,1),dr2=V>=0?1:-1,xb=X+dr2*262;
+  if(sb>0.01&&on){
+    var m=function(a){return f1(xb+dr2*a);};
+    bowM.setAttribute("d","M"+m(-100)+" 643C"+m(-70)+" 643 "+m(-30)+" "+f1(643-32*sb)+" "+m(14)+" "+f1(643-30*sb)+"C"+m(34)+" "+f1(643-28*sb)+" "+m(40)+" "+f1(643-4*sb)+" "+m(26)+" 643Z");
+    bowM.setAttribute("opacity",sb.toFixed(3));
+    for(i=0;i<8;i++){
+      var ph3=fr(t*2.6+i/8),dxp=8+46*ph3+i*3,yp=641-46*sb*4*ph3*(1-ph3)*(0.6+0.4*(i%3)/2);
+      drops[i].setAttribute("cx",f1(xb+dr2*dxp));drops[i].setAttribute("cy",f1(yp));drops[i].setAttribute("opacity",(sb*(1-ph3)*0.8).toFixed(3));
+    }
+  }else{bowM.setAttribute("opacity",0);for(i=0;i<8;i++)drops[i].setAttribute("opacity",0);}
+
+  /* steam plume */
+  for(i=0;i<puffs.length;i++){
+    var p=puffs[i],a=t-p.t0;
+    if(a<0||a>p.L){p.e.setAttribute("opacity",0);continue;}
+    var u=a/p.L,rise=230*(1-Math.exp(-a*1.7)),px0=xf(p.t0)-20+22*a+9*a*Math.sin(a*5+p.ph),py0=610+bobY(p.t0)-312-rise;
+    p.e.setAttribute("cx",f1(px0));p.e.setAttribute("cy",f1(py0));p.e.setAttribute("r",f1(16+70*Math.pow(a,0.8)));
+    p.e.setAttribute("opacity",(0.9*sm(a/0.07)*(1-sm((u-0.3)/0.7))).toFixed(3));
+  }
+
+  /* lantern */
+  var g=glowAt(t),flk=1+0.035*Math.sin(TAU*6*t)+0.02*Math.sin(TAU*14*t+1),ge=g*flk;
+  lanGlass.setAttribute("fill",mixc(OFF,ON,g));
+  halo.setAttribute("opacity",cl(ge,0,1).toFixed(3));core.setAttribute("opacity",cl(ge,0,1).toFixed(3));
+  poolC.setAttribute("opacity",(ge*0.5).toFixed(3));poolG.setAttribute("opacity",cl(ge*0.9,0,1).toFixed(3));
+  cone.setAttribute("opacity",(ge*0.32).toFixed(3));
+  lanPool.setAttribute("opacity",(ge*0.6).toFixed(3));
+  for(i=0;i<lanD.length;i++){
+    e=lanD[i];var dxl=(3+i*0.5)*Math.sin(TAU*t/4+e.ph),al=ge*(0.8-i*0.045)*(0.45+0.55*Math.max(0,Math.sin(TAU*2*t/4+e.ph*1.4)));
+    e.e.setAttribute("x1",f1(935-e.w/2+dxl));e.e.setAttribute("x2",f1(935+e.w/2+dxl));e.e.setAttribute("y1",f1(e.y));e.e.setAttribute("y2",f1(e.y));e.e.setAttribute("opacity",cl(al,0,1).toFixed(3));
+  }
+
+  /* passenger */
+  var px=640+240*(t-5),show=t>=5&&px<1700;
+  pg.setAttribute("display",show?"inline":"none");
+  if(!show)return;
+  var hx2=xf(t)+260,hy2=610+bobY(t);
+  function gY(x){return x<=hx2?hy2:(x>=hx2+140?610:hy2+(610-hy2)*(x-hx2)/140);}
+  var gh=gY(px),pN=fr((t-5)/GT),pF=fr(pN+0.5);
+  var fN={x:footRel(pN)},fF={x:footRel(pF)};
+  fN.y=-5+(gY(px+fN.x)-gh)-footLift(pN);fF.y=-5+(gY(px+fF.x)-gh)-footLift(pF);
+  var hipY=-88-2*Math.cos(4*Math.PI*(pN-0.3));
+  var lN=ik(1.5,hipY,fN.x,fN.y,48,48),lF=ik(-1.5,hipY,fF.x,fF.y,48,48);
+  var swN=fN.x/GA,swF=fF.x/GA;
+  var aN1=6-swN*16,aN=limb(2,-132,aN1,aN1+14,33,30);
+  var aF1=4-swF*28,aF=limb(0,-132,aF1,aF1+18,33,30);
+  var lean=3+1.2*Math.sin(4*Math.PI*pN);
+  var yw=yawAt(t)*Math.PI/180,cy=Math.cos(yw),sy=Math.sin(yw),dirn=cy>=0?1:-1;
+  var fcx=5.2*cy,frx=6.5+2.8*(1-Math.abs(cy)),nbx=fcx+cy*(frx-0.8),nl=3.8*Math.abs(cy);
+  var fw=Math.sin(TAU*t/GT);
+  var G={
+    upT:"translate(0 "+(hipY+88).toFixed(2)+") rotate("+lean.toFixed(2)+" 0 -88)",
+    armF:aF.d,hF:aF.h,armN:aN.d,hN:aN.h,
+    legF:"M-1.5 "+hipY.toFixed(2)+"L"+P2([lF.kx,lF.ky])+"L"+P2([lF.fx,lF.fy]),
+    legN:"M1.5 "+hipY.toFixed(2)+"L"+P2([lN.kx,lN.ky])+"L"+P2([lN.fx,lN.fy]),
+    shF:"translate("+lF.fx.toFixed(2)+" "+(lF.fy).toFixed(2)+") rotate("+shoeAng(pF).toFixed(1)+")",
+    shN:"translate("+lN.fx.toFixed(2)+" "+(lN.fy).toFixed(2)+") rotate("+shoeAng(pN).toFixed(1)+")",
+    tail:"M-8 -136Q"+(-20+3*fw).toFixed(1)+" -128 "+(-25+4*Math.sin(TAU*t/GT+1)).toFixed(1)+" "+(-112+3*fw).toFixed(1),
+    fcx:fcx.toFixed(2),frx:frx.toFixed(2),
+    nose:Math.abs(cy)<0.08?"M0 0":"M"+nbx.toFixed(2)+" 0L"+(nbx+dirn*nl).toFixed(2)+" 3.4L"+nbx.toFixed(2)+" 5.2Z",
+    eA:(3.6*cy+2.8*sy).toFixed(2),eB:(3.6*cy-2.8*sy).toFixed(2),
+    cas:"translate("+aN.h[0].toFixed(2)+" "+aN.h[1].toFixed(2)+") rotate("+(-aN1*0.6+2*Math.sin(TAU*t/GT*2)).toFixed(2)+")"
+  };
+  for(i=0;i<3;i++)applyRig(rigs[i],G);
+  pg.setAttribute("transform","translate("+px.toFixed(2)+" "+gh.toFixed(2)+")");
+  clipR.setAttribute("x",(xf(t)-143).toFixed(1));
+  opG.setAttribute("opacity",sm((t-5)/0.25).toFixed(3));
+  rigShade.setAttribute("opacity",(1-sm((t-5.2)/0.55)).toFixed(3));
+  /* lantern-side lighting of the figure */
+  var dxL=1180-px,dist=Math.sqrt(dxL*dxL+85*85),I=g*cl(1.15-dist/760,0,1),dir=cl(dxL/60,-1,1);
+  stopR.setAttribute("stop-opacity",cl(I*(0.55+0.45*dir),0,0.95).toFixed(3));
+  stopL.setAttribute("stop-opacity",cl(I*(0.55-0.45*dir),0,0.95).toFixed(3));
+}
+
+/* ---------- clock ---------- */
+function wrap(x){return((x%D)+D)%D;}
+var qs=new URLSearchParams(location.search),tv=qs.get("t");
+if(tv!==null&&tv.trim()!==""&&isFinite(Number(tv))){
+  render(wrap(Number(tv)));
+}else{
+  var tStart=performance.now();
+  var frame=function(){render(wrap((performance.now()-tStart)/1000));requestAnimationFrame(frame);};
+  frame();
+}
+})();
+</script>
+</body>
+</html>
