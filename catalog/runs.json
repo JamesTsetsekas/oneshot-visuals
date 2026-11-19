@@ -892,5 +892,365 @@
     ],
     "sessionLink": "[VIS-P6 · sonnet · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3A98d32d21-2139-47ae-a9b1-7cd31cf45dcb%3Adelegate-task%3Ad78006e2-eb5f-4ebd-ae16-bae49978b34d)",
     "launchedAt": "2026-11-11T22:02:37.081Z"
+  },
+  {
+    "id": "VIS-P1-astra62",
+    "promptId": "VIS-P1",
+    "modelId": "astra62",
+    "directory": "builds/VIS-P1/astra62",
+    "status": "complete",
+    "requestedModel": "gpt-6.2-astra",
+    "effort": "high",
+    "provider": "codex",
+    "promptHash": "e60954c75ef9dd2ed31ead0c1d76751af6192d4a0fb09ae072a07d4f4d23e10e",
+    "score": null,
+    "cohort": "2026-11-gpt62",
+    "completedEventReceivedAt": "2026-11-19T08:37:50.622Z",
+    "settings": [
+      {
+        "id": "reasoningEffort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P1 · GPT-6.2 Astra high · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3Aeddc0183-d08f-413e-9770-205ef1f46ff3%3Adelegate-task%3Ae2de6bcf-622d-441e-86bb-1853f19f0f83)",
+    "launchedAt": null,
+    "elapsedSeconds": null,
+    "poster": "captures/VIS-P1-astra62/2026-11-19T08-37-58-732Z-69292/poster.png",
+    "clip": null,
+    "source": "sources/VIS-P1-astra62/index.html.txt",
+    "notes": "sources/VIS-P1-astra62/NOTES.md.txt",
+    "sourceHash": "347e02a905a74d1099fad18da79a3b32def1fa0b53ecaf7ed0430a6e25997ded",
+    "validation": "captures/VIS-P1-astra62/validation.json",
+    "captureStatus": "captured"
+  },
+  {
+    "id": "VIS-P2-astra62",
+    "promptId": "VIS-P2",
+    "modelId": "astra62",
+    "directory": "builds/VIS-P2/astra62",
+    "status": "complete",
+    "requestedModel": "gpt-6.2-astra",
+    "effort": "high",
+    "provider": "codex",
+    "promptHash": "1c5393f5add4335b85ab44ccf87546538c7450df6d505de8dd33fe2c555be7d5",
+    "score": null,
+    "cohort": "2026-11-gpt62",
+    "completedEventReceivedAt": "2026-11-19T08:20:02.780Z",
+    "settings": [
+      {
+        "id": "reasoningEffort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P2 · GPT-6.2 Astra high · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3Aeddc0183-d08f-413e-9770-205ef1f46ff3%3Adelegate-task%3A16a6f00c-9bf6-4d64-a8b1-2b10847c2e14)",
+    "launchedAt": null,
+    "elapsedSeconds": null,
+    "poster": "captures/VIS-P2-astra62/2026-11-19T08-20-04-783Z-49544/poster.png",
+    "clip": null,
+    "source": "sources/VIS-P2-astra62/index.html.txt",
+    "notes": "sources/VIS-P2-astra62/NOTES.md.txt",
+    "sourceHash": "4755161117a5db2887dc17bc7c32c43681bda3dd390df24ad7fa9f57648ad527",
+    "validation": "captures/VIS-P2-astra62/validation.json",
+    "captureStatus": "captured"
+  },
+  {
+    "id": "VIS-P3-astra62",
+    "promptId": "VIS-P3",
+    "modelId": "astra62",
+    "directory": "builds/VIS-P3/astra62",
+    "status": "complete",
+    "requestedModel": "gpt-6.2-astra",
+    "effort": "high",
+    "provider": "codex",
+    "promptHash": "3e24503ab8f4f3e1f8f5bb384f17758f8638045ed1fa704a106a3d473c6b155e",
+    "score": null,
+    "cohort": "2026-11-gpt62",
+    "completedEventReceivedAt": "2026-11-19T08:20:02.793Z",
+    "settings": [
+      {
+        "id": "reasoningEffort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P3 · GPT-6.2 Astra high · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3Aeddc0183-d08f-413e-9770-205ef1f46ff3%3Adelegate-task%3A515d6f36-4b9a-4c77-8142-f408afa3de69)",
+    "launchedAt": null,
+    "elapsedSeconds": null,
+    "poster": "captures/VIS-P3-astra62/2026-11-19T08-20-07-682Z-49544/poster.png",
+    "clip": "captures/VIS-P3-astra62/2026-11-19T08-20-07-682Z-49544/clip.webm",
+    "source": "sources/VIS-P3-astra62/index.html.txt",
+    "notes": "sources/VIS-P3-astra62/NOTES.md.txt",
+    "sourceHash": "149e304791d3ccfd484dc491947ecbd4deff5363d53d32da5bd5af96eb40743c",
+    "validation": "captures/VIS-P3-astra62/validation.json",
+    "captureStatus": "captured"
+  },
+  {
+    "id": "VIS-P4-astra62",
+    "promptId": "VIS-P4",
+    "modelId": "astra62",
+    "directory": "builds/VIS-P4/astra62",
+    "status": "complete",
+    "requestedModel": "gpt-6.2-astra",
+    "effort": "high",
+    "provider": "codex",
+    "promptHash": "aef9f69310f1b9b013178c328791bdd9928e7328f67b50674aac1e4a34639933",
+    "score": null,
+    "cohort": "2026-11-gpt62",
+    "completedEventReceivedAt": "2026-11-19T08:37:50.834Z",
+    "settings": [
+      {
+        "id": "reasoningEffort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P4 · GPT-6.2 Astra high · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3Aeddc0183-d08f-413e-9770-205ef1f46ff3%3Adelegate-task%3Adecc89ae-1485-4ff5-9763-ad226b3dbd24)",
+    "launchedAt": null,
+    "elapsedSeconds": null,
+    "poster": "captures/VIS-P4-astra62/2026-11-19T08-38-03-971Z-69292/poster.png",
+    "clip": "captures/VIS-P4-astra62/2026-11-19T08-38-03-971Z-69292/clip.webm",
+    "source": "sources/VIS-P4-astra62/index.html.txt",
+    "notes": "sources/VIS-P4-astra62/NOTES.md.txt",
+    "sourceHash": "2fafb44f69dbb4a856377a4594f9ee67b6f967e94973dadc81c3d77e3d862b1b",
+    "validation": "captures/VIS-P4-astra62/validation.json",
+    "captureStatus": "captured"
+  },
+  {
+    "id": "VIS-P5-astra62",
+    "promptId": "VIS-P5",
+    "modelId": "astra62",
+    "directory": "builds/VIS-P5/astra62",
+    "status": "complete",
+    "requestedModel": "gpt-6.2-astra",
+    "effort": "high",
+    "provider": "codex",
+    "promptHash": "e5bc65c078154e7e68367d907edded325840b27ffce862759a2f438d4f446376",
+    "score": null,
+    "cohort": "2026-11-gpt62",
+    "completedEventReceivedAt": "2026-11-19T08:19:30.318Z",
+    "settings": [
+      {
+        "id": "reasoningEffort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P5 · GPT-6.2 Astra high · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3Aeddc0183-d08f-413e-9770-205ef1f46ff3%3Adelegate-task%3A89cc0300-dc1e-4dfc-806b-5e1fbcd902d0)",
+    "launchedAt": null,
+    "elapsedSeconds": null,
+    "poster": "captures/VIS-P5-astra62/2026-11-19T08-19-31-667Z-57240/poster.png",
+    "clip": null,
+    "source": "sources/VIS-P5-astra62/index.html.txt",
+    "notes": "sources/VIS-P5-astra62/NOTES.md.txt",
+    "sourceHash": "1e77daf0ff1cc177046ef1f1506ef6dc92bd52e61c486e8d5d675b643e06ed88",
+    "validation": "captures/VIS-P5-astra62/validation.json",
+    "captureStatus": "captured"
+  },
+  {
+    "id": "VIS-P6-astra62",
+    "promptId": "VIS-P6",
+    "modelId": "astra62",
+    "directory": "builds/VIS-P6/astra62",
+    "status": "complete",
+    "requestedModel": "gpt-6.2-astra",
+    "effort": "high",
+    "provider": "codex",
+    "promptHash": "a5e2dc21faef68a3a37d3d66883c3f45fd2eac441bff4b47aac8ab129a3089a7",
+    "score": null,
+    "cohort": "2026-11-gpt62",
+    "completedEventReceivedAt": "2026-11-19T08:20:02.803Z",
+    "settings": [
+      {
+        "id": "reasoningEffort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P6 · GPT-6.2 Astra high · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3Aeddc0183-d08f-413e-9770-205ef1f46ff3%3Adelegate-task%3A7cb7f33e-072b-4ada-9285-e244c15e14c3)",
+    "launchedAt": null,
+    "elapsedSeconds": null,
+    "poster": "captures/VIS-P6-astra62/2026-11-19T08-20-37-323Z-49544/poster.png",
+    "clip": null,
+    "source": "sources/VIS-P6-astra62/index.html.txt",
+    "notes": "sources/VIS-P6-astra62/NOTES.md.txt",
+    "sourceHash": "22d1eae8ce5b243ebc905b6d559e7faf48236032aa1f0c64caf495ca76aa78aa",
+    "validation": "captures/VIS-P6-astra62/validation.json",
+    "captureStatus": "captured"
+  },
+  {
+    "id": "VIS-P1-sol62",
+    "promptId": "VIS-P1",
+    "modelId": "sol62",
+    "directory": "builds/VIS-P1/sol62",
+    "status": "complete",
+    "requestedModel": "gpt-6.2-sol",
+    "effort": "high",
+    "provider": "codex",
+    "promptHash": "e60954c75ef9dd2ed31ead0c1d76751af6192d4a0fb09ae072a07d4f4d23e10e",
+    "score": null,
+    "cohort": "2026-11-gpt62",
+    "completedEventReceivedAt": "2026-11-19T08:37:50.642Z",
+    "settings": [
+      {
+        "id": "reasoningEffort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P1 · GPT-6.2 Sol high · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3Aeddc0183-d08f-413e-9770-205ef1f46ff3%3Adelegate-task%3A7b16f4f8-53f9-4bb7-b0e0-8c9663fcfa7a)",
+    "launchedAt": null,
+    "elapsedSeconds": null,
+    "poster": "captures/VIS-P1-sol62/2026-11-19T08-38-24-516Z-69292/poster.png",
+    "clip": null,
+    "source": "sources/VIS-P1-sol62/index.html.txt",
+    "notes": "sources/VIS-P1-sol62/NOTES.md.txt",
+    "sourceHash": "f46633c39fce2e4758f8f5c27c1f39c6f11e14242f83ea5628b96249d3063d89",
+    "validation": "captures/VIS-P1-sol62/validation.json",
+    "captureStatus": "captured"
+  },
+  {
+    "id": "VIS-P2-sol62",
+    "promptId": "VIS-P2",
+    "modelId": "sol62",
+    "directory": "builds/VIS-P2/sol62",
+    "status": "complete",
+    "requestedModel": "gpt-6.2-sol",
+    "effort": "high",
+    "provider": "codex",
+    "promptHash": "1c5393f5add4335b85ab44ccf87546538c7450df6d505de8dd33fe2c555be7d5",
+    "score": null,
+    "cohort": "2026-11-gpt62",
+    "completedEventReceivedAt": "2026-11-19T08:37:50.807Z",
+    "settings": [
+      {
+        "id": "reasoningEffort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P2 · GPT-6.2 Sol high · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3Aeddc0183-d08f-413e-9770-205ef1f46ff3%3Adelegate-task%3Acb584496-fe5b-4ed9-8427-80dca35dd2dc)",
+    "launchedAt": null,
+    "elapsedSeconds": null,
+    "poster": "captures/VIS-P2-sol62/2026-11-19T08-38-25-630Z-69292/poster.png",
+    "clip": null,
+    "source": "sources/VIS-P2-sol62/index.html.txt",
+    "notes": "sources/VIS-P2-sol62/NOTES.md.txt",
+    "sourceHash": "f61818533b1445f9f70d2274ccbf13a47d4eee7986d4fdc4b39f2b584a0f164b",
+    "validation": "captures/VIS-P2-sol62/validation.json",
+    "captureStatus": "captured"
+  },
+  {
+    "id": "VIS-P3-sol62",
+    "promptId": "VIS-P3",
+    "modelId": "sol62",
+    "directory": "builds/VIS-P3/sol62",
+    "status": "complete",
+    "requestedModel": "gpt-6.2-sol",
+    "effort": "high",
+    "provider": "codex",
+    "promptHash": "3e24503ab8f4f3e1f8f5bb384f17758f8638045ed1fa704a106a3d473c6b155e",
+    "score": null,
+    "cohort": "2026-11-gpt62",
+    "completedEventReceivedAt": "2026-11-19T08:37:50.816Z",
+    "settings": [
+      {
+        "id": "reasoningEffort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P3 · GPT-6.2 Sol high · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3Aeddc0183-d08f-413e-9770-205ef1f46ff3%3Adelegate-task%3A2364841a-1bef-4ed8-90e4-95a51b36a34b)",
+    "launchedAt": null,
+    "elapsedSeconds": null,
+    "poster": "captures/VIS-P3-sol62/2026-11-19T08-38-26-242Z-69292/poster.png",
+    "clip": "captures/VIS-P3-sol62/2026-11-19T08-38-26-242Z-69292/clip.webm",
+    "source": "sources/VIS-P3-sol62/index.html.txt",
+    "notes": "sources/VIS-P3-sol62/NOTES.md.txt",
+    "sourceHash": "e64849e1c1db92596e8dc713251cbfacd1b70d958cdb655d73a8df52fadf98dc",
+    "validation": "captures/VIS-P3-sol62/validation.json",
+    "captureStatus": "captured"
+  },
+  {
+    "id": "VIS-P4-sol62",
+    "promptId": "VIS-P4",
+    "modelId": "sol62",
+    "directory": "builds/VIS-P4/sol62",
+    "status": "complete",
+    "requestedModel": "gpt-6.2-sol",
+    "effort": "high",
+    "provider": "codex",
+    "promptHash": "aef9f69310f1b9b013178c328791bdd9928e7328f67b50674aac1e4a34639933",
+    "score": null,
+    "cohort": "2026-11-gpt62",
+    "completedEventReceivedAt": "2026-11-19T08:37:50.825Z",
+    "settings": [
+      {
+        "id": "reasoningEffort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P4 · GPT-6.2 Sol high · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3Aeddc0183-d08f-413e-9770-205ef1f46ff3%3Adelegate-task%3Aa76b2e42-4140-41bb-a264-c9593d99cd0d)",
+    "launchedAt": null,
+    "elapsedSeconds": null,
+    "poster": "captures/VIS-P4-sol62/2026-11-19T08-38-36-103Z-69292/poster.png",
+    "clip": "captures/VIS-P4-sol62/2026-11-19T08-38-36-103Z-69292/clip.webm",
+    "source": "sources/VIS-P4-sol62/index.html.txt",
+    "notes": "sources/VIS-P4-sol62/NOTES.md.txt",
+    "sourceHash": "c7c094e2203159b222f998e3863040fa68da5d158908664ee23245dc156f651c",
+    "validation": "captures/VIS-P4-sol62/validation.json",
+    "captureStatus": "captured"
+  },
+  {
+    "id": "VIS-P5-sol62",
+    "promptId": "VIS-P5",
+    "modelId": "sol62",
+    "directory": "builds/VIS-P5/sol62",
+    "status": "complete",
+    "requestedModel": "gpt-6.2-sol",
+    "effort": "high",
+    "provider": "codex",
+    "promptHash": "e5bc65c078154e7e68367d907edded325840b27ffce862759a2f438d4f446376",
+    "score": null,
+    "cohort": "2026-11-gpt62",
+    "completedEventReceivedAt": "2026-11-19T06:50:05.558Z",
+    "settings": [
+      {
+        "id": "reasoningEffort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P5 · GPT-6.2 Sol high · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3Aeddc0183-d08f-413e-9770-205ef1f46ff3%3Adelegate-task%3Aeb80dcda-1673-41b6-93e8-5f40aab4610e)",
+    "launchedAt": null,
+    "elapsedSeconds": null,
+    "poster": "captures/VIS-P5-sol62/2026-11-19T06-50-06-047Z-67712/poster.png",
+    "clip": null,
+    "source": "sources/VIS-P5-sol62/index.html.txt",
+    "notes": "sources/VIS-P5-sol62/NOTES.md.txt",
+    "sourceHash": "ce7fbc87dc07892ddfaf6806af563b8e98b52a18047a8b8cba79eb0c9e5eb688",
+    "validation": "captures/VIS-P5-sol62/validation.json",
+    "captureStatus": "captured"
+  },
+  {
+    "id": "VIS-P6-sol62",
+    "promptId": "VIS-P6",
+    "modelId": "sol62",
+    "directory": "builds/VIS-P6/sol62",
+    "status": "complete",
+    "requestedModel": "gpt-6.2-sol",
+    "effort": "high",
+    "provider": "codex",
+    "promptHash": "a5e2dc21faef68a3a37d3d66883c3f45fd2eac441bff4b47aac8ab129a3089a7",
+    "score": null,
+    "cohort": "2026-11-gpt62",
+    "completedEventReceivedAt": "2026-11-19T08:20:02.814Z",
+    "settings": [
+      {
+        "id": "reasoningEffort",
+        "value": "high"
+      }
+    ],
+    "sessionLink": "[VIS-P6 · GPT-6.2 Sol high · one-shot](t3-thread://v2/da7c5f3f-02f3-402b-b28b-6711784b70b2/thread:delegated-task:command%3Amcp%3Aeddc0183-d08f-413e-9770-205ef1f46ff3%3Adelegate-task%3A9647acab-3aa7-459d-8f4d-32007e0186a5)",
+    "launchedAt": null,
+    "elapsedSeconds": null,
+    "poster": "captures/VIS-P6-sol62/2026-11-19T08-20-40-778Z-49544/poster.png",
+    "clip": null,
+    "source": "sources/VIS-P6-sol62/index.html.txt",
+    "notes": "sources/VIS-P6-sol62/NOTES.md.txt",
+    "sourceHash": "b4f0c5fb27ff889d5429352f2f16118b52fc5a50d050b791c6f7951173250443",
+    "validation": "captures/VIS-P6-sol62/validation.json",
+    "captureStatus": "captured"
   }
 ]

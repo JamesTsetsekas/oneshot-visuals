@@ -1,0 +1,3 @@
+﻿The ferry settles level against the quay so the ramp stays planted. I followed the specified passenger speed and starting position, which carry the passenger’s centre past the right edge at 9.0 seconds. The case and trailing foot follow.
+
+I compared 1600 × 900 headless Chrome screenshots. The 0 and 12 second frames matched exactly. The 7.55 second frame matched across disk, site-root and sub-path loads. Chrome recorded only document requests and no page diagnostics. A full-loop animation-frame sample averaged 143.9 fps with a longest interval of 13.8 ms on this machine. Mid-range laptop GPU performance and the frozen-frame paint deadline were not independently measured.

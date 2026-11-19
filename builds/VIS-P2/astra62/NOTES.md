@@ -1,0 +1,3 @@
+﻿The solid piston marks the start of the upstroke. Its underside has a local pocket for the inlet cage at bottom dead centre. The lever starts with its short arm 50 mm below the pivot and ends with it 50 mm above. The broken-out area in the exploded barrel exposes the installed checks. The base plan locates section A-A.
+
+I inspected the disk rendering in headless Chrome. At 1680 × 1188 and 640 × 360 the document matched the viewport dimensions. Chrome reported twelve item balloons, no secondary resource requests, and no load errors or warnings in the monitored log. Static-server root and subpath rendering, print output, and physical operation were not tested. The sheet omits manufacturing tolerances and thread specifications.

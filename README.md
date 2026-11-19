@@ -1,12 +1,14 @@
 # Oneshot Visuals
 
-Six briefs. Five coding agents. One take each.
+Six briefs. Seven coding agents. One take each.
 
 [Browse the dashboard](https://jamestsetsekas.github.io/oneshot-visuals/)
 
 A visual coding companion to [Oneshot Arcade](https://github.com/JamesTsetsekas/oneshot-arcade): original SVG illustrations, deterministic animations, and interactive graphics. Each entry is made in a fresh T3 delegated session through Codex or Claude at high effort. Autonomous self-testing is allowed; human corrections and cross-entry assistance are not.
 
-This is a 30-entry, single-trial exploratory collection, not a statistically reliable ranking of raw models. Agent defaults and tool access differ. Isolation is instruction-based, not a security boundary; elapsed times include scheduling and tool delays. No custom model runner is used. Source files are preserved unchanged after the initial attempt. Technical capture results are separate from personal visual ratings.
+This is a 42-entry, single-trial exploratory collection, not a statistically reliable ranking of raw models. Agent defaults and tool access differ. Isolation is instruction-based, not a security boundary; elapsed times include scheduling and tool delays. No custom model runner is used. Source files are preserved unchanged after the initial attempt. Technical capture results are separate from personal visual ratings.
+
+The original 30 entries were collected on November 11, 2026. GPT-6.2 Astra high and GPT-6.2 Sol high were added in a later cohort, starting November 19, using the same contract and briefs in fresh T3 sessions. Agent versions may differ between cohorts. Each new session receives its complete instructions in an assigned ONE-SHOT.md file and an explicit restriction to clean up only browser processes it started.
 
 The dashboard offers browsing, comparison, blind pair review, and browser-local ratings with JSON export/import. No ratings are sent to a server and no community voting is implied. Entries remain unscored until a viewer rates them.
 

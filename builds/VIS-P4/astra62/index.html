@@ -1,0 +1,164 @@
+﻿<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="data:,"><title>The Last Ferry</title>
+<style>*{box-sizing:border-box}html,body,svg{width:100%;height:100%;display:block}#stars>g,#ripples>g,#ferry,#walker,#reflection,#beam,#steam,#foam,#lampHalo,#lampPool{will-change:transform,opacity}body{margin:0;overflow:hidden;background:#172736}</style></head><body>
+<svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="title description" xmlns="http://www.w3.org/2000/svg">
+<title id="title">The Last Ferry</title><desc id="description">At blue hour a green ferry glides past a lighthouse to a stone quay. A traveller in a russet coat steps into the lamplight, looks back and continues inland while the ferry slips away.</desc>
+<defs>
+<linearGradient id="sky" x2=".16" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#152b48"/><stop offset=".4" stop-color="#42617b"/><stop offset=".73" stop-color="#958996"/><stop offset="1" stop-color="#f7ba91"/></linearGradient>
+<linearGradient id="sea" x2=".06" y2="1"><stop stop-color="#e0aa95"/><stop offset=".14" stop-color="#9c929e"/><stop offset=".37" stop-color="#667c90"/><stop offset=".66" stop-color="#3a6277"/><stop offset="1" stop-color="#1c394d"/></linearGradient>
+<linearGradient id="hull" x2=".08" y2="1"><stop stop-color="#50857e"/><stop offset=".45" stop-color="#2e625f"/><stop offset="1" stop-color="#153e48"/></linearGradient>
+<linearGradient id="enamel" x2=".12" y2="1"><stop stop-color="#edcd9f"/><stop offset=".62" stop-color="#ceb292"/><stop offset="1" stop-color="#90948a"/></linearGradient>
+<linearGradient id="pane" x2="1" y2="1"><stop stop-color="#a46b52"/><stop offset=".5" stop-color="#f9c781"/><stop offset="1" stop-color="#ffe4ae"/></linearGradient>
+<linearGradient id="wall" x2=".15" y2="1"><stop stop-color="#405260"/><stop offset="1" stop-color="#1c303e"/></linearGradient>
+<filter id="haze" x="-4%" y="-35%" width="108%" height="170%"><feGaussianBlur stdDeviation="3"/></filter><linearGradient id="beamcolor"><stop stop-color="#ffddb0" stop-opacity=".52"/><stop offset=".72" stop-color="#ffe7c4" stop-opacity=".15"/><stop offset="1" stop-color="#ffdab0" stop-opacity="0"/></linearGradient>
+<radialGradient id="warm"><stop stop-color="#fff2bc" stop-opacity=".77"/><stop offset=".13" stop-color="#ffc670" stop-opacity=".46"/><stop offset=".48" stop-color="#ffc27c" stop-opacity=".17"/><stop offset="1" stop-color="#ffa464" stop-opacity="0"/></radialGradient>
+<radialGradient id="flare"><stop stop-color="#fffcdf"/><stop offset=".12" stop-color="#ffe1b3" stop-opacity=".94"/><stop offset=".45" stop-color="#fbd3a3" stop-opacity=".35"/><stop offset="1" stop-color="#fad7ae" stop-opacity="0"/></radialGradient>
+<pattern id="grain" patternUnits="userSpaceOnUse" width="120" height="112"></pattern>
+<g id="pine"><path d="M0 0l-2-5-5 1 3-5-3 1 4-6-2 1 4-8 4 9-2-1 4 7-3-1 4 5-5-1z" fill="currentColor"/></g>
+<clipPath id="waterclip"><path d="M0 640H1000V900H0z"/></clipPath>
+<clipPath id="bands"></clipPath>
+<clipPath id="entrance" clipPathUnits="userSpaceOnUse"><rect id="reveal" x="640" y="415" width="1100" height="210"/></clipPath>
+</defs>
+<path fill="url(#sky)" d="M0 0h1600v434H0z"/><g id="stars"></g>
+<g fill="#7f8395" opacity=".42">
+<path d="M723 269q35-7 63-6 49 1 80-6 33-8 55-6 25 4 44-1 38-9 72-6 31 3 57 1-50 7-94 9-57 3-100 7-63 9-177 8z"/>
+<path d="M1110 231q59-5 94-14 36-10 68-7 38-1 69-10 36-11 81-10l83-3-65 11-79 5-77 16-92 9z"/>
+<path d="M-25 249q71-10 112-11 57 2 92-5 34-6 66-4 48 1 84-3-44 8-78 9-50 2-96 9l-79 6z"/></g>
+<g opacity=".32" fill="#efc3ad"><path d="m829 267 55-7 52-2-33 4zm397-46 76-15 45-2-44 5zM23 250l76-8 42 1-51 5z"/></g>
+<g id="cirrus"></g>
+<path fill="#9e91a0" d="M0 409Q128 395 238 401T442 392L536 378 573 381 622 366 663 358 710 368 752 364 818 378 890 388 949 379 1009 362 1064 355 1099 343 1145 354 1197 332 1231 329 1287 345 1358 331 1420 346 1484 322 1532 315 1600 338V422H0Z"/>
+<path fill="#717c8b" d="m0 419 410-6 105-9 73-3 107-17 42 2 53 10 90-5 84 9 82-27 62-5 53-16 70 10 36 12 50-2 70 6 75-14 45-3 93-18v81H0z"/>
+<path fill="#4e6474" d="M870 420q74-5 128-19l66 2 100-17 63 2 76-17 43 5 78-16 70 9 106-17v78z"/>
+<g id="town"></g>
+<path fill="url(#sea)" d="M0 420h1600v480H0z"/>
+<g id="farwater"></g>
+<path fill="#40586a" d="m0 348 48 5 42 16 42-3 35 8 53-7 20 7 49-3 21 11 38 2 26 13 45 4 35 14 28 2-15 4H0z"/>
+<g id="trees"></g><path fill="#304859" d="m0 368 74 12 47-4 50 11 47-6 41 7 38 1 33 9 42 1 22 9 44 6-8 4H0Z"/>
+<g fill="#637380"><path d="m13 391 54 7 21-2-24 5zm132 8 38 3 27-6-24 9zm140 2 38 5 28 1-30 2zm67 12 36 1 21 3-21-1z"/></g>
+<g stroke="#304352" stroke-linejoin="round">
+<path fill="#bfae9e" d="m243 373 11-36h12l6 38z"/><path fill="#e6c7a6" d="m255 339-7 34 10 1 3-35z" stroke="none"/><path fill="#314a5b" d="m251 350 17 1 1 6-20-1z"/><path fill="#293e4c" d="M250 337h20v-3h-20z"/><path fill="#ffd391" d="M254 326h12v8h-12z"/><path d="M258 326v8m5-8v8"/><path fill="#293e4c" d="m250 326 10-7 10 7zM260 319v-4"/>
+<path fill="#ab9992" d="M206 376v-11h27v12z"/><path fill="#4c5261" d="m202 366 10-9h17l8 9z"/><path fill="#efbf88" d="M212 368h4v6h-4zm10 0h4v6h-4z"/></g>
+<g transform="translate(260 330)"><g id="beam"><path d="M0-2 700-53v106L0 2Z" opacity=".18" fill="url(#beamcolor)"/><path d="M0-2 700-50v100L0 2Z" opacity=".18" fill="url(#beamcolor)"/><path d="M0-2 700-47v94L0 2Z" opacity=".18" fill="url(#beamcolor)"/><path d="M0-2 700-44v88L0 2Z" opacity=".18" fill="url(#beamcolor)"/><path d="M0-2 700-41v82L0 2Z" opacity=".18" fill="url(#beamcolor)"/><path d="M0-2 700-38v76L0 2Z" opacity=".18" fill="url(#beamcolor)"/><path d="M0-2 700-35v70L0 2Z" opacity=".18" fill="url(#beamcolor)"/><path d="M0-2 700-32v64L0 2Z" opacity=".18" fill="url(#beamcolor)"/><path d="M0-2 700-29v58L0 2Z" opacity=".18" fill="url(#beamcolor)"/></g><circle id="lflare" r="47" fill="url(#flare)"/><circle r="2.3" fill="#fff0b5"/></g>
+<g id="ripples"></g><g id="lref" fill="#ffdbac"></g>
+<g id="backquay">
+<path fill="#304952" d="M1280 591h320v12h-320z"/><g fill="#223e4c"><path d="M1318 584h9v22h-9zm82 0h9v22h-9zm81 0h9v22h-9zm81 0h9v22h-9z"/></g>
+<g stroke="#314a54" fill="none" stroke-width="2.5"><path d="M1280 567q22 17 43 3 38 22 82 0 39 21 80 0 39 19 82 0 15 11 33 9"/></g><g id="posts"></g>
+</g>
+<path fill="url(#wall)" d="M1000 610h600v290h-600z"/><g id="blocks"></g>
+<g fill="#192e3c" stroke="#667078"><path d="M1498 899v-63a30 30 0 0 1 60 0v63z" stroke-width="9"/><path d="M1503 899v-63a25 25 0 0 1 50 0v63z" stroke="#344958" stroke-width="5"/></g><path d="M1511 823v76m11-86v86m12-86v86m11-76v76" stroke-width="4" stroke="#354751"/>
+<path fill="#64747b" d="m1000 610 24-14h576v14z"/><path fill="#a9958a" d="M1000 610h600v13h-600z"/><g id="capstones"></g><path d="M1000 623h600" stroke="#1d3444" stroke-width="6"/>
+<g id="ironwork"></g>
+<g id="lampPool"><ellipse cx="1180" cy="600" rx="230" ry="25" fill="url(#warm)"/><ellipse cx="1160" cy="633" rx="198" ry="53" fill="url(#warm)" opacity=".65"/></g>
+<g transform="translate(1180 0)"><path fill="#152e3c" d="M-13 610v-5l5-3 2-32 2-10V453h8v107l2 10 2 32 5 3v5z"/><path stroke="#82908c" fill="none" d="M-3 455v109l-2 9-1 28"/><path fill="#233c48" d="M-7 557H7v6H-7zM-8 450H8v9H-8z"/><path fill="#192e39" d="m-11 449-4-26h30l-4 26-11 8z"/><path id="glass" fill="#8c9491" d="m-11 426 3 20 7 3v-23zm12 0v23l7-3 3-20z"/><path fill="#233743" d="m-18 424 4-4 9-6 3-5v-3h4v3l3 5 10 6 3 4z"/><path stroke="#a79c89" d="m-14 422 26-1"/></g>
+<ellipse id="lampHalo" cx="1180" cy="437" rx="110" ry="121" fill="url(#warm)"/>
+<g clip-path="url(#waterclip)"><g id="reflection"></g><g id="lampRef" fill="#f4c68a"></g></g>
+<g id="foam"></g>
+<g id="ferry"><g id="vessel">
+<!-- Launched hull with a rubbing strake and painted sheer. -->
+<path fill="url(#hull)" stroke="#213a46" stroke-width="3" d="M-258 598q66 10 128 10h268q56-1 120-12l-9 28q-7 16-32 26-22 9-58 10h-311q-53-1-78-17-22-15-28-45z"/>
+<path fill="#ba7761" d="M-246 634q35 16 91 16h320q48-1 75-15-12 14-36 20-18 5-47 5h-309q-70 0-94-26z"/>
+<path fill="#162e39" d="M-258 606q74 11 143 11h238q74 0 133-13l-2 6q-57 13-129 13h-237q-76 0-143-11z"/>
+<path d="M-253 603q66 11 137 11h244q67 0 126-12" stroke="#dfc595" fill="none" stroke-width="2.5"/>
+<g id="hullDetails"></g>
+<!-- A stepped wheelhouse, brass steam whistle and raked stack. -->
+<path fill="#293e46" d="M-224 602V489l12-8 21-1v-35l60-10 30 8h35v33h194l33 18v108z"/>
+<path fill="url(#enamel)" d="M-218 599v-106h35v-43l48-7 63 3v37H98q30 0 49 13v103z"/>
+<path fill="#315d60" d="M-218 562H148v37h-366z"/><path stroke="#cba87d" d="M-218 569h365"/>
+<path fill="#203d46" d="m-225 488 41-2v-39l52-10 63 4 5 8-63-2-47 6v41h-50z"/>
+<path fill="#3b4647" d="M-185 444v-26h53v19z"/><path fill="#dfc19b" d="m-181 419 47-1v17h-47z"/><path fill="#4c6166" d="M-175 421h11v11h-11zm15 0h10v11h-10zm14 0h8v11h-8z"/><path fill="#253a43" d="m-190 417 13-4h44l7 4-1 3h-63z"/>
+<path fill="#433e40" d="m-44 478 9-63 31 3-6 61z"/><path fill="#b96d54" d="m-42 466 5-39 31 3-4 38z"/><path fill="#e2b98c" d="m-39 447 2-12 30 3-1 12z"/><path fill="#283c44" d="m-39 419 1-10 38 4-1 10z"/>
+<path fill="#c29b66" stroke="#54494a" stroke-width="2" d="M-18 414v-15h-5v-5l-7-4v-7l10 6h9v7h-3v18z"/>
+<path d="M-59 478v-16H95v16m-126-16v16m27-16v16m25-16v16m25-16v16m25-16v16" fill="none" stroke="#586466" stroke-width="2.4"/>
+<path fill="#384c50" d="M-68 480h171q28 0 53 16l-4 7q-28-15-54-15H-70z"/><path d="M-67 481h171q27 0 49 14" fill="none" stroke="#eacb9f" stroke-width="2"/>
+<g id="windows"></g>
+<path fill="#34484c" stroke="#edd0a2" stroke-width="3" d="M-131 606V462q0-9 9-10l40 1q10 1 10 10v143z"/><path fill="#1b3039" d="M-118 604V469q0-9 7-9h30v144z"/><path fill="#846e5d" d="M-130 601V465l11-4v138z"/><path d="M-124 476v55m0 12v43" stroke="#b18e6f" stroke-width="2"/><circle cx="-121" cy="537" r="2" fill="#fbd393"/>
+<g transform="translate(106 555)"><circle r="14" fill="#274e53" stroke="#1c353c" stroke-width="5"/><circle r="12" stroke="#d59464" stroke-width="7" fill="none"/><circle r="12" stroke="#f0d5a7" stroke-width="7" fill="none" stroke-dasharray="5 14"/></g>
+<g fill="none" stroke="#424e51" stroke-width="3"><path d="M-254 600v-38q15 3 34 3m-18-2v40m391-10v-38l93-4v40m-63-37v43m34-44v44"/><path d="m153 573 93-4m-500 8 36 4" stroke-width="2"/></g>
+<g id="ramp" transform="translate(260 610)"><path fill="#46555b" stroke="#283d45" stroke-width="2" d="M0-5h133l7 5H0z"/><path d="M1-5h131" stroke="#c1ab8e" stroke-width="2.5"/><g id="treads"></g><path id="rampglow" d="M0-4h136" stroke="#ffd599" stroke-width="3"/><circle r="5" fill="#344c55" stroke="#a4a196" stroke-width="2"/></g>
+</g></g>
+<g id="steam"></g>
+<g clip-path="url(#entrance)"><g id="walker"><g id="farLeg"></g><g id="nearLeg"></g><g id="body">
+<path fill="#633f3a" d="M-12-126q-9 4-10 20l-6 24 2 8 8-1 10-28z"/>
+<path fill="#b3654b" stroke="#553e3e" stroke-width="2" d="M-11-135q9-6 18 1l8 9-2 34 9 21-9 5-16-1-19-4 6-33z"/><path fill="#924e40" d="m-9-131 6 3-6 35-5 23-9-2 6-34z"/>
+<path d="m8-123 1 37 7 14m-8-39 5-2" fill="none" stroke="#d08b65" stroke-width="2"/>
+<g id="headTurn"><path fill="#cd9e7f" d="m-7-156 15-3 2 8 5 6-4 2-2 7-7 2-1 7-10-5 4-12z"/><path fill="#453f42" d="M-11-157q-3 9 3 16l5 1 1-11 9-1 3-5z"/><path fill="#2d4751" d="M-14-157q-1-12 10-13 12-3 16 10l6 2q-2 4-15 3l-17 1z"/><path d="m-12-159 24-2" stroke="#819392" stroke-width="2"/><path d="m6-150 3-1" stroke="#523e39" stroke-width="2"/></g>
+<path fill="#547e7b" d="m-11-138 14 3 7-1 1 6-12 2-13-4z"/><path fill="#345f62" d="m-11-134 4 5-10 29-5-4z"/>
+<g id="arm"><path fill="#d6aa88" d="m0-91 8 1 2 9-2 5-6-1-3-6z"/><path fill="#aa5c45" stroke="#6e463d" stroke-width="2" d="M-6-128q8-4 11 6l-3 18 6 14-9 5-9-19z"/><path fill="none" stroke="#443b37" stroke-width="3" d="M-3-71v-6q0-4 5-4h7q4 0 4 4v6"/><rect x="-14" y="-73" width="40" height="29" rx="4" fill="#735548" stroke="#393c3b" stroke-width="2.5"/><path d="M-11-69h34m-28-2v25m23-25v25" fill="none" stroke="#be926a" stroke-width="2.5"/></g>
+<path id="rim" fill="none" stroke="#ffd59a" stroke-width="3" stroke-linecap="round"/></g></g></g>
+<rect width="1600" height="900" fill="url(#grain)" pointer-events="none"/>
+</svg>
+<script>
+'use strict';
+const $=id=>document.getElementById(id),NS='http://www.w3.org/2000/svg',tau=Math.PI*2;
+function el(parent,type,attrs){const n=document.createElementNS(NS,type);for(const [k,v] of Object.entries(attrs))n.setAttribute(k,v);parent.append(n);return n}
+const attr=(n,k,v)=>{const s=String(v);if(n.getAttribute(k)!==s)n.setAttribute(k,s)},move=(n,s)=>attr(n,'transform',s),alpha=(n,v)=>{n.style.opacity=Number(v).toFixed(3)};
+let seed=73019;
+function rnd(){seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296}
+function between(a,b){return a+(b-a)*rnd()}
+const clamp=x=>Math.max(0,Math.min(1,x)),smooth=x=>(x=clamp(x),x*x*(3-2*x));
+function line(parent,x,y,dx,dy,color,width,opacity=1){return el(parent,'path',{d:'M'+x+' '+y+'l'+dx+' '+dy,stroke:color,'stroke-width':width,opacity,'stroke-linecap':'round'})}
+for(let k=0;k<4;k++){let d='';for(let i=0;i<120;i++){const x=(rnd()*120).toFixed(1),y=(rnd()*112).toFixed(1);d+='M'+x+' '+y+'h1.3v.8h-1.3z'}el($('grain'),'path',{d,fill:k%2?'#0a2234':'#ffecd5',opacity:.06})}
+const stars=[];for(let i=0;i<18;i++)stars.push([el($('stars'),'g',{}),[3,4,6][i%3],rnd(),between(.55,.95)]);for(let i=0;i<105;i++){let x=between(8,1592),y=15+Math.pow(rnd(),1.45)*306,r=between(.65,1.8);const g=stars[i%18][0];el(g,'circle',{cx:x,cy:y,r,fill:'#ffebc7'});if(i%16===0){line(g,x-3.5,y,7,0,'#ffe0ae',.8);line(g,x,y-4,0,8,'#ffedd1',.9)}}
+for(let i=0;i<75;i++){const x=between(-140,1550),y=between(220,399),w=between(23,185),h=between(.6,3.4);el($('cirrus'),'path',{d:'M'+x+' '+y+'q'+w*.27+' '+(-h*.4)+' '+w*.59+' '+(-h)+'t'+w*.41+' '+(-h*.45)+'q'+(-w*.34)+' '+h*1.4+' '+(-w)+' '+h*1.45+'z',fill:i%3?'#eabad0':'#5e6f88',opacity:between(.1,.24)})}
+function coastHeight(x){const edge=[[0,348],[48,353],[90,369],[132,366],[167,374],[220,367],[240,374],[289,371],[310,382],[348,384],[374,397]];let j=1;while(edge[j][0]<x)j++;const [x0,y0]=edge[j-1],[x1,y1]=edge[j];return y0+(y1-y0)*(x-x0)/(x1-x0)}
+for(let i=0;i<108;i++){const x=between(-5,373),ground=coastHeight(x);const s=between(.18,.82)*(1-.5*x/380);el($('trees'),'use',{href:'#pine',transform:'translate('+x+' '+(ground+5)+') scale('+s+')',color:'#40586a'})}
+for(let i=0;i<100;i++){const x=between(880,1600),y=419-(x-880)*.051+between(-1,9),w=between(3,10),h=between(2,6);el($('town'),'path',{d:'M'+x+' '+y+'v-'+h+'l'+w*.44+' -3  '+w*.56+' 3v'+h+'z',fill:i%3?'#536371':'#77808a'});if(i%4===0)line($('town'),x+1,y-2,2,0,'#ffd1a0',1.5)}
+for(let i=0;i<460;i++){const y=420+Math.pow(rnd(),1.7)*214,x=between(-80,1600),w=between(4,62)*(1+(y-420)/330);line($('farwater'),x,y,w,between(-.7,.7),i%3?'#ffddbf':'#435e74',between(.4,1.9),between(.10,.40))}
+function combine(parent){const groups=new Map;for(const n of [...parent.children]){const key=n.getAttribute('fill');groups.set(key,(groups.get(key)||'')+n.getAttribute('d'));n.remove()}for(const [fill,d] of groups)el(parent,'path',{fill,d,opacity:.38})}
+const waves=[];for(let j=0;j<14;j++){const g=el($('ripples'),'g',{});waves.push(g);for(let i=0;i<40;i++){const y=between(455,902),x=between(-60,1590),k=(y-420)/480,w=between(5,95)*k+2,h=between(1,5)*k;el(g,'path',{d:'M'+x+' '+y+'q'+w*.3+' '+(-h)+' '+w*.62+' '+(-h*.7)+'l'+w*.38+' '+(-h*.26)+'q'+(-w*.28)+' '+h+' '+(-w*.56)+' '+h*1.04+'z',fill:i%4?'#a0b9bc':'#163f54',opacity:between(.2,.56)})}}
+waves.forEach(combine);for(let i=0;i<58;i++){const k=rnd(),y=423+k*476,x=260+between(-1,1)*(6+k*75);line($('lref'),x,y,between(3,22)*(k+.3),0,'#ffd098',between(.7,2.2))}
+for(const x of [1280,1323,1405,1485,1567]){el($('posts'),'path',{d:'M'+(x-3)+' 596v-32l3-3 3 2v33z',fill:'#384952'})}
+const rock=['#3b4e5c','#405463','#3e515e','#354b5b','#344855','#485865','#425563'];
+for(let row=0;row<6;row++){const y=626+row*49;let x=1000;while(x<1600){const w=Math.min(1600-x,between(79,157)*(x===1000&&row%2?.55:1)),h=between(45,48);el($('blocks'),'path',{d:'M'+(x+1)+' '+(y+5)+'l5-4 '+(w-12)+' -1 4 4 -1 '+(h-8)+' -6 4 '+(15-w)+' 1 -6 -5z',fill:rock[Math.floor(rnd()*rock.length)],opacity:1-row*.07});line($('blocks'),x+7,y+2,Math.max(0,w-18),-1,'#8c8d8b',1,.38);for(let i=0;i<7;i++)line($('blocks'),x+between(4,Math.max(5,w-16)),y+between(7,41),between(1,9),between(-1,1),'#9d988c',1,.16);x+=w}}
+for(let x=1001;x<1600;x+=between(68,106)){line($('capstones'),x,611,3,11,'#525e65',3);line($('capstones'),x,610,12,-9,'#50636c',2);line($('capstones'),x+6,611,51,0,'#d0b49b',2,.8)}
+for(const x of [1042,1320]){el($('ironwork'),'path',{d:'M'+(x-7)+' 641q7-6 14 0v19h-14z',fill:'#263944',stroke:'#5b696c','stroke-width':2});el($('ironwork'),'ellipse',{cx:x,cy:664,rx:12,ry:16,fill:'none',stroke:'#1d3240','stroke-width':6});el($('ironwork'),'path',{d:'M'+(x-10)+' 661q0-12 10-12',fill:'none',stroke:'#9a9382','stroke-width':2})}
+for(let i=0;i<50;i++){const k=rnd(),x=998-(8+Math.pow(k,.7)*200)*rnd();line($('lampRef'),x,643+k*253,between(3,24),0,'#ffc58b',between(1,3),.7*(1-(998-x)/260))}
+// Reflected shapes break into uneven strokes whose length grows with depth.
+const mirror=$('reflection');
+function reflectedStrokes(x0,x1,y0,y1,ink,coverage){
+ for(let y=y0;y<y1;y+=between(2.3,5.6)){
+ const bend=5*Math.sin(y*.11)+3*Math.cos(y*.21);
+ for(let x=x0+between(-7,6);x<x1;){
+ const len=Math.min(x1-x+between(0,5),between(8,64)),h=between(.8,2.8);
+ if(rnd()<coverage)el(mirror,'path',{d:'M'+(x+bend)+' '+y+'q'+len*.35+' '+(-h*.8)+' '+len+' '+(-h*.35)+'q'+(-len*.47)+' '+h*1.18+' '+(-len)+' '+h*.35+'z',fill:ink,opacity:between(.24,.59)});
+ x+=len+between(0,6)}
+ }}
+reflectedStrokes(-239,239,603,647,'#143e49',.97);reflectedStrokes(-201,194,647,653,'#c18c78',.9);
+reflectedStrokes(-217,147,492,603,'#b1a995',.87);reflectedStrokes(-181,-70,447,492,'#b3a799',.8);
+reflectedStrokes(-127,-73,464,602,'#203e4c',.99);for(const x of [-209,-178,-53,-15,23,61,98])reflectedStrokes(x,x+24,499,541,'#ffcd91',.91);
+reflectedStrokes(-37,-9,417,479,'#bf8a6d',.65);
+for(let x=-235;x<=234;x+=17){el($('hullDetails'),'circle',{cx:x,cy:625+3*(1-(x/240)**2),r:1,fill:'#99b6a4'})}
+for(const x of [-207,-175,159,191]){el($('hullDetails'),'ellipse',{cx:x,cy:632,rx:5,ry:3.4,fill:'#182f3a',stroke:'#8b9e90','stroke-width':1.4})}
+for(const [x,y,w,h] of [[-210,502,21,41],[-181,502,34,41],[-58,496,31,43],[-20,496,31,43],[18,496,31,43],[56,496,31,43],[94,499,32,37],[-169,455,22,24]]){
+el($('windows'),'rect',{x,y,width:w,height:h,rx:4,fill:'#526061',stroke:'#f3d5ae','stroke-width':2});el($('windows'),'rect',{x:x+3,y:y+3,width:w-6,height:h-6,rx:2,fill:'url(#pane)'});line($('windows'),x+3,y+11,w-6,0,'#6f665b',2);line($('windows'),x+w*.64,y+3,0,h-6,'#8b7966',1.7)}
+for(let x=9;x<130;x+=12)line($('treads'),x,-4,3,2,'#ddbc97',1.5);
+const foam=[];for(let i=0;i<68;i++){let n=el($('foam'),'path',{fill:i%4?'#c9d6cd':'#eef0d8'});foam.push([n,rnd(),rnd(),rnd()])}
+const steam=[];for(let i=0;i<22;i++){let g=el($('steam'),'g',{});el(g,'ellipse',{rx:between(9,22),ry:between(8,17),fill:i%3?'#f4d9bb':'#d2beba'});steam.push([g,rnd(),rnd(),rnd()])}
+function leg(id,near){const g=$(id);const thigh=el(g,'path',{fill:'none',stroke:near?'#283e49':'#1c303b','stroke-width':13,'stroke-linecap':'round','stroke-linejoin':'round'});const boot=el(g,'path',{d:'M-7-11h11l2 6 9 2q3 1 3 3H-8z',fill:near?'#513f3b':'#343137'});return [thigh,boot]}
+const legs=[leg('farLeg',false),leg('nearLeg',true)];
+const skull=el($('body'),'ellipse',{cx:-2,cy:-150,rx:9,ry:13,fill:'#534640'});$('body').insertBefore(skull,$('headTurn'));
+const crown=el($('body'),'path',{d:'M-13-157q-1-13 10-14 13-1 15 13z',fill:'#304a51'});$('body').insertBefore(crown,$('headTurn'));
+function draw(t){
+ const theta=t*tau/12,cs=Math.cos(theta),flare=Math.pow(Math.max(0,Math.sin(theta)),12),w=t*tau/4;
+ move($('beam'),'scale('+cs+' '+(.44+.56*Math.abs(cs))+')');alpha($('lflare'),flare);alpha($('lref'),.05+.53*flare);move($('lref'),'translate('+3*Math.sin(w)+' 0)');
+ for(const [n,p,ph,a] of stars)alpha(n,a*(.70+.3*Math.cos(t*tau/p+ph*tau)));
+ waves.forEach((g,i)=>{move(g,'translate('+(3+i*.67)*Math.sin(w+i)+' '+.9*Math.cos(w+i)+')');alpha(g,.76+.23*Math.cos(w+i*.83))});
+ let xf=-400,speed=0;if(t>=.5&&t<4){const u=(t-.5)/3.5;xf=-400+1140*(1-(1-u)**3);speed=(1-u)**2}else if(t>=4&&t<8.5){xf=740}else if(t>=8.5&&t<11.5){const u=(t-8.5)/3;xf=740-1140*u**3;speed=-u*u}
+ const bob=2.3*Math.sin(w)*(1-smooth((t-3.4)/.6)+smooth((t-8.5)/.6)),glow=smooth((t-5)/.6)*(1-smooth((t-9)/.6));
+ move($('ferry'),'translate('+xf+' '+bob+')');move($('reflection'),'translate('+xf+' '+(1304+bob+1.4*Math.sin(w))+') scale(1 -1)');
+ move($('ramp'),'translate(260 610) rotate('+(-65*(1-smooth((t-4.2)/.8)+smooth((t-7.4)/.8)))+')');
+ alpha($('rampglow'),glow*.82);alpha($('lampHalo'),glow);alpha($('lampPool'),glow);alpha($('lampRef'),glow*(.74+.17*Math.sin(w)));attr($('glass'),'fill','rgb('+[140+115*glow,148+87*glow,145+30*glow].map(Math.round).join(',')+')');
+ const mag=Math.abs(speed),dir=speed<0?-1:1;attr($('foam'),'display',mag?'inline':'none');
+ if(mag){move($('foam'),'translate('+xf+' '+bob+') scale('+dir+' 1)');alpha($('foam'),Math.min(1,mag*7)*(1-smooth((t-11.15)/.35)));for(let i=0;i<foam.length;i++){const [n,a,b,c]=foam[i],p=(a+t*(.32+c*.33))%1,bow=i<25;let x=bow?246+12*p-57*p*p:-225-265*p*mag;let y=bow?639-20*Math.sin(Math.PI*p)*mag+11*p+6*b:646+10*b+13*p+5*Math.sin(p*7+b*8);let len=(4+c*22)*(1+.6*mag);attr(n,'d','M'+x+' '+y+'q'+(-len*.35)+' '+(-2-4*mag)+' '+(-len)+' 1q'+len*.64+' -2 '+len+' 1z');alpha(n,(.2+.67*b)*Math.sin(Math.PI*p))}}
+ const plume=(t-3.8)/1.2;attr($('steam'),'display',plume>0&&plume<1?'inline':'none');if(plume>0&&plume<1){for(const [n,a,b,c] of steam){let p=clamp((plume-.26*a)/(1-.26*a));move(n,'translate('+(xf-25-p*(30+83*b)+Math.sin(p*6+a*3)*9*p)+' '+(387-p*(133+47*c))+') scale('+(.08+1.55*p)+')');alpha(n,.63*smooth(p/.12)*(1-smooth((p-.25)/.75)))}}
+ const elapsed=t-5,x=640+240*elapsed,walking=t>=5&&x<1642;attr($('walker'),'display',walking?'inline':'none');
+ if(walking){move($('walker'),'translate('+x+' 610)');attr($('reveal'),'x',640+70*(1-smooth(elapsed/.22)));const cycle=.78,phase=elapsed/cycle,bounce=-2.5*Math.cos(phase*tau*2);
+ move($('body'),'translate(0 '+bounce+')');move($('arm'),'rotate('+(8*Math.sin(phase*tau))+' -2 -125)');
+ const look=smooth((t-7.3)/.4)*(1-smooth((t-7.7)/.4));move($('headTurn'),'scale('+(1-2*look)+' 1)');
+ const side=x<1180?1:-1;attr($('rim'),'d',side>0?'M10-126l4 7-3 28 8 19':'M-12-128l-6 7-4 24m3 6-4 18');alpha($('rim'),glow*(1-smooth(Math.abs(x-1180)/245))*.93);
+ legs.forEach(([pant,boot],i)=>{const q=(phase+i*.5)%1,v=clamp(2*q-1),stride=240*cycle;
+ const fx=stride*(.25-q+smooth(v)),fy=-19*Math.sin(Math.PI*v)**1.4,hx=-2,hy=-77+bounce,dx=fx-hx,dy=fy-7-hy,dist=Math.hypot(dx,dy),off=Math.sqrt(Math.max(0,44*44-dist*dist/4)),kx=hx+dx/2+off*dy/dist,ky=hy+dy/2-off*dx/dist;
+ attr(pant,'d','M'+hx+' '+hy+'L'+kx+' '+ky+' '+fx+' '+(fy-7));move(boot,'translate('+fx+' '+fy+') rotate('+(-12*Math.sin(tau*v))+')')})}
+}
+const raw=new URLSearchParams(location.search).get('t'),start=performance.now();if(raw!==null&&Number.isFinite(Number(raw)))draw(((Number(raw)%12)+12)%12);else{draw(0);function play(now){draw(((now-start)/1000)%12);requestAnimationFrame(play)}requestAnimationFrame(play)}
+</script></body></html>

@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kestrel Hand Pump</title>
+<link rel="icon" href="data:,">
+<style>
+:root { background:#f7f5ed; color:#222826; }
+body { margin:0; overflow:hidden; }
+svg { display:block; width:100vw; height:100vh; font-family:Arial,"Segoe UI",sans-serif; font-size:14px; fill:#222826;
+  --paper:#f7f5ed; --ink:#222826; --line:2; --fine:1; --blue:#096694; --orange:#a64313; }
+path,rect,circle { stroke-linejoin:round; stroke-linecap:butt; }
+.outline,.metal,.face,.pin,.balloon,.cut,.reverse,.seal { stroke:var(--ink); stroke-width:var(--line); }
+.outline,.hair,.edge,.chain,.hidden,.phantom,.dim,.dimEnd,.motion,.cutline,.rule { fill:none; }
+.metal { fill:#e8e7dd; } .face { fill:#efede4; } .balloon { fill:var(--paper); } .pin { fill:#f5f3ea; }
+.hair,.edge,.chain,.hidden,.phantom,.dim,.dimEnd,.motion,.cutline,.rule { stroke:var(--ink); stroke-width:var(--fine); }
+.hidden { stroke-dasharray:8 4; } .chain,.cutline { stroke-dasharray:16 3 3 3; } .phantom { stroke-dasharray:16 3 3 3 3 3; }
+.cutline { stroke-width:3; } .rule { stroke:#777974; } .edge { stroke:#a4a498; }
+.cut { fill:url(#cut); } .reverse { fill:url(#reverse); } .seal { fill:#9a9d92; }
+.detail .cut { fill:url(#cutDetail); } .detail .reverse { fill:url(#reverseDetail); }
+.dot { fill:var(--ink); }
+.dim { marker-start:url(#arrow); marker-end:url(#arrow); } .dimEnd,.motion { marker-end:url(#arrow); }
+.in,.out { fill:none; stroke-width:2.6; marker-end:url(#flow); stroke-linejoin:round; }
+.in { stroke:var(--blue); } .in.micro { stroke-width:1.45; } .out { stroke:var(--orange); stroke-dasharray:7 4; }
+.detail .in,.detail .out { stroke-width:1.3; } .detail .out { stroke-dasharray:3.5 2; }
+.view { font-size:20px; font-weight:700; letter-spacing:.6px; }
+.tag,.field { font-size:12px; font-weight:700; letter-spacing:1.15px; }
+.number,.measure { font-size:16px; } .knockout { paint-order:stroke; stroke:var(--paper); stroke-width:3px; } .measure { font-weight:600; }
+.small { font-size:12px; } .copy { font-size:13px; }
+.bold { font-weight:700; } .sub { font-size:14px; font-weight:700; letter-spacing:1px; }
+.value { font-size:15px; font-weight:700; }
+.sheet-title { font-size:28px; font-weight:700; letter-spacing:.25px; }
+.inText { fill:var(--blue); font-weight:700; } .outText { fill:var(--orange); font-weight:700; }
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1680 1188" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="art-title art-desc">
+<title id="art-title">Sheet KHP-100: Kestrel Hand Pump</title>
+<desc id="art-desc">A landscape engineering sheet shows a hand lever force pump in exploded front elevation, a full upstroke section with two piston positions, and an enlarged downstroke valve section. Dimension arrows, numbered components, and blue solid and orange dashed flow arrows describe the mechanism.</desc>
+<defs>
+  <marker id="arrow" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="6" refX="9" refY="3" orient="auto-start-reverse">
+    <path d="M0 0L9 3 0 6Z"/>
+  </marker>
+  <marker id="flow" markerWidth="6" markerHeight="5" refX="5.5" refY="2.5" orient="auto">
+    <path d="M0 0L5.5 2.5 0 5 1.1 2.5Z" fill="context-stroke"/>
+  </marker>
+<pattern id="cut" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#efede3"/><path d="M0 0V8" stroke="#656960" stroke-width="1.56"/></pattern>
+<pattern id="reverse" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(135)"><rect width="8" height="8" fill="#efede3"/><path d="M0 0V8" stroke="#656960" stroke-width="1.56"/></pattern>
+<pattern id="cutDetail" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="4" height="4" fill="#efede3"/><path d="M0 0V4" stroke="#656960" stroke-width="0.78"/></pattern>
+<pattern id="reverseDetail" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(135)"><rect width="4" height="4" fill="#efede3"/><path d="M0 0V4" stroke="#656960" stroke-width="0.78"/></pattern>
+</defs>
+<rect width="1680" height="1188" fill="#f7f5ed"/>
+<rect x="24" y="24" width="1632" height="1140" fill="none" stroke="#222826" stroke-width="3"/>
+<path class="rule" d="M640 24L640 1164" />
+<path class="rule" d="M1158 24L1158 1164" />
+<path class="rule" d="M24 1004L1176 1004" />
+<g aria-label="Exploded front elevation" >
+<text x="56" y="79" class="view" text-anchor="start" >EXPLODED VIEW</text>
+<text x="620" y="79" class="tag" text-anchor="end" >1:4  /  FRONT ELEVATION</text>
+<path class="rule" d="M56 93L620 93" />
+<path class="chain" d="M468 155L468 965" />
+<path class="chain" d="M388 154L388 215" />
+<path class="chain" d="M374 905L431 905" />
+<path class="chain" d="M505 905L540 905" />
+<path class="face" d="M68 130Q68 127 73 127H474Q482 127 482 138Q482 149 474 149H73Q68 149 68 145Z" />
+<path class="metal" d="M72 130H145L151 134V143L145 147H72Z" />
+<path class="hair" d="M79 131L84 145" />
+<path class="hair" d="M87 131L92 145" />
+<path class="hair" d="M95 131L100 145" />
+<path class="hair" d="M103 131L108 145" />
+<path class="hair" d="M111 131L116 145" />
+<path class="hair" d="M119 131L124 145" />
+<path class="hair" d="M127 131L132 145" />
+<path class="hair" d="M135 131L140 145" />
+<path class="hair" d="M143 131L148 145" />
+<path class="chain" d="M61 138L489 138" />
+<circle class="pin" cx="388" cy="138" r="6"/>
+<path class="hair" d="M378 138L398 138" />
+<path class="hair" d="M388 128L388 148" />
+<circle class="pin" cx="468" cy="138" r="5"/>
+<path class="hair" d="M459 138L477 138" />
+<path class="hair" d="M468 129L468 147" />
+<path class="hair" d="M68 125L68 105" />
+<path class="hair" d="M388 125L388 105" />
+<path class="dim" d="M68 110L388 110" />
+<text x="228.0" y="105" class="measure" text-anchor="middle" >320</text>
+<path class="hair" d="M388 125L388 105" />
+<path class="hair" d="M468 125L468 105" />
+<path class="dim" d="M388 110L468 110" />
+<text x="428.0" y="105" class="measure" text-anchor="middle" >80</text>
+<path class="hair" d="M178 175L195 149" />
+<circle class="dot" cx="195" cy="149" r="2.5"/>
+<circle class="balloon" cx="178" cy="189" r="14"/>
+<text x="178" y="194.6" class="number" text-anchor="middle" >1</text>
+<path class="face" d="M388 215Q375 215 374 228L375 452 360 488 360 504H409V484L394 460 402 232Q402 215 388 215Z" />
+<path class="outline" d="M389 260L386 435 381 461 381 286Z" />
+<path class="hair" d="M360 488H409M360 498H409" />
+<path class="hidden" d="M362 487L367 477M399 477L404 487" />
+<circle class="pin" cx="388" cy="230" r="6"/>
+<path class="hair" d="M378 230L398 230" />
+<path class="hair" d="M388 220L388 240" />
+<path class="hair" d="M335 300H371L379 295" />
+<circle class="dot" cx="379" cy="295" r="2.5"/>
+<circle class="balloon" cx="321" cy="300" r="14"/>
+<text x="321" y="305.6" class="number" text-anchor="middle" >2</text>
+<path class="face" d="M468 175A9 9 0 0 1 477 184L474 202V307L477 324A9 9 0 0 1 459 324L462 307V202L459 184A9 9 0 0 1 468 175Z" />
+<circle class="pin" cx="468" cy="184" r="4.5"/>
+<path class="hair" d="M459.5 184L476.5 184" />
+<path class="hair" d="M468 175.5L468 192.5" />
+<circle class="pin" cx="468" cy="324" r="4.5"/>
+<path class="hair" d="M459.5 324L476.5 324" />
+<path class="hair" d="M468 315.5L468 332.5" />
+<path class="hair" d="M479 184L542 184" />
+<path class="hair" d="M479 324L542 324" />
+<path class="dim" d="M537 184L537 324" />
+<text x="532" y="254.0" class="measure" text-anchor="middle" transform="rotate(-90 532 254.0)">140</text>
+<path class="hair" d="M440 249L463 249" />
+<circle class="dot" cx="463" cy="249" r="2.5"/>
+<circle class="balloon" cx="426" cy="249" r="14"/>
+<text x="426" y="254.6" class="number" text-anchor="middle" >3</text>
+<path class="face" d="M464 358H472L475 361V558L472 561V568H464V561L461 558V361Z" />
+<circle class="pin" cx="468" cy="365" r="3.4"/>
+<path class="hair" d="M463 372L463 555" />
+<path class="hair" d="M464 562L472 562" />
+<path class="hair" d="M464 564L472 564" />
+<path class="hair" d="M464 566L472 566" />
+<path class="hair" d="M474 358L569 358" />
+<path class="hair" d="M474 568L569 568" />
+<path class="dim" d="M564 358L564 568" />
+<text x="559" y="463.0" class="measure" text-anchor="middle" transform="rotate(-90 559 463.0)">210</text>
+<path class="hair" d="M461 377L461 399" />
+<path class="hair" d="M475 377L475 399" />
+<path class="dimEnd" d="M449 394L461 394" />
+<path class="dimEnd" d="M487 394L475 394" />
+<path class="hair" d="M461 394L475 394" />
+<text x="492" y="389" class="measure" text-anchor="start" >Ø14</text>
+<path class="hair" d="M502 465L474 465" />
+<circle class="dot" cx="474" cy="465" r="2.5"/>
+<circle class="balloon" cx="516" cy="465" r="14"/>
+<text x="516" y="470.6" class="number" text-anchor="middle" >4</text>
+<path class="metal" d="M444 596H492L497 601V610L491 616H445L439 610V601Z" />
+<path class="hair" d="M445 599V612M491 599V612M439 605H497M443 612H493" />
+<path class="hidden" d="M461 596V616M475 596V616" />
+<path class="hair" d="M400 603H427L441 606" />
+<circle class="dot" cx="441" cy="606" r="2.5"/>
+<circle class="balloon" cx="386" cy="603" r="14"/>
+<text x="386" y="608.6" class="number" text-anchor="middle" >5</text>
+<path class="face" d="M441 644H495L498 650V674H438V650Z" />
+<path class="seal" d="M438 656H498V670L496 674H440L438 670Z" />
+<path class="hair" d="M441 661L495 661" />
+<path class="hidden" d="M463 644V654H473V644" />
+<path class="hair" d="M536 655H514L497 659" />
+<circle class="dot" cx="497" cy="659" r="2.5"/>
+<circle class="balloon" cx="550" cy="655" r="14"/>
+<text x="550" y="660.6" class="number" text-anchor="middle" >7</text>
+<path class="face" d="M432 704L436 700H500L504 704V940H432Z" />
+<path class="hair" d="M432 706H504M436 711V870M500 711V870" />
+<path class="hidden" d="M438 709V880M498 709V880" />
+<g aria-label="Local valve block section" transform="translate(468 880)">
+<rect class="pocket" x="-36" y="0" width="72" height="60" fill="#f7f5ed"/>
+<path class="cut" d="M-36 0H-30V0H-28.5V17L-23 21V30H-36Z" />
+<path class="cut" d="M-7.5 0H13V3L7.5 7V60H-36V40H-13V21L-7.5 17Z" />
+<path class="cut" d="M23 0H30V0H36V30H28.5V7L23 3Z" />
+<path class="cut" d="M28.5 40H36V60H28.5Z" />
+<path class="reverse" d="M7.5 54H28.5V60H7.5Z" />
+<path class="hair" d="M-28.5 12V-1H-26V1H-24V-1H-12V1H-10V-1H-7.5V12" />
+<path class="hair" d="M-28.5 6L-25.5 6" />
+<path class="hair" d="M-10.5 6L-7.5 6" />
+<path class="chain" d="M-18 -9L-18 63" />
+<path class="chain" d="M18 -9L18 63" />
+<circle class="pin" cx="-18" cy="8.25" r="8"/>
+<circle class="pin" cx="18" cy="6.25" r="8"/>
+<path class="outline" d="M18 14.25 L12 16.25 L24 19.15 L12 22.04 L24 24.94 L12 27.83 L24 30.73 L12 33.62 L24 36.52 L12 39.42 L24 42.31 L12 45.21 L24 48.10 L12 51.00 L18 54" />
+<path class="hair" d="M7.5 55L10 55" />
+<path class="hair" d="M7.5 58L10 58" />
+<path class="hair" d="M26 55L28.5 55" />
+<path class="hair" d="M26 58L28.5 58" />
+<path class="hair" d="M-36 0L-33 -4 -27 -3 -23 -6 -16 -4 -11 -6 -5 -3 2 -5 7 -3 13 -6 20 -4 24 -5 29 -2 33 -4 36 0" />
+</g>
+<path class="hair" d="M538 738H518L503 750" />
+<circle class="dot" cx="503" cy="750" r="2.5"/>
+<circle class="balloon" cx="552" cy="738" r="14"/>
+<text x="552" y="743.6" class="number" text-anchor="middle" >6</text>
+<path class="hair" d="M383 844H401L450 888.25" />
+<circle class="dot" cx="450" cy="888.25" r="2.5"/>
+<circle class="balloon" cx="369" cy="844" r="14"/>
+<text x="369" y="849.6" class="number" text-anchor="middle" >8</text>
+<path class="hair" d="M540 847H525L486 886.25" />
+<circle class="dot" cx="486" cy="886.25" r="2.5"/>
+<circle class="balloon" cx="554" cy="847" r="14"/>
+<text x="554" y="852.6" class="number" text-anchor="middle" >9</text>
+<path class="face" d="M265 893H323L328 889H345L350 897H371V913H350L345 921H328L323 917H265L256 914V896Z" />
+<path class="outline" d="M323 893V917M328 889V921M344 889V921M350 897V913" />
+<path class="hair" d="M262 898L265 900" />
+<path class="hair" d="M262 904L265 906" />
+<path class="hair" d="M262 910L265 912" />
+<path class="hair" d="M269 898L272 900" />
+<path class="hair" d="M269 904L272 906" />
+<path class="hair" d="M269 910L272 912" />
+<path class="hair" d="M276 898L279 900" />
+<path class="hair" d="M276 904L279 906" />
+<path class="hair" d="M276 910L279 912" />
+<path class="hair" d="M283 898L286 900" />
+<path class="hair" d="M283 904L286 906" />
+<path class="hair" d="M283 910L286 912" />
+<path class="hair" d="M290 898L293 900" />
+<path class="hair" d="M290 904L293 906" />
+<path class="hair" d="M290 910L293 912" />
+<path class="hair" d="M297 898L300 900" />
+<path class="hair" d="M297 904L300 906" />
+<path class="hair" d="M297 910L300 912" />
+<path class="hair" d="M304 898L307 900" />
+<path class="hair" d="M304 904L307 906" />
+<path class="hair" d="M304 910L307 912" />
+<path class="hair" d="M311 898L314 900" />
+<path class="hair" d="M311 904L314 906" />
+<path class="hair" d="M311 910L314 912" />
+<path class="hair" d="M318 898L321 900" />
+<path class="hair" d="M318 904L321 906" />
+<path class="hair" d="M318 910L321 912" />
+<path class="hair" d="M353 897L351 913" />
+<path class="hair" d="M357 897L355 913" />
+<path class="hair" d="M361 897L359 913" />
+<path class="hair" d="M365 897L363 913" />
+<path class="hair" d="M369 897L367 913" />
+<path class="chain" d="M248 905L376 905" />
+<path class="hair" d="M235 863L276 894" />
+<circle class="dot" cx="276" cy="894" r="2.5"/>
+<circle class="balloon" cx="223" cy="855" r="14"/>
+<text x="223" y="860.6" class="number" text-anchor="middle" >10</text>
+<path class="face" d="M540 898H552V891H564L569 898 579 892V898L589 892V898L599 892V898H607V912H599V918L589 912V918L579 912V918L569 912 564 919H552V912H540Z" />
+<path class="hair" d="M542 898L541 912" />
+<path class="hair" d="M545 898L544 912" />
+<path class="hair" d="M548 898L547 912" />
+<path class="hair" d="M551 898L550 912" />
+<path class="hair" d="M555 891V919M564 891V919M569 898V912M579 898V912M589 898V912M599 898V912" />
+<path class="chain" d="M535 905L612 905" />
+<path class="hair" d="M599 880L588 895" />
+<circle class="dot" cx="588" cy="895" r="2.5"/>
+<circle class="balloon" cx="602" cy="866" r="14"/>
+<text x="602" y="871.6" class="number" text-anchor="middle" >11</text>
+<rect class="face" x="398" y="966" width="140" height="12" />
+<path class="hidden" d="M408.5 966L408.5 978" />
+<path class="hidden" d="M417.5 966L417.5 978" />
+<path class="hidden" d="M518.5 966L518.5 978" />
+<path class="hidden" d="M527.5 966L527.5 978" />
+<path class="hair" d="M369 953H383L410 970" />
+<circle class="dot" cx="410" cy="970" r="2.5"/>
+<circle class="balloon" cx="355" cy="953" r="14"/>
+<text x="355" y="958.6" class="number" text-anchor="middle" >12</text>
+<path class="hair" d="M540 966L570 966" />
+<path class="hair" d="M540 978L570 978" />
+<path class="dimEnd" d="M565 954L565 966" />
+<path class="dimEnd" d="M565 990L565 978" />
+<path class="hair" d="M565 966L565 978" />
+<text x="571" y="959" class="measure" text-anchor="start" >12</text>
+</g>
+<g aria-label="Section A-A, upstroke" >
+<text x="660" y="79" class="view" text-anchor="start" >SECTION A–A  /  UPSTROKE</text>
+<text x="1140" y="79" class="tag" text-anchor="end" >1:4</text>
+<path class="rule" d="M660 93L1140 93" />
+<g aria-label="Lever, bracket and coupling link" transform="translate(0 7)">
+<path class="face" d="M697 249L855 340 925 380 916 393 846 353 689 262Z" />
+<path class="outline" d="M689 263L698 260 693 255 701 252 696 247" />
+<path class="chain" d="M706 262L928 391" />
+<path class="face" d="M853 330Q838 328 835 343L826 560 827 607 838 620H894V594H865L857 584 864 348Q866 335 853 330Z" />
+<path class="outline" d="M848 375L840 567 845 592 851 567 855 383Z" />
+<path class="hair" d="M865 600L894 600" />
+<path class="hair" d="M865 613L894 613" />
+<circle class="pin" cx="881" cy="600" r="3"/>
+<circle class="pin" cx="881" cy="613" r="3"/>
+<circle class="pin" cx="850" cy="346.4" r="6"/>
+<path class="hair" d="M840 346.4L860 346.4" />
+<path class="hair" d="M850 336.4L850 356.4" />
+<path class="face" d="M919.28 377.4Q928.28 377.4 928.28 385.7L933.9 506 939 525.95A9 9 0 0 1 921 526L924 506 915 405 910.28 386.4Q910.28 377.4 919.28 377.4Z" />
+<path class="chain" d="M919.28 386.4L930 526" />
+<circle class="pin" cx="919.28" cy="386.4" r="4.5"/>
+<path class="hair" d="M910.78 386.4L927.78 386.4" />
+<path class="hair" d="M919.28 377.9L919.28 394.9" />
+</g>
+<path class="face" d="M926 526H934L937 532V729L934 736H926L923 729V532Z" />
+<circle class="pin" cx="930" cy="533" r="4.5"/>
+<path class="hair" d="M921.5 533L938.5 533" />
+<path class="hair" d="M930 524.5L930 541.5" />
+<path class="reverse" d="M902 570H923V590H894V579Z" />
+<path class="reverse" d="M937 570H958L966 579V590H937Z" />
+<rect class="seal" x="919" y="572" width="4" height="5" />
+<rect class="seal" x="937" y="572" width="4" height="5" />
+<path class="hair" d="M895 580L904 580" />
+<path class="hair" d="M956 580L965 580" />
+<path class="hair" d="M895 583L904 583" />
+<path class="hair" d="M956 583L965 583" />
+<path class="hair" d="M895 586L904 586" />
+<path class="hair" d="M956 586L965 586" />
+<g aria-label="Sectioned barrel and intake route" transform="translate(930 770)">
+<path class="reverse" d="M-36 30H-49L-52 29H-78V24H-54L-49 27H-36Z" />
+<path class="reverse" d="M-36 40H-49L-52 41H-78V46H-54L-49 43H-36Z" />
+<path class="outline" d="M-78 24H-95V46H-78M-94 27V43M-90 25V45M-86 25V45M-82 25V45" />
+<path class="reverse" d="M36 30H92V26H83L83 23 73 29 73 23 63 29 63 23 54 29 54 24H42L40 27H36Z" />
+<path class="reverse" d="M36 40H92V44H83L83 47 73 41 73 47 63 41 63 47 54 41 54 46H42L40 43H36Z" />
+<path class="hair" d="M38 27L38 30" />
+<path class="hair" d="M38 40L38 43" />
+<path class="hair" d="M41 27L41 30" />
+<path class="hair" d="M41 40L41 43" />
+<path class="hair" d="M45 27L45 30" />
+<path class="hair" d="M45 40L45 43" />
+<path class="hair" d="M48 27L48 30" />
+<path class="hair" d="M48 40L48 43" />
+<path class="hair" d="M-39 27L-39 30" />
+<path class="hair" d="M-39 40L-39 43" />
+<path class="hair" d="M-42 27L-42 30" />
+<path class="hair" d="M-42 40L-42 43" />
+<path class="hair" d="M-45 27L-45 30" />
+<path class="hair" d="M-45 40L-45 43" />
+<path class="hair" d="M-48 27L-48 30" />
+<path class="hair" d="M-48 40L-48 43" />
+<path class="cut" d="M-36 -180H-30V0H-28.5V17L-23 21V30H-36Z" />
+<path class="cut" d="M-7.5 0H13V3L7.5 7V60H-36V40H-13V21L-7.5 17Z" />
+<path class="cut" d="M23 0H30V-180H36V30H28.5V7L23 3Z" />
+<path class="cut" d="M28.5 40H36V60H28.5Z" />
+<path class="reverse" d="M7.5 54H28.5V60H7.5Z" />
+<path class="hair" d="M-28.5 12V-1H-26V1H-24V-1H-12V1H-10V-1H-7.5V12" />
+<path class="hair" d="M-28.5 6L-25.5 6" />
+<path class="hair" d="M-10.5 6L-7.5 6" />
+<path class="chain" d="M-18 -9L-18 63" />
+<path class="chain" d="M18 -9L18 63" />
+<circle class="pin" cx="-18" cy="8.25" r="8"/>
+<circle class="pin" cx="18" cy="6.25" r="8"/>
+<path class="outline" d="M18 14.25 L12 16.25 L24 19.15 L12 22.04 L24 24.94 L12 27.83 L24 30.73 L12 33.62 L24 36.52 L12 39.42 L24 42.31 L12 45.21 L24 48.10 L12 51.00 L18 54" />
+<path class="hair" d="M7.5 55L10 55" />
+<path class="hair" d="M7.5 58L10 58" />
+<path class="hair" d="M26 55L28.5 55" />
+<path class="hair" d="M26 58L28.5 58" />
+<path class="in micro" d="M-94 35H-23Q-18 35 -18 30V19" />
+<path class="in micro" d="M-9 13V-2Q-9 -7 -4 -7H6" />
+</g>
+<rect class="reverse" x="860" y="830" width="140" height="12" />
+<path class="chain" d="M930 545L930 851" />
+<path class="reverse" d="M900 736H960V747H900Z" />
+<path class="seal" d="M900 747H909L906 756 904 766H900ZM960 747H951L954 756 956 766H960Z" />
+<path class="hair" d="M923 736L937 736" />
+<path class="phantom" d="M900 636H960V647H951L956 659 960 666H955L950 653H910L905 666H900L906 650 909 647H900ZM900 647H960" />
+<path class="dim" d="M900 701L960 701" />
+<text x="930" y="696" class="measure knockout" text-anchor="middle" >Ø60</text>
+<path class="hair" d="M962 666L1009 666" />
+<path class="hair" d="M962 766L1009 766" />
+<path class="dim" d="M1004 666L1004 766" />
+<text x="999" y="716.0" class="measure" text-anchor="middle" transform="rotate(-90 999 716.0)">100</text>
+<path class="hair" d="M968 590L1057 590" />
+<path class="hair" d="M968 770L1057 770" />
+<path class="dim" d="M1052 590L1052 770" />
+<text x="1047" y="680.0" class="measure" text-anchor="middle" transform="rotate(-90 1047 680.0)">180</text>
+<path class="hair" d="M968 590L1107 590" />
+<path class="hair" d="M1002 830L1107 830" />
+<path class="dim" d="M1102 590L1102 830" />
+<text x="1097" y="710.0" class="measure" text-anchor="middle" transform="rotate(-90 1097 710.0)">240</text>
+<path class="motion" d="M878 725L878 679" />
+<text x="868" y="705" class="tag" text-anchor="end" >UPSTROKE</text>
+<path class="in" d="M793 805H827" />
+<text x="809" y="793" class="inText" text-anchor="middle" >IN</text>
+<text x="682" y="147" class="tag" text-anchor="start" >PIVOT &amp; LINKAGE</text>
+<text x="682" y="167" class="copy" text-anchor="start" >Handle down raises the piston.</text>
+<path class="hair" d="M796 173H815L850 347.4" />
+<circle class="dot" cx="850" cy="347.4" r="2.5"/>
+<text x="990" y="552" class="tag" text-anchor="start" >WIPER</text>
+<path class="hair" d="M984 548H952L940 574" />
+<circle class="dot" cx="940" cy="574" r="2.5"/>
+<text x="770" y="651" class="tag" text-anchor="start" >TOP OF STROKE</text>
+<path class="hair" d="M876 647L891 647 900 644" />
+<circle class="dot" cx="900" cy="644" r="2.5"/>
+<text x="676" y="745" class="tag" text-anchor="start" >CUP LIPS</text>
+<text x="676" y="763" class="copy" text-anchor="start" >Face the working chamber.</text>
+<path class="hair" d="M812 755H848L902 761" />
+<circle class="dot" cx="902" cy="761" r="2.5"/>
+<path class="rule" d="M674 874L1126 874" />
+<text x="674" y="898" class="sub" text-anchor="start" >INTAKE</text>
+<text x="674" y="919" class="copy" text-anchor="start" >The rising piston draws liquid through the strainer.</text>
+<text x="674" y="938" class="copy" text-anchor="start" >The inlet ball lifts and the outlet ball stays seated.</text>
+<text x="674" y="957" class="copy" text-anchor="start" >Solid piston at bottom of stroke. Phantom at top.</text>
+</g>
+<g aria-label="Parts list" >
+<rect class="tableHead" x="1176" y="56" width="480" height="32" fill="#e7e6db"/>
+<rect class="outline" x="1176" y="56" width="480" height="416" />
+<path class="hair" d="M1224 56L1224 472" />
+<path class="hair" d="M1269 56L1269 472" />
+<path class="hair" d="M1176 88L1656 88" />
+<path class="hair" d="M1176 120L1656 120" />
+<path class="hair" d="M1176 152L1656 152" />
+<path class="hair" d="M1176 184L1656 184" />
+<path class="hair" d="M1176 216L1656 216" />
+<path class="hair" d="M1176 248L1656 248" />
+<path class="hair" d="M1176 280L1656 280" />
+<path class="hair" d="M1176 312L1656 312" />
+<path class="hair" d="M1176 344L1656 344" />
+<path class="hair" d="M1176 376L1656 376" />
+<path class="hair" d="M1176 408L1656 408" />
+<path class="hair" d="M1176 440L1656 440" />
+<text x="1200" y="76" class="tag" text-anchor="middle" >ITEM</text>
+<text x="1246.5" y="76" class="tag" text-anchor="middle" >QTY</text>
+<text x="1280" y="76" class="tag" text-anchor="start" >DESCRIPTION</text>
+<text x="1200" y="108" class="copy bold" text-anchor="middle" >1</text>
+<text x="1246.5" y="108" class="small" text-anchor="middle" >1 off</text>
+<text x="1280" y="102.75" class="small" text-anchor="start" >Lever handle. Flat bar, 320 mm from pivot to grip end,</text>
+<text x="1280" y="113.25" class="small" text-anchor="start" >80 mm from pivot to link pin (4:1).</text>
+<text x="1200" y="140" class="copy bold" text-anchor="middle" >2</text>
+<text x="1246.5" y="140" class="small" text-anchor="middle" >1 off</text>
+<text x="1280" y="140.0" class="small" text-anchor="start" >Fulcrum bracket. Pivot pin diameter 12.</text>
+<text x="1200" y="172" class="copy bold" text-anchor="middle" >3</text>
+<text x="1246.5" y="172" class="small" text-anchor="middle" >1 off</text>
+<text x="1280" y="172.0" class="small" text-anchor="start" >Link rod. 140 mm pin to pin.</text>
+<text x="1200" y="204" class="copy bold" text-anchor="middle" >4</text>
+<text x="1246.5" y="204" class="small" text-anchor="middle" >1 off</text>
+<text x="1280" y="204.0" class="small" text-anchor="start" >Piston rod. Diameter 14, length 210.</text>
+<text x="1200" y="236" class="copy bold" text-anchor="middle" >5</text>
+<text x="1246.5" y="236" class="small" text-anchor="middle" >1 off</text>
+<text x="1280" y="236.0" class="small" text-anchor="start" >Gland nut with wiper. 20 thick.</text>
+<text x="1200" y="268" class="copy bold" text-anchor="middle" >6</text>
+<text x="1246.5" y="268" class="small" text-anchor="middle" >1 off</text>
+<text x="1280" y="257.5" class="small" text-anchor="start" >Cylinder barrel. Outer diameter 72, bore diameter 60,</text>
+<text x="1280" y="268.0" class="small" text-anchor="start" >bore depth 180, with an integral valve block 60 mm tall</text>
+<text x="1280" y="278.5" class="small" text-anchor="start" >at the bottom (overall length 240).</text>
+<text x="1200" y="300" class="copy bold" text-anchor="middle" >7</text>
+<text x="1246.5" y="300" class="small" text-anchor="middle" >1 off</text>
+<text x="1280" y="294.75" class="small" text-anchor="start" >Piston with cup seal. Diameter 60, 30 thick,</text>
+<text x="1280" y="305.25" class="small" text-anchor="start" >cup lips facing down (toward the pressure side).</text>
+<text x="1200" y="332" class="copy bold" text-anchor="middle" >8</text>
+<text x="1246.5" y="332" class="small" text-anchor="middle" >1 off</text>
+<text x="1280" y="332.0" class="small" text-anchor="start" >Inlet check valve. Ball diameter 16.</text>
+<text x="1200" y="364" class="copy bold" text-anchor="middle" >9</text>
+<text x="1246.5" y="364" class="small" text-anchor="middle" >1 off</text>
+<text x="1280" y="364.0" class="small" text-anchor="start" >Outlet check valve. Spring-loaded ball, diameter 16.</text>
+<text x="1200" y="396" class="copy bold" text-anchor="middle" >10</text>
+<text x="1246.5" y="396" class="small" text-anchor="middle" >1 off</text>
+<text x="1280" y="396.0" class="small" text-anchor="start" >Inlet strainer. Screws into the left side of the valve block.</text>
+<text x="1200" y="428" class="copy bold" text-anchor="middle" >11</text>
+<text x="1246.5" y="428" class="small" text-anchor="middle" >1 off</text>
+<text x="1280" y="422.75" class="small" text-anchor="start" >Outlet hose barb. Screws into the right side of</text>
+<text x="1280" y="433.25" class="small" text-anchor="start" >the valve block.</text>
+<text x="1200" y="460" class="copy bold" text-anchor="middle" >12</text>
+<text x="1246.5" y="460" class="small" text-anchor="middle" >1 off</text>
+<text x="1280" y="454.75" class="small" text-anchor="start" >Base plate. 140 x 100 x 12 with four holes of diameter 9</text>
+<text x="1280" y="465.25" class="small" text-anchor="start" >on a 110 x 70 grid.</text>
+</g>
+<g aria-label="Detail B, downstroke valves" >
+<text x="1176" y="524" class="view" text-anchor="start" >DETAIL B  /  DOWNSTROKE VALVES</text>
+<text x="1640" y="524" class="tag" text-anchor="end" >1:2</text>
+<path class="rule" d="M1176 538L1640 538" />
+<text x="1211" y="622" class="tag" text-anchor="start" >INLET SEATED</text>
+<text x="1211" y="641" class="copy" text-anchor="start" >Pressure holds the ball shut.</text>
+<text x="1503" y="622" class="tag" text-anchor="start" >OUTLET OPEN</text>
+<text x="1503" y="641" class="copy" text-anchor="start" >Ball moves down.</text>
+<g aria-label="Enlarged valve block" class="detail" transform="translate(1416 728) scale(2)" style="--line:1;--fine:.5">
+<path class="reverse" d="M-36 30H-49L-52 29H-78V24H-54L-49 27H-36Z" />
+<path class="reverse" d="M-36 40H-49L-52 41H-78V46H-54L-49 43H-36Z" />
+<path class="outline" d="M-78 24H-95V46H-78M-94 27V43M-90 25V45M-86 25V45M-82 25V45" />
+<path class="reverse" d="M36 30H92V26H83L83 23 73 29 73 23 63 29 63 23 54 29 54 24H42L40 27H36Z" />
+<path class="reverse" d="M36 40H92V44H83L83 47 73 41 73 47 63 41 63 47 54 41 54 46H42L40 43H36Z" />
+<path class="hair" d="M38 27L38 30" />
+<path class="hair" d="M38 40L38 43" />
+<path class="hair" d="M41 27L41 30" />
+<path class="hair" d="M41 40L41 43" />
+<path class="hair" d="M45 27L45 30" />
+<path class="hair" d="M45 40L45 43" />
+<path class="hair" d="M48 27L48 30" />
+<path class="hair" d="M48 40L48 43" />
+<path class="hair" d="M-39 27L-39 30" />
+<path class="hair" d="M-39 40L-39 43" />
+<path class="hair" d="M-42 27L-42 30" />
+<path class="hair" d="M-42 40L-42 43" />
+<path class="hair" d="M-45 27L-45 30" />
+<path class="hair" d="M-45 40L-45 43" />
+<path class="hair" d="M-48 27L-48 30" />
+<path class="hair" d="M-48 40L-48 43" />
+<path class="cut" d="M-36 -22H-30V0H-28.5V17L-23 21V30H-36Z" />
+<path class="cut" d="M-7.5 0H13V3L7.5 7V60H-36V40H-13V21L-7.5 17Z" />
+<path class="cut" d="M23 0H30V-22H36V30H28.5V7L23 3Z" />
+<path class="cut" d="M28.5 40H36V60H28.5Z" />
+<path class="reverse" d="M7.5 54H28.5V60H7.5Z" />
+<path class="hair" d="M-28.5 12V-1H-26V1H-24V-1H-12V1H-10V-1H-7.5V12" />
+<path class="hair" d="M-28.5 6L-25.5 6" />
+<path class="hair" d="M-10.5 6L-7.5 6" />
+<path class="chain" d="M-18 -9L-18 63" />
+<path class="chain" d="M18 -9L18 63" />
+<circle class="pin" cx="-18" cy="14.75" r="8"/>
+<circle class="pin" cx="18" cy="14.25" r="8"/>
+<path class="outline" d="M18 22.25 L12 24.25 L24 26.48 L12 28.71 L24 30.94 L12 33.17 L24 35.40 L12 37.62 L24 39.85 L12 42.08 L24 44.31 L12 46.54 L24 48.77 L12 51.00 L18 54" />
+<path class="hair" d="M7.5 55L10 55" />
+<path class="hair" d="M7.5 58L10 58" />
+<path class="hair" d="M26 55L28.5 55" />
+<path class="hair" d="M26 58L28.5 58" />
+<path class="out" d="M-10 -13H8Q18 -13 18 -4V2" />
+<path class="out" d="M23 5Q27 8 27 15V26Q27 35 35 35H94" />
+</g>
+<path class="hair" d="M1250 649V668L1377 751" />
+<circle class="dot" cx="1377" cy="751" r="2.5"/>
+<path class="hair" d="M1537 649V671L1458 752" />
+<circle class="dot" cx="1458" cy="752" r="2.5"/>
+<text x="1598" y="765" class="outText" text-anchor="end" >OUT</text>
+<path class="hair" d="M1436 774.5L1436 875" />
+<path class="hair" d="M1468 774.5L1468 875" />
+<path class="dim" d="M1436 870L1468 870" />
+<text x="1452" y="864" class="measure" text-anchor="middle" >Ø16</text>
+<text x="1492" y="894" class="tag" text-anchor="start" >SPRING COMPRESSED</text>
+<path class="hair" d="M1486 889H1481L1463 812" />
+<circle class="dot" cx="1463" cy="812" r="2.5"/>
+<path class="rule" d="M1188 913L1640 913" />
+<text x="1188" y="937" class="sub" text-anchor="start" >DISCHARGE</text>
+<text x="1188" y="958" class="copy" text-anchor="start" >The descending piston forces liquid past the outlet ball to the hose barb.</text>
+</g>
+<g aria-label="Base plate mounting plan and section key" >
+<text x="56" y="1036" class="sub" text-anchor="start" >BASE PLATE PLAN</text>
+<text x="56" y="1058" class="tag" text-anchor="start" >1:4  /  MOUNTING PATTERN</text>
+<text x="56" y="1129" class="copy" text-anchor="start" >A–A passes through both valve axes.</text>
+<rect class="face" x="337" y="1035" width="140" height="100" />
+<circle class="pin" cx="352" cy="1050" r="4.5"/>
+<path class="hair" d="M344 1050L360 1050" />
+<path class="hair" d="M352 1042L352 1058" />
+<circle class="pin" cx="352" cy="1120" r="4.5"/>
+<path class="hair" d="M344 1120L360 1120" />
+<path class="hair" d="M352 1112L352 1128" />
+<circle class="pin" cx="462" cy="1050" r="4.5"/>
+<path class="hair" d="M454 1050L470 1050" />
+<path class="hair" d="M462 1042L462 1058" />
+<circle class="pin" cx="462" cy="1120" r="4.5"/>
+<path class="hair" d="M454 1120L470 1120" />
+<path class="hair" d="M462 1112L462 1128" />
+<circle class="hidden" cx="407" cy="1085" r="36"/>
+<path class="chain" d="M407 1029L407 1141" />
+<path class="cutline" d="M304 1085H510" />
+<path class="motion" d="M313 1085L313 1073" />
+<text x="313" y="1068" class="bold" text-anchor="middle" >A</text>
+<path class="motion" d="M501 1085L501 1073" />
+<text x="501" y="1068" class="bold" text-anchor="middle" >A</text>
+<path class="hair" d="M337 1033L337 1017" />
+<path class="hair" d="M477 1033L477 1017" />
+<path class="dim" d="M337 1022L477 1022" />
+<text x="407.0" y="1017" class="measure" text-anchor="middle" >140</text>
+<path class="hair" d="M352 1126.5L352 1157" />
+<path class="hair" d="M462 1126.5L462 1157" />
+<path class="dim" d="M352 1152L462 1152" />
+<text x="407.0" y="1147" class="measure" text-anchor="middle" >110</text>
+<path class="hair" d="M335 1035L275 1035" />
+<path class="hair" d="M335 1135L275 1135" />
+<path class="dim" d="M280 1035L280 1135" />
+<text x="275" y="1085.0" class="measure" text-anchor="middle" transform="rotate(-90 275 1085.0)">100</text>
+<path class="hair" d="M468.5 1050L542 1050" />
+<path class="hair" d="M468.5 1120L542 1120" />
+<path class="dim" d="M537 1050L537 1120" />
+<text x="532" y="1085.0" class="measure" text-anchor="middle" transform="rotate(-90 532 1085.0)">70</text>
+<path class="dimEnd" d="M582 1031H551L477 1038 465 1047" />
+<text x="586" y="1036" class="measure" text-anchor="start" >Ø9</text>
+</g>
+<g aria-label="Flow legend and operational key" >
+<text x="666" y="1034" class="sub" text-anchor="start" >FLOW KEY</text>
+<path class="rule" d="M666 1046L1132 1046" />
+<path class="in" d="M666 1068H720" />
+<text x="734" y="1073" class="inText" text-anchor="start" >IN</text>
+<text x="784" y="1073" class="copy" text-anchor="start" >Intake through strainer. Solid shaft.</text>
+<path class="out" d="M666 1101H720" />
+<text x="734" y="1106" class="outText" text-anchor="start" >OUT</text>
+<text x="784" y="1106" class="copy" text-anchor="start" >Discharge to hose. Dashed shaft.</text>
+<text x="666" y="1142" class="copy" text-anchor="start" >Single acting  /  Pressure chamber below piston</text>
+</g>
+<g aria-label="Drawing title block" >
+<rect class="outline" x="1176" y="1004" width="480" height="160" />
+<path class="hair" d="M1176 1069L1656 1069" />
+<path class="hair" d="M1176 1117L1656 1117" />
+<path class="hair" d="M1379 1069L1379 1117" />
+<path class="hair" d="M1580 1069L1580 1117" />
+<path class="hair" d="M1474 1117L1474 1164" />
+<path class="hair" d="M1580 1117L1580 1164" />
+<text x="1189" y="1023" class="field" text-anchor="start" >TITLE</text>
+<text x="1189" y="1053" class="sheet-title" text-anchor="start" >Kestrel Hand Pump</text>
+<text x="1189" y="1087" class="field" text-anchor="start" >DWG NO</text>
+<text x="1189" y="1107" class="value" text-anchor="start" >KHP-100</text>
+<text x="1392" y="1087" class="field" text-anchor="start" >SCALE</text>
+<text x="1392" y="1107" class="value" text-anchor="start" >1:4, DETAIL B 1:2</text>
+<text x="1592" y="1087" class="field" text-anchor="start" >UNITS</text>
+<text x="1592" y="1107" class="value" text-anchor="start" >mm</text>
+<text x="1189" y="1135" class="field" text-anchor="start" >PROJECTION</text>
+<text x="1189" y="1155" class="value" text-anchor="start" >FRONT ELEVATION</text>
+<text x="1487" y="1135" class="field" text-anchor="start" >SHEET</text>
+<text x="1487" y="1155" class="value" text-anchor="start" >1 OF 1</text>
+<text x="1592" y="1135" class="field" text-anchor="start" >REV</text>
+<text x="1592" y="1155" class="value" text-anchor="start" >A</text>
+</g>
+</svg>
+</body>
+</html>

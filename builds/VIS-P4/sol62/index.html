@@ -1,0 +1,786 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Last Ferry</title>
+<link rel="icon" href="data:,">
+<style>
+  html,body { width:100%; height:100%; margin:0; overflow:hidden; background:#131d2d }
+  svg { display:block; width:100%; height:100% }
+</style>
+</head>
+<body>
+<svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="art-title art-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="art-title">The Last Ferry</title>
+<desc id="art-desc">Under a violet evening sky a cream and rust ferry pulls alongside a stone quay. A passenger carrying a case crosses under a rising amber light and looks back as the ferry prepares to leave. A distant lighthouse sweeps across the bay.</desc>
+<defs>
+  <linearGradient id="sky" x2="0" y2="1" gradientUnits="objectBoundingBox">
+    <stop stop-color="#162338"/><stop offset=".34" stop-color="#35425b"/><stop offset=".69" stop-color="#656077"/><stop offset="1" stop-color="#b58182"/>
+  </linearGradient>
+  <radialGradient id="afterglow">
+    <stop stop-color="#ffb193" stop-opacity=".72"/><stop offset=".44" stop-color="#df9291" stop-opacity=".4"/><stop offset="1" stop-color="#c1828f" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="cloud" x2="0" y2="1">
+    <stop stop-color="#333e56" stop-opacity=".8"/><stop offset="1" stop-color="#6b5d75" stop-opacity=".22"/>
+  </linearGradient>
+  <linearGradient id="sea" x2="0" y2="1">
+    <stop stop-color="#9b7785"/><stop offset=".08" stop-color="#656078"/><stop offset=".26" stop-color="#444e69"/><stop offset=".47" stop-color="#34435e"/><stop offset=".65" stop-color="#2a3d55"/><stop offset="1" stop-color="#152436"/>
+  </linearGradient>
+  <radialGradient id="sea-pink">
+    <stop stop-color="#eb9d8e" stop-opacity=".48"/><stop offset=".42" stop-color="#c48490" stop-opacity=".22"/><stop offset="1" stop-color="#c48490" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="hill" x2="0" y2="1">
+    <stop stop-color="#25334a"/><stop offset=".8" stop-color="#3a465e"/><stop offset="1" stop-color="#4a4c65"/>
+  </linearGradient>
+  <linearGradient id="tower" x2="1" y2="0">
+    <stop stop-color="#726a76"/><stop offset=".54" stop-color="#cfac9e"/><stop offset="1" stop-color="#e0b8a1"/>
+  </linearGradient>
+  <linearGradient id="beam-x">
+    <stop stop-color="#ffe0ad" stop-opacity=".83"/><stop offset=".22" stop-color="#ffdfb5" stop-opacity=".52"/><stop offset=".75" stop-color="#ffd4a7" stop-opacity=".16"/><stop offset="1" stop-color="#ffd4a7" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="beam-y" x2="0" y2="1">
+    <stop stop-color="white" stop-opacity="0"/><stop offset=".35" stop-color="white" stop-opacity=".48"/><stop offset=".5" stop-color="white"/><stop offset=".65" stop-color="white" stop-opacity=".48"/><stop offset="1" stop-color="white" stop-opacity="0"/>
+  </linearGradient>
+  <mask id="beam-soft" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="-47" width="700" height="94">
+    <path d="M0-2 700-46V46L0 2Z" fill="url(#beam-y)"/>
+  </mask>
+  <radialGradient id="beacon-halo">
+    <stop stop-color="#fff2c2"/><stop offset=".13" stop-color="#ffc787" stop-opacity=".64"/><stop offset=".44" stop-color="#ffc387" stop-opacity=".18"/><stop offset="1" stop-color="#ffc387" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="amber-air">
+    <stop stop-color="#ffdb9f" stop-opacity=".72"/><stop offset=".19" stop-color="#ffc473" stop-opacity=".33"/><stop offset=".52" stop-color="#ffb368" stop-opacity=".1"/><stop offset="1" stop-color="#ffab63" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="amber-ground">
+    <stop stop-color="#ffce87" stop-opacity=".73"/><stop offset=".34" stop-color="#eea66c" stop-opacity=".47"/><stop offset=".73" stop-color="#d88963" stop-opacity=".13"/><stop offset="1" stop-color="#d88963" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="under-boat">
+    <stop stop-color="#0b1423" stop-opacity=".88"/><stop offset=".7" stop-color="#0b1728" stop-opacity=".52"/><stop offset="1" stop-color="#15263a" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="hull" x2="0" y2="1">
+    <stop stop-color="#34475a"/><stop offset=".44" stop-color="#253a4d"/><stop offset=".6" stop-color="#192a3a"/><stop offset="1" stop-color="#131e30"/>
+  </linearGradient>
+  <linearGradient id="oxide" x2="0" y2="1">
+    <stop stop-color="#b36957"/><stop offset=".35" stop-color="#9d554c"/><stop offset="1" stop-color="#582f3a"/>
+  </linearGradient>
+  <linearGradient id="cabin" x2="0" y2="1">
+    <stop stop-color="#ecceb1"/><stop offset=".21" stop-color="#d4b69f"/><stop offset=".67" stop-color="#af9186"/><stop offset="1" stop-color="#81747a"/>
+  </linearGradient>
+  <linearGradient id="glass" x2=".14" y2="1">
+    <stop stop-color="#6f555b"/><stop offset=".59" stop-color="#ae7463"/><stop offset="1" stop-color="#e4ac76"/>
+  </linearGradient>
+  <linearGradient id="glass-light" x2="0" y2="1">
+    <stop stop-color="#8a655e"/><stop offset=".5" stop-color="#daa075"/><stop offset="1" stop-color="#ffc88b"/>
+  </linearGradient>
+  <linearGradient id="stack">
+    <stop stop-color="#392f3b"/><stop offset=".2" stop-color="#85514e"/><stop offset=".63" stop-color="#b8775f"/><stop offset="1" stop-color="#67464c"/>
+  </linearGradient>
+  <radialGradient id="steam-tone" cx=".43" cy=".68" r=".56">
+    <stop stop-color="#f3d9ca" stop-opacity=".66"/><stop offset=".57" stop-color="#dbbfbe" stop-opacity=".34"/><stop offset="1" stop-color="#cbb4be" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="wall" x2=".22" y2="1">
+    <stop stop-color="#4e4957"/><stop offset=".4" stop-color="#373a4b"/><stop offset="1" stop-color="#18283a"/>
+  </linearGradient>
+  <linearGradient id="block-tone" x2=".15" y2="1">
+    <stop stop-color="#b4a0a1" stop-opacity=".13"/><stop offset=".38" stop-color="#a58a92" stop-opacity=".04"/><stop offset="1" stop-color="#121d31" stop-opacity=".31"/>
+  </linearGradient>
+  <linearGradient id="wall-night" x2="0" y2="1">
+    <stop offset=".13" stop-color="#15253a" stop-opacity="0"/><stop offset="1" stop-color="#15253a" stop-opacity=".75"/>
+  </linearGradient>
+  <linearGradient id="post">
+    <stop stop-color="#1a2536"/><stop offset=".42" stop-color="#414553"/><stop offset=".66" stop-color="#52515c"/><stop offset="1" stop-color="#242e3b"/>
+  </linearGradient>
+  <linearGradient id="lamp-glass" x2="0" y2="1">
+    <stop stop-color="#fff0bb"/><stop offset=".57" stop-color="#ffcc80"/><stop offset="1" stop-color="#ed9260"/>
+  </linearGradient>
+  <linearGradient id="person-light">
+    <stop id="light-left" stop-color="#ffc27a" stop-opacity="0"/>
+    <stop offset=".49" stop-color="#ffc27a" stop-opacity="0"/>
+    <stop offset=".51" stop-color="#ffc27a" stop-opacity="0"/>
+    <stop id="light-right" offset="1" stop-color="#ffc27a" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="edge-x">
+    <stop stop-color="#131d2d"/><stop offset=".010" stop-color="#131d2d" stop-opacity=".58"/><stop offset=".027" stop-color="#131d2d" stop-opacity=".24"/><stop offset=".055" stop-color="#131d2d" stop-opacity=".06"/><stop offset=".09" stop-color="#131d2d" stop-opacity="0"/>
+    <stop offset=".91" stop-color="#131d2d" stop-opacity="0"/><stop offset=".945" stop-color="#131d2d" stop-opacity=".06"/><stop offset=".973" stop-color="#131d2d" stop-opacity=".24"/><stop offset=".99" stop-color="#131d2d" stop-opacity=".58"/><stop offset="1" stop-color="#131d2d"/>
+  </linearGradient>
+  <linearGradient id="edge-y" x2="0" y2="1">
+    <stop stop-color="#131d2d"/><stop offset=".105" stop-color="#131d2d" stop-opacity="0"/>
+    <stop offset=".925" stop-color="#131d2d" stop-opacity="0"/><stop offset="1" stop-color="#131d2d"/>
+  </linearGradient>
+  <clipPath id="sky-clip"><path d="M0 0H1600V420H0Z"/></clipPath>
+  <clipPath id="water-clip"><path d="M0 420H1600V610H1000V900H0Z"/></clipPath>
+  <clipPath id="quay-clip"><path d="M1000 610H1600V900H1000Z"/></clipPath>
+  <clipPath id="passenger-clip"><rect id="exit-door" x="673" y="440" width="0" height="173"/><rect id="exit-window" x="704" y="411" width="1100" height="223"/></clipPath>
+  <clipPath id="door-recess"><rect x="-130" y="442" width="60" height="163"/></clipPath><clipPath id="hull-clip"><path d="M-260 610 260 610Q245 655 191 670Q0 679-191 670Q-245 655-260 610Z"/></clipPath>
+  <clipPath id="cabin-clip"><path d="M-210 605 -194 445Q-191 426-169 421H169Q191 426 194 445L210 605Z"/></clipPath>
+  <path id="cabin-window" d="M-22-25H22Q26-25 26-21V21Q26 25 22 25H-22Q-26 25-26 21V-21Q-26-25-22-25Z"/>
+  <g id="fern" fill="currentColor">
+    <path d="M0 0Q1-13-3-24Q4-19 4-5Q8-20 12-19Q8-12 7-3Q13-11 18-10Q13-6 10 0ZM2 0Q-4-9-10-10L-4-3Z"/>
+  </g>
+</defs>
+
+<path d="M0 0H1600V423H0Z" fill="url(#sky)"/>
+<g clip-path="url(#sky-clip)">
+  <ellipse cx="901" cy="415" rx="825" ry="265" fill="url(#afterglow)"/>
+  <g fill="url(#cloud)">
+    <path d="M0 93Q81 104 176 90T370 86Q431 88 538 73Q449 103 380 104T250 118Q196 133 94 128L0 138Z"/>
+    <path d="M351 179Q485 165 545 145Q594 128 640 136Q715 142 840 121Q925 108 1060 121Q957 129 913 141T765 163Q711 160 643 169T488 181Z"/>
+    <path d="M1059 78Q1141 64 1223 68Q1303 72 1415 48Q1506 29 1600 37V82Q1527 68 1461 84T1294 94Q1204 84 1059 95Z"/>
+    <path d="M1107 227Q1205 220 1279 197Q1322 184 1400 186T1600 154V198Q1527 197 1445 219Q1370 234 1299 223Z"/>
+    <path d="M0 248Q106 239 169 248T369 246Q309 254 278 268Q220 281 152 275T0 289Z"/>
+    <path d="M242 304Q380 279 451 282T614 274Q647 274 724 267Q646 284 596 288Q497 286 430 300T242 304Z"/>
+  </g>
+  <g fill="#e5a495" opacity=".24">
+    <path d="M230 285Q365 271 439 273T567 264Q530 276 462 277T230 285Z"/>
+    <path d="M555 306Q645 298 708 298T885 293Q846 300 779 304T555 306Z"/>
+    <path d="M962 322Q1046 312 1142 313T1320 292Q1282 305 1202 315T962 322Z"/>
+    <path d="M270 351Q448 337 593 346T831 330Q794 345 720 350T470 349Z"/>
+    <path d="M33 331Q116 316 180 326T359 322Q322 335 223 333T33 331Z"/>
+    <path d="M1091 263Q1210 242 1259 246T1394 230Q1349 248 1295 250T1091 263Z"/>
+  </g>
+  <g id="sky-grain"></g>
+  <g id="stars" fill="#ffead9"></g>
+</g>
+
+<path d="M0 420H1600V900H0Z" fill="url(#sea)"/>
+<g clip-path="url(#water-clip)">
+  <ellipse cx="937" cy="427" rx="662" ry="145" fill="url(#sea-pink)"/>
+  <path d="M0 420H1600" stroke="#e5af9d" stroke-opacity=".27"/>
+  <g id="water-lines"></g>
+  <g id="ripples"></g>
+</g>
+
+<path d="M257 420Q292 410 324 410L349 405 365 406 387 402 413 407 439 409 470 417 523 420ZM870 420 915 412 950 413 975 407 996 408 1034 397 1056 401 1086 397 1127 405 1158 402 1209 391 1246 391 1286 378 1310 381 1353 357 1391 349 1427 333 1450 335 1470 322 1492 324 1510 314 1556 308 1600 309V420Z" fill="#56536b"/>
+<path d="M1147 420 1192 414 1211 415 1246 407 1275 405 1298 398 1320 396 1351 378 1377 367 1419 363 1452 355 1487 348 1500 343 1527 346 1554 333 1600 333V420Z" fill="#444960"/>
+<path d="M0 364 25 358 48 361 68 351 95 345 111 351 129 346 160 354 174 350 195 357 214 356 234 365 247 362 270 373 293 376 312 387 334 391 348 407 371 414 395 418 415 420H0Z" fill="url(#hill)"/>
+<path d="M0 394 31 386 61 386 88 368 107 367 132 356 160 361 174 356 205 365 230 371 212 375 183 373 151 379 129 377 102 397 84 401 58 398 28 406 0 408Z" fill="#3c475d"/>
+<path d="M0 407 36 401 72 404 108 390 138 394 163 382 194 386 234 372 247 372 279 389 311 393 346 410 367 414 338 414 309 404 279 402 252 391 232 393 204 402 175 398 146 407 104 407 73 414 0 418Z" fill="#5d566b" opacity=".46"/>
+<path d="M0 419 74 412 104 416 141 410 177 412 205 403 240 406 282 403 317 410 350 413 372 417 412 420H0Z" fill="#354057"/>
+<g id="headland-trees" fill="#2c384e"></g>
+<g id="light-reflection" clip-path="url(#water-clip)" fill="#ffcb96"></g>
+<g id="beam" opacity="0"><path d="M0-46H700V46H0Z" fill="url(#beam-x)" mask="url(#beam-soft)"/></g>
+<g>
+  <path d="M234 375 242 366H278L286 377 273 379 251 377Z" fill="#30394e"/>
+  <path d="M249 371 253 338H267L273 371Z" fill="url(#tower)"/>
+  <path d="M251 352 269 351 270 357 250 358Z" fill="#956368"/>
+  <path d="M257 359H261V365H257Z" fill="#3d4354"/>
+  <path d="M249 338H271L269 341H251Z" fill="#262e40"/>
+  <path d="M252 324H268V337H252Z" fill="#302f3f"/>
+  <path d="M254 326H258V335H254ZM260 326H266V335H260Z" fill="#c89477"/>
+  <path d="M248 325 260 316 272 325ZM259 314H261V319H259Z" fill="#282e40"/>
+  <ellipse id="flare" cx="260" cy="330" rx="62" ry="47" fill="url(#beacon-halo)"/>
+  <ellipse id="beacon" cx="260" cy="330" rx="5" ry="3.4" fill="#fff2be"/>
+</g>
+
+<!-- The far side of the working quay -->
+<g>
+  <path d="M1175 610 1218 578 1255 577 1287 550 1332 554 1365 525 1422 520 1457 502 1498 506 1534 481 1600 473V616Z" fill="#34394b"/>
+  <path d="M1320 570H1600V610H1320Z" fill="#413f4c"/>
+  <path d="M1401 490H1559V569H1401Z" fill="#354256"/>
+  <path d="M1401 492H1497V567H1401Z" fill="#495064"/>
+  <path d="M1385 497 1436 453 1508 494H1545L1507 452 1436 453 1554 445 1590 490 1508 499Z" fill="#2f394e"/>
+  <path d="M1384 496 1436 452 1509 494 1551 492 1590 489" fill="none" stroke="#806977" stroke-width="2"/>
+  <path d="M1422 469 1436 457 1455 469M1416 476H1465M1407 484H1478M1434 453 1556 447M1453 462 1565 455M1470 471 1573 465M1486 481 1580 475" fill="none" stroke="#85737f" stroke-opacity=".34"/>
+  <path d="M1402 505H1496M1402 511H1496M1402 523H1496M1402 550H1496M1402 558H1496M1513 506H1559M1513 524H1559M1513 552H1559" stroke="#282f41" stroke-opacity=".49"/>
+  <path d="M1422 511H1444V538H1422ZM1460 511H1478V538H1460ZM1519 515H1545V542H1519Z" fill="#252e40"/>
+  <path d="M1425 514H1441V535H1425ZM1463 514H1475V535H1463ZM1522 518H1542V539H1522Z" fill="#a9776f"/>
+  <path d="M1433 514V535M1469 514V535M1532 518V539M1425 525H1441M1463 525H1475M1522 529H1542" stroke="#514655" stroke-width="1.4"/>
+  <path d="M1501 565V497M1557 562V493M1301 585V545M1324 580V541M1346 579V537M1570 566V515" stroke="#2e3748" stroke-width="4"/>
+  <path d="M1298 574 1407 553 1560 553 1600 542M1298 585 1407 562 1560 562 1600 551" stroke="#676071" stroke-width="2" fill="none"/>
+  <path d="M1218 596 1277 583 1327 581 1410 574 1467 577 1535 566 1600 568V610H1190Z" fill="#544953"/>
+  <path d="M1204 605 1297 595 1328 597 1372 589 1458 592 1520 580 1600 582V611H1194Z" fill="#69606a" opacity=".63"/>
+  <path d="M1262 601 1318 598M1349 599 1419 593M1473 597 1534 588M1553 593 1600 591" stroke="#96909a" stroke-opacity=".35"/>
+  <path d="M1271 591v-22h8v22M1354 580v-24h7v23M1428 577v-24h7v24M1513 572v-24h7v25M1588 569v-25h8v25" fill="#303847"/>
+  <path d="M1276 575Q1314 586 1358 564Q1396 579 1431 561Q1474 577 1517 556Q1554 571 1593 552" stroke="#303847" stroke-width="2.5" stroke-dasharray="4 1.6" fill="none"/>
+  <g color="#343b48">
+    <use href="#fern" transform="translate(1248 606) scale(.61 .51)"/><use href="#fern" transform="translate(1391 602) scale(.62 .64)"/><use href="#fern" transform="translate(1532 595) scale(.77 .69)"/><use href="#fern" transform="translate(1577 605) scale(.61 .71)"/>
+  </g>
+</g>
+
+<g clip-path="url(#quay-clip)">
+  <path d="M1000 610H1600V900H1000Z" fill="url(#wall)"/>
+  <g id="stones"></g>
+  <path d="M1000 640Q1212 647 1600 638M1000 686Q1190 696 1600 687M1000 749Q1213 754 1600 751M1000 824Q1236 829 1600 824" fill="none" stroke="#121e31" stroke-opacity=".24" stroke-width="2"/>
+  <path d="M1000 610H1600V900H1000Z" fill="url(#wall-night)"/>
+  <path d="M1000 610H1600V634L1536 637 1476 633 1418 636 1351 633 1293 637 1234 634 1165 635 1114 632 1053 637 1000 634Z" fill="#68606a"/>
+  <path d="M1000 611H1600V616H1000Z" fill="#a39397"/>
+  <path d="M1001 627l54 2 59-3 49 1 68 2 62-2 60 1 63-1 62 2 58-1 64 1" fill="none" stroke="#928089" stroke-opacity=".51"/>
+  <path d="M1056 616v15m58-15v12m51-12v15m70-15v13m58-13v16m59-16v14m66-14v15m59-15v14m59-14v17" fill="none" stroke="#312c3d" stroke-opacity=".57" stroke-width="2"/>
+  <path d="M1000 614H1012V900H1000Z" fill="#858087" opacity=".23"/>
+  <path d="M1000 614V897" stroke="#b19796" stroke-opacity=".66" stroke-width="3"/>
+  <ellipse id="quay-glow" cx="1179" cy="610" rx="244" ry="139" fill="url(#amber-ground)" opacity="0"/>
+  <g fill="none" stroke-linecap="round">
+    <path d="M1058 641L1079 648 1076 672 1085 699 1082 735M1467 691l-8 21 4 22-7 19m-260 13-13 27-24 13-4 18m195-152 13 8 8 17" stroke="#202a3c" stroke-opacity=".72" stroke-width="2"/>
+    <path d="M1165 645v11m3-7v49m-10-56v22m-6-18v8m284 7v43m7-47v24m-409 40v52m7-56v27m105 70v40m203-147v37m6-34v16" stroke="#ac9a9b" stroke-opacity=".13"/>
+  </g>
+</g>
+<g>
+  <path d="M1015 654h18l3 11-3 14h-16l-6-13Z" fill="#3c3846"/>
+  <path d="M1019 654h12l3 11-3 10" fill="none" stroke="#aa7e6a" stroke-opacity=".68" stroke-width="2"/>
+  <path d="M1024 663q12-4 15 9q2 12-8 16q-10 3-13-8q-3-12 6-17Z" fill="none" stroke="#242839" stroke-width="5"/>
+  <path d="M1024 663q12-4 15 9q2 12-8 16" fill="none" stroke="#a77c69" stroke-opacity=".54" stroke-width="1.7"/>
+  <path d="M1007 610h37v-5h-5l-2-12h-6l-1 4h-8l-2-4h-6l-2 12h-5ZM1470 611h31v-5h-5l-2-12h-5l-1 4h-7l-1-4h-5l-2 12h-3Z" fill="#313646"/>
+  <path d="M1014 595h7m11 0h5m440 0h4m8 0h5" stroke="#89808b" stroke-linecap="round"/>
+</g>
+
+<g id="water-effects" clip-path="url(#water-clip)">
+  <g id="amber-reflection" fill="#ffd19a" opacity="0"></g>
+  <g id="boat-reflection">
+    <ellipse cy="667" rx="287" ry="48" fill="url(#under-boat)"/>
+    <g id="ship-glints"></g>
+  </g>
+  <g id="foam"></g>
+</g>
+
+<g id="ferry">
+  <g id="steam"></g>
+  <!-- Funnel, horn and wheelhouse -->
+  <path d="M-32 424 -38 363Q-38 350-26 348H-12Q0 350-1 363L-7 424Z" fill="url(#stack)" stroke="#54404a" stroke-width="2"/>
+  <path d="M-39 357Q-41 351-35 346H-5Q0 348 1 355L-2 361H-37Z" fill="#36303e"/>
+  <path d="M-36 347Q-22 342-6 347" stroke="#a58483" stroke-width="1.5" fill="none"/>
+  <path d="M-24 345v-7q0-4 4-4h12l6-4h3v10h-3l-6-4h-10q-3 0-3 4v5Z" fill="#b58b69" stroke="#513d49" stroke-width="1"/>
+  <path d="M-34 372H-2M-33 376H-3" stroke="#d3997b" stroke-opacity=".54"/>
+  <g transform="translate(0 -20)"><path d="M-75 443 -70 405Q-66 395-51 393H51Q66 395 70 405L75 443Z" fill="url(#cabin)" stroke="#776471" stroke-width="2"/>
+  <path d="M-61 410Q-61 405-56 405H56Q61 405 61 410L64 428H-64Z" fill="#353d4e"/>
+  <path d="M-56 408h31v17h-33zm36 0h38v17h-38zm43 0h33l2 17H23Z" fill="url(#glass)"/>
+  <path d="M-55 410h29m8 0h34m10 0h28" stroke="#f0b38d" opacity=".5"/>
+  <path d="M-78 402Q-76 391-63 389Q0 385 63 389Q76 391 78 402L69 404H-69Z" fill="#3b4354"/>
+  <path d="M-70 395Q0 389 70 395M-53 387H53" stroke="#c0a39a" stroke-opacity=".77" fill="none"/>
+  <path d="M36 390V356m0 6 13 2m-24 4h24" stroke="#303849" stroke-width="2" fill="none"/>
+  <circle cx="36" cy="355" r="2" fill="#f7ca9b"/></g>
+
+  <!-- Double ended hull and bow deck -->
+  <path d="M-260 610 260 610Q245 655 191 670Q0 679-191 670Q-245 655-260 610Z" fill="url(#hull)" stroke="#1d2839" stroke-width="2"/>
+  <g clip-path="url(#hull-clip)">
+    <path d="M-260 643Q0 660 260 643V687H-260Z" fill="url(#oxide)"/>
+    <path d="M-253 625Q0 644 253 625M-249 636Q0 655 249 636" fill="none" stroke="#9e8990" stroke-opacity=".31"/>
+    <path d="M-256 643Q0 660 256 643" fill="none" stroke="#c17e64" stroke-opacity=".69"/>
+    <path d="M-247 652Q0 681 247 652" fill="none" stroke="#2a2f41" stroke-opacity=".61" stroke-width="3"/>
+    <path d="M-204 646Q-74 658 78 653m18 1 83-3m12-1 36-3m-351 17 81 3m17 0 42 1m69-2 82-5" fill="none" stroke="#e0a386" stroke-opacity=".42"/>
+    <g id="hull-rivets" fill="#aca1a0" opacity=".47"></g>
+  </g>
+  <path d="M-260 610 260 610 255 619Q0 627-255 619Z" fill="#262d3e"/>
+  <path d="M-258 611Q0 615 258 611" fill="none" stroke="#d2ac93" stroke-width="2"/>
+  <path d="M-256 605H256V611H-256Z" fill="#66606a"/>
+  <g fill="none" stroke="#68717e" stroke-width="2.5">
+    <path d="M-253 607v-30h62m-58 13h61m-41-13v30m22-30v30M253 607v-30h-63m59 13h-62m42-13v30m-22-30v30"/>
+  </g>
+  <g fill="none" stroke="#c8ac9e" stroke-width="1.5">
+    <path d="M-252 577h58m388 0h58M-229 579v13m458-13v13"/>
+  </g>
+  <path d="M-249 606h14v-5h-3v-7h-8v7h-3ZM238 606h14v-5h-3v-7h-8v7h-3Z" fill="#2b3343"/>
+
+  <path d="M-210 605 -194 445Q-191 426-169 421H169Q191 426 194 445L210 605Z" fill="url(#cabin)" stroke="#504855" stroke-width="2.5"/>
+  <g clip-path="url(#cabin-clip)">
+    <path d="M-205 547H205V552H-205ZM-207 561H207V563H-207ZM-208 578H208V582H-208ZM-209 594H209V596H-209Z" fill="#725c67" opacity=".6"/>
+    <path d="M-205 550H205M-207 566H207M-208 583H208M-209 598H209" stroke="#efc5a3" stroke-opacity=".58"/>
+    <path d="M-202 532H202V543H-202Z" fill="#9f6b63" opacity=".52"/>
+    <path d="M-199 474H199M-201 481H201" stroke="#f6d6b6" stroke-opacity=".57"/>
+    <path d="M-196 460H196V471H-196Z" fill="#614e59" opacity=".4"/>
+    <path d="M-212 604H212V613H-212Z" fill="#414252"/>
+  </g>
+  <path d="M-220 425Q-213 411-188 405Q0 396 188 405Q213 411 220 425L203 432H-203Z" fill="#364356" stroke="#353b4d" stroke-width="2"/>
+  <path d="M-211 421Q-199 410-178 409Q0 402 178 409Q199 410 211 421" fill="none" stroke="#97858d" stroke-width="2"/>
+  <path d="M-213 424H213L204 430H-204Z" fill="#d6b7a5"/>
+  <path d="M-205 433H205" stroke="#554a57" stroke-width="2"/>
+  <g transform="translate(0 506)" stroke="#5b4b57" stroke-width="4">
+    <use href="#cabin-window" x="-161" transform="translate(-39 0) scale(.76 1)" fill="url(#glass)"/>
+    <use href="#cabin-window" x="-31" fill="url(#glass-light)"/>
+    <use href="#cabin-window" x="38" fill="url(#glass)"/>
+    <use href="#cabin-window" x="104" fill="url(#glass-light)"/>
+    <use href="#cabin-window" x="166" transform="translate(41 0) scale(.75 1)" fill="url(#glass)"/>
+  </g>
+  <path d="M-175 485h25m98 0h41m29 0h41m24 0h42m67 0h-25" fill="none" stroke="#ffe2bd" stroke-opacity=".42" stroke-width="2"/>
+  <path d="M-161 483V529m130-46v46m69-46v46m66-46v46m62-46v46" stroke="#72545b" stroke-width="2"/>
+  <path d="M-179 535h36m86 0h52m18 0h51m14 0h52m17 0h37" stroke="#ddbaa4" stroke-width="2"/>
+  <path d="M-140 608V445Q-140 435-130 435H-70Q-60 435-60 445V608Z" fill="#61515c" stroke="#e3bea3" stroke-width="2"/>
+  <path d="M-133 608V446Q-133 440-128 440H-72Q-67 440-67 446V608Z" fill="#342f40"/>
+  <path d="M-130 605V442H-70V605Z" fill="url(#glass)"/>
+  <path d="M-129 446H-110V604H-129Z" fill="#927569" opacity=".58"/><g clip-path="url(#door-recess)"><g id="door-leaf"><path d="M-129 442H-71V605H-129Z" fill="#6a545a"/><path d="M-123 452H-77V516H-123Z" fill="url(#glass)"/><path d="M-122 453H-77M-100 452V515M-122 525H-77M-122 534H-77M-81 549h7" fill="none" stroke="#ab8578" stroke-width="2"/></g></g>
+  <path d="M-129 604h57m-60 4h64" stroke="#f0b78c" stroke-opacity=".67" stroke-width="2"/>
+  <path d="M-78 472v128m-50-128v128" stroke="#3e3445" stroke-width="2"/>
+  <path d="M-139 470h-8v21h8m80-21h8v21h-8" stroke="#595565" stroke-width="3" fill="none"/>
+  <path d="M-93 602h10v-5h-10Z" fill="#2d2c3b"/>
+  <circle cx="-165" cy="563" r="11" fill="#9f675c" stroke="#6a545c" stroke-width="2"/>
+  <circle cx="-165" cy="563" r="6.2" fill="#a39389"/>
+  <path d="m-172 556 2 2m10 10 2 2m0-14-2 2m-10 10-2 2" stroke="#e5bd9e" stroke-width="2"/>
+  <path d="M-238 612q-2 5 2 13t7 0q0-8-4-13m466 0q-4 6-4 13t7 0q4-8 2-13" stroke="#171f2e" stroke-width="5" fill="none"/>
+  <g clip-path="url(#hull-clip)" fill="#34455d"><path d="M-245 649q37-4 61-3t48 1q-65 4-99 9ZM-162 662q58-4 87-3t37 1q-45 3-111 7ZM-18 668q63-5 92-5t68 0q-43 5-100 7ZM97 656q38-5 77-4t58-5q-47 9-114 10Z" opacity=".68"/><path d="M-258 663q83-9 175 1t197-1q77-6 142-5v21h-514Z" opacity=".25"/></g><ellipse id="bow-light" cx="255" cy="604" rx="101" ry="47" fill="url(#amber-ground)" clip-path="url(#hull-clip)" opacity="0"/>
+
+  <g id="ramp" transform="translate(260 610) rotate(-65)">
+    <path d="M0-5H137L140 0H0Z" fill="#a49a92"/>
+    <path d="M4-4H136M15-5v3m16-3v3m16-3v3m16-3v3m16-3v3m16-3v3m16-3v3m16-3v3" stroke="#d6b7a2" stroke-width="1"/>
+    <path d="M0 0H140L132 10H7Z" fill="#484653" stroke="#303443" stroke-width="1.5"/>
+    <path d="M8 8 19 1l13 7 14-7 14 7 14-7 14 7 14-7 14 7 14-7M9 8H133" fill="none" stroke="#a4867d" stroke-opacity=".78" stroke-width="1.3"/>
+    <path id="ramp-light" d="M1-5H137L140 0 132 9H8L1 0Z" fill="url(#amber-ground)" opacity="0"/>
+    <circle cx="1" cy="0" r="5" fill="#454755" stroke="#b99179" stroke-width="1.5"/>
+    <circle cx="1" cy="0" r="1.6" fill="#e1b59d"/>
+  </g>
+</g>
+
+<!-- Cast light sits behind the figure and the post -->
+<g id="lantern-air" opacity="0">
+  <ellipse cx="1180" cy="441" rx="157" ry="142" fill="url(#amber-air)"/>
+  <ellipse cx="1180" cy="507" rx="148" ry="175" fill="url(#amber-air)" opacity=".32"/>
+</g>
+<ellipse id="foot-shadow" cx="640" cy="611" rx="48" ry="5" fill="#171f30" opacity="0"/>
+<g clip-path="url(#passenger-clip)">
+  <g id="passenger">
+    <g id="far-leg" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path id="far-trouser" stroke="#252936" stroke-width="19"/>
+      <path id="far-crease" stroke="#55515e" stroke-width="2"/>
+      <path id="far-boot" fill="#212431" stroke="#181e2a" stroke-width="1" d="M-8-10H7L9-4Q13-2 20-1L21 3H-9Q-11 1-8-10Z"/>
+    </g>
+    <path id="far-arm" fill="none" stroke="#283746" stroke-width="15" stroke-linecap="round"/>
+    <g id="near-leg" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path id="near-trouser" stroke="#393c4b" stroke-width="20"/>
+      <path id="near-crease" stroke="#74717a" stroke-width="1.6"/>
+      <path id="near-leg-light" stroke="url(#person-light)" stroke-width="20"/>
+      <path id="near-boot" fill="#262836" stroke="#171e2c" stroke-width="1" d="M-8-10H7L9-4Q13-2 20-1L21 3H-9Q-11 1-8-10Z"/>
+    </g>
+    <g id="trunk">
+      <path d="M-13 462 1 459 12 471 11 482-12 484Z" fill="#b77b69"/>
+      <path d="M-15 472Q1 466 14 475Q20 480 15 495L9 519 15 548Q-4 556-30 547L-24 517Q-28 507-25 488Q-23 477-15 472Z" fill="#314653" stroke="#1f2d3c" stroke-width="1.5"/>
+      <path d="M-15 472Q1 466 14 475Q20 480 15 495L9 519 15 548Q-4 556-30 547L-24 517Q-28 507-25 488Q-23 477-15 472Z" fill="url(#person-light)"/>
+      <path d="M-22 489q6-11 18-10m-19 52q12 4 25 0m6-42q-5 11-5 22m-25 34q17 6 34 0" fill="none" stroke="#a3a5a3" stroke-opacity=".46" stroke-width="1.5"/>
+      <path d="M-14 470Q-4 476 10 469L14 476Q-1 483-15 477Z" fill="#b9705b"/>
+      <path id="scarf" d="M-10 475Q-24 477-38 485L-37 491Q-23 484-9 481Z" fill="#a85d54"/>
+      <g id="head">
+        <path d="M-14 455Q-16 445-11 439Q-5 432 5 434Q14 434 15 444L15 456Q12 467 4 468Q-8 467-14 455Z" fill="#ba8975" stroke="#4e4550" stroke-width="1"/>
+        <path id="face-profile" fill="#bc8b76"/>
+        <path d="M-14 455Q-16 445-11 439Q-5 432 5 434Q14 434 15 444L15 456Q12 467 4 468Q-8 467-14 455Z" fill="url(#person-light)"/>
+        <path d="M-15 451Q-18 441-12 436Q-5 429 7 432Q16 435 16 442Q5 445-13 446Z" fill="#323949"/>
+        <path id="cap-brim" d="M-13 445Q1 443 18 441L22 444Q10 448-13 448Z" fill="#414656"/>
+        <path d="M-11 438Q-1 431 9 436" fill="none" stroke="#777781" stroke-width="1.2"/>
+        <circle id="eye" cx="11" cy="451" r="1.05" fill="#322b38"/>
+        <path id="ear" fill="#956758"/>
+      </g>
+    </g>
+    <path id="near-arm" fill="none" stroke="#3c515d" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="sleeve-light" fill="none" stroke="url(#person-light)" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/><path id="arm-seam" fill="none" stroke="#899098" stroke-width="1.6" stroke-opacity=".74" stroke-linecap="round"/>
+    <g id="case">
+      <path d="M-8 11V5Q-8 2-4 2H5Q9 2 9 6V11" stroke="#2e2531" stroke-width="3" fill="none"/>
+      <path d="M-24 12Q-24 9-20 9H21Q25 10 25 13V39Q25 43 21 43H-20Q-24 42-24 39Z" fill="#8f5c4e" stroke="#332a37" stroke-width="1.7"/>
+      <path d="M-24 12Q-24 9-20 9H21Q25 10 25 13V39Q25 43 21 43H-20Q-24 42-24 39Z" fill="url(#person-light)" opacity=".62"/><path d="M-23 14Q-14 20 24 17M-21 40H21" stroke="#c18e6f" stroke-width="1.4" fill="none"/>
+      <path d="M-14 10v32m29-32v32" stroke="#5d413d" stroke-width="3"/>
+      <path d="M-15 19h3v4h-3m29-4h3v4h-3" fill="#e5b686"/>
+      <path d="M-4-3Q0-7 5-2L6 5Q0 8-5 4Z" fill="#be8c74"/>
+    </g>
+  </g>
+</g>
+
+<g id="lantern">
+  <path d="M1158 610 1160 605H1200L1202 610Z" fill="#353743"/>
+  <path d="M1170 606 1173 594V574L1176 570V467H1184V570L1187 574V594L1190 606Z" fill="url(#post)" stroke="#292c3c" stroke-width="1.3"/>
+  <path d="M1178 472V572L1175 577V596l-2 7m-8 5h29" fill="none" stroke="#88838a" stroke-opacity=".58"/>
+  <path d="M1175 507h10m-11 4h12m-12 62h12m-12 22h12m-13 3h14" stroke="#1e2837" stroke-width="1.6"/>
+  <path d="M1168 454H1192L1187 465 1183 473H1177L1173 465Z" fill="url(#post)" stroke="#29303f" stroke-width="2"/>
+  <path d="M1163 426H1197L1193 455H1167Z" fill="#4c4752" stroke="#242938" stroke-width="2"/>
+  <path d="M1166 427H1194L1190 452H1170Z" fill="#74616a"/>
+  <path id="lit-glass" d="M1166 427H1194L1190 452H1170Z" fill="url(#lamp-glass)" opacity="0"/>
+  <path d="M1174 427 1176 454M1186 427 1184 454M1168 450H1191" fill="none" stroke="#292a36" stroke-width="1.5"/>
+  <path id="filament" d="M1179 447Q1177 442 1181 436Q1184 441 1183 447Z" fill="#fff5cc" opacity="0"/>
+  <path d="M1159 428 1164 422 1174 415 1178 413 1178 409H1182V413L1186 415 1196 422 1201 428Z" fill="url(#post)" stroke="#272d3a" stroke-width="2"/>
+  <path d="M1163 425H1197M1171 420l9-5 10 6" fill="none" stroke="#98858a" stroke-opacity=".71"/>
+  <path id="lip-glint" d="M1169 455h22m-12 22v47m-2 58v13" fill="none" stroke="#f6c991" stroke-width="1.4" opacity="0"/>
+</g>
+<g id="finish-grain" pointer-events="none"></g>
+<path d="M0 0H1600V900H0Z" fill="url(#edge-x)" pointer-events="none"/>
+<path d="M0 0H1600V900H0Z" fill="url(#edge-y)" pointer-events="none"/>
+</svg>
+<script>
+(() => {
+  'use strict';
+  const tau = 2 * Math.PI;
+  const duration = 12;
+  const byId = id => document.getElementById(id);
+  const set = (node, name, value) => node.setAttribute(name, value);
+  const opacity = (node, value) => set(node, 'opacity', value.toFixed(3));
+  const wrap = (value, period) => ((value % period) + period) % period;
+  const clamp = value => Math.max(0, Math.min(1, value));
+  const smooth = value => {
+    const u = clamp(value);
+    return u * u * (3 - 2 * u);
+  };
+  const point = value => value.toFixed(2);
+  const move = (node, x, y) => set(node, 'transform', 'translate(' + point(x) + ' ' + point(y) + ')');
+  const show = (node, visible) => set(node, 'visibility', visible ? 'visible' : 'hidden');
+
+  let seed = 0x163f491b;
+  function sample() {
+    seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
+    return seed / 4294967296;
+  }
+
+  function svg(parent, name, attributes) {
+    const node = document.createElementNS('http://www.w3.org/2000/svg', name);
+    for (const [key, value] of Object.entries(attributes)) set(node, key, value);
+    parent.appendChild(node);
+    return node;
+  }
+
+  function stipple(parent, count, height, colors, scale) {
+    for (const [fill, alpha] of colors) {
+      let marks = '';
+      for (let i = 0; i < count; i++) {
+        const x = sample() * 1600;
+        const y = sample() * height;
+        const w = (.32 + sample() * 2) * scale;
+        const h = .23 + sample() * .8;
+        marks += 'M' + point(x) + ' ' + point(y) + 'h' + point(w) + 'v' + point(h) + 'h-' + point(w) + 'Z';
+      }
+      svg(parent, 'path', { d: marks, fill, opacity: alpha });
+    }
+  }
+  stipple(byId('sky-grain'), 1020, 420, [['#ffd6c6', .19], ['#1a263b', .28]], 1.2);
+  stipple(byId('finish-grain'), 1550, 900, [['#f8cfb0', .14], ['#101927', .21]], 1);
+
+  const stars = Array.from({ length: 72 }, (_, i) => {
+    const x = 42 + sample() * 1516;
+    const y = 48 + Math.pow(sample(), 1.48) * 249;
+    const radius = .55 + Math.pow(sample(), 2.35) * 1.51;
+    const group = svg(byId('stars'), 'g', { transform: 'translate(' + x + ' ' + y + ')' });
+    if (radius > 1.7) {
+      svg(group, 'circle', { r: radius * 3.2, opacity: '.095' });
+      svg(group, 'path', { d: 'M0-4.4.6-.7 3.9 0 .6.7 0 4.4-.6.7-3.9 0-.6-.7Z', opacity: '.46' });
+    }
+    svg(group, 'circle', { r: radius });
+    return { group, phase: tau * sample(), period: [3, 4, 6][i % 3], strength: Math.max(.31, .94 - y / 570) };
+  });
+
+  let trees = '';
+  const ridge = [[0,365],[53,361],[95,345],[134,349],[167,354],[191,357],[220,361],[252,373],[280,375],[317,390],[344,401]];
+  for (let i = 0; i < 80; i++) {
+    const x = sample() * 347;
+    const p = ridge.findIndex(([nextX]) => nextX > x);
+    if (p < 1) continue;
+    const [ax, ay] = ridge[p - 1];
+    const [bx, by] = ridge[p];
+    const y = ay + (by - ay) * ((x - ax) / (bx - ax)) + sample() * 13;
+    const h = 2 + sample() * 11;
+    const w = h * (.21 + sample() * .21);
+    trees += 'M' + point(x - w) + ' ' + point(y) + 'l' + point(w * .72) + ' ' + point(-h * .42) +
+      'l' + point(w * .28) + ' ' + point(-h * .58) + 'l' + point(w) + ' ' + point(h) + 'Z';
+  }
+  svg(byId('headland-trees'), 'path', { d: trees });
+
+  const stoneColors = ['#535261', '#585262', '#494a5d', '#5d5660', '#4d4b5c', '#454858'];
+  const courses = [
+    [638, 686, [44, 87, 108, 92, 107, 110, 78]],
+    [688, 749, [76, 114, 104, 116, 88, 120]],
+    [751, 825, [37, 113, 117, 84, 109, 92, 72]],
+    [827, 907, [81, 94, 112, 114, 121, 100]]
+  ];
+  for (const [top, bottom, widths] of courses) {
+    let x = 998;
+    for (const w of widths) {
+      const left = x + 2;
+      const right = x + w - 2;
+      const y = top + sample() * 4;
+      const base = bottom - sample() * 3;
+      const shape = 'M' + (left + 6) + ' ' + point(y) + 'L' + point(left + w * .63) + ' ' + point(y + 2) +
+        'L' + (right - 5) + ' ' + point(y + 1) + 'L' + right + ' ' + point(y + 9) + 'L' + (right - 3) + ' ' + point(base - 7) +
+        'L' + (right - 9) + ' ' + point(base) + 'L' + point(left + w * .39) + ' ' + point(base - 1) +
+        'L' + (left + 4) + ' ' + point(base + 1) + 'L' + left + ' ' + point(base - 8) + 'L' + (left + 2) + ' ' + point(y + 8) + 'Z';
+      const parent = byId('stones');
+      svg(parent, 'path', { d: shape, fill: stoneColors[Math.floor(sample() * stoneColors.length)] });
+      svg(parent, 'path', { d: shape, fill: 'url(#block-tone)' });
+      svg(parent, 'path', { d: 'M' + (left + 4) + ' ' + point(y + 8) + 'l4-5 ' + point(w * .4) + ' 1 ' + point(w * .28) + '-1',
+        fill: 'none', stroke: '#b29895', 'stroke-opacity': '.31' });
+      let nicks = '';
+      for (let i = 0; i < 24; i++) {
+        const nx = left + 6 + sample() * (w - 17);
+        const ny = y + 7 + sample() * (base - y - 14);
+        nicks += 'M' + point(nx) + ' ' + point(ny) + 'l' + point(1 + sample() * (i % 4 === 0 ? 17 : 5)) + ' ' + point((sample() - .5) * 2);
+      }
+      svg(parent, 'path', { d: nicks, stroke: '#c1a6a3', 'stroke-width': .9, 'stroke-opacity': .23, 'stroke-linecap': 'round' });
+      x += w;
+    }
+  }
+
+  function waveMark(x, y, width, height) {
+    return 'M' + point(x) + ' ' + point(y) + 'q' + point(width * .34) + ' ' + point(-height) + ' ' +
+      point(width) + ' 0q' + point(-width * .61) + ' ' + point(height * .73) + ' ' + point(-width) + ' 0Z';
+  }
+
+  const waterTints = ['#df9fa1', '#b395a7', '#93a0b6', '#627a99', '#152842', '#121e31'];
+  waterTints.forEach((fill, band) => {
+    let d = '';
+    for (let i = 0; i < 122; i++) {
+      const depth = Math.pow(sample(), band < 2 ? 2.7 : 1);
+      const y = 421 + depth * (band < 2 ? 262 : 485);
+      const x = sample() * (y > 608 ? 1070 : 1600) - 44;
+      const width = (8 + sample() * 65) * (.32 + depth * 1.55);
+      d += waveMark(x, y, width, (.24 + depth * 1.7) * (1 + sample() * 1.6));
+    }
+    svg(byId('water-lines'), 'path', { d, fill, opacity: band < 2 ? '.32' : '.28' });
+  });
+  svg(byId('water-lines'), 'path', { d: 'M14 640q150-1.6 238 0m20 1q64-1.4 143 0m18 1q94-2 202-1m57-1q121-2.5 280 0',
+    fill: 'none', stroke: '#a7adba', 'stroke-opacity': .22 });
+  const ripples = Array.from({ length: 10 }, (_, band) => {
+    const parent = svg(byId('ripples'), 'g', {});
+    let d = '';
+    for (let i = 0; i < 23; i++) {
+      const depth = Math.pow(sample(), 1.25);
+      const y = 424 + depth * 467;
+      const x = sample() * (y < 610 ? 1590 : 1000);
+      d += waveMark(x, y, (8 + sample() * 80) * (.21 + depth), (.6 + sample() * 1.44) * (.33 + depth));
+    }
+    svg(parent, 'path', { d, fill: band % 3 === 0 ? '#e7b2ad' : '#a4b2c7' });
+    return parent;
+  });
+
+  function reflectedStrokes(parent, x, y, count, depth, spread, paint, reach) {
+    return Array.from({ length: count }, (_, i) => {
+      const fraction = (i + sample()) / count;
+      const width = (3 + sample() * reach) * (.5 + fraction * .7);
+      const wx = x + (sample() - .5) * spread * (.46 + fraction) - width * .5;
+      const wy = y + fraction * depth;
+      const path = svg(parent, 'path', { d: waveMark(wx, wy, width, .5 + fraction * 2), fill: paint });
+      return { path, phase: tau * sample(), fraction, length: width };
+    });
+  }
+
+  const beaconWater = reflectedStrokes(byId('light-reflection'), 260, 424, 21, 151, 79, '#ffd0a0', 43);
+  const lampWater = reflectedStrokes(byId('amber-reflection'), 998, 643, 30, 174, 150, '#fac28e', 71);
+  const shipWater = reflectedStrokes(byId('ship-glints'), -6, 659, 33, 71, 500, '#c2887a', 25);
+  const wake = Array.from({ length: 29 }, (_, i) => ({
+    path: svg(byId('foam'), 'path', { fill: i % 4 === 0 ? '#edd2c0' : '#a7b7c6' }),
+    phase: sample(),
+    band: sample(),
+    size: 10 + sample() * 43
+  }));
+  const puffs = Array.from({ length: 12 }, (_, i) => ({
+    node: svg(byId('steam'), 'ellipse', { fill: 'url(#steam-tone)' }),
+    birth: 3.8 + i * .049,
+    drift: sample() - .3,
+    width: .8 + sample() * .55
+  }));
+  for (let x = -232; x <= 232; x += 15) {
+    svg(byId('hull-rivets'), 'circle', { cx: x, cy: 617 + 13 * (1 - (x / 259) ** 2), r: 1.17 });
+  }
+
+  const scene = Object.fromEntries(['beam', 'flare', 'beacon', 'amber-reflection', 'boat-reflection',
+    'ferry', 'ramp', 'quay-glow', 'ramp-light', 'bow-light', 'lantern-air', 'lit-glass', 'filament', 'lip-glint',
+    'passenger', 'foot-shadow', 'exit-window', 'exit-door', 'steam', 'foam', 'light-left', 'light-right', 'trunk', 'head', 'eye',
+    'cap-brim', 'ear', 'face-profile', 'scarf', 'near-arm', 'far-arm', 'arm-seam', 'case', 'door-leaf']
+    .map(id => [id, byId(id)]));
+
+  function ambient(t) {
+    const theta = tau * t / duration;
+    const lateral = Math.cos(theta);
+    const towardViewer = Math.max(0, Math.sin(theta));
+    const pulse = towardViewer ** 12;
+    set(scene.beam, 'transform', 'translate(260 330) scale(' + lateral + ' 1)');
+    opacity(scene.beam, Math.abs(lateral) ** .46 * .78);
+    opacity(scene.flare, .09 + .89 * pulse + .18 * Math.abs(lateral));
+    set(scene.flare, 'transform', 'translate(260 330) scale(' + (.5 + .62 * pulse) + ') translate(-260 -330)');
+    opacity(scene.beacon, .32 + .68 * pulse + .21 * Math.abs(lateral));
+
+    for (const { group, phase, period, strength } of stars) {
+      opacity(group, strength * (.66 + .34 * Math.cos(tau * t / period + phase)));
+    }
+    const waterPhase = tau * t / 4;
+    ripples.forEach((group, i) => {
+      const angle = waterPhase + i * 1.89;
+      move(group, Math.cos(angle) * (4 + i * .41), Math.sin(angle) * .82);
+      opacity(group, .26 + .16 * Math.sin(angle));
+    });
+    twinkleWater(beaconWater, waterPhase, (.11 + .75 * pulse + .18 * Math.abs(lateral)));
+    return waterPhase;
+  }
+
+  function twinkleWater(strokes, waterPhase, brightness) {
+    for (const { path, phase, fraction, length } of strokes) {
+      const oscillation = Math.sin(waterPhase + phase + fraction * 4);
+      move(path, oscillation * (2 + Math.min(length, 49) * fraction * .29), 1.7 * Math.cos(waterPhase + phase));
+      opacity(path, brightness * (1 - fraction * .91) * (.36 + .24 * oscillation));
+    }
+  }
+
+  function vessel(t, waterPhase) {
+    let x;
+    let speed = 0;
+    let backing = false;
+    if (t < .5 || t >= 11.5) {
+      x = -400;
+    } else if (t < 4) {
+      const u = (t - .5) / 3.5;
+      x = -400 + 1140 * (1 - (1 - u) ** 3);
+      speed = 3420 / 3.5 * (1 - u) ** 2;
+    } else if (t < 8.5) {
+      x = 740;
+    } else {
+      const u = (t - 8.5) / 3;
+      x = 740 - 1140 * u ** 3;
+      speed = 1140 * u ** 2;
+      backing = true;
+    }
+    const visible = x > -390;
+    show(scene.ferry, visible);
+    show(scene['boat-reflection'], visible);
+
+    const bob = 2.7 * Math.sin(waterPhase) * smooth((740 - x) / 102);
+    move(scene.ferry, x, bob);
+    move(scene['boat-reflection'], x, bob * .34);
+    if (visible) twinkleWater(shipWater, waterPhase, .83);
+
+    const rampAngle = 65 * (1 - smooth((t - 4.2) / .8) + smooth((t - 7.4) / .8));
+    set(scene.ramp, 'transform', 'translate(260 610) rotate(' + point(-rampAngle) + ')');
+    move(scene['door-leaf'], -58 * (smooth((t - 4.81) / .26) - smooth((t - 5.61) / .46)), 0);
+
+    const steaming = t >= 3.8 && t < 5;
+    show(scene.steam, steaming);
+    if (steaming) puffs.forEach(({ node, birth, drift, width }) => {
+      const age = t - birth;
+      const life = 5 - birth;
+      const u = clamp(age / life);
+      const ascent = (1 - (1 - u) ** 1.56) * (150 - (birth - 3.8) * 67);
+      set(node, 'cx', point(-17 + u * u * (57 + drift * 133) - u * 16));
+      set(node, 'cy', point(342 - ascent + Math.sin(u * 4 + drift * 4) * u * 9));
+      set(node, 'rx', point((8 + u * 49) * width));
+      set(node, 'ry', point((7 + u * 30) * width));
+      opacity(node, .68 * smooth(age / .115) * (1 - smooth((u - .23) / .77)));
+    });
+
+    const strength = clamp(speed / 780) ** .72 * smooth((x + 364) / 101);
+    const direction = backing ? -1 : 1;
+    show(scene.foam, strength > 0);
+    if (strength > 0) wake.forEach(({ path, phase, band, size }, i) => {
+      const travel = wrap(phase + t * (i < 13 ? .95 : .61), 1);
+      const envelope = Math.sin(travel * Math.PI) ** .67;
+      const nose = i < 13;
+      const distance = nose ? 218 + 42 * travel + band * 54 : -204 - travel * 114 - band * 25;
+      const width = size * (.53 + travel * .69) * (.53 + strength * .66);
+      const wx = x + direction * distance - .5 * width;
+      const wy = 638 + bob * .24 + travel * (nose ? 29 : 55) + band * 13;
+      set(path, 'd', waveMark(wx, wy, width, (nose ? 3.9 : 2.3) * envelope));
+      opacity(path, strength * envelope * (nose ? .74 : .46));
+    });
+  }
+
+  function light(t, waterPhase) {
+    const glow = smooth((t - 5) / .6) * (1 - smooth((t - 9) / .6));
+    opacity(scene['lit-glass'], glow);
+    opacity(scene.filament, glow);
+    opacity(scene['lip-glint'], glow * .83);
+    opacity(scene['lantern-air'], glow);
+    opacity(scene['quay-glow'], glow);
+    opacity(scene['ramp-light'], glow * .84);
+    opacity(scene['bow-light'], glow * .39);
+    opacity(scene['amber-reflection'], glow);
+    if (glow > 0) twinkleWater(lampWater, waterPhase, .9);
+    return glow;
+  }
+
+  const legs = ['near', 'far'].map(side => ({
+    trouser: byId(side + '-trouser'),
+    crease: byId(side + '-crease'),
+    boot: byId(side + '-boot')
+  }));
+  const cadence = .64;
+  const stance = .59;
+  const halfStep = 240 * cadence * stance / 2;
+  function leg(phase, hipX, hipY, i) {
+    const swing = clamp((phase - stance) / (1 - stance));
+    const footX = phase < stance
+      ? halfStep - phase * cadence * 240
+      : -halfStep + cadence * 240 * (smooth(swing) - (1 - stance) * swing);
+    const lift = 11.8 * (Math.sin(Math.PI * swing) ** 1.34);
+    const footY = 607 - lift;
+    const dx = footX - hipX;
+    const dy = footY - hipY;
+    const span = Math.hypot(dx, dy);
+    const bend = Math.sqrt(Math.max(0, 44 ** 2 - (span / 2) ** 2));
+    const kneeX = hipX + dx / 2 + bend * dy / span;
+    const kneeY = hipY + dy / 2 - bend * dx / span;
+    const d = 'M' + point(hipX) + ' ' + point(hipY) + 'Q' + point(kneeX + 2) + ' ' + point(kneeY - 6) +
+      ' ' + point(kneeX) + ' ' + point(kneeY) + 'L' + point(footX) + ' ' + point(footY - 3);
+    const crease = 'M' + point(hipX + 7) + ' ' + point(hipY + 12) + 'Q' + point(kneeX + 6) + ' ' + point(kneeY - 4) +
+      ' ' + point(kneeX + 4) + ' ' + point(kneeY + 2) + 'L' + point(footX + 3) + ' ' + point(footY - 12);
+    set(legs[i].trouser, 'd', d);
+    set(legs[i].crease, 'd', crease);
+    if (i === 0) set(byId('near-leg-light'), 'd', d);
+    const pitch = 21 * Math.sin(tau * swing) * Math.sin(Math.PI * swing);
+    set(legs[i].boot, 'transform', 'translate(' + point(footX) + ' ' + point(footY) + ') rotate(' + point(pitch) + ')');
+  }
+
+  function traveler(t, glow) {
+    const elapsed = t - 5;
+    const active = elapsed >= 0 && t < 9.4;
+    show(scene.passenger, active);
+    show(scene['foot-shadow'], active);
+    if (!active) return;
+
+    const x = 640 + 240 * elapsed;
+    move(scene.passenger, x, 0);
+    const emerge = smooth(elapsed / .25);
+    const clipEdge = 710 - 110 * emerge;
+    const portalEdge = Math.min(673, Math.max(607, clipEdge));
+    set(scene['exit-window'], 'x', point(Math.max(673, clipEdge)));
+    set(scene['exit-door'], 'x', point(portalEdge));
+    set(scene['exit-door'], 'width', point(673 - portalEdge));
+    set(scene['foot-shadow'], 'cx', point(x + 2));
+    opacity(scene['foot-shadow'], emerge * (.24 + .27 * glow));
+
+    const cycle = wrap(elapsed / cadence + .33, 1);
+    const angle = cycle * tau;
+    const rise = -3.3 * Math.cos(2 * angle);
+    leg(cycle, -9, 534 + rise, 0);
+    leg(wrap(cycle + .5, 1), -12, 534 + rise, 1);
+    set(scene.trunk, 'transform', 'translate(' + point(1.6 * Math.sin(angle)) + ' ' + point(rise) + ') rotate(' +
+      point(1.35 * Math.sin(angle + .7)) + ' -8 533)');
+    const scarfDrop = 4 * Math.sin(angle - .8);
+    set(scene.scarf, 'd', 'M-10 475Q-25 477-41 ' + point(484 + scarfDrop) + 'L-38 ' + point(491 + scarfDrop) + 'Q-23 484-9 481Z');
+
+    const glance = smooth((t - 7.3) / .4) * (1 - smooth((t - 7.7) / .4));
+    const face = 1 - 2 * glance;
+    const front = 14 * face;
+    set(scene.head, 'transform', 'rotate(' + point(-5 * glance) + ' 0 467)');
+    set(scene['face-profile'], 'd', 'M' + point(front * .62) + ' 443Q' + point(front) + ' 446 ' + point(front) +
+      ' 450L' + point(front + 6 * face) + ' 454L' + point(front - 1 * face) + ' 457Q' + point(front) + ' 464 ' + point(front * .38) + ' 466L0 459Z');
+    set(scene.eye, 'cx', point(front * .78));
+    set(scene.ear, 'd', 'M' + point(-5.7 * face) + ' 451q-2-3-3 0t3 6q2-1 0-6Z');
+    set(scene['cap-brim'], 'transform', 'scale(' + point(face) + ' 1)');
+
+    const delta = 1180 - x;
+    const exposure = glow * Math.exp(-((delta / 160) ** 2));
+    const side = clamp(.5 + delta / 66);
+    set(scene['light-left'], 'stop-opacity', point(.76 * exposure * (1 - side)));
+    set(scene['light-right'], 'stop-opacity', point(.76 * exposure * side));
+
+    const swing = Math.sin(angle + .3);
+    const caseX = -14 + swing * 14;
+    const caseY = 547 + rise - 2.7 * swing;
+    set(scene['near-arm'], 'd', 'M-14 ' + point(485 + rise) + 'Q' + point(caseX * .77 - 8) + ' ' + point(522 + rise) + ' ' + point(caseX) + ' ' + point(caseY - 4));
+    set(byId('sleeve-light'), 'd', scene['near-arm'].getAttribute('d'));
+    set(scene['arm-seam'], 'd', 'M-17 ' + point(480 + rise) + 'Q' + point(caseX * .77 - 11) + ' ' + point(518 + rise) + ' ' + point(caseX - 3) + ' ' + point(caseY - 9));
+    set(scene['far-arm'], 'd', 'M6 ' + point(484 + rise) + 'Q' + point(14 - swing * 12) + ' ' + point(513 + rise) + ' ' + point(14 - swing * 20) + ' ' + point(537 + rise));
+    set(scene.case, 'transform', 'translate(' + point(caseX) + ' ' + point(caseY) + ') rotate(' + point(swing * 8.5) + ')');
+  }
+
+  function render(t) {
+    const waterPhase = ambient(t);
+    vessel(t, waterPhase);
+    const glow = light(t, waterPhase);
+    traveler(t, glow);
+  }
+
+  const seek = new URLSearchParams(location.search).get('t');
+  if (seek !== null) {
+    const time = Number(seek);
+    render(Number.isFinite(time) ? wrap(time, duration) : 0);
+  } else {
+    const start = performance.now();
+    render(0);
+    function frame(now) {
+      render(wrap((now - start) / 1000, duration));
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+})();
+</script>
+
+</body>
+</html>

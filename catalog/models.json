@@ -33,5 +33,19 @@
     "provider": "claudeAgent",
     "model": "claude-sonnet-5-5",
     "effort": "high"
+  },
+  {
+    "id": "astra62",
+    "label": "GPT-6.2 Astra",
+    "provider": "codex",
+    "model": "gpt-6.2-astra",
+    "effort": "high"
+  },
+  {
+    "id": "sol62",
+    "label": "GPT-6.2 Sol",
+    "provider": "codex",
+    "model": "gpt-6.2-sol",
+    "effort": "high"
   }
 ]

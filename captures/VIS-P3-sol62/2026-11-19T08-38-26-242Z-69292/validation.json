@@ -1,0 +1,41 @@
+{
+  "runId": "VIS-P3-sol62",
+  "capturedAt": "2026-11-19T08:38:26.244Z",
+  "playwrightVersion": "1.65.0",
+  "browserVersion": "158.0.8127.18",
+  "viewport": {
+    "width": 1600,
+    "height": 900
+  },
+  "deviceScaleFactor": 1,
+  "status": "captured",
+  "sourceHash": "e64849e1c1db92596e8dc713251cbfacd1b70d958cdb655d73a8df52fadf98dc",
+  "bytes": 19787,
+  "consoleErrors": [],
+  "pageErrors": [],
+  "networkAttempts": [],
+  "svgPresent": true,
+  "poster": "captures/VIS-P3-sol62/2026-11-19T08-38-26-242Z-69292/poster.png",
+  "clip": "captures/VIS-P3-sol62/2026-11-19T08-38-26-242Z-69292/clip.webm",
+  "frames": [
+    {
+      "time": 0,
+      "path": "captures/VIS-P3-sol62/2026-11-19T08-38-26-242Z-69292/frame-0.png"
+    },
+    {
+      "time": 1.5,
+      "path": "captures/VIS-P3-sol62/2026-11-19T08-38-26-242Z-69292/frame-1.5.png"
+    },
+    {
+      "time": 3,
+      "path": "captures/VIS-P3-sol62/2026-11-19T08-38-26-242Z-69292/frame-3.png"
+    },
+    {
+      "time": 4.5,
+      "path": "captures/VIS-P3-sol62/2026-11-19T08-38-26-242Z-69292/frame-4.5.png"
+    }
+  ],
+  "errors": [],
+  "captureElapsedSeconds": 9.853,
+  "clipMode": "sampled-frames-then-realtime-loop"
+}

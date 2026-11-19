@@ -1,0 +1,23 @@
+{
+  "runId": "VIS-P5-astra62",
+  "capturedAt": "2026-11-19T08:19:31.668Z",
+  "playwrightVersion": "1.65.0",
+  "browserVersion": "158.0.8127.18",
+  "viewport": {
+    "width": 1600,
+    "height": 900
+  },
+  "deviceScaleFactor": 1,
+  "status": "captured",
+  "sourceHash": "1e77daf0ff1cc177046ef1f1506ef6dc92bd52e61c486e8d5d675b643e06ed88",
+  "bytes": 15310,
+  "consoleErrors": [],
+  "pageErrors": [],
+  "networkAttempts": [],
+  "svgPresent": true,
+  "poster": "captures/VIS-P5-astra62/2026-11-19T08-19-31-667Z-57240/poster.png",
+  "clip": null,
+  "frames": [],
+  "errors": [],
+  "captureElapsedSeconds": 0.826
+}

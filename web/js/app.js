@@ -332,7 +332,8 @@ function gridKeys(grid) {
 
 function viewMatrix() {
   const c = computeCounts();
-  const grid = h('div', { class: 'matrix', role: 'grid', 'aria-label': 'Six briefs by five agents' });
+  const grid = h('div', { class: 'matrix', role: 'grid', 'aria-label': `${catalog.prompts.length} briefs by ${catalog.models.length} agents` });
+  grid.style.setProperty('--agent-count', catalog.models.length);
   grid.style.setProperty('--cols', `minmax(8.5rem, 11rem) repeat(${catalog.models.length}, minmax(0, 1fr))`);
   grid.append(
     h(
@@ -360,7 +361,7 @@ function viewMatrix() {
     title: 'Matrix',
     node: frag(
       pageHead({
-        eyebrow: 'Six briefs · five agents · one take each',
+        eyebrow: `${catalog.prompts.length} briefs · ${catalog.models.length} agents · one take each`,
         title: 'The matrix',
         lede: 'Every entry is shown, including failures. Open a cell for the brief, the source and capture status. Arrow keys move between cells.'
       }),
@@ -439,7 +440,7 @@ function viewPrompt(id) {
       pageHead({
         eyebrow: 'By brief',
         title: prompt.title,
-        lede: 'Five outputs for the same brief. Posters are the default view; clips and live previews are opt-in.',
+        lede: `${catalog.models.length} outputs for the same brief. Posters are the default view; clips and live previews are opt-in.`,
         extra: h('div', { class: 'row' }, kindChip(prompt), h('a', { class: 'btn small', href: `#/review/${encodeURIComponent(prompt.id)}` }, 'Blind review this brief'), hasClips ? clipBtn : null)
       }),
       tabs(catalog.prompts, prompt.id, (p) => `#/prompt/${encodeURIComponent(p.id)}`, 'Choose a brief'),

@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ripple Rail</title>
+<link rel='icon' href='data:,'>
+<style>
+  :root {
+    color-scheme: dark;
+    font-family: system-ui, "Segoe UI", sans-serif;
+    background: #10191d;
+    color: #f1e8d6;
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; overflow: hidden; }
+  button { font: inherit; }
+
+  #stage {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    touch-action: none;
+    user-select: none;
+  }
+
+  .heading { font: 46px Georgia, serif; letter-spacing: -1.7px; fill: #f1e8d6; }
+  .caption, .micro, .index, .measure {
+    font-family: ui-monospace, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+  .caption { fill: #bdc8c6; font-size: 13px; letter-spacing: 1.6px; }
+  .micro { fill: #a2b2b3; font-size: 11px; letter-spacing: 1px; }
+  .index { fill: #a2b2b3; font-size: 11px; }
+  .measure { fill: #8da1a4; font-size: 11px; text-anchor: end; }
+  .rod-body { stroke: #31444b; stroke-width: 4; stroke-linecap: round; }
+  .rod-face { stroke: #869c9e; stroke-width: 1.25; }
+  .pivot-shell { fill: #172328; stroke: #839596; stroke-width: 1; }
+  .pivot-face { fill: #adb7ad; }
+  .ribbon { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .bob { color: #ddc69b; }
+  .bob-face { fill: currentColor; stroke: #0c1518; stroke-width: 1; }
+  .bob-shine { fill: url(#cap-light); }
+  .bob-rim { fill: none; stroke: #19262a; stroke-opacity: .60; stroke-width: 1; }
+  .bob-glint { fill: none; stroke: #fff5e1; stroke-opacity: .68; stroke-width: 1; }
+  .bob-core { fill: #243339; }
+  .hover-ring, .held-ring { display: none; fill: none; }
+  .bob.is-hovered .hover-ring { display: inline; }
+  .bob.is-held .held-ring { display: inline; }
+
+  .overlay {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: min(100vw, calc(100vh * 16 / 9));
+    height: min(100vh, calc(100vw * 9 / 16));
+    container-type: inline-size;
+    pointer-events: none;
+  }
+
+  .hud {
+    position: absolute;
+    top: 86.666667%;
+    left: 5.5%;
+    width: 89%;
+    height: 11.111111%;
+    padding: 1.05cqw 1.35cqw;
+    display: grid;
+    grid-template-columns: 1.9fr 1.25fr 2fr 1.68fr;
+    align-items: stretch;
+    border: 1px solid #405157;
+    border-radius: .55cqw;
+    background: #19252a;
+    box-shadow: inset 0 1px 0 #ffffff0c;
+    font-size: max(10px, .94cqw);
+    pointer-events: auto;
+  }
+
+  .hud-group {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: .52cqw;
+  }
+  .hud-group + .hud-group {
+    border-left: 1px solid #38484d;
+    padding-left: 1.4cqw;
+    margin-left: 1.4cqw;
+  }
+  .hud-heading, .button-row { display: flex; align-items: center; gap: .55cqw; }
+  .hud-heading { height: 1.15cqw; justify-content: space-between; }
+  .hud-label, .coefficient, .pause-flag, .unit, kbd, .energy-value {
+    font-family: ui-monospace, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+  .hud-label { color: #bfcccc; font-size: max(9px, .77cqw); letter-spacing: .09em; }
+  .coefficient { color: #cbe7df; font-size: max(9px, .8cqw); }
+  .pause-flag { color: #161f21; background: #efbd7f; padding: .1cqw .36cqw; border-radius: 2px; font-size: max(8px, .7cqw); font-weight: 700; letter-spacing: .07em; }
+  .hint { color: #b9c7c8; font-size: max(9px, .79cqw); white-space: nowrap; }
+  .hud button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .65cqw;
+    min-height: 2.35cqw;
+    padding: .24cqw .56cqw;
+    border: 1px solid #52636a;
+    border-radius: .28cqw;
+    background: #233238;
+    color: #f5edde;
+    cursor: pointer;
+    white-space: nowrap;
+    line-height: 1.1;
+  }
+  .hud button:hover { background: #30464d; border-color: #96b6b6; }
+  .hud button:focus-visible { outline: 2px solid #fbd095; outline-offset: 2px; }
+  .hud button.selected { color: #142c2b; background: #a1e7d6; border-color: #a1e7d6; font-weight: 650; }
+  .damping .button-row button { flex: 1; justify-content: center; padding-inline: .3cqw; }
+  .boundary button { flex: 1; }
+  .transport button:first-child { flex: 1; }
+  kbd {
+    min-width: 1.02cqw;
+    padding: .12cqw .23cqw;
+    border: 1px solid #697e82;
+    border-radius: .17cqw;
+    color: #d1dfdf;
+    font-size: max(8px, .72cqw);
+    font-weight: 400;
+    text-align: center;
+  }
+  .damping kbd { border: 0; font-size: max(10px, .94cqw); color: inherit; font-weight: inherit; }
+  .energy-line {
+    display: flex;
+    align-items: baseline;
+    gap: .55cqw;
+    min-height: 2.35cqw;
+  }
+  .energy-value {
+    color: #d9f5ed;
+    font-size: 1.55cqw;
+    letter-spacing: -.055em;
+    white-space: nowrap;
+  }
+  .unit { color: #b7c8c7; font-size: max(8px, .73cqw); white-space: nowrap; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<svg id="stage" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="stage-title stage-desc">
+  <title id="stage-title">Ripple Rail</title>
+  <desc id="stage-desc">Twenty-five brass pendulums hang from a long steel rail. A mint ribbon threads their centres, changing its shape as waves pass along the rail. Blue and orange indicate the direction and speed of each bob.</desc>
+  <defs>
+    <radialGradient id="field-light" cx=".5" cy=".5" r=".5">
+      <stop stop-color="#233c42"/>
+      <stop offset=".65" stop-color="#17292e"/>
+      <stop offset="1" stop-color="#10191d"/>
+    </radialGradient>
+    <linearGradient id="rail-metal" x2="0" y2="1">
+      <stop stop-color="#64787e"/>
+      <stop offset=".24" stop-color="#3f535a"/>
+      <stop offset=".5" stop-color="#27383e"/>
+      <stop offset=".51" stop-color="#182428"/>
+      <stop offset="1" stop-color="#34464c"/>
+    </linearGradient>
+    <linearGradient id="cap-light" x1=".21" x2=".79" y1="0" y2="1">
+      <stop stop-color="#fff6df" stop-opacity=".48"/>
+      <stop offset=".48" stop-color="#fff6df" stop-opacity="0"/>
+      <stop offset="1" stop-color="#101d23" stop-opacity=".44"/>
+    </linearGradient>
+    <linearGradient id="velocity-scale">
+      <stop stop-color="#6fc5ff"/>
+      <stop offset=".5" stop-color="#ddc69b"/>
+      <stop offset="1" stop-color="#ff9b6d"/>
+    </linearGradient>
+    <pattern id="field-grid" width="28" height="20" x="100" y="100" patternUnits="userSpaceOnUse">
+      <path d="M28 0H0V20" fill="none" stroke="#597379" stroke-opacity=".23" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1600" height="900" fill="#10191d"/>
+  <ellipse cx="800" cy="406" rx="787" ry="397" fill="url(#field-light)"/>
+
+  <g aria-hidden="true">
+    <text class="heading" x="86" y="59">Ripple Rail</text>
+    <path d="M329 34v28" stroke="#4b6267"/>
+    <text class="caption" x="351" y="44">COUPLED PENDULUMS</text>
+    <text class="micro" x="351" y="62">25 BOBS · 520-UNIT RODS</text>
+
+    <text class="caption" x="1074" y="46">ANGULAR VELOCITY</text>
+    <text class="micro" x="1074" y="63">RAD/S</text>
+    <rect x="1272" y="34" width="240" height="5" rx="2.5" fill="url(#velocity-scale)"/>
+    <path d="M1272 43v5m120-5v5m120-5v5" stroke="#7d9699"/>
+    <text class="micro" x="1272" y="63">−3 · LEFT</text>
+    <text class="micro" x="1392" y="63" text-anchor="middle">0</text>
+    <text class="micro" x="1512" y="63" text-anchor="end">RIGHT · +3</text>
+
+    <rect x="100" y="100" width="1400" height="520" fill="url(#field-grid)"/>
+    <path d="M100 100V620H1500V100" fill="none" stroke="#50676d" stroke-opacity=".59"/>
+    <path d="M100 220h1400m-1400 100h1400m-1400 100h1400m-1400 100h1400" stroke="#729096" stroke-opacity=".28"/>
+    <path d="M800 110v511" stroke="#66848b" stroke-opacity=".37" stroke-dasharray="3 6"/>
+    <path d="M89 220h10m-5 100h5m-10 100h10m-5 100h5m-10 100h10
+             M1501 220h10m-10 100h5m-5 100h10m-10 100h5m-5 100h10"
+          stroke="#688086" stroke-opacity=".8"/>
+    <g class="measure">
+      <text x="81" y="224">400</text>
+      <text x="81" y="324">300</text>
+      <text x="81" y="424">200</text>
+      <text x="81" y="524">100</text>
+      <text x="81" y="624">0</text>
+    </g>
+    <text class="micro" x="51" y="424" text-anchor="middle" transform="rotate(-90 51 424)">HEIGHT ABOVE REST</text>
+
+    <g id="indices"></g>
+    <path d="M88 674h1424" stroke="#3c5157"/>
+    <rect x="88.5" y="692.5" width="1423" height="65" rx="7" fill="#142125" stroke="#3d5157"/>
+    <text class="caption" x="110" y="720">ANGLE PROFILE</text>
+    <text class="micro" x="110" y="740">BY PENDULUM</text>
+    <path d="M278.5 706v37m30-18.5h1105" stroke="#496268"/>
+    <path d="M308 706.5h1106m-1106 36h1106" stroke="#31494f" stroke-dasharray="2 5"/>
+    <g id="angle-bars"></g>
+    <g class="index" text-anchor="end">
+      <text x="1490" y="710">+80°</text>
+      <text x="1490" y="729">0°</text>
+      <text x="1490" y="746">−80°</text>
+    </g>
+
+    <g id="rods"></g>
+    <path d="M94 111H1506" stroke="#0c1215" stroke-width="5" stroke-linecap="round"/>
+    <rect x="88" y="90" width="1424" height="20" rx="5" fill="url(#rail-metal)" stroke="#0b1316"/>
+    <path d="M99 92.5H1501" stroke="#b2c2bf" stroke-opacity=".48"/>
+    <path d="M99 106.5H1501" stroke="#92a5a6" stroke-opacity=".28"/>
+    <path d="M110.5 91v18m1379-18v18" stroke="#101a1e" stroke-width="2"/>
+    <path d="M96 100h7m-3.5-3.5v7m1397-3.5h7m-3.5-3.5v7" stroke="#bdc8c6" stroke-width="1.3"/>
+    <g id="pivots"></g>
+    <path id="ribbon-halo" class="ribbon" stroke="#63e7c8" stroke-opacity=".14" stroke-width="13"/>
+    <path id="ribbon-edge" class="ribbon" stroke="#102a2c" stroke-width="6"/>
+    <path id="ribbon-core" class="ribbon" stroke="#a4f6df" stroke-width="2.4"/>
+    <g id="bobs"></g>
+  </g>
+</svg>
+
+<div class="overlay">
+  <section class="hud" aria-label="Ripple Rail controls">
+    <div class="hud-group damping" role="group" aria-label="Damping">
+      <div class="hud-heading">
+        <span class="hud-label">DAMPING <span id="damping-level">2</span></span>
+        <span class="coefficient" id="coefficient">g = 0.25</span>
+      </div>
+      <div class="button-row">
+        <button type="button" data-level="1" aria-label="Damping level 1" aria-keyshortcuts="1" aria-pressed="false"><kbd>1</kbd></button>
+        <button type="button" data-level="2" class="selected" aria-label="Damping level 2" aria-keyshortcuts="2" aria-pressed="true"><kbd>2</kbd></button>
+        <button type="button" data-level="3" aria-label="Damping level 3" aria-keyshortcuts="3" aria-pressed="false"><kbd>3</kbd></button>
+      </div>
+    </div>
+
+    <div class="hud-group boundary" role="group" aria-label="End conditions">
+      <div class="hud-heading"><span class="hud-label">ENDS</span></div>
+      <div class="button-row">
+        <button id="ends" type="button" aria-label="Ends: Fixed. Toggle ends" aria-keyshortcuts="F">
+          <span id="ends-label">Fixed</span><kbd>F</kbd>
+        </button>
+      </div>
+    </div>
+
+    <div class="hud-group transport" role="group" aria-label="Playback">
+      <div class="hud-heading">
+        <span class="hud-label">PLAYBACK</span>
+        <span id="pause-flag" class="pause-flag" hidden>PAUSED</span>
+      </div>
+      <div class="button-row">
+        <button id="pause" type="button" aria-keyshortcuts="Space"><span id="pause-label">Pause</span><kbd>Space</kbd></button>
+        <button id="reset" type="button" aria-keyshortcuts="R">Reset <kbd>R</kbd></button>
+      </div>
+    </div>
+
+    <div class="hud-group energy">
+      <div class="hud-heading">
+        <span class="hud-label">ENERGY</span>
+        <span id="hint" class="hint">Drag a bob</span>
+      </div>
+      <div class="energy-line">
+        <span class="energy-value" id="energy-value">E = 0.00</span>
+        <span class="unit">rad²/s²</span>
+      </div>
+    </div>
+  </section>
+</div>
+<script>
+"use strict";
+
+const count = 25;
+const rodLength = 520;
+const railY = 100;
+const gravity = 4;
+const stiffness = 60;
+const step = 1 / 240;
+const angleLimit = 80 * Math.PI / 180;
+const damping = [0, 0.25, 1.2];
+const dampingLabels = ["0.0", "0.25", "1.2"];
+const svgNamespace = "http://www.w3.org/2000/svg";
+
+const stage = document.getElementById("stage");
+const byId = (id) => document.getElementById(id);
+
+function svg(parent, tag, attributes) {
+  const element = document.createElementNS(svgNamespace, tag);
+  for (const [name, value] of Object.entries(attributes)) {
+    element.setAttribute(name, value);
+  }
+  parent.append(element);
+  return element;
+}
+
+const pendulums = [];
+for (let i = 0; i < count; i++) {
+  const pivotX = 800 + 56 * (i - 12);
+  const graphX = 329 + i * 44.3;
+  const rod = svg(byId("rods"), "path", { class: "rod-body" });
+  const rodFace = svg(byId("rods"), "path", { class: "rod-face" });
+  svg(byId("pivots"), "circle", { cx: pivotX, cy: railY, r: 6.1, class: "pivot-shell" });
+  svg(byId("pivots"), "circle", { cx: pivotX, cy: railY, r: 2.1, class: "pivot-face" });
+
+  const bob = svg(byId("bobs"), "g", { class: "bob", "data-index": i });
+  svg(bob, "circle", { r: 18, class: "bob-face" });
+  svg(bob, "circle", { r: 17.3, class: "bob-shine" });
+  svg(bob, "circle", { r: 13.2, class: "bob-rim" });
+  svg(bob, "path", { d: "M-13.5 -6.2A14.8 14.8 0 0 1 4.2 -14.2", class: "bob-glint" });
+  svg(bob, "path", { d: "M-5 0H5M0-5V5", class: "bob-glint" });
+  svg(bob, "circle", { r: 2.7, class: "bob-core" });
+  svg(bob, "circle", { r: 23.5, class: "hover-ring", stroke: "#f6dfb4", "stroke-width": 1.5 });
+  svg(bob, "circle", { r: 25, class: "held-ring", stroke: "#b3fae7", "stroke-width": 2 });
+  svg(bob, "path", {
+    d: "M-30 0h8m44 0h8M0-30v8m0 44v8",
+    class: "held-ring", stroke: "#b3fae7", "stroke-width": 1.5
+  });
+
+  svg(byId("indices"), "path", {
+    d: "M" + pivotX + " 645v" + (i % 3 === 0 ? 7 : 4),
+    stroke: "#687e82"
+  });
+  if (i % 3 === 0) {
+    const index = svg(byId("indices"), "text", {
+      x: pivotX, y: 666, class: "index", "text-anchor": "middle"
+    });
+    index.textContent = String(i).padStart(2, "0");
+  }
+  const bar = svg(byId("angle-bars"), "rect", {
+    x: graphX - 7, y: 723, width: 14, height: 3, rx: 1.5, fill: "#658487"
+  });
+  pendulums.push({ pivotX, rod, rodFace, bob, bar, x: pivotX, y: 620, colorIndex: 0 });
+}
+
+const ribbon = ["ribbon-halo", "ribbon-edge", "ribbon-core"].map(byId);
+const energyValue = byId("energy-value");
+const endControl = byId("ends");
+const pauseControl = byId("pause");
+const dampingControls = Array.from(document.querySelectorAll("[data-level]"));
+const angle = new Float64Array(count);
+const speed = new Float64Array(count);
+const trialAngle = new Float64Array(count);
+const trialSpeed = new Float64Array(count);
+const stages = Array.from({ length: 4 }, () => ({
+  angle: new Float64Array(count),
+  speed: new Float64Array(count)
+}));
+const lengths = new Float64Array(count - 1);
+const tangentX = new Float64Array(count);
+const tangentY = new Float64Array(count);
+
+let level = 1;
+let fixedEnds = true;
+let paused = false;
+let held = -1;
+let pointerId = null;
+let targetAngle = 0;
+let hover = -1;
+let hoverPoint = null;
+let inMotion = false;
+let accumulator = 0;
+let lastTime = performance.now();
+
+function derivatives(positions, velocities, result) {
+  const drag = damping[level];
+  for (let i = 0; i < count; i++) {
+    const middle = positions[i];
+    const left = i > 0 ? positions[i - 1] : (fixedEnds ? 0 : middle);
+    const right = i < count - 1 ? positions[i + 1] : (fixedEnds ? 0 : middle);
+    if (i === held) {
+      result.angle[i] = 0;
+      result.speed[i] = 0;
+    } else {
+      result.angle[i] = velocities[i];
+      result.speed[i] = -gravity * Math.sin(middle)
+        + stiffness * (right - 2 * middle + left) - drag * velocities[i];
+    }
+  }
+}
+
+function integrate() {
+  if (held !== -1) {
+    angle[held] = targetAngle;
+    speed[held] = 0;
+  }
+
+  derivatives(angle, speed, stages[0]);
+  for (let pass = 1; pass < 4; pass++) {
+    const scale = pass === 3 ? step : step / 2;
+    const previous = stages[pass - 1];
+    for (let i = 0; i < count; i++) {
+      trialAngle[i] = angle[i] + scale * previous.angle[i];
+      trialSpeed[i] = speed[i] + scale * previous.speed[i];
+    }
+    derivatives(trialAngle, trialSpeed, stages[pass]);
+  }
+
+  const [a, b, c, d] = stages;
+  for (let i = 0; i < count; i++) {
+    angle[i] += step / 6 * (a.angle[i] + 2 * b.angle[i] + 2 * c.angle[i] + d.angle[i]);
+    speed[i] += step / 6 * (a.speed[i] + 2 * b.speed[i] + 2 * c.speed[i] + d.speed[i]);
+  }
+}
+
+function advanceClock(now) {
+  if (now <= lastTime) return false;
+  const elapsed = Math.min(0.1, (now - lastTime) / 1000);
+  lastTime = now;
+  if (paused || !inMotion) return false;
+
+  accumulator += elapsed;
+  let stepped = false;
+  while (accumulator + 1e-10 >= step) {
+    integrate();
+    accumulator -= step;
+    stepped = true;
+  }
+  return stepped;
+}
+
+function updateEnergy() {
+  let total = 0;
+  for (let i = 0; i < count; i++) {
+    total += 0.5 * speed[i] ** 2 + gravity * (1 - Math.cos(angle[i]));
+    if (i < count - 1) total += 0.5 * stiffness * (angle[i + 1] - angle[i]) ** 2;
+  }
+  if (fixedEnds) total += 0.5 * stiffness * (angle[0] ** 2 + angle[count - 1] ** 2);
+  const readout = "E = " + total.toFixed(2);
+  if (energyValue.textContent !== readout) energyValue.textContent = readout;
+}
+
+const neutral = [221, 198, 155];
+const palette = Array.from({ length: 97 }, (_, index) => {
+  const end = index < 48 ? [111, 197, 255] : [255, 155, 109];
+  const strength = Math.abs(index - 48) / 48;
+  const channels = neutral.map((channel, i) => Math.round(channel + (end[i] - channel) * strength));
+  return "rgb(" + channels.join(",") + ")";
+});
+
+function pair(x, y) {
+  return x.toFixed(2) + " " + y.toFixed(2);
+}
+
+function ribbonPath() {
+  for (let i = 0; i < count - 1; i++) {
+    const start = pendulums[i];
+    const end = pendulums[i + 1];
+    lengths[i] = Math.max(0.0001, Math.hypot(end.x - start.x, end.y - start.y));
+  }
+  for (let i = 0; i < count; i++) {
+    const before = Math.max(0, i - 1);
+    const after = Math.min(count - 1, i + 1);
+    const left = pendulums[before];
+    const right = pendulums[after];
+    const here = pendulums[i];
+    const leftLength = lengths[before];
+    const rightLength = lengths[Math.min(i, count - 2)];
+    tangentX[i] = (here.x - left.x) / leftLength + (right.x - here.x) / rightLength;
+    tangentY[i] = (here.y - left.y) / leftLength + (right.y - here.y) / rightLength;
+  }
+
+  let path = "M" + pair(pendulums[0].x, pendulums[0].y);
+  for (let i = 0; i < count - 1; i++) {
+    const start = pendulums[i];
+    const end = pendulums[i + 1];
+    const leftHandle = Math.min(lengths[i], lengths[Math.max(0, i - 1)]) / (i === 0 ? 3 : 6);
+    const rightHandle = Math.min(lengths[i], lengths[Math.min(count - 2, i + 1)]) / (i === count - 2 ? 3 : 6);
+    path += "C" + pair(start.x + tangentX[i] * leftHandle, start.y + tangentY[i] * leftHandle)
+      + " " + pair(end.x - tangentX[i + 1] * rightHandle, end.y - tangentY[i + 1] * rightHandle)
+      + " " + pair(end.x, end.y);
+  }
+  return path;
+}
+
+function draw() {
+  for (let i = 0; i < count; i++) {
+    const part = pendulums[i];
+    part.x = part.pivotX + rodLength * Math.sin(angle[i]);
+    part.y = railY + rodLength * Math.cos(angle[i]);
+    const point = pair(part.x, part.y);
+    const rodPath = "M" + part.pivotX + " " + railY + "L" + point;
+    part.rod.setAttribute("d", rodPath);
+    part.rodFace.setAttribute("d", rodPath);
+    part.bob.setAttribute("transform", "translate(" + point + ")");
+
+    const colorIndex = Math.round(Math.max(-3, Math.min(3, speed[i])) * 16) + 48;
+    if (colorIndex !== part.colorIndex) {
+      part.bob.style.color = palette[colorIndex];
+      part.colorIndex = colorIndex;
+    }
+    const barValue = 18 * Math.max(-1, Math.min(1, angle[i] / angleLimit));
+    part.bar.setAttribute("y", Math.min(723, 724.5 - barValue).toFixed(2));
+    part.bar.setAttribute("height", Math.max(3, Math.abs(barValue) + 1.5).toFixed(2));
+    part.bar.setAttribute("fill", barValue < -1 ? "#83bce4" : barValue > 1 ? "#d9b785" : "#658487");
+  }
+  const path = ribbonPath();
+  for (const stroke of ribbon) stroke.setAttribute("d", path);
+  updateEnergy();
+  updateHover();
+}
+
+function frame(now) {
+  if (advanceClock(now)) draw();
+  requestAnimationFrame(frame);
+}
+
+function findBob(point) {
+  let closest = -1;
+  let best = 30 ** 2;
+  for (let i = 0; i < count; i++) {
+    const part = pendulums[i];
+    const distance = (point.x - part.x) ** 2 + (point.y - part.y) ** 2;
+    if (distance <= best) {
+      best = distance;
+      closest = i;
+    }
+  }
+  return closest;
+}
+
+function updateHover() {
+  const next = held === -1 && hoverPoint ? findBob(hoverPoint) : -1;
+  if (hover !== next) {
+    if (hover !== -1) pendulums[hover].bob.classList.remove("is-hovered");
+    if (next !== -1) pendulums[next].bob.classList.add("is-hovered");
+    hover = next;
+  }
+  const cursor = held !== -1 ? "grabbing" : hover !== -1 ? "grab" : "";
+  if (stage.style.cursor !== cursor) stage.style.cursor = cursor;
+}
+
+function stagePoint(event) {
+  return new DOMPoint(event.clientX, event.clientY).matrixTransform(stage.getScreenCTM().inverse());
+}
+
+function placeBob(point) {
+  const slope = Math.atan2(point.x - pendulums[held].pivotX, point.y - railY);
+  targetAngle = Math.max(-angleLimit, Math.min(angleLimit, slope));
+  angle[held] = targetAngle;
+  speed[held] = 0;
+  if (targetAngle !== 0) inMotion = true;
+  draw();
+}
+
+function dropBob() {
+  const oldPointer = pointerId;
+  const bob = pendulums[held].bob;
+  bob.classList.remove("is-held");
+  held = -1;
+  pointerId = null;
+  if (stage.hasPointerCapture(oldPointer)) stage.releasePointerCapture(oldPointer);
+  updateHover();
+}
+
+stage.addEventListener("pointerdown", (event) => {
+  if (held !== -1 || event.button !== 0) return;
+  if (advanceClock(performance.now())) draw();
+  const point = stagePoint(event);
+  const choice = findBob(point);
+  if (choice === -1) return;
+
+  event.preventDefault();
+  held = choice;
+  pointerId = event.pointerId;
+  hoverPoint = event.pointerType === "touch" ? null : point;
+  if (event.isTrusted) stage.setPointerCapture(pointerId);
+  byId("hint").hidden = true;
+  const bob = pendulums[held].bob;
+  bob.classList.add("is-held");
+  placeBob(point);
+});
+
+stage.addEventListener("pointermove", (event) => {
+  if (held !== -1 && event.pointerId !== pointerId) return;
+  const point = stagePoint(event);
+  hoverPoint = event.pointerType === "touch" ? null : point;
+  if (held === -1) {
+    updateHover();
+  } else {
+    advanceClock(performance.now());
+    placeBob(point);
+  }
+});
+
+stage.addEventListener("pointerleave", () => {
+  hoverPoint = null;
+  updateHover();
+});
+
+function releasePointer(event) {
+  if (event.pointerId !== pointerId) return;
+  const stepped = advanceClock(performance.now());
+  if (event.type === "pointerup" && event.pointerType !== "touch") hoverPoint = stagePoint(event);
+  dropBob();
+  if (stepped) draw();
+}
+
+stage.addEventListener("pointerup", releasePointer);
+stage.addEventListener("pointercancel", releasePointer);
+stage.addEventListener("lostpointercapture", releasePointer);
+window.addEventListener("resize", () => {
+  hoverPoint = null;
+  updateHover();
+});
+
+function setLevel(index) {
+  const stepped = advanceClock(performance.now());
+  level = index;
+  byId("damping-level").textContent = index + 1;
+  byId("coefficient").textContent = "g = " + dampingLabels[index];
+  for (let i = 0; i < dampingControls.length; i++) {
+    dampingControls[i].classList.toggle("selected", i === level);
+    dampingControls[i].setAttribute("aria-pressed", String(i === level));
+  }
+  if (stepped) draw();
+}
+
+function toggleEnds() {
+  const stepped = advanceClock(performance.now());
+  fixedEnds = !fixedEnds;
+  const label = fixedEnds ? "Fixed" : "Free";
+  byId("ends-label").textContent = label;
+  endControl.setAttribute("aria-label", "Ends: " + label + ". Toggle ends");
+  if (stepped) draw();
+  else updateEnergy();
+}
+
+function togglePause() {
+  const stepped = advanceClock(performance.now());
+  paused = !paused;
+  byId("pause-flag").hidden = !paused;
+  byId("pause-label").textContent = paused ? "Resume" : "Pause";
+  if (stepped) draw();
+}
+
+function reset() {
+  lastTime = performance.now();
+  if (held !== -1) dropBob();
+  angle.fill(0);
+  speed.fill(0);
+  accumulator = 0;
+  inMotion = false;
+  draw();
+}
+
+for (let i = 0; i < dampingControls.length; i++) {
+  dampingControls[i].addEventListener("click", () => setLevel(i));
+}
+endControl.addEventListener("click", toggleEnds);
+pauseControl.addEventListener("click", togglePause);
+byId("reset").addEventListener("click", reset);
+
+const keys = new Map([
+  ["1", () => setLevel(0)], ["2", () => setLevel(1)], ["3", () => setLevel(2)],
+  ["f", toggleEnds], [" ", togglePause], ["r", reset]
+]);
+
+window.addEventListener("keydown", (event) => {
+  if (event.altKey || event.ctrlKey || event.metaKey) return;
+  const action = keys.get(event.key.toLowerCase());
+  if (!action) return;
+  event.preventDefault();
+  if (!event.repeat) action();
+});
+
+draw();
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>

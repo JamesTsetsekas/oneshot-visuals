@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Straight-Line Linkage</title>
+<link rel="icon" href="data:,">
+<style>
+  html,body { width:100%; height:100%; }
+  body { margin:0; overflow:hidden; background:#0b1519; }
+  svg { display:block; width:100%; height:100%; }
+  text { font-family:system-ui,"Segoe UI",sans-serif; font-variant-numeric:tabular-nums; }
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="art-title art-desc">
+  <title id="art-title">Straight-Line Linkage</title>
+  <desc id="art-desc">A bronze and silver Peaucellier–Lipkin linkage rocks around two ground pivots on a dark machined plate. Its rhombus drives an orange pin and a slim readout arm along a vertical ruler, leaving a fading trace.</desc>
+  <defs>
+    <radialGradient id="ambient" cx="0" cy="0" r="1" gradientTransform="translate(.5 .5) scale(.5 .5)">
+      <stop stop-color="#28383c"/><stop offset=".56" stop-color="#132125"/><stop offset="1" stop-color="#0b1519"/>
+    </radialGradient>
+    <linearGradient id="plinth" x2="0" y2="1">
+      <stop stop-color="#293c41"/><stop offset=".65" stop-color="#192a2f"/><stop offset="1" stop-color="#101e23"/>
+    </linearGradient>
+    <linearGradient id="frame" x1="0" y1="0" x2="1" y2=".83">
+      <stop stop-color="#718082"/><stop offset=".18" stop-color="#354b50"/><stop offset=".53" stop-color="#536668"/><stop offset="1" stop-color="#24383e"/>
+    </linearGradient>
+    <linearGradient id="surface" x1="0" y1="0" x2=".8" y2="1">
+      <stop stop-color="#354b50"/><stop offset=".27" stop-color="#23383f"/><stop offset=".7" stop-color="#1c2c32"/><stop offset="1" stop-color="#253b40"/>
+    </linearGradient>
+    <linearGradient id="field" x2="1" y2=".24">
+      <stop stop-color="#15292e"/><stop offset=".58" stop-color="#192d33"/><stop offset="1" stop-color="#15252b"/>
+    </linearGradient>
+    <linearGradient id="lines">
+      <stop stop-color="#93a8a3" stop-opacity=".29"/><stop offset=".77" stop-color="#93a8a3" stop-opacity=".13"/><stop offset="1" stop-color="#93a8a3" stop-opacity=".29"/>
+    </linearGradient>
+    <linearGradient id="mount" x2="0" y2="1">
+      <stop stop-color="#708887"/><stop offset=".19" stop-color="#445c60"/><stop offset=".65" stop-color="#2b424a"/><stop offset="1" stop-color="#182b33"/>
+    </linearGradient>
+    <linearGradient id="mount-edge" x2="0" y2="1">
+      <stop stop-color="#9eae9e"/><stop offset=".43" stop-color="#374e56"/><stop offset="1" stop-color="#637c79"/>
+    </linearGradient>
+    <linearGradient id="brass" gradientUnits="userSpaceOnUse" x2="0" y1="-17" y2="17">
+      <stop stop-color="#f4d6a0"/><stop offset=".14" stop-color="#d6af77"/><stop offset=".46" stop-color="#a77a51"/><stop offset=".65" stop-color="#bc9263"/><stop offset=".84" stop-color="#8c603f"/><stop offset="1" stop-color="#654430"/>
+    </linearGradient>
+    <linearGradient id="silver" gradientUnits="userSpaceOnUse" x2="0" y1="-14" y2="14">
+      <stop stop-color="#e3e6d6"/><stop offset=".14" stop-color="#adbfbb"/><stop offset=".47" stop-color="#799592"/><stop offset=".6" stop-color="#a5b7ae"/><stop offset=".85" stop-color="#587674"/><stop offset="1" stop-color="#345253"/>
+    </linearGradient>
+    <linearGradient id="crank-metal" gradientUnits="userSpaceOnUse" x2="0" y1="-16" y2="16">
+      <stop stop-color="#b5d1c9"/><stop offset=".18" stop-color="#779e9c"/><stop offset=".59" stop-color="#467176"/><stop offset=".85" stop-color="#34555e"/><stop offset="1" stop-color="#223c46"/>
+    </linearGradient>
+    <linearGradient id="bolt" x1=".12" x2=".79" y1="0" y2="1">
+      <stop stop-color="#e1e1c4"/><stop offset=".23" stop-color="#819e98"/><stop offset=".52" stop-color="#536d70"/><stop offset=".79" stop-color="#a1b3a5"/><stop offset="1" stop-color="#455c62"/>
+    </linearGradient>
+    <linearGradient id="pin" x1=".15" y1="0" x2=".82" y2="1">
+      <stop stop-color="#f7ebcc"/><stop offset=".38" stop-color="#c1c7ad"/><stop offset=".7" stop-color="#718d87"/><stop offset="1" stop-color="#405f63"/>
+    </linearGradient>
+    <linearGradient id="blade" gradientUnits="userSpaceOnUse" x2="0" y1="-23" y2="22">
+      <stop stop-color="#819e99"/><stop offset=".13" stop-color="#47676b"/><stop offset=".47" stop-color="#304a53"/><stop offset=".68" stop-color="#253b43"/><stop offset=".89" stop-color="#38565a"/><stop offset="1" stop-color="#71877b"/>
+    </linearGradient>
+    <pattern id="grain" width="83" height="11" patternUnits="userSpaceOnUse">
+      <path d="M0 .5H83 M0 5.5H53 M58 9.5H80" stroke="#b3b9a2" stroke-opacity=".034"/>
+      <path d="M10 2.5H72 M0 8.5H66" stroke="#071318" stroke-opacity=".19"/>
+    </pattern>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(34)">
+      <path d="M0 0V6" stroke="#c5bf9d" stroke-opacity=".34" stroke-width="2"/>
+    </pattern>
+    <filter id="soft" x="0" y="0" width="1600" height="900" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="13"/>
+    </filter>
+    <filter id="cast" x="240" y="252" width="960" height="423" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+    <path id="top" d="M196 129H1404L1424 149V751L1404 771H196L176 751V149Z"/>
+    <path id="readout" fill-rule="evenodd" d="M-21 0A21 21 0 0 1 0-21H52L72-13H514L547-6L564-2V2L547 6L514 13H72L52 21H0A21 21 0 0 1-21 0Z M105-6H509L534 0L509 6H105L94 0Z"/>
+    <g id="case-bolt">
+      <circle r="14" fill="#111f24" stroke="#687b76"/>
+      <circle cy="1" r="10.5" fill="url(#bolt)" stroke="#14292d"/>
+      <path d="m-4-2 4-2 4 2v4l-4 2-4-2z" fill="#12272e" stroke="#9aaaa0" stroke-width=".65"/>
+    </g>
+    <g id="ground">
+      <circle cy="3" r="33" fill="#101f25" stroke="#142329" stroke-width="2"/>
+      <circle r="32" fill="url(#hatch)" stroke="#7b9390" stroke-width="1"/>
+      <path d="M-31 0a31 31 0 0 1 62 0" fill="none" stroke="#c9cbac" stroke-opacity=".63"/>
+      <circle r="24" fill="url(#mount)" stroke="#14282d" stroke-width="2"/>
+      <circle r="20" fill="#634e38" stroke="#b39b70"/>
+    </g>
+    <g id="joint">
+      <circle cy="2" r="13.5" fill="#18272a"/>
+      <circle r="13.5" fill="url(#pin)" stroke="#344c4d" stroke-width="1.35"/>
+      <circle r="9.5" fill="none" stroke="#f4e6c3" stroke-opacity=".64"/>
+      <path d="M-5.4-1.45H5.4V1.45H-5.4Z" fill="#273f42"/>
+      <path d="M-5.4 1.65H5.4" stroke="#c6cbb5" stroke-width=".7"/>
+    </g>
+    <g id="long-bar">
+      <path d="M0-17H260A17 17 0 0 1 260 17H0A17 17 0 0 1 0-17Z" fill="url(#brass)" stroke="#594332" stroke-width="1.45"/>
+      <path d="M0-15.2H260A15 15 0 0 1 275-1" fill="none" stroke="#fff0c5" stroke-opacity=".73"/>
+      <path d="M28-7H233L242 0L233 7H28L19 0Z" fill="#7b583e" stroke="#ebc899" stroke-opacity=".69"/>
+      <path d="M28-4.8H233L239 0L233 4.8H28L22 0Z" fill="url(#brass)" opacity=".83"/>
+      <path d="M34-2H227" stroke="#f5d1a0" stroke-opacity=".45"/>
+      <path d="M26 12H234" stroke="#d9a879" stroke-opacity=".68"/>
+    </g>
+    <g id="short-bar">
+      <path d="M0-14H100A14 14 0 0 1 100 14H0A14 14 0 0 1 0-14Z" fill="url(#silver)" stroke="#243e43" stroke-width="1.35"/>
+      <path d="M0-12.5H100A12.5 12.5 0 0 1 112.5-1" stroke="#f1f1d9" stroke-opacity=".79" fill="none"/>
+      <path d="M22-3.5H79a3.5 3.5 0 0 1 0 7H22a3.5 3.5 0 0 1 0-7Z" fill="#335352" stroke="#a9bfb1" stroke-width=".7"/>
+      <path d="M24 2.5H77 M20 10.2H80" stroke="#d6e2ce" stroke-opacity=".44"/>
+    </g>
+    <g id="crank-bar">
+      <path d="M0-16H100A16 16 0 0 1 100 16H0A16 16 0 0 1 0-16Z" fill="url(#crank-metal)" stroke="#142830" stroke-width="1.4"/>
+      <path d="M0-14H100A14 14 0 0 1 114-1" stroke="#d5e0c6" stroke-opacity=".7" fill="none"/>
+      <path d="M23-5H78L84 0L78 5H23L17 0Z" fill="#213c46" stroke="#8fb4aa" stroke-width=".9"/>
+      <path d="M28 0H73" stroke="#abc2b2" stroke-opacity=".73"/>
+    </g>
+    <linearGradient id="tail-a" gradientUnits="userSpaceOnUse" x1="588" x2="588" y1="0" y2="1"/>
+    <linearGradient id="tail-b" gradientUnits="userSpaceOnUse" x1="588" x2="588" y1="0" y2="1"/>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#ambient)"/>
+  <use href="#top" transform="translate(6 25)" fill="#050b0e" opacity=".79" filter="url(#soft)"/>
+  <use href="#top" transform="translate(0 11)" fill="url(#plinth)" stroke="#0c1419" stroke-width="2"/>
+  <use href="#top" fill="url(#surface)" stroke="url(#frame)" stroke-width="2"/>
+  <use href="#top" fill="url(#grain)"/>
+  <path d="M198 138H1402L1415 151V749L1402 762H198L185 749V151Z" fill="none" stroke="#14272f"/>
+  <path d="M197 131H1403L1422 150 M178 749V150L196 132" fill="none" stroke="#a6afa1" stroke-opacity=".37"/>
+  <path d="M196 771H1404 M207 777H1393" stroke="#53685f" stroke-opacity=".43"/>
+  <use href="#case-bolt" x="216" y="169"/><use href="#case-bolt" x="1384" y="169"/>
+  <use href="#case-bolt" x="216" y="731"/><use href="#case-bolt" x="1384" y="731"/>
+  <path d="M260 161H1339 M260 739H1339" stroke="#102429" stroke-width="2"/>
+  <path d="M260 162H1339 M260 740H1339" stroke="#8d9e8e" stroke-opacity=".24"/>
+
+  <path d="M252 186H1334L1355 207V693L1334 714H252L230 692V208Z" fill="#132329" stroke="#526761" stroke-width="1.5"/>
+  <path d="M253 191H1332L1350 209V690L1332 709H253L235 690V210Z" fill="url(#field)" stroke="#0e1d23" stroke-width="2"/>
+  <path d="M248 195H1335 M248 705H1335" stroke="#b2c2a9" stroke-opacity=".16"/>
+
+  <g id="scale-grid" fill="none" shape-rendering="crispEdges"></g>
+  <path d="M583 210H593 M583 690H593" stroke="#acc2b7" stroke-width="1.5"/>
+  <path id="datum" d="M588 210V690" stroke="#b0c3b9" stroke-width="1.25"/>
+
+  <path d="M1197 197H1326L1344 215V685L1326 703H1197Z" fill="#182b31" stroke="#4d6666"/>
+  <path d="M1205 208H1324L1334 218V682L1324 692H1205Z" fill="url(#surface)" stroke="#0e1f25" stroke-width="1.4"/>
+  <path d="M1205 209H1324L1334 219 M1206 691H1324L1333 682" stroke="#aec0ac" stroke-opacity=".29" fill="none"/>
+  <rect x="1217" y="244" width="102" height="412" rx="4" fill="#14272d" stroke="#475f61"/>
+  <g id="ribs"></g>
+  <use href="#case-bolt" x="1267" y="225"/><use href="#case-bolt" x="1267" y="675"/>
+
+  <path d="M244 449C244 418 269 392 300 392C323 392 331 405 350 405C369 405 378 392 400 392C432 392 456 418 456 449C456 480 432 506 400 506C378 506 369 493 350 493C331 493 323 506 300 506C269 506 244 480 244 449Z" transform="translate(3 6)" fill="#0a181d" opacity=".75"/>
+  <path d="M244 449C244 418 269 392 300 392C323 392 331 405 350 405C369 405 378 392 400 392C432 392 456 418 456 449C456 480 432 506 400 506C378 506 369 493 350 493C331 493 323 506 300 506C269 506 244 480 244 449Z" fill="url(#mount)" stroke="url(#mount-edge)" stroke-width="1.4"/>
+  <path d="M260 427C281 393 310 400 333 411Q350 419 367 411C393 397 423 397 442 427" stroke="#e0d9b2" stroke-opacity=".33" fill="none"/>
+  <path d="M350 422V476" stroke="#263e45" stroke-width="2"/>
+  <path d="M352 423V475" stroke="#94a9a0" stroke-opacity=".28"/>
+  <use href="#ground" x="300" y="450"/><use href="#ground" x="400" y="450"/>
+  <g font-size="20" font-weight="650" text-anchor="middle" fill="#ebdfc4">
+    <text x="293" y="499">O</text><text x="397" y="499">Q</text>
+  </g>
+
+  <g id="dial" fill="none">
+    <path d="M475 320.096189 A150 150 0 0 1 475 579.903811" stroke="#aec3b7" stroke-opacity=".62" stroke-width="1.35"/>
+    <path d="M479 313.167986 A158 158 0 0 1 479 586.832014" stroke="#6f918c" stroke-opacity=".34"/>
+    <path id="dial-ticks" stroke="#b1c3b3" stroke-width="1.6"/>
+    <g fill="#d8e0cc" font-size="16" font-weight="570" text-anchor="middle">
+      <text x="449" y="264">+60</text><text x="531" y="470">0</text><text x="449" y="646">-60</text>
+    </g>
+  </g>
+  <g id="needle">
+    <path d="M94-1.25H138V-5L151 0L138 5V1.25H94Z" fill="#ddc499" stroke="#6d644b" stroke-width=".8"/>
+    <path d="M161 0H168" stroke="#ddc499" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <g id="shadow" filter="url(#cast)" opacity=".65">
+    <g transform="translate(6 8)" fill="#060e12">
+      <use id="blade-shadow" href="#readout"/>
+      <path id="link-shadow" fill="none" stroke="#060e12" stroke-width="32" stroke-linecap="round"/>
+    </g>
+  </g>
+  <g fill="none" stroke-width="4.5" stroke-linecap="round">
+    <path id="trail-a" stroke="url(#tail-a)"/>
+    <path id="trail-b" stroke="url(#tail-b)"/>
+  </g>
+  <g id="indicator">
+    <use href="#readout" fill="url(#blade)" stroke="#121f25" stroke-width="1.7"/>
+    <path d="M20-19.5H51.5L71.5-11.5H514L547-4.7L561-2" fill="none" stroke="#bbcac0" stroke-opacity=".75"/>
+    <path d="M95 .8L105 7.1H510L536 .7" fill="none" stroke="#90a9a1" stroke-opacity=".56"/>
+    <path d="M557 0H581" stroke="#c5d3be" stroke-width="1.35"/>
+    <text x="40" y="6.5" font-size="20" font-weight="700" text-anchor="middle" fill="#eee5cf">P</text>
+  </g>
+
+  <g id="links">
+    <use id="ob" href="#long-bar"/><use id="oa" href="#long-bar"/>
+    <use id="qc" href="#crank-bar"/>
+    <use id="cb" href="#short-bar"/><use id="bp" href="#short-bar"/>
+    <use id="ac" href="#short-bar"/><use id="pa" href="#short-bar"/>
+  </g>
+  <g id="pins">
+    <g transform="translate(300 450)">
+      <circle r="18" fill="url(#pin)" stroke="#493c2d" stroke-width="1.6"/>
+      <use href="#joint"/>
+    </g>
+    <g transform="translate(400 450)">
+      <circle r="17" fill="url(#pin)" stroke="#263d3e" stroke-width="1.5"/>
+      <use href="#joint"/>
+    </g>
+    <use id="joint-a" href="#joint"/><use id="joint-b" href="#joint"/><use id="joint-c" href="#joint"/>
+    <g id="joint-p">
+      <circle cy="2" r="16" fill="#15252b"/>
+      <circle r="15.25" fill="#213339" stroke="#4d392b" stroke-width="1.5"/>
+      <circle r="11.5" fill="#243237" stroke="#ff8651" stroke-width="3.1"/>
+      <circle r="4.5" fill="#ff8651"/>
+      <path d="M-8.5-7.5A11.3 11.3 0 0 1 3.5-10.8" fill="none" stroke="#ffd0a0" stroke-width="1.1"/>
+    </g>
+  </g>
+</svg>
+<script>
+  const duration = 6;
+  const historyLength = 1.5;
+  const get = id => document.getElementById(id);
+  const set = (node, name, value) => node.setAttribute(name, value);
+  const wrap = t => ((t % duration) + duration) % duration;
+  const radians = degrees => degrees * Math.PI / 180;
+  const phase = t => radians(60) * Math.sin(2 * Math.PI * wrap(t) / duration);
+  const strokeY = t => 450 - 288 * Math.tan(phase(t) / 2);
+  const O = {x:300, y:450};
+  const Q = {x:400, y:450};
+
+  const svgNode = (tag, attributes, parent) => {
+    const node = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (const [name, value] of Object.entries(attributes)) set(node, name, value);
+    parent.appendChild(node);
+    return node;
+  };
+
+  const grid = get("scale-grid");
+  let gridLines = "";
+  let ticks = "";
+  let vernier = "";
+  for (let y = 210; y <= 690; y += 40) {
+    gridLines += "M603 " + y + "H1135";
+    ticks += "M577 " + y + "H600";
+  }
+  for (let x = 628; x <= 1128; x += 40) {
+    gridLines += "M" + x + " 210V690";
+  }
+  for (let y = 210; y <= 690; y += 10) {
+    vernier += "M" + (y % 40 === 10 ? 1146 : 1152) + " " + y + "H1166";
+  }
+  svgNode("path", {d:gridLines, stroke:"url(#lines)"}, grid);
+  svgNode("path", {d:ticks, stroke:"#b0c3b9", "stroke-opacity":".75"}, grid);
+  svgNode("path", {d:vernier + "M1166 210V690", stroke:"#829f98", "stroke-opacity":".58"}, grid);
+
+  const ribs = get("ribs");
+  let channels = "";
+  let edges = "";
+  for (let x = 1228; x <= 1308; x += 10) {
+    channels += "M" + x + " 252V648";
+    edges += "M" + (x + 2) + " 253V647";
+  }
+  svgNode("path", {d:channels, stroke:"#09191f", "stroke-width":3, "stroke-linecap":"round"}, ribs);
+  svgNode("path", {d:edges, stroke:"#7f9791", "stroke-opacity":".35"}, ribs);
+
+  const polar = (radius, angle) => [Q.x + radius * Math.cos(angle), Q.y - radius * Math.sin(angle)];
+  let dialTicks = "";
+  for (let degrees = -60; degrees <= 60; degrees += 15) {
+    const angle = radians(degrees);
+    const start = polar(degrees % 30 === 0 ? 136 : 141, angle);
+    const end = polar(150, angle);
+    dialTicks += "M" + start.join(" ") + "L" + end.join(" ");
+  }
+  set(get("dial-ticks"), "d", dialTicks);
+
+  const makeTrail = name => {
+    const gradient = get("tail-" + name);
+    return {
+      gradient,
+      path:get("trail-" + name),
+      stops:Array.from({length:15}, () => svgNode("stop", {"stop-color":"#ff8651"}, gradient))
+    };
+  };
+  const trailA = makeTrail("a");
+  const trailB = makeTrail("b");
+  function renderTrail(trail, start, end, historyStart) {
+    const y1 = strokeY(start);
+    const y2 = strokeY(end);
+    if (Math.abs(y2 - y1) < 0.001) {
+      set(trail.path, "d", "");
+      return;
+    }
+    set(trail.gradient, "y1", y1);
+    set(trail.gradient, "y2", y2);
+    set(trail.path, "d", "M588 " + y1 + "V" + y2);
+    trail.stops.forEach((stop, index) => {
+      const time = start + (end - start) * index / (trail.stops.length - 1);
+      const offset = (strokeY(time) - y1) / (y2 - y1);
+      set(stop, "offset", Math.max(0, Math.min(1, offset)));
+      set(stop, "stop-opacity", Math.pow(Math.max(0, (time - historyStart) / historyLength), 1.55));
+    });
+  }
+
+  const bars = ["oa","ob","qc","ac","cb","bp","pa"].map(get);
+  const jointA = get("joint-a");
+  const jointB = get("joint-b");
+  const jointC = get("joint-c");
+  const jointP = get("joint-p");
+  const blade = get("indicator");
+  const bladeShadow = get("blade-shadow");
+  const linkShadow = get("link-shadow");
+  const needle = get("needle");
+  const move = (node, point) => set(node, "transform", "translate(" + point.x + " " + point.y + ")");
+  const orient = (node, from, to) => {
+    const angle = Math.atan2(to.y - from.y, to.x - from.x) * 180 / Math.PI;
+    set(node, "transform", "translate(" + from.x + " " + from.y + ") rotate(" + angle + ")");
+  };
+
+  function render(t) {
+    const psi = phase(t);
+    const [cx, cy] = polar(100, psi);
+    const C = {x:cx, y:cy};
+    const dx = C.x - O.x;
+    const dy = C.y - O.y;
+    const distance = Math.hypot(dx, dy);
+    const along = (260 ** 2 - 100 ** 2 + distance ** 2) / (2 * distance);
+    const across = Math.sqrt(260 ** 2 - along ** 2);
+    const foot = {x:O.x + along * dx / distance, y:O.y + along * dy / distance};
+    // The perpendicular used for A points upward because C is always right of O.
+    const A = {x:foot.x + across * dy / distance, y:foot.y - across * dx / distance};
+    const B = {x:foot.x - across * dy / distance, y:foot.y + across * dx / distance};
+    const P = {x:588, y:strokeY(t)};
+
+    const links = [[O,A], [O,B], [Q,C], [A,C], [C,B], [B,P], [P,A]];
+    let silhouette = "";
+    links.forEach(([from,to], index) => {
+      orient(bars[index], from, to);
+      silhouette += "M" + from.x + " " + from.y + "L" + to.x + " " + to.y;
+    });
+    set(linkShadow, "d", silhouette);
+    move(jointA, A);
+    move(jointB, B);
+    move(jointC, C);
+    move(jointP, P);
+    move(blade, P);
+    move(bladeShadow, P);
+    orient(needle, Q, C);
+
+    const start = t - historyLength;
+    const reversal = 1.5 + 3 * (Math.floor((start - 1.5) / 3) + 1);
+    if (reversal < t) {
+      renderTrail(trailA, start, reversal, start);
+      renderTrail(trailB, reversal, t, start);
+    } else {
+      renderTrail(trailA, start, t, start);
+      set(trailB.path, "d", "");
+    }
+  }
+
+  const query = new URLSearchParams(location.search);
+  if (query.has("t")) {
+    const time = Number(query.get("t"));
+    render(Number.isFinite(time) ? wrap(time) : 0);
+  } else {
+    const startTime = performance.now();
+    render(0);
+    function frame(now) {
+      render(wrap((now - startTime) / 1000));
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+</script>
+</body>
+</html>

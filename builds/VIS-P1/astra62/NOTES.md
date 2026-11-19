@@ -1,0 +1,3 @@
+﻿I treated the specified pond radius as including its coping and placed the lantern finials at z = 1.6. The specimen is a citrus tree. Foliage shadows use grouped silhouettes.
+
+The SVG parses, its internal references resolve, and the file is 227,219 bytes. Chrome screenshots matched across disk, server root, and sub-path at 640×360. At 1600×1000, one default-renderer screenshot had a different hash. Repeating the comparison with software rendering produced identical screenshots and no subresource requests. The cause of the initial difference is unverified. I did not measure exact foreground coverage or capture browser console messages.

@@ -1,0 +1,134 @@
+﻿<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Ripple Rail</title>
+<style>
+*{box-sizing:border-box}body{margin:0;overflow:hidden;background:#202826}#stage{display:block;width:100vw;height:100vh;touch-action:none;user-select:none;font-family:"Segoe UI",Arial,sans-serif}.mono{font-family:Consolas,"Courier New",monospace}.cap{font-size:13px;font-weight:600;letter-spacing:2px}.tiny{font-size:12px;letter-spacing:1px}.ctl{cursor:pointer;outline:none}.ctl .face{fill:#35403c;stroke:#67746b}.ctl:hover .face{fill:#45534c}.ctl[aria-pressed=true] .face{fill:#f9cb68;stroke:#ffd989}.ctl[aria-pressed=true] text{fill:#252d28}.ctl:focus-visible .face{stroke:#fffbea;stroke-width:4}.target{cursor:grab}.target:active,.grabbing,.grabbing *{cursor:grabbing!important}.ring{fill:none;stroke:#1a5355;stroke-width:2;visibility:hidden}.hover .ring,.held .ring{visibility:visible}.held .ring{stroke:#ab4d18;stroke-width:3}
+</style></head><body>
+<svg xmlns="http://www.w3.org/2000/svg" id="stage" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" role="group" aria-labelledby="title desc">
+<title id="title">Ripple Rail</title><desc id="desc">An interactive instrument with twenty-five coupled pendulums suspended above a pale ruled field. Drag a bob to launch a wave. The control panel adjusts damping, boundary conditions and playback.</desc>
+<defs>
+<linearGradient id="paper" x2=".22" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#f1f1de"/><stop offset=".55" stop-color="#e4e7d5"/><stop offset="1" stop-color="#d7ddc9"/></linearGradient>
+<linearGradient id="metal" x2="0" y2="1"><stop stop-color="#e8ecda"/><stop offset=".17" stop-color="#c9cebb"/><stop offset=".42" stop-color="#88968a"/><stop offset=".49" stop-color="#647367"/><stop offset=".54" stop-color="#c9ceba"/><stop offset=".83" stop-color="#a3ad9d"/><stop offset="1" stop-color="#637469"/></linearGradient>
+<linearGradient id="lens" x1="0" y1="0" x2=".4" y2="1"><stop stop-color="#fff" stop-opacity=".70"/><stop offset=".29" stop-color="#fff" stop-opacity=".18"/><stop offset=".52" stop-color="#fff" stop-opacity="0"/><stop offset=".87" stop-color="#592b19" stop-opacity=".23"/><stop offset="1" stop-color="#512608" stop-opacity=".51"/></linearGradient>
+<linearGradient id="scale"><stop stop-color="#80bde0"/><stop offset=".5" stop-color="#f2cc72"/><stop offset="1" stop-color="#f38554"/></linearGradient>
+<pattern id="grid" width="56" height="52" patternUnits="userSpaceOnUse" x="16" y="100"><path d="M56 0H0V52" fill="none" stroke="#687968" stroke-opacity=".22"/><path d="M26 26h4m-2 -2v4" stroke="#7d8b76" stroke-opacity=".26"/></pattern>
+<g id="bolt"><circle r="6" fill="#445249"/><circle cy="-1" r="4.7" fill="url(#metal)"/><path d="m-2.8 1.3 5.6-3" stroke="#536258" stroke-width="1.6"/></g>
+<g id="pin"><rect x="-7" y="-6" width="14" height="15" rx="4" fill="#39463e"/><circle r="5.4" fill="url(#metal)" stroke="#526255"/><circle r="2.15" fill="#34443c"/></g>
+<clipPath id="chamber"><rect x="24" y="80" width="1552" height="634" rx="10"/></clipPath>
+</defs>
+<rect width="1600" height="900" fill="#202826"/>
+<!-- Panel masthead -->
+<g transform="translate(31 20)" fill="none" stroke="#f3ca70" stroke-width="3.2" stroke-linecap="round"><path d="M0 6v16M8 2v23M16 4v23M24 9v18M32 12v12"/><g fill="#f3ca70" stroke="none"><circle cy="22" r="3.5"/><circle cx="8" cy="25" r="3.5"/><circle cx="16" cy="27" r="3.5"/><circle cx="24" cy="27" r="3.5"/><circle cx="32" cy="24" r="3.5"/></g></g>
+<text x="86" y="52" fill="#f2f1e5" font-size="42" font-weight="650" letter-spacing="-1.8">Ripple Rail</text>
+<path d="M314 23v31" stroke="#657168"/>
+<text x="337" y="43" class="mono cap" fill="#bfc9be">COUPLED PENDULUM INSTRUMENT</text>
+<g class="mono cap"><text x="1460" y="43" text-anchor="end" fill="#bfc9be">KINETICS LAB</text><rect x="1483" y="20" width="88" height="33" rx="16" fill="none" stroke="#69776e"/><text x="1527" y="42" text-anchor="middle" fill="#f0cb7a">RR–25</text></g>
+<rect x="20" y="76" width="1560" height="643" rx="13" stroke="#556158" fill="#131b18"/>
+<g clip-path="url(#chamber)">
+<rect x="24" y="80" width="1552" height="634" fill="url(#paper)"/>
+<rect x="80" y="116" width="1440" height="539" fill="url(#grid)"/>
+<g id="rulers"></g>
+<path d="M81 620H1519" stroke="#697b68" stroke-dasharray="6 5"/>
+<rect x="87" y="92" width="1426" height="21" rx="5" fill="#50604e" opacity=".22"/>
+<rect x="88" y="89" width="1424" height="20" rx="4" fill="url(#metal)" stroke="#546054"/>
+<path d="M95 92h1410" stroke="#f9f8e6"/>
+<use href="#bolt" x="101" y="100"/><use href="#bolt" x="1499" y="100"/>
+<g id="rods"></g><g id="pins"></g>
+<path id="wave" fill="none" stroke="#337c7b" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="bobs"></g>
+<path d="M40 659H1560" stroke="#9fae97"/>
+<g class="mono" font-size="13" fill="#405246" letter-spacing="1"><path d="M57 686h40" stroke="#337c7b" stroke-width="3"/><circle cx="77" cy="686" r="4" fill="#337c7b"/><text x="110" y="691">WAVE PROFILE</text>
+
+<text x="1538" y="691" text-anchor="end">25 BOBS  /  L = 520</text></g></g>
+<g class="mono" fill="#c3cec4"><circle id="lamp" cx="39" cy="746" r="4.5" fill="#eacc7c"/><text id="run" x="56" y="751" class="cap">RUNNING</text>
+<text x="1550" y="751" text-anchor="end" class="tiny">ANGULAR VELOCITY</text><text x="1249" y="751" class="tiny">−</text><rect x="1268" y="740" width="109" height="8" rx="4" fill="url(#scale)"/><text x="1385" y="751" class="tiny">+</text></g>
+<path d="M28 768h1544" stroke="#536057"/>
+<g class="mono cap" fill="#bdc8bd">
+<text x="36" y="801">DAMPING</text><text id="gamma" x="157" y="801" fill="#f4d387" letter-spacing=".4">g = 0.25</text>
+<text x="361" y="801">ENDS</text><text id="transport" x="649" y="801">TRANSPORT</text><text x="1274" y="801">SYSTEM ENERGY</text>
+</g>
+<path d="M328 788v82m287-82v82m621-82v82" stroke="#546057"/>
+<g id="controls"></g><g id="hint" fill="#c9d3c8"><path d="M1070 840h24m-20 -4-4 4 4 4m16-8 4 4-4 4" fill="none" stroke="#eccc83" stroke-width="1.5"/><text x="1104" y="846" font-size="17">Drag a bob</text></g>
+<text class="mono" id="energy" x="1274" y="851" fill="#f4d488" font-size="34">E = 0.00</text><text x="1276" y="873" class="mono tiny" fill="#b6c3b8">rad²/s²</text>
+</svg>
+<script>
+"use strict";
+const $=id=>document.getElementById(id),stage=$("stage"),ns=stage.namespaceURI;
+function el(tag,attrs,parent){const n=document.createElementNS(ns,tag);for(const [k,v] of Object.entries(attrs))n.setAttribute(k,v);parent.append(n);return n}
+function label(parent,x,y,str,attrs={}){const n=el("text",{x,y,...attrs},parent);n.textContent=str;return n}
+const count=25,L=520,k=60,h=1/480,px=Array.from({length:count},(_,i)=>128+56*i);
+const a=new Float64Array(count),v=new Float64Array(count),bx=new Float64Array(count),by=new Float64Array(count);
+const rods=[],bodies=[],enamels=[],colors=[],ctl={};
+for(let i=0;i<count;i++){
+ const x=px[i];
+ if(i%2===0)label($("rulers"),x+14,134,String(i+1).padStart(2,"0"),{"text-anchor":"middle",class:"mono tiny",fill:"#526352"});
+ rods.push(el("g",{},$("rods")));
+ el("path",{d:"M1 6V513",stroke:"#53634b","stroke-width":4,opacity:.17},rods[i]);
+ el("path",{d:"M0 0V520",stroke:"#44594f","stroke-width":2.8},rods[i]);
+ el("path",{d:"M-.65 7V506",stroke:"#bac7ad","stroke-width":.85},rods[i]);
+ el("use",{href:"#pin",x,y:100},$("pins"));
+ const b=el("g",{},$("bobs"));bodies.push(b);
+ el("circle",{r:24,class:"ring"},b);
+ el("circle",{cy:2,r:18,fill:"#515f4e",opacity:.28},b);
+ el("circle",{r:18,fill:"url(#metal)",stroke:"#31473e","stroke-width":1.5},b);
+ enamels.push(el("circle",{r:15.2,fill:"#edbd59",stroke:"#645d42"},b));
+ el("circle",{r:15.2,fill:"url(#lens)"},b);
+ el("path",{d:"M-10 -7Q-6 -13 2 -12",fill:"none",stroke:"#fff9dd",opacity:.85,"stroke-linecap":"round"},b);
+ el("circle",{r:4.2,fill:"#524f3d",stroke:"#ffe7aa","stroke-width":1},b);
+ el("circle",{r:1.7,cy:-.6,fill:"#b3b19a"},b);
+ el("circle",{r:30,fill:"transparent",class:"target"},b);
+}
+for(let y=152;y<=620;y+=26){
+ const major=(620-y)%104===0,len=major?14:6;
+ el("path",{d:"M72 "+y+"h"+len+" M1528 "+y+"h-"+len,stroke:"#7f8f7b"},$("rulers"));
+ if(major)label($("rulers"),66,y+4,String(y-100),{"text-anchor":"end",class:"mono tiny",fill:"#50614e"});
+}
+let level=2,fixed=true,paused=false,grab=-1,pid=null,point={x:0,y:0},hover=-1,seen=false,acc=0,last=performance.now();
+const gs=[0,0,.25,1.2]; let decay=Math.exp(-gs[level]*h/2);
+function button(id,x,w,key,name,action){
+ const b=el("g",{role:"button",tabindex:"0",class:"ctl",transform:"translate("+x+" 814)","aria-label":name+" ("+key+")"},$("controls"));
+ el("rect",{width:w,height:52,rx:6,class:"face"},b);
+ if(name){const kw=key==="Space"?65:31;el("rect",{x:10,y:12,width:kw,height:28,rx:4,fill:"none",stroke:"#8b9a8d"},b);label(b,10+kw/2,31,key,{class:"mono","font-size":15,fill:"#f2f2e4","text-anchor":"middle"});b.caption=label(b,kw+22,33,name,{fill:"#f6f5ea","font-size":20});}
+ else label(b,w/2,34,key,{class:"mono","font-size":23,"text-anchor":"middle",fill:"#f2f2e4"});
+ b.addEventListener("click",action);b.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();if(!e.repeat)action()}});ctl[id]=b;
+}
+function touched(){if(!seen){seen=true;$("hint").setAttribute("visibility","hidden")}}
+function ui(){for(let i=1;i<4;i++)ctl[i].setAttribute("aria-pressed",i===level);$("gamma").textContent="g = "+gs[level].toFixed(2);ctl.f.caption.textContent=fixed?"Fixed":"Free";ctl.f.setAttribute("aria-label","Ends "+ctl.f.caption.textContent+" (F)");ctl.p.caption.textContent=paused?"Resume":"Pause";ctl.p.setAttribute("aria-label",ctl.p.caption.textContent+" (Space)");$("transport").textContent=paused?"TRANSPORT  /  PAUSED":"TRANSPORT";$("run").textContent=paused?"PAUSED":"RUNNING";$("lamp").setAttribute("fill",paused?"#a5b0a8":"#eacc7c");render()}
+function act(id){touched();if(+id>=1&&+id<=3){level=+id;decay=Math.exp(-gs[level]*h/2)}if(id==="f")fixed=!fixed;if(id==="p"){paused=!paused;acc=0;last=performance.now()}if(id==="r"){release();a.fill(0);v.fill(0);acc=0}ui()}
+for(let i=1;i<=3;i++){button(i,36+(i-1)*86,76,String(i),"",()=>act(i));ctl[i].setAttribute("aria-label","Damping level "+i)}
+button("f",361,203,"F","Fixed",()=>act("f"));button("p",649,221,"Space","Pause",()=>act("p"));button("r",886,159,"R","Reset",()=>act("r"));
+window.addEventListener("keydown",e=>{const key=e.key.toLowerCase(),id=key===" "?"p":key;if(["1","2","3","f","p","r"].includes(id)&&!e.altKey&&!e.ctrlKey&&!e.metaKey){e.preventDefault();if(!e.repeat)act(id)}});
+function pose(){if(grab<0)return;a[grab]=Math.max(-Math.PI*4/9,Math.min(Math.PI*4/9,Math.atan2(point.x-px[grab],point.y-100)));v[grab]=0}
+function accel(i){const l=i?a[i-1]:(fixed?0:a[i]),r=i<24?a[i+1]:(fixed?0:a[i]);return -4*Math.sin(a[i])+k*(l+r-2*a[i])}
+function step(){pose();for(let i=0;i<count;i++)if(i!==grab)v[i]=v[i]*decay+h*.5*accel(i);
+ for(let i=0;i<count;i++)if(i!==grab)a[i]+=h*v[i];
+ for(let i=0;i<count;i++)if(i!==grab)v[i]=(v[i]+h*.5*accel(i))*decay}
+function render(){let E=0,d="";
+ for(let i=0;i<count;i++){
+ bx[i]=px[i]+L*Math.sin(a[i]);by[i]=100+L*Math.cos(a[i]);
+ rods[i].setAttribute("transform","translate("+px[i]+" 100) rotate("+(-a[i]*180/Math.PI).toFixed(4)+")");
+ bodies[i].setAttribute("transform","translate("+bx[i].toFixed(3)+" "+by[i].toFixed(3)+")");
+ const u=Math.min(1,Math.abs(v[i])*1.5),end=v[i]<0?[77,154,208]:[237,102,49],rgb=[237,189,89].map((c,j)=>Math.round(c+(end[j]-c)*u)).join(",");
+ if(rgb!==colors[i]){enamels[i].setAttribute("fill","rgb("+rgb+")");colors[i]=rgb}
+ E+=.5*v[i]**2+4*(1-Math.cos(a[i]))+(i?30*(a[i]-a[i-1])**2:0);
+ }
+ if(fixed)E+=30*(a[0]**2+a[24]**2);
+ d="M"+bx[0]+" "+by[0];for(let i=0;i<24;i++){const j=i+1,l=Math.max(0,i-1),r=Math.min(24,j+1);d+=" C"+(bx[i]+(bx[j]-bx[l])/6)+" "+(by[i]+(by[j]-by[l])/6)+" "+(bx[j]-(bx[r]-bx[i])/6)+" "+(by[j]-(by[r]-by[i])/6)+" "+bx[j]+" "+by[j]}
+ $("wave").setAttribute("d",d);$("energy").textContent="E = "+E.toFixed(2);
+}
+function locate(e){return new DOMPoint(e.clientX,e.clientY).matrixTransform(stage.getScreenCTM().inverse())}
+function nearest(p){let best=-1,d=900.00001;for(let i=0;i<count;i++){const q=(p.x-bx[i])**2+(p.y-by[i])**2;if(q<d){best=i;d=q}}return best}
+function highlight(i){if(hover===i)return;if(hover!==-1)bodies[hover].classList.remove("hover");hover=i;if(i!==-1)bodies[i].classList.add("hover");stage.style.cursor=i!==-1?"grab":""}
+stage.addEventListener("pointerdown",e=>{if(pid!==null||e.button!==0)return;point=locate(e);grab=nearest(point);if(grab<0)return;e.preventDefault();touched();pid=e.pointerId;stage.setPointerCapture(pid);highlight(grab);bodies[grab].classList.add("held");stage.classList.add("grabbing");pose();render()});
+stage.addEventListener("pointermove",e=>{if(pid!==null&&pid!==e.pointerId)return;point=locate(e);if(grab!==-1){pose();render()}else highlight(nearest(point))});
+function release(){if(grab===-1)return;bodies[grab].classList.remove("held");stage.classList.remove("grabbing");const id=pid;pid=null;grab=-1;if(stage.hasPointerCapture(id))stage.releasePointerCapture(id);highlight(-1)}
+stage.addEventListener("pointerup",e=>{if(e.pointerId===pid){point=locate(e);pose();release();render();if(e.pointerType==="mouse")highlight(nearest(point))}});
+for(const type of ["pointercancel","lostpointercapture"])stage.addEventListener(type,e=>{if(e.pointerId===pid)release()});
+stage.addEventListener("pointerleave",()=>{if(grab<0)highlight(-1)});
+let active=false;
+function frame(now){const elapsed=Math.min(.1,Math.max(0,(now-last)/1000));last=now;
+ if(!paused&&(active||grab!==-1||a.some(Boolean)||v.some(Boolean))){acc+=elapsed;while(acc>=h){step();acc-=h}render();active=a.some(Boolean)||v.some(Boolean)}
+ requestAnimationFrame(frame)}
+ui();requestAnimationFrame(frame);
+</script></body></html>
+
+

@@ -1,0 +1,758 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clear Skies Ledger</title>
+<link rel="icon" href="data:,">
+<style>
+  :root {
+    color-scheme: dark;
+    --ground: #0c131d;
+    --panel: #121d29;
+    --inset: #0f1925;
+    --line: #2a3949;
+    --rule: #223242;
+    --paper: #f5efe5;
+    --quiet: #aabac8;
+    --mint: #a8e1d5;
+    --gold: #f2c69b;
+    --mono: ui-monospace, "Cascadia Mono", Consolas, monospace;
+    font-family: system-ui, "Segoe UI", sans-serif;
+    font-size: 14px;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; overflow: hidden; color: var(--paper); background: var(--ground); }
+  button { font: inherit; color: inherit; cursor: pointer; }
+  button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; z-index: 2; }
+  .shell {
+    width: min(100%, 1920px);
+    height: 100dvh;
+    margin: 0 auto;
+    padding: clamp(18px, 3.2vh, 36px) clamp(30px, 4vw, 84px) clamp(12px, 2vh, 24px);
+    display: grid;
+    grid-template-rows: clamp(112px, 16.1vh, 174px) auto minmax(0, 1fr) auto auto;
+    gap: clamp(9px, 1.45vh, 16px);
+  }
+  .hero { position: relative; display: flex; align-items: center; isolation: isolate; }
+  .hero-art {
+    position: absolute; z-index: -1; right: 0; top: 50%;
+    width: min(38%, 570px); height: 119%; transform: translateY(-50%);
+    pointer-events: none;
+  }
+  .eyebrow, .overline, .axis, .footer, .metric-label {
+    font: 12px/1.3 var(--mono); letter-spacing: .075em;
+  }
+  .eyebrow { display: flex; align-items: center; gap: 10px; color: var(--mint); text-transform: uppercase; }
+  .eyebrow svg { width: 17px; height: 17px; flex: none; }
+  h1, h2, p { margin: 0; }
+  h1 {
+    margin: 5px 0 7px;
+    font: 400 clamp(50px, 7.4vh, 80px)/1.01 Georgia, "Times New Roman", serif;
+    letter-spacing: -.064em;
+  }
+  .takeaway { font-size: clamp(14px, 1.83vh, 19px); line-height: 1.34; color: #c4d0da; }
+  .takeaway strong { color: var(--paper); font-weight: 650; }
+  .controls, .ledger, .dock-card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; }
+  .controls {
+    display: flex; justify-content: space-between; align-items: center; gap: 10px;
+    min-height: clamp(49px, 6.7vh, 69px); padding: 7px clamp(10px, 1.1vw, 19px);
+  }
+  .control-groups, .cluster, .state { display: flex; align-items: center; }
+  .control-groups { gap: clamp(9px, 1vw, 17px); }
+  .cluster { gap: 5px; }
+  .cluster + .cluster { padding-left: clamp(9px, 1vw, 17px); border-left: 1px solid var(--line); }
+  .overline { color: var(--quiet); text-transform: uppercase; font-weight: 500; }
+  .sort-label { margin-right: 5px; }
+  .control {
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap;
+    min-height: 31px; border: 1px solid #344559; border-radius: 5px;
+    padding: 4px 8px; background: #172433; font-size: 12px; line-height: 1.2; font-weight: 650;
+  }
+  .control:hover { border-color: #839aa9; background: #223445; }
+  .control[aria-pressed="true"] { background: #284349; border-color: #638d8d; color: #e0f5ee; }
+  kbd {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 17px; min-height: 17px; padding: 0 2px;
+    border-radius: 3px; background: #0d1824; color: #cbd9e4; font: 12px/1 var(--mono);
+  }
+  [aria-pressed="true"] > kbd { background: #173136; color: #ceeee7; }
+  .state { gap: clamp(9px, 1vw, 17px); color: #d8e4ed; font-size: 12px; white-space: nowrap; }
+  .state span + span { border-left: 1px solid #3b4d5e; padding-left: clamp(9px, 1vw, 17px); }
+  .state b { color: var(--quiet); font-weight: 500; margin-right: 3px; }
+  .ledger { container-type: size; min-width: 0; }
+  .ledger-head {
+    --height: clamp(48px, 6.5vh, 72px);
+    height: var(--height); display: flex; justify-content: space-between; gap: 18px; align-items: center;
+    padding: 0 clamp(13px, 1.3vw, 23px); border-bottom: 1px solid var(--line);
+  }
+  .ledger-heading { display: flex; align-items: baseline; gap: clamp(8px, 1vw, 16px); white-space: nowrap; }
+  .ledger-heading h2 { font: 400 clamp(20px, 2.8vh, 29px)/1 Georgia, serif; letter-spacing: -.03em; }
+  .ledger-heading p { color: var(--quiet); font-size: 12px; }
+  .legend { display: flex; align-items: center; gap: 12px; color: #c5d3de; font-size: 12px; }
+  .legend-copy { text-align: right; line-height: 1.3; }
+  .legend-copy span { display: block; }
+  .legend-note { color: var(--quiet); }
+  .threshold { margin-right: 4px; color: var(--gold); }
+  .ramp-key {
+    width: clamp(145px, 14vw, 234px);
+    display: grid; gap: 3px; flex: none;
+    font: 12px/1.1 var(--mono); font-variant-numeric: tabular-nums;
+  }
+  .ramp { height: 8px; border: 1px solid #788797; border-radius: 3px; }
+  .ramp-ticks { position: relative; height: 12px; }
+  .ramp-ticks span { position: absolute; transform: translateX(-50%); }
+  .ramp-ticks span:first-child { transform: none; }
+  .ramp-ticks span:last-child { transform: translateX(-100%); }
+  .matrix { padding: 0 8px 0 0; }
+  table {
+    --head-h: clamp(29px, 3.85vh, 42px);
+    --foot-h: clamp(41px, 5.7vh, 60px);
+    --row-h: calc((100cqh - clamp(48px, 6.5vh, 72px) - var(--head-h) - var(--foot-h) - 2px) / 8);
+    --site-inset: clamp(13px, 1.3vw, 23px);
+    border-collapse: separate; border-spacing: 0; table-layout: fixed; width: 100%;
+    font-variant-numeric: tabular-nums;
+  }
+  .site-col { width: 12.7%; }
+  .elev-col { width: 6%; }
+  .bortle-col { width: 5.3%; }
+  .year-col { width: 6.6%; }
+  th, td { padding: 0; text-align: center; }
+  thead th {
+    height: var(--head-h); color: var(--quiet); background: var(--inset);
+    font: 12px/1.15 var(--mono); letter-spacing: .04em; text-transform: uppercase;
+    border-bottom: 1px solid var(--rule);
+  }
+  thead th:first-child, tbody th, .total-label { text-align: left; padding-left: var(--site-inset); }
+  thead th:nth-child(4), .year { border-right: 1px solid var(--line); }
+  thead th.month { cursor: default; }
+  thead .month.traced { color: var(--paper); background: #263a4b; box-shadow: inset 0 -2px var(--gold); }
+  tbody tr { height: var(--row-h); }
+  tbody tr[hidden] { display: none; }
+  tbody tr > * { border-bottom: 1px solid var(--rule); }
+  tbody tr:nth-child(even) > :nth-child(-n+4) { background: #162230; }
+  tbody tr { transition: opacity 130ms ease; }
+  tbody tr.muted { opacity: .35; }
+  tbody tr.selected > :nth-child(-n+4) { background: #20363d; }
+  tbody tr.selected th { box-shadow: inset 3px 0 var(--mint); }
+  .site-name {
+    white-space: nowrap; padding: 2px 0; text-align: left; background: transparent; border: 0;
+    font-size: clamp(13px, 1.62vh, 16px); font-weight: 650;
+  }
+  .site-name:hover, .site-name[aria-pressed="true"] { color: var(--mint); text-decoration: underline; text-underline-offset: 4px; }
+  .meta { color: #bccbd8; font: 13px/1 var(--mono); }
+  .year { color: var(--paper); font: 600 15px/1 var(--mono); }
+  .year.leader { color: var(--gold); font-weight: 800; }
+  .datum { position: relative; padding: 1px 2px; }
+  .datum:first-of-type { padding-left: 3px; }
+  .value {
+    width: 100%; height: calc(var(--row-h) - 5px); position: relative;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 0; border: 1px solid transparent; border-radius: 4px;
+    font: 650 clamp(14px, 1.95vh, 20px)/1 var(--mono);
+    color: var(--cell-ink); background: var(--cell);
+  }
+  .value .raw { display: none; }
+  [data-mode="deviation"] .value { font-size: clamp(13px, 1.72vh, 17px); gap: 1px; }
+  [data-mode="deviation"] .value .raw { display: block; font: 12px/1 var(--mono); }
+  .datum.traced .value { border-color: #bdcbd7; }
+  .value:hover, .value[data-active="true"] { border-color: #f6f3e9; box-shadow: inset 0 0 0 1px #0c131d; z-index: 1; }
+  .value:focus-visible, .value[data-active="true"] { outline: 2px solid var(--gold); outline-offset: 0; z-index: 3; }
+  .value[data-pin]::after {
+    content: ""; width: 6px; height: 6px; position: absolute; top: 4px; right: 5px;
+    transform: rotate(45deg); border: 1px solid currentColor; background: currentColor;
+  }
+  .value[data-pin="2"]::after { background: transparent; }
+  [data-mode="deviation"] .value[data-pin]::after { top: auto; bottom: 4px; }
+  [data-mode="deviation"] .value[data-low]::before {
+    content: ""; position: absolute; bottom: 4px; left: 5px;
+    border: 3px solid transparent; border-top: 5px solid currentColor; border-bottom: 0;
+  }
+  tfoot th, tfoot td { height: var(--foot-h); }
+  .total-label { font-size: 14px; font-weight: 700; }
+  .total-label span { margin-left: 8px; color: var(--quiet); font-weight: 400; font-size: 12px; }
+  .month-total { font: 650 clamp(15px, 2vh, 20px)/1 var(--mono); }
+  .month-total span { display: block; margin-top: 3px; font: 12px/1 var(--mono); }
+  .month-total.low { color: #b4d8f1; }
+  .month-total.high { color: var(--gold); }
+  tfoot td.traced { background: #223242; }
+  .dock { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(9px, 1vw, 16px); }
+  .dock-card {
+    min-width: 0; height: clamp(80px, 10.65vh, 110px);
+    padding: clamp(7px, 1vh, 12px) clamp(12px, 1.2vw, 21px);
+    display: grid; grid-template-rows: auto 1fr; gap: 4px;
+  }
+  .dock-head { display: flex; justify-content: space-between; align-items: center; gap: 6px; }
+  .dock-head h2 { color: var(--mint); }
+  .mini-controls { display: flex; align-items: center; gap: 4px; }
+  .mini-controls .control { min-height: 24px; padding: 2px 5px; }
+  .mini-controls kbd { background: transparent; min-height: 15px; min-width: 12px; }
+  .mini-controls .pin-action { margin-left: 4px; }
+  .dock-content { min-width: 0; align-self: center; display: flex; align-items: center; column-gap: 12px; }
+  .idle { color: var(--quiet); font-size: 13px; line-height: 1.3; }
+  .detail-name { min-width: 0; flex: 1; font-size: clamp(13px, 1.8vh, 16px); font-weight: 700; }
+  .detail-name span { display: block; color: #bbcbd8; font-size: 12px; font-weight: 450; }
+  .metric { padding-left: clamp(8px, 1vw, 16px); border-left: 1px solid var(--line); white-space: nowrap; }
+  .metric-label { color: var(--quiet); letter-spacing: .015em; }
+  .metric strong { display: block; margin-top: 2px; font: 650 clamp(16px, 2vh, 20px)/1.1 var(--mono); }
+  .pin-item { flex: 1; white-space: nowrap; }
+  .pin-item b { font-size: 13px; }
+  .pin-item span { display: block; color: #c5d3df; font-size: 12px; }
+  .pin-item i { color: var(--gold); font: 13px/1 var(--mono); margin-right: 5px; }
+  .difference strong { color: var(--gold); }
+  .footer {
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    letter-spacing: .012em; color: var(--quiet);
+  }
+  .footer strong { color: var(--paper); font-weight: 550; }
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden;
+    clip-path: inset(50%); white-space: nowrap;
+  }
+  @media (max-width: 1370px) {
+    .axis { letter-spacing: 0; }
+    .control { gap: 4px; padding-inline: 6px; }
+    .state { gap: 8px; }
+    .state span + span { padding-left: 8px; }
+  }
+</style>
+</head>
+<body>
+<main class="shell">
+  <header class="hero">
+    <svg class="hero-art" viewBox="0 0 550 177" preserveAspectRatio="xMaxYMid meet" aria-hidden="true">
+      <defs>
+        <linearGradient id="land" x2="0" y2="1">
+          <stop stop-color="#253e52"/><stop offset="1" stop-color="#0c131d"/>
+        </linearGradient>
+        <linearGradient id="air">
+          <stop stop-color="#0c131d" stop-opacity="0"/><stop offset=".45" stop-color="#152a3b"/><stop offset="1" stop-color="#0c131d" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="fade-left">
+          <stop stop-color="white" stop-opacity="0"/><stop offset=".24" stop-color="white"/>
+        </linearGradient>
+        <mask id="terrain-mask"><rect width="550" height="177" fill="url(#fade-left)"/></mask>
+      </defs>
+      <ellipse cx="305" cy="91" rx="237" ry="80" fill="url(#air)" opacity=".76"/>
+      <g fill="none" stroke="#6c91a6" stroke-width=".8">
+        <path d="M91 129C165 49 373 12 529 65M126 142C206 67 406 39 543 83" opacity=".35" stroke-dasharray="2 6"/>
+        <path d="M208 103C250 55 360 26 459 38c63 8 73 28 32 52-29 17-84 33-149 45" opacity=".52"/>
+        <circle cx="399" cy="64" r="34" opacity=".36"/>
+      </g>
+      <g fill="#a8e1d5">
+        <circle cx="140" cy="79" r="1"/><circle cx="230" cy="58" r="1.4"/><circle cx="274" cy="16" r="1"/>
+        <circle cx="305" cy="47" r="1.2"/><circle cx="469" cy="19" r="1.1"/><circle cx="518" cy="43" r="1.3"/>
+        <circle cx="449" cy="96" r="1"/><circle cx="338" cy="82" r="1.1"/><circle cx="187" cy="106" r="1"/>
+        <circle cx="245" cy="91" r=".9"/><circle cx="543" cy="106" r=".9"/>
+      </g>
+      <g fill="#f2c69b">
+        <path d="M399 39c-14 0-25 11-25 25s11 25 25 25c6 0 11-2 15-5-15 1-26-9-26-23 0-9 4-17 11-22z"/>
+        <path d="M315 26l1.6 4.4 4.4 1.6-4.4 1.6-1.6 4.4-1.6-4.4-4.4-1.6 4.4-1.6z"/>
+        <path d="M479 64l1 3 3 1-3 1-1 3-1-3-3-1 3-1z"/>
+      </g>
+      <g mask="url(#terrain-mask)">
+        <path fill="url(#land)" d="M0 165l71-16 44 4 53-21 34 8 31-14 29 4 46-33 28 16 17 1 39 22 42-12 29-24 27 14 15-1 45 25v39H0z"/>
+        <path fill="#101e2b" stroke="#46657b" stroke-width=".85" d="M0 170l82-15 37 4 79-26 25 4 25 10 60-12 36 9 39-14 18 5 37-16 30 14 18-7 37 15 27 4v33H0z"/>
+        <path fill="#0c1621" stroke="#344b5f" stroke-width=".8" d="M0 174l101-7 66 3 106-16 42 4 44-7 47 9 46-10 37 1 61 15v11H0z"/>
+        <path d="M274 123l34-26 28 16 17 1 39 22m44-14 27-22 27 14 15-1 45 25" stroke="#5e7a90" stroke-width=".9" fill="none"/>
+      </g>
+    </svg>
+    <div>
+      <p class="eyebrow">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" aria-hidden="true">
+          <circle cx="10" cy="10" r="6.5"/><path d="M10 0v5m0 10v5M0 10h5m10 0h5"/><circle cx="10" cy="10" r="1.5" fill="currentColor" stroke="none"/>
+        </svg>
+        8 observing sites <span aria-hidden="true">/</span> 12 months
+      </p>
+      <h1>Clear Skies Ledger</h1>
+      <p class="takeaway"><strong>Ember Dunes</strong> leads the year with 298 clear nights, while <strong>Ninefold Mesa</strong> sits highest at 2,410 m.</p>
+    </div>
+  </header>
+
+  <section class="controls" aria-label="Ledger controls">
+    <div class="control-groups">
+      <div class="cluster" role="group" aria-label="Sort sites">
+        <span class="overline sort-label">Sort</span>
+        <button class="control" type="button" data-sort="0" aria-pressed="true"><kbd>0</kbd> Original</button>
+        <button class="control" type="button" data-sort="1" aria-pressed="false"><kbd>1</kbd> Year total</button>
+        <button class="control" type="button" data-sort="2" aria-pressed="false"><kbd>2</kbd> Elevation</button>
+        <button class="control" type="button" data-sort="3" aria-pressed="false"><kbd>3</kbd> Bortle</button>
+      </div>
+      <div class="cluster" role="group" aria-label="Encoding and filter">
+        <button class="control" type="button" id="mode" aria-pressed="false"><kbd>D</kbd> Deviation</button>
+        <button class="control" type="button" id="filter" aria-label="Cycle Bortle filter"><kbd>B</kbd> Filter sites</button>
+      </div>
+    </div>
+    <p class="state" id="state" aria-live="polite" aria-atomic="true"></p>
+  </section>
+
+  <section class="ledger" aria-labelledby="chart-title">
+    <div class="ledger-head">
+      <div class="ledger-heading">
+        <h2 id="chart-title">Monthly clear nights</h2>
+        <p id="coverage"></p>
+      </div>
+      <div class="legend" aria-label="Color legend">
+        <p class="legend-copy" id="legend-label"></p>
+        <div class="ramp-key">
+          <div class="ramp" id="ramp"></div>
+          <div class="ramp-ticks" id="ticks"></div>
+        </div>
+      </div>
+    </div>
+    <div class="matrix">
+      <table id="matrix" data-mode="absolute" aria-describedby="table-help">
+        <caption class="sr-only">Monthly clear nights by observing site</caption>
+        <colgroup><col class="site-col"><col class="elev-col"><col class="bortle-col"><col class="year-col"><col span="12"></colgroup>
+        <thead><tr id="column-heads">
+          <th scope="col" class="axis">Observing site</th>
+          <th scope="col" class="axis">Elev. (m)</th>
+          <th scope="col" class="axis" title="Bortle class from 1 (darkest) to 9 (brightest)">Bortle</th>
+          <th scope="col" class="axis">Year total</th>
+        </tr></thead>
+        <tbody id="body"></tbody>
+        <tfoot><tr id="totals">
+          <th scope="row" class="total-label" colspan="4">Month totals <span>Clear nights across sites in view</span></th>
+        </tr></tfoot>
+      </table>
+      <p class="sr-only" id="table-help">Use the arrow keys to move between values, Enter to pin a value, and Escape to clear focus and pins. Click a site name to emphasize its row. Bortle class runs from 1, darkest, to 9, brightest.</p>
+    </div>
+  </section>
+
+  <section class="dock" aria-label="Value inspection">
+    <article class="dock-card">
+      <div class="dock-head">
+        <h2 class="overline">Value detail</h2>
+        <div class="mini-controls" role="group" aria-label="Navigate and pin values">
+          <button class="control" type="button" data-arrow="ArrowLeft" aria-label="Move left"><kbd>←</kbd></button>
+          <button class="control" type="button" data-arrow="ArrowUp" aria-label="Move up"><kbd>↑</kbd></button>
+          <button class="control" type="button" data-arrow="ArrowDown" aria-label="Move down"><kbd>↓</kbd></button>
+          <button class="control" type="button" data-arrow="ArrowRight" aria-label="Move right"><kbd>→</kbd></button>
+          <button class="control pin-action" type="button" id="pin"><kbd>Enter</kbd> Pin / unpin</button>
+        </div>
+      </div>
+      <div class="dock-content" id="detail"><p class="idle">Hover a value or use the arrow keys to inspect it.</p></div>
+    </article>
+    <article class="dock-card">
+      <div class="dock-head">
+        <h2 class="overline">Pinned comparison</h2>
+        <button class="control" type="button" id="clear"><kbd>Esc</kbd> Clear focus &amp; pins</button>
+      </div>
+      <div class="dock-content" id="comparison" aria-live="polite"><p class="idle">Click a value or press Enter to pin it. Pin two to compare.</p></div>
+    </article>
+  </section>
+
+  <footer class="footer">
+    <p><strong>Clear night</strong> · Under 20% cloud cover <span aria-hidden="true"> &nbsp; / &nbsp; </span> <strong>Bortle class</strong> · 1 darkest, 9 brightest</p>
+    <p>Synthetic data prepared for this benchmark</p>
+  </footer>
+</main>
+<script>
+  "use strict";
+
+  const months = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"];
+  const days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  const sites = [
+    ["Kestrel Ridge", 1840, 2, [12, 11, 14, 17, 20, 24, 25, 24, 23, 21, 15, 11]],
+    ["Saltmarsh Point", 6, 6, [8, 9, 11, 12, 10, 9, 12, 13, 15, 14, 10, 8]],
+    ["Quarry Hollow", 230, 5, [9, 10, 12, 14, 15, 17, 18, 17, 16, 14, 10, 8]],
+    ["Ninefold Mesa", 2410, 1, [24, 23, 26, 27, 25, 18, 9, 8, 17, 26, 25, 24]],
+    ["Larch Basin", 1180, 3, [5, 6, 11, 16, 21, 25, 27, 27, 24, 18, 9, 5]],
+    ["Brightwater Pier", 14, 8, [7, 8, 9, 10, 11, 12, 13, 12, 12, 11, 8, 7]],
+    ["Ember Dunes", 420, 2, [26, 24, 27, 28, 29, 27, 20, 14, 22, 28, 27, 26]],
+    ["Foxglove Fell", 690, 4, [10, 11, 13, 15, 18, 19, 20, 18, 11, 7, 6, 8]]
+  ].map(([name, elevation, bortle, values]) => ({
+    name, elevation, bortle, values, total: values.reduce((sum, value) => sum + value, 0)
+  }));
+  const byId = id => document.getElementById(id);
+  const matrix = byId("matrix");
+  const body = byId("body");
+  const detail = byId("detail");
+  const comparison = byId("comparison");
+  const sortButtons = [...document.querySelectorAll("[data-sort]")];
+  const sorts = ["Original", "Year total, high first", "Elevation, high first", "Bortle, dark first"];
+  const filters = ["All", "1–3", "4–6", "7–9"];
+  const integer = new Intl.NumberFormat("en-US");
+  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
+  const absoluteColors = [[23, 37, 53], [33, 61, 79], [47, 90, 109], [78, 145, 153], [170, 224, 209]];
+  const deviationColors = [[236, 180, 112], [133, 97, 66], [36, 49, 67], [63, 99, 144], [153, 199, 248]];
+  const headCells = [];
+  const totalCells = [];
+  let sort = 0;
+  let filter = 0;
+  let deviation = false;
+  let visible = [];
+  let selected = null;
+  let active = null;
+  let hovered = null;
+  let tracedMonth = null;
+  let pins = [];
+  let tabStop = null;
+  let motions = [];
+
+  function signed(value, decimals) {
+    const magnitude = Math.abs(value).toFixed(decimals);
+    return (Number(magnitude) === 0 ? "+" : value < 0 ? "−" : "+") + magnitude;
+  }
+
+  function facts(cell) {
+    const { site, month } = cell;
+    const count = site.values[month];
+    return {
+      count,
+      percent: Math.round(100 * count / days[month]),
+      offset: count - site.total / 12
+    };
+  }
+
+  function colorString(channels) {
+    return "rgb(" + channels.join(",") + ")";
+  }
+
+  function paint(cell) {
+    const { count, offset } = cell.facts;
+    const colors = deviation ? deviationColors : absoluteColors;
+    const proportion = deviation ? (offset + 15) / 30 : count / 31;
+    const position = Math.min(4, Math.max(0, proportion * 4));
+    const left = Math.min(3, Math.floor(position));
+    const color = colors[left].map((channel, i) =>
+      Math.round(channel + (colors[left + 1][i] - channel) * (position - left))
+    );
+    const luminance = color.map(channel => {
+      const c = channel / 255;
+      return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+    }).reduce((sum, channel, i) => sum + channel * [0.2126, 0.7152, 0.0722][i], 0);
+    cell.primary.textContent = deviation ? signed(offset, 1) : count;
+    cell.button.style.setProperty("--cell", colorString(color));
+    cell.button.style.setProperty("--cell-ink", luminance < 0.179 ? "#fff" : "#000");
+  }
+
+  months.forEach((month, index) => {
+    const th = document.createElement("th");
+    th.scope = "col";
+    th.className = "month";
+    th.textContent = month.slice(0, 3);
+    th.setAttribute("abbr", month);
+    th.title = month;
+    th.addEventListener("pointerenter", () => highlightMonth(index));
+    th.addEventListener("pointerleave", () => highlightMonth(null));
+    byId("column-heads").append(th);
+    headCells.push(th);
+    const total = document.createElement("td");
+    total.className = "month-total";
+    totalCells.push(total);
+    byId("totals").append(total);
+  });
+
+  sites.forEach(site => {
+    const row = document.createElement("tr");
+    row.innerHTML = '<th scope="row"><button class="site-name" type="button" aria-pressed="false">' +
+      site.name + '</button></th><td class="meta">' + integer.format(site.elevation) +
+      '</td><td class="meta">' + site.bortle + '</td><td class="year">' + site.total + '</td>';
+    site.row = row;
+    site.nameButton = row.querySelector("button");
+    site.yearCell = row.querySelector(".year");
+    site.nameButton.addEventListener("click", () => {
+      selected = selected === site ? null : site;
+      renderSelection();
+    });
+    site.cells = months.map((month, index) => {
+      const td = document.createElement("td");
+      td.className = "datum";
+      td.innerHTML = '<button class="value" type="button" tabindex="-1" aria-pressed="false">' +
+        '<span class="primary"></span><span class="raw"></span></button>';
+      const button = td.firstElementChild;
+      const cell = { td, button, site, month: index, primary: button.firstElementChild };
+      cell.facts = facts(cell);
+      const { count, percent, offset } = cell.facts;
+      button.lastElementChild.textContent = count;
+      button.toggleAttribute("data-low", offset <= -10);
+      button.setAttribute("aria-label", site.name + ", " + month + ", " + count + " clear nights, " +
+        percent + "% of month, deviation " + signed(offset, 1) + " nights");
+      button.addEventListener("pointermove", () => {
+        if (hovered === cell) return;
+        hovered = cell;
+        renderDetail();
+      });
+      button.addEventListener("pointerenter", () => {
+        hovered = cell;
+        renderDetail();
+      });
+      button.addEventListener("pointerleave", () => {
+        if (hovered !== cell) return;
+        hovered = null;
+        renderDetail();
+      });
+      button.addEventListener("focus", () => focusCell(cell, false));
+      button.addEventListener("click", () => togglePin(cell));
+      row.append(td);
+      return cell;
+    });
+    body.append(row);
+  });
+
+  function highlightMonth(month) {
+    if (tracedMonth !== null) {
+      headCells[tracedMonth].classList.remove("traced");
+      totalCells[tracedMonth].classList.remove("traced");
+      sites.forEach(site => site.cells[tracedMonth].td.classList.remove("traced"));
+    }
+    tracedMonth = month;
+    if (month !== null) {
+      headCells[month].classList.add("traced");
+      totalCells[month].classList.add("traced");
+      sites.forEach(site => site.cells[month].td.classList.add("traced"));
+    }
+  }
+
+  function renderSelection() {
+    sites.forEach(site => {
+      site.row.classList.toggle("muted", selected !== null && site !== selected);
+      site.row.classList.toggle("selected", site === selected);
+      site.nameButton.setAttribute("aria-pressed", String(site === selected));
+    });
+  }
+
+  function renderTotals() {
+    const totals = months.map((month, index) => visible.reduce((sum, site) => sum + site.values[index], 0));
+    const low = Math.min(...totals);
+    const high = Math.max(...totals);
+    const bestYear = Math.max(...visible.map(site => site.total));
+    visible.forEach(site => site.yearCell.classList.toggle("leader", site.total === bestYear));
+    totalCells.forEach((cell, index) => {
+      const total = totals[index];
+      cell.textContent = total;
+      cell.classList.toggle("low", total === low);
+      cell.classList.toggle("high", total === high);
+      if (total === low || total === high) {
+        const label = document.createElement("span");
+        label.textContent = low === high ? "Low / high" : total === low ? "Low" : "High";
+        cell.append(label);
+      }
+    });
+  }
+
+  function renderState() {
+    sortButtons.forEach((button, i) => button.setAttribute("aria-pressed", String(i === sort)));
+    byId("mode").setAttribute("aria-pressed", String(deviation));
+    byId("state").innerHTML = '<span><b>Sort</b> ' + sorts[sort] + '</span><span><b>Bortle filter</b> ' +
+      filters[filter] + '</span><span><b>Mode</b> ' + (deviation ? "Deviation" : "Absolute") + '</span>';
+    byId("coverage").textContent = visible.length + " of " + sites.length + " sites";
+  }
+
+  function renderEncoding() {
+    matrix.dataset.mode = deviation ? "deviation" : "absolute";
+    byId("legend-label").innerHTML = deviation
+      ? '<span>Nights vs. site mean · clear-night count underneath</span><span class="legend-note"><b class="threshold">▾</b>10+ nights below mean</span>'
+      : '<span>Clear nights per month</span>';
+    const colors = deviation ? deviationColors : absoluteColors;
+    byId("ramp").style.background = "linear-gradient(90deg," + colors.map(colorString).join(",") + ")";
+    const labels = deviation ? ["−15", "0", "+15"] : ["0", "10", "20", "31"];
+    const positions = deviation ? [0, 50, 100] : [0, 1000 / 31, 2000 / 31, 100];
+    byId("ticks").innerHTML = labels.map((label, i) =>
+      '<span style="left:' + positions[i] + '%">' + label + '</span>'
+    ).join("");
+    sites.forEach(site => site.cells.forEach(paint));
+  }
+
+  function stopAnimations() {
+    motions.forEach(animation => animation.cancel());
+    motions = [];
+  }
+
+  function renderRows(animate) {
+    const prior = animate && !reducedMotion.matches
+      ? new Map(visible.map(site => [site, site.row.getBoundingClientRect().top])) : new Map();
+    const oldTotals = prior.size ? byId("totals").getBoundingClientRect().top : null;
+    stopAnimations();
+    const restoreFocus = active?.button === document.activeElement;
+    visible = sites.filter(site => !filter || Math.ceil(site.bortle / 3) === filter);
+    if (sort) {
+      visible.sort((a, b) => {
+        const primary = sort === 2 ? b.elevation - a.elevation : sort === 3 ? a.bortle - b.bortle : 0;
+        return primary || b.total - a.total || a.name.localeCompare(b.name, "en");
+      });
+    }
+    sites.forEach(site => { site.row.hidden = !visible.includes(site); });
+    visible.forEach(site => body.append(site.row));
+    if (selected && !visible.includes(selected)) selected = null;
+    hovered = null;
+    if (active && !visible.includes(active.site)) clearFocus();
+    if (restoreFocus && active) active.button.focus({ preventScroll: true });
+    setTabStop(active || visible[0].cells[0]);
+    renderSelection();
+    renderState();
+    renderTotals();
+    renderDetail();
+
+    if (prior.size) {
+      const moves = visible.map(site => ({
+        element: site.row,
+        offset: prior.has(site) ? prior.get(site) - site.row.getBoundingClientRect().top : null
+      }));
+      moves.push({ element: byId("totals"), offset: oldTotals - byId("totals").getBoundingClientRect().top });
+      moves.forEach(({ element, offset }) => {
+        const timing = { duration: 215, easing: "cubic-bezier(.2,.7,.3,1)" };
+        if (offset === null) {
+          motions.push(element.animate([{ opacity: 0 }, { opacity: getComputedStyle(element).opacity }], timing));
+        } else if (offset !== 0) {
+          motions.push(element.animate([{ transform: "translateY(" + offset + "px)" },
+            { transform: "translateY(0)" }], timing));
+        }
+      });
+    }
+  }
+
+  function setTabStop(cell) {
+    if (tabStop) tabStop.button.tabIndex = -1;
+    tabStop = cell;
+    cell.button.tabIndex = 0;
+  }
+
+  function focusCell(cell, moveDOMFocus = true) {
+    if (active && active !== cell) delete active.button.dataset.active;
+    active = cell;
+    hovered = null;
+    cell.button.dataset.active = "true";
+    setTabStop(cell);
+    if (moveDOMFocus) cell.button.focus({ preventScroll: true });
+    renderDetail();
+  }
+
+  function clearFocus() {
+    if (active) {
+      delete active.button.dataset.active;
+      if (document.activeElement === active.button) active.button.blur();
+    }
+    active = null;
+    hovered = null;
+    setTabStop(visible[0].cells[0]);
+    renderDetail();
+  }
+
+  function move(key) {
+    if (!active) {
+      focusCell(visible[0].cells[0]);
+      return;
+    }
+    const row = visible.indexOf(active.site);
+    const column = active.month;
+    const toRow = Math.max(0, Math.min(visible.length - 1,
+      row + Number(key === "ArrowDown") - Number(key === "ArrowUp")));
+    const toColumn = Math.max(0, Math.min(months.length - 1,
+      column + Number(key === "ArrowRight") - Number(key === "ArrowLeft")));
+    focusCell(visible[toRow].cells[toColumn]);
+  }
+
+  function renderDetail() {
+    const cell = hovered || active;
+    if (!cell) {
+      detail.innerHTML = '<p class="idle">Hover a value or use the arrow keys to inspect it.</p>';
+      return;
+    }
+    const { count, percent, offset } = cell.facts;
+    detail.innerHTML = '<div class="detail-name">' + cell.site.name + '<span>' + months[cell.month] +
+      '</span></div><div class="metric"><span class="metric-label">Clear nights</span><strong>' + count +
+      '</strong></div><div class="metric"><span class="metric-label">Of month</span><strong>' + percent +
+      '%</strong></div><div class="metric"><span class="metric-label">vs. site mean</span><strong>' +
+      signed(offset, 1) + '</strong></div>';
+  }
+
+  function renderPins(previous) {
+    previous.forEach(cell => {
+      delete cell.button.dataset.pin;
+      cell.button.setAttribute("aria-pressed", "false");
+    });
+    pins.forEach((cell, index) => {
+      cell.button.dataset.pin = index + 1;
+      cell.button.setAttribute("aria-pressed", "true");
+    });
+    if (!pins.length) {
+      comparison.innerHTML = '<p class="idle">Click a value or press Enter to pin it. Pin two to compare.</p>';
+      return;
+    }
+    comparison.innerHTML = pins.map((cell, index) =>
+      '<div class="pin-item"><b><i aria-hidden="true">' + (index === 0 ? "◆" : "◇") + '</i>' +
+      cell.site.name + '</b><span>' + months[cell.month].slice(0, 3) + ' · ' +
+      cell.facts.count + ' clear nights</span></div>'
+    ).join("");
+    if (pins.length === 1) {
+      comparison.insertAdjacentHTML("beforeend", '<p class="idle">Pin a second value to compare.</p>');
+    } else {
+      const difference = pins[1].facts.count - pins[0].facts.count;
+      comparison.insertAdjacentHTML("beforeend", '<div class="metric difference">' +
+        '<span class="metric-label">Second − first</span><strong>' + signed(difference, 0) + ' nights</strong></div>');
+    }
+  }
+
+  function togglePin(cell) {
+    if (!cell) return;
+    const previous = pins;
+    pins = pins.includes(cell) ? pins.filter(pin => pin !== cell) : [...pins, cell].slice(-2);
+    renderPins(previous);
+  }
+
+  function clearInspection() {
+    const previous = pins;
+    pins = [];
+    clearFocus();
+    renderPins(previous);
+  }
+
+  function setSort(index) {
+    if (sort === index) return;
+    sort = index;
+    renderRows(true);
+  }
+
+  function cycleFilter() {
+    filter = (filter + 1) % filters.length;
+    renderRows(true);
+  }
+
+  function toggleMode() {
+    deviation = !deviation;
+    stopAnimations();
+    renderEncoding();
+    renderState();
+    if (!reducedMotion.matches) {
+      motions.push(matrix.animate([{ opacity: .72 }, { opacity: 1 }],
+        { duration: 180, easing: "ease-out" }));
+    }
+  }
+
+  sortButtons.forEach((button, index) => button.addEventListener("click", () => setSort(index)));
+  byId("filter").addEventListener("click", cycleFilter);
+  byId("mode").addEventListener("click", toggleMode);
+  byId("pin").addEventListener("click", () => togglePin(active || hovered));
+  byId("clear").addEventListener("click", clearInspection);
+  document.querySelectorAll("[data-arrow]").forEach(button =>
+    button.addEventListener("click", () => move(button.dataset.arrow))
+  );
+  document.addEventListener("keydown", event => {
+    if (event.ctrlKey || event.altKey || event.metaKey) return;
+    const key = event.key.toLowerCase();
+    if (key === "enter" && event.target.matches("button:not(.value)")) return;
+    if (event.key.startsWith("Arrow")) move(event.key);
+    else if (key === "enter") {
+      if (!event.repeat) togglePin(active);
+    } else if (key === "escape") clearInspection();
+    else if (!event.repeat && /^[0-3]$/.test(key)) setSort(Number(key));
+    else if (!event.repeat && key === "b") cycleFilter();
+    else if (!event.repeat && key === "d") toggleMode();
+    else return;
+    event.preventDefault();
+  });
+  document.addEventListener("click", event => {
+    if (selected && !event.target.closest("button, td, th, .controls, .dock, .legend")) {
+      selected = null;
+      renderSelection();
+    }
+  });
+
+  renderEncoding();
+  renderRows(false);
+</script>
+</body>
+</html>
